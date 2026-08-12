@@ -236,4 +236,80 @@
       localStorage.setItem(THEME_KEY, next); applyTheme(next);
     }
   });
+
+  /* ---------------- Site config (extensibility) ----------------
+     GROW THE SITE BY EDITING ONLY THIS BLOCK — no HTML edits required:
+       - Add a SUBJECT : push an object into SITE.semesters.sem3.subjects
+       - Add a SEMESTER: add SITE.semesters.semN { … } and push "semN" into SITE.order
+       - Add a MODULE  : copy a <section data-module="N"> block on the subject page
+                         and add the code to that page's data-progress attribute
+     The footer subject links and the home subject cards are generated from this. */
+  var SITE = {
+    semesters: {
+      sem3: {
+        id: "sem3",
+        label: "3rd Semester",
+        subjects: [
+          { code: "fm", name: "Fluid Mechanics", file: "fm.html",
+            sheet: "SHEET FM-01", meta: ["ME24203 / ME203", "8 papers", "15 figures"], progress: 100,
+            blurb: "Continuum, fluid properties, hydrostatics, pressure measurement, buoyancy, kinematics — with Bansal book questions and PYQ tables per topic.",
+            tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQ bank" }, { t: "Cheat sheet" }] },
+          { code: "som", name: "Strength of Materials", file: "som.html",
+            sheet: "SHEET SOM-01", meta: ["ME205 / ME24205", "8 papers", "2022-2025"], progress: 100,
+            blurb: "Stress & strain, principal stresses, beams, bending & shear, deflection, columns, cylinders — full derivation notes written from the paper analysis.",
+            tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQ bank" }, { t: "Derivations" }] },
+          { code: "thermo", name: "Thermodynamics", file: "thermo.html",
+            sheet: "SHEET TH-01", meta: ["ME24201 / ME201", "7 papers", "2022-2025"], progress: 72,
+            blurb: "Macroscopic vs microscopic, work & heat, first law, properties of steam, second law, nozzles — with the full PYQ bank.",
+            tags: [{ t: "Notes expanding", c: "tag-med" }, { t: "PYQ bank" }] }
+        ]
+      }
+      /* sem4: { id:"sem4", label:"4th Semester", subjects:[
+           { code:"tom", name:"Theory of Machines", file:"tom.html",
+             sheet:"SHEET TOM-01", meta:["ME...", "..."], progress:0,
+             blurb:"...", tags:[{ t:"Planned" }] }
+         ] }, */
+    },
+    order: ["sem3"]
+  };
+
+  function renderSiteNav() {
+    var cur = SITE.semesters[SITE.order[0]];
+    document.querySelectorAll("#site-subjects").forEach(function (nav) {
+      nav.innerHTML = cur.subjects.map(function (s) {
+        return '<a href="' + s.file + '">' + s.name + "</a>";
+      }).join("");
+    });
+    document.querySelectorAll("#site-semester-label").forEach(function (el) {
+      el.textContent = cur.label;
+    });
+    document.querySelectorAll("#site-semesters").forEach(function (nav) {
+      nav.innerHTML = SITE.order.length > 1
+        ? SITE.order.map(function (id) {
+            var s = SITE.semesters[id];
+            var active = id === SITE.order[0] ? ' class="active"' : "";
+            return '<a href="#" data-sem="' + id + '"' + active + ">" + s.label + "</a>";
+          }).join("")
+        : "";
+    });
+    var grid = document.getElementById("subject-cards");
+    if (grid) {
+      grid.innerHTML = cur.subjects.map(function (s) {
+        var tags = (s.tags || []).map(function (t) {
+          return '<span class="tag ' + (t.c || "") + '">' + t.t + "</span>";
+        }).join("");
+        var meta = (s.meta || []).map(function (m) { return "<span>" + m + "</span>"; }).join("");
+        return '<a class="card subject-card" href="' + s.file + '">' +
+          '<span class="sheet-no">' + s.sheet + "</span>" +
+          '<span class="go">&rarr;</span>' +
+          "<h3>" + s.name + "</h3>" +
+          '<div class="subject-meta">' + meta + "</div>" +
+          "<p>" + s.blurb + "</p>" +
+          '<div class="subject-bar"><div class="fill" style="width:' + (s.progress || 0) + '%"></div></div>' +
+          '<div class="card-tags">' + tags + "</div>" +
+        "</a>";
+      }).join("");
+    }
+  }
+  renderSiteNav();
 })();
