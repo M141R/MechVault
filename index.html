@@ -7,9 +7,10 @@
 <meta name="description" content="Fluid Mechanics, Strength of Materials & Thermodynamics — syllabus, notes, previous year papers and a question bank for BIT Mesra Mechanical 3rd semester.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2318e299'/><text x='50' y='68' font-size='52' font-weight='800' font-family='Inter,sans-serif' text-anchor='middle' fill='%2304140d'>M</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%231e3a5f'/><text x='50' y='70' font-size='56' font-weight='700' font-family='monospace' text-anchor='middle' fill='%23fff'>M</text></svg>">
+<script defer src="assets/app.js"></script>
 </head>
 <body>
 
@@ -21,6 +22,10 @@
       <a class="nav-link" href="fm.html">Fluid Mechanics</a>
       <a class="nav-link" href="som.html">Strength of Materials</a>
       <a class="nav-link" href="thermo.html">Thermodynamics</a>
+      <form class="search-wrap" role="search">
+        <input class="search-input" type="search" placeholder="Search notes, formulas…" aria-label="Search the site">
+        <div class="search-results"></div>
+      </form>
       <button class="theme-toggle" aria-label="Toggle theme"></button>
     </div>
   </div>
@@ -29,22 +34,53 @@
 <section class="hero">
   <div class="container">
     <div class="hero-eyebrow">BIT Mesra · ME 3rd Semester · MO 2022–2025</div>
-    <h1>Everything you need for<br><span class="grad">3rd sem Mechanics</span></h1>
-    <p class="sub">Syllabus, full notes, previous year papers and a question bank — mapped topic-by-topic from real BIT Mesra papers. One source to study, practice and revise.</p>
+    <h1>The 3rd-sem mechanics vault, drawn to spec.</h1>
+    <p class="sub">Syllabus, derivation-first notes, worked examples and every previous-year paper — mapped topic-by-topic from real BIT Mesra papers. One source to study, drill and revise.</p>
     <div class="btn-row">
-      <a class="btn btn-accent" href="fm.html">Start Fluid Mechanics →</a>
+      <a class="btn btn-accent" href="fm.html">Open Fluid Mechanics →</a>
       <a class="btn btn-secondary" href="som.html">Strength of Materials</a>
       <a class="btn btn-secondary" href="thermo.html">Thermodynamics</a>
+    </div>
+
+    <div class="blueprint">
+      <div class="bp-head">
+        <span class="bp-kicker">Semester Blueprint</span>
+        <span class="bp-note">Mid-sem tests the first 2–3 modules per subject (≈25 marks, mostly numericals). End-sem covers <strong>every module at 10 marks each</strong> (two 5-mark questions).</span>
+      </div>
+      <div class="bp-rows">
+        <div class="bp-row">
+          <span class="bp-label">Fluids</span>
+          <div class="bp-mods">
+            <span class="mchip">FM</span><span class="mchip">8 papers</span><span class="bp-tail">M1 Statics appears in every paper</span>
+          </div>
+        </div>
+        <div class="bp-row">
+          <span class="bp-label">Solids</span>
+          <div class="bp-mods">
+            <span class="mchip">SOM</span><span class="mchip">8 papers</span><span class="bp-tail">derivations + 5-mark numericals</span>
+          </div>
+        </div>
+        <div class="bp-row">
+          <span class="bp-label">Thermal</span>
+          <div class="bp-mods">
+            <span class="mchip">TH</span><span class="mchip">7 papers</span><span class="bp-tail">first law + steam properties</span>
+          </div>
+        </div>
+      </div>
+      <div class="title-block">
+        <div><b>MECHVAULT</b></div><div>SEM-III</div>
+        <div>REV A</div><div>SHEET 1/1</div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="container">
   <div class="stats">
-    <div class="stat"><div class="num" style="color:var(--accent-strong)">16</div><div class="label">Question papers analyzed</div></div>
-    <div class="stat"><div class="num">60+</div><div class="label">PYQ questions in bank</div></div>
-    <div class="stat"><div class="num">8</div><div class="label">Note topics per subject</div></div>
-    <div class="stat"><div class="num">24/7</div><div class="label">Your study base</div></div>
+    <div class="stat"><div class="num">23</div><div class="label">Papers analyzed</div></div>
+    <div class="stat"><div class="num">60+</div><div class="label">PYQ questions</div></div>
+    <div class="stat"><div class="num">8</div><div class="label">Topics / subject</div></div>
+    <div class="stat"><div class="num">∞</div><div class="label">Your study base</div></div>
   </div>
 </div>
 
@@ -52,16 +88,16 @@
   <div class="container">
     <div class="section-head">
       <div class="section-eyebrow">Subjects</div>
-      <h2>Pick your subject</h2>
-      <p>Each subject page has the full syllabus, chapter notes with formulas and worked examples, book questions, and every previous year paper since MO 2022.</p>
+      <h2>Pick a drawing sheet</h2>
+      <p>Each subject page carries the full syllabus, chapter notes with formulas and worked examples, book questions, and every previous-year paper since MO 2022.</p>
     </div>
 
     <div class="card-grid">
       <a class="card subject-card" href="fm.html">
+        <span class="sheet-no">SHEET FM-01</span>
         <span class="go">→</span>
-        <div class="card-icon">💧</div>
         <h3>Fluid Mechanics</h3>
-        <div class="subject-meta"><span>ME24203 / ME203</span><span>8 papers</span><span>15 book figures</span></div>
+        <div class="subject-meta"><span>ME24203 / ME203</span><span>8 papers</span><span>15 figures</span></div>
         <p>Continuum, fluid properties, hydrostatics, pressure measurement, buoyancy, kinematics — with Bansal book questions and PYQ tables per topic.</p>
         <div class="subject-bar"><div class="fill" style="width:100%"></div></div>
         <div class="card-tags">
@@ -72,8 +108,8 @@
       </a>
 
       <a class="card subject-card" href="som.html">
+        <span class="sheet-no">SHEET SOM-01</span>
         <span class="go">→</span>
-        <div class="card-icon" style="background:var(--info-soft)">🏗️</div>
         <h3>Strength of Materials</h3>
         <div class="subject-meta"><span>ME205 / ME24205</span><span>8 papers</span><span>2022–2025</span></div>
         <p>Stress &amp; strain, principal stresses, beams, bending &amp; shear, deflection, columns, cylinders — full derivation notes written from the paper analysis.</p>
@@ -86,14 +122,14 @@
       </a>
 
       <a class="card subject-card" href="thermo.html">
+        <span class="sheet-no">SHEET TH-01</span>
         <span class="go">→</span>
-        <div class="card-icon" style="background:var(--warn-soft)">🔥</div>
         <h3>Thermodynamics</h3>
         <div class="subject-meta"><span>ME24201 / ME201</span><span>7 papers</span><span>2022–2025</span></div>
-        <p>Macroscopic vs microscopic approach, work &amp; heat, first law, properties of steam, second law, nozzles — with the full PYQ bank.</p>
-        <div class="subject-bar"><div class="fill" style="width:100%"></div></div>
+        <p>Macroscopic vs microscopic, work &amp; heat, first law, properties of steam, second law, nozzles — with the full PYQ bank.</p>
+        <div class="subject-bar"><div class="fill" style="width:72%"></div></div>
         <div class="card-tags">
-          <span class="tag tag-med">Notes coming</span>
+          <span class="tag tag-med">Notes expanding</span>
           <span class="tag">PYQ bank</span>
         </div>
       </a>
@@ -109,49 +145,30 @@
     </div>
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon">1️⃣</div>
+        <div class="sheet-no">PASS 01</div>
         <h3>Read the notes</h3>
-        <p>Every topic has theory, the exact formulas you need, a worked example and the <strong>exam-specific warnings</strong> that papers keep repeating.</p>
+        <p>Every topic has theory, the exact formulas you need, a worked example and the <strong>exam-specific warnings</strong> papers keep repeating.</p>
       </div>
       <div class="card">
-        <div class="card-icon">2️⃣</div>
-        <h3>Solve the book questions</h3>
-        <p>Worked examples adapted from Bansal (FM) and standard texts (SOM), with full solutions — so you practice the pattern before the exam.</p>
+        <div class="sheet-no">PASS 02</div>
+        <h3>Drill the PYQs</h3>
+        <p>Previous-year questions are tagged by module and year. Toggle <em>Mid / End</em> to filter what your exam actually asks, then self-test with the collapsible answers.</p>
       </div>
       <div class="card">
-        <div class="card-icon">3️⃣</div>
-        <h3>Attempt the PYQs</h3>
-        <p>Every paper since MO 2022, viewable page-by-page. The notes tell you exactly which questions each topic has produced, year by year.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="cta-band">
-      <h3>Mid sem or end sem — start with the notes</h3>
-      <p>All notes are exam-focused: derivation-heavy, formula-first, with the exact question pattern BIT Mesra has used since MO 2022.</p>
-      <div class="btn-row">
-        <a class="btn btn-accent" href="fm.html">Fluid Mechanics notes →</a>
-        <a class="btn btn-secondary" href="som.html">SOM notes →</a>
+        <div class="sheet-no">PASS 03</div>
+        <h3>Track &amp; revise</h3>
+        <p>The revision tracker marks each module as you clear it. Watch the ring fill, then print the cheat sheet the night before.</p>
       </div>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand"><span class="logo">M</span> MechVault</div>
-    <div class="footer-links">
-      <a href="fm.html">Fluid Mechanics</a>
-      <a href="som.html">SOM</a>
-      <a href="thermo.html">Thermodynamics</a>
-    </div>
-    <div class="footer-note">Built from BIT Mesra question papers · MO 2022 – MO 2025 · For personal study use</div>
+  <div class="container">
+    <div class="f-brand">MechVault</div>
+    <div class="f-meta">BIT Mesra · Mechanical Engineering · 3rd Semester · built for MO 2022–2025</div>
   </div>
 </footer>
 
-<script src="assets/app.js"></script>
 </body>
 </html>

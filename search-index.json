@@ -1,0 +1,268 @@
+[
+ {
+  "t": "MechVault — 3rd Semester Study Hub",
+  "s": "Home",
+  "u": "index.html",
+  "a": "",
+  "b": "MechVault — BIT Mesra ME 3rd semester study hub for Fluid Mechanics, Strength of Materials and Thermodynamics."
+ },
+ {
+  "t": "1. Continuum Concept",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t1",
+  "b": "⏱ 15 min 📄 Bansal Ch.1 §1.1–1.3 🏆 2 marks 🔗 Prereq: None 📝 Theory Notes Real fluids are molecular , but we treat them as continuum when studying macroscopic behaviour. Assumption v"
+ },
+ {
+  "t": "2. Fluid Properties",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t2",
+  "b": "⏱ 90 min 📄 Bansal Ch.1 §1.4–1.9 🏆 3–5 marks 📝 Density, Specific Weight, Specific Gravity Property Symbol SI Unit Formula Mass density ρ kg/m³ ρ = m/V Specific weight γ N/m³ γ = ρg "
+ },
+ {
+  "t": "3. Pressure & Pascal's Law",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t3",
+  "b": "⏱ 30 min 📄 Bansal Ch.2 §2.1–2.3 🏆 2–3 marks 📝 Theory Notes Pascal's Law: Pressure at any point in a static fluid is equal in all directions . p = γh = ρgh (pressure at depth h belo"
+ },
+ {
+  "t": "4. Total Pressure on Plane Surfaces",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t4",
+  "b": "⏱ 30 min 📄 Bansal Ch.2 §2.4 🏆 5 marks 📝 Theory Notes P = ρ g A h̄ P = total pressure force (N) · A = area (m²) · h̄ = depth of centroid (m) Most common PYQ: vertical rectangular su"
+ },
+ {
+  "t": "5. Center of Pressure",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t5",
+  "b": "⏱ 45 min 📄 Bansal Ch.2 §2.5 🏆 5–7 marks 📝 Theory Notes h* = h̄ + I_G / (A · h̄) h* = depth of center of pressure · I_G = moment of inertia about centroidal axis · A = area · h̄ = c"
+ },
+ {
+  "t": "6. Buoyancy, Archimedes' Principle & Metacentre",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t6",
+  "b": "⏱ 45 min 📄 Bansal Ch.2 §2.6–2.7 🏆 5 marks 📝 Theory Notes Buoyant Force B = ρ_fluid × g × V_displaced Direction: vertically upward through center of buoyancy (B) . Metacentre M vs C"
+ },
+ {
+  "t": "7. Pressure Measurement — Manometers",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t7",
+  "b": "⏱ 60 min 📄 Bansal Ch.2 §2.8–2.12 🏆 5 marks 📝 Theory Notes Piezometer tube p = ρ g h Open tube at the point of measurement. Cannot measure vacuum/gas pressure. U-Tube Manometer CRIT"
+ },
+ {
+  "t": "8. Stream Lines, Flow Types & Continuity",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t8",
+  "b": "⏱ 30 min 📄 Bansal Ch.1–2 🏆 2–5 marks 📝 Theory Notes Concept Definition Property Stream line Line tangent to velocity vector at every point No flow across Path line Actual path trac"
+ },
+ {
+  "t": "9. Euler's Equation & Bernoulli's Theorem",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t9",
+  "b": "⏱ 60 min 📄 Bansal Ch.5 🏆 3–5 marks 🔗 Prereq: Continuity 📝 Theory Notes Euler's equation of motion (along a streamline, ideal fluid): dp/ρ + g dz + v dv = 0 → ∫dp/ρ + gz + v²/2 = co"
+ },
+ {
+  "t": "10. Venturimeter, Orifice Meter, Losses & Boundary Layer",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t10",
+  "b": "⏱ 90 min 📄 Bansal Ch.5–7 🏆 5 marks 📝 Theory Notes Venturimeter Q = C_d · a₁a₂ / √(a₁² − a₂²) · √(2gh) a₁ = inlet area, a₂ = throat area, C_d ≈ 0.96–0.98 Mounted horizontal or verti"
+ },
+ {
+  "t": "11. Hydraulic Machines — Turbines & Pumps",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "t11",
+  "b": "⏱ 90 min 📄 Bansal Ch. 15–17 🏆 5 marks · END sem 📝 Theory Notes Classification of turbines Impulse turbines (Pelton): all head converted to kinetic energy in nozzle; runner at atmos"
+ },
+ {
+  "t": "⚡ Quick Revision Cheat Sheet",
+  "s": "Fluid Mechanics · Notes",
+  "u": "fm.html",
+  "a": "cheat",
+  "b": "Must-Know Formulas P = ρ g A h̄ h* = h̄ + I_G/(A·h̄) B = ρ_fluid × g × V GM = I_O/V − BG τ = μ (du/dy) h = 4σ cosθ / (ρ g d) Re = ρVD/μ = VD/ν ∂u/∂x + ∂v/∂y = 0"
+ },
+ {
+  "t": "Fluid Mechanics — Syllabus",
+  "s": "Fluid Mechanics · Syllabus",
+  "u": "fm.html",
+  "a": "syllabus",
+  "b": "Syllabus for Fluid Mechanics (BIT Mesra 3rd semester)."
+ },
+ {
+  "t": "1. Normal & Shear Stress on an Inclined Plane",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t1",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📝 Theory Notes Given the plane-stress state (σₓ, σᵧ, τₓᵧ) on x–y faces, find the stresses on a plane whose normal makes angle θ with the x-axis: σ"
+ },
+ {
+  "t": "2. Principal Stresses, Planes & Mohr's Circle",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t2",
+  "b": "⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 1 📝 Theory Notes Principal stresses: σ₁,₂ = (σₓ + σᵧ)/2 ± √[ ((σₓ − σᵧ)/2)² + τₓᵧ² ] Orientation of principal planes: tan 2θₚ = 2τₓᵧ / (σₓ − σᵧ) "
+ },
+ {
+  "t": "3. Generalized Hooke's Law & Strain Analysis",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t3",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 2 📝 Theory Notes εₓ = (σₓ − νσᵧ)/E (plane stress) εᵧ = (σᵧ − νσₓ)/E γₓᵧ = τₓᵧ / G , G = E / [2(1+ν)] Solving for stresses from measured strains ("
+ },
+ {
+  "t": "4. Shear Force & Bending Moment Diagrams",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t4",
+  "b": "⏱ 60 min 🏆 2–4 marks 🔗 Prereq: None 📝 Theory Notes Relationships between load, shear and bending moment (MO2025 END Q.2(a)): dV/dx = −w(x) (slope of SF diagram = negative load inte"
+ },
+ {
+  "t": "5. Flexure Formula & Bending Stress",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t5",
+  "b": "⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes M/I = σ/y = E/R M = bending moment · I = second moment of area about NA · σ = bending stress at distance y from NA · R = radius "
+ },
+ {
+  "t": "6. Shear Stress in Beams",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t6",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes τ = V·Aȳ / (I·b) V = shear force at section · Aȳ = first moment of area above the level · I = M.I. of whole section · b = width "
+ },
+ {
+  "t": "7. Beam Deflection — Macaulay's Method",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t7",
+  "b": "⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 4–5 📝 Theory Notes EI d²y/dx² = M(x) Macaulay's method: express M(x) in one equation with step brackets ⟨x − a⟩ⁿ which are zero when x < a: ⟨x "
+ },
+ {
+  "t": "8. Euler Buckling of Columns",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t8",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes P_cr = π²EI / L_eff² L_eff = effective length (both ends pinned: L ; one fixed one free: 2L ; both fixed: L/2 ; one fixed one pi"
+ },
+ {
+  "t": "9. Curved Beams & Shear Center",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t9",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes Curved beams For a curved beam (neutral axis shifted towards centre of curvature), the stress distribution is hyperbolic , not l"
+ },
+ {
+  "t": "10. Thin & Thick Cylinders",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "t10",
+  "b": "⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 1 📝 Theory Notes Thin cylinder (t < d/20) Hoop stress: σ_h = p·d / (2t) Longitudinal: σ_l = p·d / (4t) Max shear: τ_max = (σ_h − σ_l)/2 = p·d/("
+ },
+ {
+  "t": "⚡ Quick Revision Cheat Sheet",
+  "s": "Strength of Materials · Notes",
+  "u": "som.html",
+  "a": "cheat",
+  "b": "Must-Know Formulas σ_θ = (σₓ+σᵧ)/2 + (σₓ−σᵧ)/2 cos2θ + τₓᵧ sin2θ τ_θ = (σₓ−σᵧ)/2 sin2θ − τₓᵧ cos2θ σ₁,₂ = σ_avg ± R ; R = √[((σₓ−σᵧ)/2)² + τₓᵧ²] tan2θₚ = 2τₓᵧ/(σₓ−σᵧ) τ = V·Aȳ/(I·b"
+ },
+ {
+  "t": "Strength of Materials — Syllabus",
+  "s": "Strength of Materials · Syllabus",
+  "u": "som.html",
+  "a": "syllabus",
+  "b": "Syllabus for Strength of Materials (BIT Mesra 3rd semester)."
+ },
+ {
+  "t": "1. Systems, Properties & Quasi-static Process",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t1",
+  "b": "⏱ 45 min 🏆 2–3 marks 🔗 Prereq: None 📝 Theory Notes Macroscopic approach: studies the average behaviour of a large number of molecules — no molecular model needed; uses properties l"
+ },
+ {
+  "t": "2. Work, Heat & Point/Path Functions",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t2",
+  "b": "⏱ 30 min 🏆 2–3 marks 📝 Theory Notes Work (thermo definition, MO2023 Q.1(a)): energy transfer that crosses the system boundary due to a difference in an external generalized force ("
+ },
+ {
+  "t": "3. First Law of Thermodynamics & Internal Energy",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t3",
+  "b": "⏱ 45 min 🏆 2–5 marks 🔗 Prereq: Topic 2 📝 Theory Notes For a process: Q = ΔU + W (closed system, KE/PE neglected) For a cycle: ∮δQ = ∮δW → net heat = net work Internal energy (MO202"
+ },
+ {
+  "t": "4. Polytropic Process",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t4",
+  "b": "⏱ 45 min 🏆 3–5 marks 🔗 Prereq: Topic 3 📝 Theory Notes PVⁿ = constant (n = polytropic index) Work done: W = (P₁V₁ − P₂V₂)/(n − 1) = mR(T₁ − T₂)/(n − 1) Heat transfer: Q = m·c_n·(T₂ "
+ },
+ {
+  "t": "5. Steady Flow Energy Equation (SFEE) & Nozzles",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t5",
+  "b": "⏱ 60 min 🏆 3–5 marks 🔗 Prereq: Topic 3 📝 Theory Notes Q̇ − Ẇ = ṁ[(h₂ − h₁) + (V₂² − V₁²)/2 + g(z₂ − z₁)] Derivation (MO2024 P1 Q.5(a)): energy balance on a control volume between "
+ },
+ {
+  "t": "6. Steam Properties, Tables & Throttling",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t6",
+  "b": "⏱ 45 min 🏆 3 marks 🔗 Prereq: Topic 5 📝 Theory Notes Pure substance (MO2024 P1 Q.3(a)): same chemical composition in all phases. Air is not a pure substance in the phase sense (mixt"
+ },
+ {
+  "t": "7. Second Law & Carnot Cycle",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t7",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📝 Theory Notes Kelvin–Planck: impossible for a heat engine to produce net work while exchanging heat with a single reservoir. (No perfect engine.)"
+ },
+ {
+  "t": "8. Heat Pump vs Refrigerator",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t8",
+  "b": "⏱ 20 min 🏆 2–3 marks 🔗 Prereq: Topic 7 📝 Theory Notes Both transfer heat from cold to hot using work input — same machine, different purpose. Refrigerator: purpose is to extract he"
+ },
+ {
+  "t": "9. Entropy, Clausius Inequality & Availability",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t9",
+  "b": "⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 7 📝 Theory Notes Clausius inequality: ∮δQ/T ≤ 0 (= 0 reversible, < 0 irreversible) Entropy change: dS = δQ_rev/T (property — independent of path)"
+ },
+ {
+  "t": "10. Otto & Diesel Cycles",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "t10",
+  "b": "⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes Otto cycle (constant volume heat addition): η_Otto = 1 − 1/r^(γ−1) where r = V₁/V₂ (compression ratio) Diesel cycle (constant pr"
+ },
+ {
+  "t": "⚡ Quick Revision Cheat Sheet",
+  "s": "Thermodynamics · Notes",
+  "u": "thermo.html",
+  "a": "cheat",
+  "b": "Must-Know Formulas Q = ΔU + W (process) ; ∮δQ = ∮δW (cycle) h = u + Pv ; c_p − c_v = R ; γ = c_p/c_v W_poly = mR(T₁−T₂)/(n−1) Q_poly = W·(γ−n)/(γ−1) SFEE: Q̇−Ẇ = ṁ[Δh + ΔV²/2 + gΔ"
+ },
+ {
+  "t": "Thermodynamics — Syllabus",
+  "s": "Thermodynamics · Syllabus",
+  "u": "thermo.html",
+  "a": "syllabus",
+  "b": "Syllabus for Thermodynamics (BIT Mesra 3rd semester)."
+ }
+]

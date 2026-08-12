@@ -7,9 +7,12 @@
 <meta name="description" content="Fluid Mechanics (ME24203/ME203) — syllabus, full notes, Bansal book questions and BIT Mesra previous year papers MO 2022–2025.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2318e299'/><text x='50' y='68' font-size='52' font-weight='800' font-family='Inter,sans-serif' text-anchor='middle' fill='%2304140d'>M</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%231e3a5f'/><text x='50' y='70' font-size='56' font-weight='700' font-family='monospace' text-anchor='middle' fill='%23fff'>M</text></svg>">
 </head>
 <body>
 
@@ -21,6 +24,10 @@
       <a class="nav-link active" href="fm.html">Fluid Mechanics</a>
       <a class="nav-link" href="som.html">Strength of Materials</a>
       <a class="nav-link" href="thermo.html">Thermodynamics</a>
+      <form class="search-wrap" role="search">
+        <input class="search-input" type="search" placeholder="Search notes, formulas…" aria-label="Search the site">
+        <div class="search-results"></div>
+      </form>
       <button class="theme-toggle" aria-label="Toggle theme"></button>
     </div>
   </div>
@@ -41,6 +48,10 @@
       <div class="bp-head">
         <span class="bp-kicker">Exam Blueprint</span>
         <span class="bp-note">End-sem: <strong>every module = 10 marks</strong> (two 5-mark questions). Mid-sem: only the <strong>first 2–3 modules</strong> are asked — 25 marks, mostly numericals.</span>
+        <div class="exam-toggle" role="group" aria-label="Exam view">
+          <button type="button" data-exam="mid" aria-pressed="false">Mid-sem</button>
+          <button type="button" data-exam="end" aria-pressed="true">End-sem</button>
+        </div>
       </div>
       <div class="bp-rows">
         <div class="bp-row">
@@ -58,11 +69,15 @@
             <span class="mchip" title="M1 — Fluid Statics">M1</span>
             <span class="mchip" title="M2 — Kinematics &amp; Dynamics">M2</span>
             <span class="mchip" title="M3 — Closed Conduit Flow">M3</span>
-            <span class="mchip" title="M4 — Hydraulic Turbines">M4</span>
-            <span class="mchip" title="M5 — Pumps">M5</span>
+            <span class="mchip end" title="M4 — Hydraulic Turbines">M4</span>
+            <span class="mchip end" title="M5 — Pumps">M5</span>
             <span class="bp-tail">all modules · 10 marks each (2 × 5)</span>
           </div>
         </div>
+      </div>
+      <div class="title-block">
+        <div><b>MECHVAULT</b></div><div>FM</div>
+        <div>SEM-III</div><div>SHEET 1/1</div>
       </div>
     </div>
   </div>
@@ -76,6 +91,7 @@
     <a class="tab" href="#pyqs">Previous Year Papers</a>
   </div>
 </div>
+<div class="container"><div data-progress="M1,M2,M3,M4,M5"></div></div>
 
 <!-- ===================== SYLLABUS ===================== -->
 <section class="section" id="syllabus">
@@ -107,13 +123,13 @@
           <td>Reynolds experiment · Darcy–Weisbach · major/minor losses · pipes in series/parallel · TEL &amp; HGL · pitot/venturimeter/orifice meter · boundary layer &amp; separation</td>
           <td><span class="tag tag-high">MID Q5 · END Q3</span></td>
         </tr>
-        <tr>
+        <tr data-exam="end">
           <td><strong>4 — Hydraulic Turbines</strong></td>
           <td>CO-4</td>
           <td>Impulse &amp; reaction turbines · velocity diagrams · Pelton/Francis · draft tube · governing · specific &amp; unit quantities</td>
           <td><span class="tag tag-med">END Q4</span></td>
         </tr>
-        <tr>
+        <tr data-exam="end">
           <td><strong>5 — Pumps</strong></td>
           <td>CO-5</td>
           <td>Centrifugal &amp; reciprocating pumps · manometric head · efficiencies · specific speed · NPSH · pumps in series/parallel</td>
