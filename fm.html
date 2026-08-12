@@ -7,7 +7,7 @@
 <meta name="description" content="Fluid Mechanics (ME24203/ME203) — syllabus, full notes, Bansal book questions and BIT Mesra previous year papers MO 2022–2025.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2318e299'/><text x='50' y='68' font-size='52' font-weight='800' font-family='Inter,sans-serif' text-anchor='middle' fill='%2304140d'>M</text></svg>">
 </head>
@@ -37,6 +37,34 @@
       <span class="tag">Bansal Ch. 1–2 core</span>
       <span class="tag tag-crit">M1 Statics = every paper</span>
     </div>
+    <div class="blueprint">
+      <div class="bp-head">
+        <span class="bp-kicker">Exam Blueprint</span>
+        <span class="bp-note">End-sem: <strong>every module = 10 marks</strong> (two 5-mark questions). Mid-sem: only the <strong>first 2–3 modules</strong> are asked — 25 marks, mostly numericals.</span>
+      </div>
+      <div class="bp-rows">
+        <div class="bp-row">
+          <span class="bp-label">Mid-sem</span>
+          <div class="bp-mods">
+            <span class="mchip mid" title="M1 — Fluid Statics">M1</span>
+            <span class="mchip mid" title="M2 — Kinematics &amp; Dynamics">M2</span>
+            <span class="mchip mid" title="M3 — Closed Conduit Flow">M3</span>
+            <span class="bp-tail">first 2–3 modules · 25 marks</span>
+          </div>
+        </div>
+        <div class="bp-row">
+          <span class="bp-label">End-sem</span>
+          <div class="bp-mods">
+            <span class="mchip" title="M1 — Fluid Statics">M1</span>
+            <span class="mchip" title="M2 — Kinematics &amp; Dynamics">M2</span>
+            <span class="mchip" title="M3 — Closed Conduit Flow">M3</span>
+            <span class="mchip" title="M4 — Hydraulic Turbines">M4</span>
+            <span class="mchip" title="M5 — Pumps">M5</span>
+            <span class="bp-tail">all modules · 10 marks each (2 × 5)</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -62,28 +90,34 @@
       <table>
         <tr><th>Module</th><th>CO</th><th>Topics asked in papers</th><th>Where it appears</th></tr>
         <tr>
-          <td><strong>1 — Fluid Properties &amp; Statics</strong></td>
+          <td><strong>1 — Fluid Statics</strong></td>
           <td>CO-1</td>
-          <td>Continuum concept · density/SG/specific weight · Newton's law of viscosity · surface tension &amp; capillarity · Pascal's law · total pressure &amp; centre of pressure · buoyancy &amp; metacentre · manometers (piezometer, U-tube, inverted U-tube, single column)</td>
+          <td>Continuum concept · density/SG/specific weight · Newton's law of viscosity · surface tension &amp; capillarity · Pascal's law · total pressure &amp; centre of pressure · buoyancy &amp; metacentre · manometers (piezometer, U-tube, differential, single column)</td>
           <td><span class="tag tag-crit">MID Q1–2 · END Q1</span></td>
         </tr>
         <tr>
-          <td><strong>2 — Fluid Kinematics</strong></td>
+          <td><strong>2 — Kinematics &amp; Dynamics</strong></td>
           <td>CO-2</td>
-          <td>Stream line / path line / streak line · Eulerian vs Lagrangian · steady/unsteady, 1D/2D/3D · laminar vs turbulent · continuity equation (differential form) · Euler's equation · Bernoulli's theorem (derivation + assumptions) · vorticity &amp; rotationality</td>
-          <td><span class="tag tag-high">MID Q3–5 · END Q2</span></td>
+          <td>Eulerian vs Lagrangian · stream/path/streak lines · flow classification · continuity equation · Euler's &amp; Navier–Stokes equations · Bernoulli's theorem (derivation + assumptions) · rotationality</td>
+          <td><span class="tag tag-high">MID Q3–4 · END Q2</span></td>
         </tr>
         <tr>
-          <td><strong>3 — Fluid Dynamics (Pipes &amp; Meters)</strong></td>
+          <td><strong>3 — Closed Conduit Flow</strong></td>
           <td>CO-3</td>
-          <td>Venturimeter · orifice meter (discharge derivation) · major &amp; minor losses · pipe flow with friction · boundary layer &amp; separation · Reynolds number</td>
+          <td>Reynolds experiment · Darcy–Weisbach · major/minor losses · pipes in series/parallel · TEL &amp; HGL · pitot/venturimeter/orifice meter · boundary layer &amp; separation</td>
           <td><span class="tag tag-high">MID Q5 · END Q3</span></td>
         </tr>
         <tr>
-          <td><strong>4 — Hydraulic Machines</strong></td>
+          <td><strong>4 — Hydraulic Turbines</strong></td>
           <td>CO-4</td>
-          <td>Classification of turbines · Pelton wheel (power, efficiency, governing) · Francis / inward-flow reaction turbine · governing of turbines · centrifugal pump basics</td>
-          <td><span class="tag tag-med">END Q4–5</span></td>
+          <td>Impulse &amp; reaction turbines · velocity diagrams · Pelton/Francis · draft tube · governing · specific &amp; unit quantities</td>
+          <td><span class="tag tag-med">END Q4</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 — Pumps</strong></td>
+          <td>CO-5</td>
+          <td>Centrifugal &amp; reciprocating pumps · manometric head · efficiencies · specific speed · NPSH · pumps in series/parallel</td>
+          <td><span class="tag tag-med">END Q5</span></td>
         </tr>
       </table>
     </div>
