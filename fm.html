@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid Mechanics — Notes & PYQs | MechVault</title>
+<meta name="description" content="Fluid Mechanics (ME24203/ME203) — syllabus, full notes, Bansal book questions and BIT Mesra previous year papers MO 2022–2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2318e299'/><text x='50' y='68' font-size='52' font-weight='800' font-family='Inter,sans-serif' text-anchor='middle' fill='%2304140d'>M</text></svg>">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><span class="logo">M</span> MechVault</a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="fm.html">Fluid Mechanics</a>
+      <a class="nav-link" href="som.html">Strength of Materials</a>
+      <a class="nav-link" href="thermo.html">Thermodynamics</a>
+      <button class="theme-toggle" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Fluid Mechanics</div>
+    <h1>Fluid Mechanics</h1>
+    <p>ME24203 (earlier ME203) · Complete study kit: syllabus mapped from real papers, derivation-first notes with Bansal book questions, and every previous year paper from MO 2022 to MO 2025.</p>
+    <div class="tags-row">
+      <span class="tag">8 papers analyzed</span>
+      <span class="tag tag-high">MID + END</span>
+      <span class="tag">Bansal Ch. 1–2 core</span>
+      <span class="tag tag-crit">M1 Statics = every paper</span>
+    </div>
+  </div>
+</section>
+
+<div class="tabbar">
+  <div class="tabbar-inner">
+    <a class="tab" href="#syllabus">Syllabus</a>
+    <a class="tab" href="#notes">Notes</a>
+    <a class="tab" href="#cheat">Cheat Sheet</a>
+    <a class="tab" href="#pyqs">Previous Year Papers</a>
+  </div>
+</div>
+
+<!-- ===================== SYLLABUS ===================== -->
+<section class="section" id="syllabus">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Syllabus</div>
+      <h2>What the papers actually cover</h2>
+      <p>Mapped from CO tags on real BIT Mesra papers (MO 2022–2025). MID = mostly Module 1–2; END = all four modules.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Module</th><th>CO</th><th>Topics asked in papers</th><th>Where it appears</th></tr>
+        <tr>
+          <td><strong>1 — Fluid Properties &amp; Statics</strong></td>
+          <td>CO-1</td>
+          <td>Continuum concept · density/SG/specific weight · Newton's law of viscosity · surface tension &amp; capillarity · Pascal's law · total pressure &amp; centre of pressure · buoyancy &amp; metacentre · manometers (piezometer, U-tube, inverted U-tube, single column)</td>
+          <td><span class="tag tag-crit">MID Q1–2 · END Q1</span></td>
+        </tr>
+        <tr>
+          <td><strong>2 — Fluid Kinematics</strong></td>
+          <td>CO-2</td>
+          <td>Stream line / path line / streak line · Eulerian vs Lagrangian · steady/unsteady, 1D/2D/3D · laminar vs turbulent · continuity equation (differential form) · Euler's equation · Bernoulli's theorem (derivation + assumptions) · vorticity &amp; rotationality</td>
+          <td><span class="tag tag-high">MID Q3–5 · END Q2</span></td>
+        </tr>
+        <tr>
+          <td><strong>3 — Fluid Dynamics (Pipes &amp; Meters)</strong></td>
+          <td>CO-3</td>
+          <td>Venturimeter · orifice meter (discharge derivation) · major &amp; minor losses · pipe flow with friction · boundary layer &amp; separation · Reynolds number</td>
+          <td><span class="tag tag-high">MID Q5 · END Q3</span></td>
+        </tr>
+        <tr>
+          <td><strong>4 — Hydraulic Machines</strong></td>
+          <td>CO-4</td>
+          <td>Classification of turbines · Pelton wheel (power, efficiency, governing) · Francis / inward-flow reaction turbine · governing of turbines · centrifugal pump basics</td>
+          <td><span class="tag tag-med">END Q4–5</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:20px"><strong>Pattern insight:</strong> Viscosity numericals, manometers and pressure-on-surfaces appear in <strong>every</strong> paper. Bernoulli derivation is a guaranteed END-sem 5-mark. Know the discharge formulas for Venturimeter &amp; orifice meter by heart.</div>
+  </div>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section class="section section-alt" id="notes" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Notes</div>
+      <h2>Module 1 · Fluid Statics — full notes</h2>
+      <p>Every topic: theory, formulas, a worked example, book questions and the exact PYQs it has produced. Sources: Bansal "Fluid Mechanics", Ch. 1–2 + BIT Mesra papers.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notes-wrap" style="padding-top:24px">
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#t1">1 · Continuum Concept</a>
+      <a href="#t2">2 · Fluid Properties</a>
+      <a href="#t3">3 · Pressure &amp; Pascal's Law</a>
+      <a href="#t4">4 · Total Pressure on Surfaces</a>
+      <a href="#t5">5 · Center of Pressure</a>
+      <a href="#t6">6 · Buoyancy &amp; Metacentre</a>
+      <a href="#t7">7 · Pressure Measurement</a>
+      <a href="#t8">8 · Stream Lines &amp; Continuity</a>
+      <a href="#t9">9 · Euler &amp; Bernoulli</a>
+      <a href="#t10">10 · Meters, Losses &amp; Boundary Layer</a>
+      <a href="#t11">11 · Hydraulic Machines</a>
+      <a href="#cheat">⚡ Cheat Sheet</a>
+    </nav>
+
+    <main class="notes-main">
+
+      <!-- ============ TOPIC 1 ============ -->
+      <div class="topic" id="t1">
+        <div class="topic-header">
+          <h3>1. Continuum Concept</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 15 min</span>
+            <span class="meta-chip">📄 Bansal Ch.1 §1.1–1.3</span>
+            <span class="meta-chip">🏆 2 marks</span>
+            <span class="meta-chip">🔗 Prereq: None</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li>Real fluids are <strong>molecular</strong>, but we treat them as <strong>continuum</strong> when studying macroscopic behaviour.</li>
+            <li>Assumption valid when characteristic length (e.g. pipe diameter) ≫ mean free path of molecules.</li>
+            <li><strong>Physical properties</strong> (ρ, μ, σ) are treated as continuous, NOT discrete.</li>
+          </ul>
+          <div class="warning"><strong>Exam tip:</strong> Always appears as 2-mark L1 question in MID semesters. Asked as <em>"Discuss the concept of continuum with justification"</em> or <em>"What does continuum signify?"</em>.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><em>Why does the continuum assumption fail at very low pressures (high vacuum)?</em></p>
+          <div class="formula-box">1. At STP, air molecule mean free path ≈ 68 nm.
+2. Continuum validity requires characteristic dimension L ≫ 68 nm.
+3. At 10⁻³ mm Hg, mean free path becomes &gt; 1 m.
+4. A 1-cm pipe is now smaller than the mean free path → molecules move individually → continuum breaks down.
+5. So: continuum needs sufficiently high pressure (or large scale).</div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.1 — Q.1.1 (Conceptual, 2 marks)</div>
+            <p>What is the continuum concept? Why is it necessary in fluid mechanics?</p>
+            <div class="answer-block">
+              <div class="a-title">✅ Answer</div>
+              <p>Continuum concept assumes fluid properties (density, viscosity, etc.) vary continuously from point to point, ignoring molecular discontinuity. It is necessary because:</p>
+              <ol>
+                <li>It allows use of differential calculus in fluid mechanics.</li>
+                <li>It simplifies analysis of macroscopic behaviour without tracking individual molecules.</li>
+                <li>Valid when system size ≫ mean free path (~10⁻⁷ m for air at STP).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Discuss the concept of continuum in fluid flow practices.</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>What does continuum signify? Justify with explanation.</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Define continuum for fluids. Importance in fluid domain?</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 2 ============ -->
+      <div class="topic" id="t2">
+        <div class="topic-header">
+          <h3>2. Fluid Properties</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 90 min</span>
+            <span class="meta-chip">📄 Bansal Ch.1 §1.4–1.9</span>
+            <span class="meta-chip">🏆 3–5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Density, Specific Weight, Specific Gravity</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Property</th><th>Symbol</th><th>SI Unit</th><th>Formula</th></tr>
+            <tr><td>Mass density</td><td>ρ</td><td>kg/m³</td><td>ρ = m/V</td></tr>
+            <tr><td>Specific weight</td><td>γ</td><td>N/m³</td><td>γ = ρg</td></tr>
+            <tr><td>Specific gravity</td><td>S</td><td>dimensionless</td><td>S = ρ/ρ_water (ρ_water = 1000 kg/m³)</td></tr>
+          </table></div>
+
+          <h4>Newton's Law of Viscosity <span class="tag tag-crit">CRITICAL</span></h4>
+          <div class="formula-box">τ = μ (du/dy)</div>
+          <ul>
+            <li><strong>τ</strong> = shear stress (N/m²) · <strong>μ</strong> = dynamic viscosity (Pa·s) · <strong>du/dy</strong> = velocity gradient (s⁻¹)</li>
+          </ul>
+          <div class="formula-box">ν = μ / ρ   (kinematic viscosity, m²/s)</div>
+          <div class="critical"><strong>Must remember:</strong> Liquids: viscosity <strong>decreases</strong> with temperature ↑ (weaker molecular bonding). Gases: viscosity <strong>increases</strong> with temperature ↑ (molecular momentum transfer ↑).</div>
+
+          <h4>Surface Tension &amp; Capillarity</h4>
+          <div class="formula-box">h = 4σ cosθ / (ρ g d)</div>
+          <ul>
+            <li><strong>σ</strong> = surface tension (N/m) · <strong>θ</strong> = contact angle (water-glass ≈ 0°, mercury-glass ≈ 130°)</li>
+            <li>Water rises in glass; mercury is <strong>depressed</strong> (negative h).</li>
+          </ul>
+
+          <h4>Vapor Pressure &amp; Cavitation</h4>
+          <ul>
+            <li><strong>Vapor pressure:</strong> pressure at which liquid starts boiling at a given temperature.</li>
+            <li><strong>Cavitation:</strong> vapor bubbles form where local pressure &lt; vapor pressure; their violent collapse damages surfaces.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Examples</h4>
+          <p><strong>Plate-sliding viscosity problem (the classic PYQ)</strong> — plate at 0.025 mm from a fixed plate, moving at 0.6 m/s, shear 2 N/m².</p>
+          <div class="formula-box">τ = μ (du/dy) → μ = τ·t / V
+μ = 2 × (0.025 × 10⁻³) / 0.6 = 8.33 × 10⁻⁵ Pa·s</div>
+          <p><strong>Capillary rise comparison</strong> — 4 mm glass tube, water vs mercury (σ = 0.0725 / 0.52 N/m, θ = 0° / 130°, SG_Hg = 13.6):</p>
+          <div class="formula-box">h_water = 4×0.0725×cos0° / (1000×9.81×0.004) = 7.39 mm ↑
+h_Hg    = 4×0.52×cos130° / (13600×9.81×0.004) = −3.09 mm ↓</div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.1 — Q.1.16 (3 marks)</div>
+            <p>Find kinematic viscosity if dynamic viscosity is 0.08 Pa·s and density 850 kg/m³.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div><div class="formula-box">ν = μ/ρ = 0.08/850 = 9.41 × 10⁻⁵ m²/s</div></div>
+          </div>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.1 — Q.1.21 (3 marks)</div>
+            <p>One litre of liquid weighs 7 N. Find specific weight, density and specific gravity. <em>(Asked verbatim in MO2024 P1)</em></p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">γ = W/V = 7 / 10⁻³ = 7000 N/m³
+ρ = γ/g = 7000/9.81 = 713.6 kg/m³
+S = ρ/1000 = 0.7136</div></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Plate 0.025 mm, 0.6 m/s, τ=2 N/m² → μ</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>γ, ρ, SG of 1 L liquid weighing 7 N</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Newton's law of viscosity; μ vs temperature for liquids</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Capillary rise in 2.5 mm tube — water &amp; mercury</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.1(a)</td><td>5</td><td>Parabolic velocity profile → velocity gradient &amp; shear stress</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Viscosity of oil, square plate on inclined plane 30°</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.1(a)</td><td>2</td><td>Define density, weight density, SG, specific volume</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.1(b)</td><td>3</td><td>Plate 0.025 mm, 60 cm/s, 2 N/m² → μ</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 3 ============ -->
+      <div class="topic" id="t3">
+        <div class="topic-header">
+          <h3>3. Pressure &amp; Pascal's Law</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">📄 Bansal Ch.2 §2.1–2.3</span>
+            <span class="meta-chip">🏆 2–3 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <p><strong>Pascal's Law:</strong> Pressure at any point in a static fluid is <strong>equal in all directions</strong>.</p>
+          <div class="formula-box">p = γh = ρgh   (pressure at depth h below free surface)</div>
+          <div class="table-wrap"><table>
+            <tr><th>Unit</th><th>Symbol</th><th>Conversion</th></tr>
+            <tr><td>Pascal</td><td>Pa</td><td>1 Pa = 1 N/m²</td></tr>
+            <tr><td>Bar</td><td>bar</td><td>1 bar = 10⁵ Pa</td></tr>
+            <tr><td>Atmosphere</td><td>atm</td><td>1 atm = 101325 Pa = 10.33 m water</td></tr>
+            <tr><td>mm of Hg</td><td>mmHg</td><td>1 mmHg = 133 Pa</td></tr>
+          </table></div>
+          <div class="warning"><strong>Exam tip:</strong> "State and prove Pascal's law" is a full 5-mark question in END sem (MO2023 END Q.1(a)). Derive it from the equilibrium of a small fluid element under pressure + body forces.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Pressure at 8 m depth in water; express in bar, atm, mm Hg.</p>
+          <div class="formula-box">p = 1000 × 9.81 × 8 = 78,480 Pa = 0.7848 bar
+= 78480/101325 = 0.774 atm = 78480/133 = 589.9 mmHg</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Piezometer &amp; differential U-tube (with sketch)</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.1(a)</td><td>5</td><td>State and prove Pascal's law</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Pressure &amp; pressure head (definitions)</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 4 ============ -->
+      <div class="topic" id="t4">
+        <div class="topic-header">
+          <h3>4. Total Pressure on Plane Surfaces</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">📄 Bansal Ch.2 §2.4</span>
+            <span class="meta-chip">🏆 5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">P = ρ g A h̄</div>
+          <ul>
+            <li><strong>P</strong> = total pressure force (N) · <strong>A</strong> = area (m²) · <strong>h̄</strong> = depth of centroid (m)</li>
+          </ul>
+          <div class="critical"><strong>Most common PYQ:</strong> vertical rectangular surface with top edge at the free surface — appears for 5 marks repeatedly.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Vertical rectangular plate 2 m wide × 3 m deep, top edge at free surface (MO2025 MID Q.2(b)).</p>
+          <div class="formula-box">A = 2×3 = 6 m² ; h̄ = 3/2 = 1.5 m
+P = 1000 × 9.81 × 6 × 1.5 = 88,290 N = 88.29 kN</div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.2 — Q.2.1 (5 marks)</div>
+            <p>Vertical rectangular surface 3 m wide × 4 m deep, top edge 1 m below free surface. Water on one side. Find total pressure.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">A = 12 m² ; h̄ = 1 + 4/2 = 3 m
+P = 1000 × 9.81 × 12 × 3 = 353,160 N = 353.16 kN</div></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Rectangular plane 2×3 m, upper edge at surface → P + CP</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.2(a)</td><td>5</td><td>Inclined plane surface pressure</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.1(a)</td><td>5</td><td>Circular plate D=1.5 m, centre 3 m below → P + CP</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 5 ============ -->
+      <div class="topic" id="t5">
+        <div class="topic-header">
+          <h3>5. Center of Pressure</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">📄 Bansal Ch.2 §2.5</span>
+            <span class="meta-chip">🏆 5–7 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">h* = h̄ + I_G / (A · h̄)</div>
+          <ul>
+            <li><strong>h*</strong> = depth of center of pressure · <strong>I_G</strong> = moment of inertia about centroidal axis · <strong>A</strong> = area · <strong>h̄</strong> = centroid depth</li>
+          </ul>
+          <div class="table-wrap"><table>
+            <tr><th>Shape</th><th>I_G about horizontal axis through CG</th></tr>
+            <tr><td>Rectangle (b × d)</td><td>bd³/12</td></tr>
+            <tr><td>Circle (dia D)</td><td>πD⁴/64</td></tr>
+            <tr><td>Triangle (base b, height h)</td><td>bh³/36</td></tr>
+          </table></div>
+          <div class="critical"><strong>Key result:</strong> for a rectangular plate with top edge at free surface → h* = (2/3) × depth of lower edge.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Examples</h4>
+          <p><strong>Example 1 — Circular plate (MO2025 END Q.1(a))</strong>: D = 1.5 m, centre 3.0 m below free surface.</p>
+          <div class="formula-box">A = π×1.5²/4 = 1.767 m² ; h̄ = 3.0 m
+I_G = π×1.5⁴/64 = 0.248 m⁴
+h* = 3.0 + 0.248/(1.767 × 3.0) = 3.047 m  (CP is 4.7 cm below centre)</div>
+          <p><strong>Example 2 — Rectangle (MO2025 MID Q.2(b))</strong>: 2 m wide × 3 m deep, top edge at surface.</p>
+          <div class="formula-box">A = 6 m² ; h̄ = 1.5 m ; I_G = 2×3³/12 = 4.5 m⁴
+h* = 1.5 + 4.5/(6 × 1.5) = 2.0 m  (= 2h/3 rule ✓)</div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.2 — Q.2.3 (5 marks)</div>
+            <p>Circular plate D = 1.2 m, centre 2 m below water surface. Find P and h*.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">A = π×1.2²/4 = 1.131 m² ; P = 1000×9.81×1.131×2 = 22,170 N
+I_G = π×1.2⁴/64 = 0.1018 m⁴
+h* = 2 + 0.1018/(1.131×2) = 2.045 m</div></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.1(a)</td><td>5</td><td>Circular plate: define CP, find P + CP</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Rectangular plate: total pressure + CP</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(b)</td><td>5</td><td>Rectangular plate P + CP</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 6 ============ -->
+      <div class="topic" id="t6">
+        <div class="topic-header">
+          <h3>6. Buoyancy, Archimedes' Principle &amp; Metacentre</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">📄 Bansal Ch.2 §2.6–2.7</span>
+            <span class="meta-chip">🏆 5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">Buoyant Force B = ρ_fluid × g × V_displaced</div>
+          <ul>
+            <li>Direction: vertically upward through <strong>center of buoyancy (B)</strong>.</li>
+          </ul>
+          <div class="table-wrap"><table>
+            <tr><th>Metacentre M vs CG</th><th>Equilibrium</th></tr>
+            <tr><td>M above CG</td><td><strong>Stable</strong></td></tr>
+            <tr><td>M at CG</td><td><strong>Neutral</strong></td></tr>
+            <tr><td>M below CG</td><td><strong>Unstable</strong></td></tr>
+          </table></div>
+          <h4>Metacentric Height <span class="tag tag-crit">CRITICAL</span></h4>
+          <div class="formula-box">GM = I_O / V − BG</div>
+          <ul>
+            <li><strong>I_O</strong> = moment of inertia of water-plane area · <strong>V</strong> = submerged volume · <strong>BG</strong> = distance B→CG</li>
+          </ul>
+          <div class="warning"><strong>For a rectangular barge (length l, width b):</strong> I_O = l·b³/12.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Rectangular barge 10 m × 4 m, draft 1.5 m, CG 1.2 m above keel. Find GM and state stability.</p>
+          <div class="formula-box">V = 10×4×1.5 = 60 m³ ; I_O = 10×4³/12 = 53.33 m⁴
+BM = I_O/V = 53.33/60 = 0.889 m
+B at 0.75 m below waterline → BG = 1.2 − 0.75 = 0.45 m
+GM = 0.889 − 0.45 = 0.439 m &gt; 0 → Stable</div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.2 — Q.2.12 (5 marks)</div>
+            <p>Rectangular pontoon 12 m × 6 m floats in seawater (SG 1.025), draft 2 m, CG 1.5 m above keel. Calculate GM.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">V = 144 m³ ; I_O = 12×6³/12 = 216 m⁴ ; BM = 1.5 m
+B at 1.0 m below waterline → BG = 0.5 m
+GM = 1.5 − 0.5 = 1.0 m → Stable</div></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2024 P2</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Metacentre for rectangular barge</td></tr>
+            <tr><td>MO2024 P1</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Buoyancy + stability</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 7 ============ -->
+      <div class="topic" id="t7">
+        <div class="topic-header">
+          <h3>7. Pressure Measurement — Manometers</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">📄 Bansal Ch.2 §2.8–2.12</span>
+            <span class="meta-chip">🏆 5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <h4>Piezometer tube</h4>
+          <div class="formula-box">p = ρ g h</div>
+          <ul><li>Open tube at the point of measurement. Cannot measure vacuum/gas pressure.</li></ul>
+
+          <h4>U-Tube Manometer <span class="tag tag-crit">CRITICAL</span></h4>
+          <div class="formula-box">Level-by-level tracing: p_A/γ + y_A + z_A = p_B/γ + y_B + z_B</div>
+          <div class="formula-box">p_A = p_B + (ρ_m − ρ) g h   [heavier manometric fluid]</div>
+
+          <h4>Differential U-Tube Manometer <span class="tag tag-crit">CRITICAL</span></h4>
+          <p><strong>Key technique — trace levels from A to B:</strong> add pressure going <strong>down</strong>, subtract going <strong>up</strong>.</p>
+          <ul>
+            <li>Add ρ_m·g·h when descending into manometer fluid.</li>
+            <li>Add ρ·g·h when descending into pipe fluid.</li>
+          </ul>
+
+          <h4>Inverted U-Tube Manometer</h4>
+          <ul>
+            <li>Used when <strong>pressure difference is small</strong>; manometric fluid is <strong>lighter</strong> (usually oil, SG 0.8).</li>
+          </ul>
+          <div class="formula-box">p_A − p_B = (ρ_A − ρ_m) g h_A − (ρ_B − ρ_m) g h_B</div>
+
+          <h4>Gauge vs Absolute</h4>
+          <div class="formula-box">p_absolute = p_gauge + p_atm
+p_atm ≈ 10.33 m water = 760 mm Hg = 1.01325 bar</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Differential U-tube: pipe A &amp; B carry water, mercury (13600 kg/m³), h = 0.15 m.</p>
+          <div class="formula-box">p_A − p_B = (ρ_m − ρ) g h = (13600 − 1000) × 9.81 × 0.15 = 18,533 Pa = 18.53 kPa</div>
+          <p><em>Original paper figures:</em></p>
+          <div class="two-col">
+            <div class="question-block" style="padding:10px">
+              <img src="images/pyq/ME203_FM_MID_MO2023_p1_img1.png" data-zoom="images/pyq/ME203_FM_MID_MO2023_p1_img1.png" data-caption="MO2023 MID — inverted U-tube figure" style="cursor:zoom-in;border-radius:8px" alt="Inverted U-tube manometer figure">
+            </div>
+            <div class="question-block" style="padding:10px">
+              <img src="images/pyq/ME203_FM_MID_MO2023_p1_img2.png" data-zoom="images/pyq/ME203_FM_MID_MO2023_p1_img2.png" data-caption="MO2023 MID — manometer figure" style="cursor:zoom-in;border-radius:8px" alt="Manometer figure">
+            </div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>✏️ Book Practice</h4>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.2 — Q.2.15 (5 marks)</div>
+            <p>Pressure in a water pipe measured with mercury U-tube; height difference 200 mm. Find pressure in A.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">p_A = (13600−1000) × 9.81 × 0.2 = 24,711 Pa = 24.71 kPa</div></div>
+          </div>
+          <div class="question-block">
+            <div class="q-title">📖 Bansal Ch.2 — Q.2.19 (5 marks)</div>
+            <p>Inverted U-tube with oil (SG 0.8) connecting two water pipes, h = 0.12 m. Find Δp.</p>
+            <div class="answer-block"><div class="a-title">✅ Solution</div>
+            <div class="formula-box">Δp = (1000 − 800) × 9.81 × 0.12 = 235 Pa</div></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Piezometer &amp; differential U-tube (sketch)</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.1(b)</td><td>5</td><td>Single column manometer, SG 0.9, reservoir 100× tube area</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(a)</td><td>5</td><td>Differential manometer: two pipes at different elevations</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Inverted tube manometer, oil SG 0.7 → reading h</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>U-tube vs inverted U-tube — where used?</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Inverted U-tube, oil SG 0.8 → Δp</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.1(c)</td><td>5</td><td>Inverted differential manometer, oil SG 0.8</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 8 ============ -->
+      <div class="topic" id="t8">
+        <div class="topic-header">
+          <h3>8. Stream Lines, Flow Types &amp; Continuity</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">📄 Bansal Ch.1–2</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Concept</th><th>Definition</th><th>Property</th></tr>
+            <tr><td><strong>Stream line</strong></td><td>Line tangent to velocity vector at every point</td><td>No flow across</td></tr>
+            <tr><td><strong>Path line</strong></td><td>Actual path traced by a fluid particle</td><td>Time history</td></tr>
+            <tr><td><strong>Streak line</strong></td><td>Line joining all particles that passed through a point</td><td>Lagrangian view</td></tr>
+          </table></div>
+          <div class="callout"><strong>Steady flow:</strong> stream = path = streak line. <strong>Unsteady flow:</strong> all three differ.</div>
+
+          <h4>Types of Flow</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Type</th><th>Definition</th></tr>
+            <tr><td>Steady / Unsteady</td><td>Properties constant / varying with time at a point</td></tr>
+            <tr><td>Uniform / Non-uniform</td><td>Same / different properties at different points, same time</td></tr>
+            <tr><td>1D / 2D / 3D</td><td>Variation in 1 / 2 / 3 directions</td></tr>
+            <tr><td>Laminar / Turbulent</td><td>Smooth / chaotic; Re &lt; 2000 / Re &gt; 4000</td></tr>
+            <tr><td>Rotational / Irrotational</td><td>Vorticity ≠ 0 / = 0</td></tr>
+          </table></div>
+
+          <h4>Continuity Equation (differential form)</h4>
+          <div class="formula-box">∂u/∂x + ∂v/∂y + ∂w/∂z = 0
+2D: ∂u/∂x + ∂v/∂y = 0</div>
+          <div class="warning"><strong>MO2024 P2 Q.2(a):</strong> Derive the 2D continuity equation — a repeated 5-mark question.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Check continuity &amp; rotationality: u = x²y, v = y²z, w = −2xyz − yz² (MO2023 MID Q.3(b)).</p>
+          <div class="formula-box">∂u/∂x = 2xy ; ∂v/∂y = 2yz ; ∂w/∂z = −2xy − 2yz
+Sum = 0 → continuity satisfied ✓
+Vorticity: ω_x = ∂w/∂y − ∂v/∂z = (−2xz − 2yz) − y² = −2xz − 2yz − y²
+Evaluate at (2,1,3): ω_x = −12 − 6 − 1 = −19 ≠ 0 → rotational</div>
+          <p>Also classic: u = 2x, v = −2y → ∂u/∂x + ∂v/∂y = 2 − 2 = 0 ✓, ω_z = ∂v/∂x − ∂u/∂y = 0 → irrotational.</p>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Steady vs unsteady; 1D/2D/3D flow</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Eulerian vs Lagrangian description + relation</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Construct streak line for changing wind direction</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(a)</td><td>5</td><td>Derive continuity: ∂u/∂x + ∂v/∂y = 0</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Stream line sketch</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Continuity + rotationality of V = x²y i + y²z j − (2xyz+yz²)k</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Laminar vs turbulent flow</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Linear translation, deformation, rotation, vorticity</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.2(a)</td><td>2</td><td>Stream line vs streak line vs path line</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 9 ============ -->
+      <div class="topic" id="t9">
+        <div class="topic-header">
+          <h3>9. Euler's Equation &amp; Bernoulli's Theorem</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">📄 Bansal Ch.5</span>
+            <span class="meta-chip">🏆 3–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Continuity</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <p><strong>Euler's equation of motion</strong> (along a streamline, ideal fluid):</p>
+          <div class="formula-box">dp/ρ + g dz + v dv = 0   →   ∫dp/ρ + gz + v²/2 = const</div>
+          <p><strong>Assumptions:</strong> inviscid (ideal) fluid · steady flow · along a streamline · incompressible.</p>
+          <p>Integrating for incompressible flow gives <strong>Bernoulli's equation</strong>:</p>
+          <div class="formula-box">p/ρg + v²/2g + z = const   (total head)</div>
+          <ul>
+            <li><strong>p/ρg</strong> = pressure head · <strong>v²/2g</strong> = velocity head · <strong>z</strong> = datum head</li>
+          </ul>
+          <div class="critical"><strong>Guaranteed question:</strong> "Derive Bernoulli's theorem and state assumptions" — asked in MO2022 END Q.2(b) and MO2025 MID Q.4(b) (from Navier–Stokes for inviscid steady flow).</div>
+          <div class="warning">For a <strong>real</strong> fluid there is a head-loss term h_L: p₁/ρg + v₁²/2g + z₁ = p₂/ρg + v₂²/2g + z₂ + h_L.</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Bernoulli from Navier–Stokes (inviscid, steady)</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Derive Euler's equation along a streamline + assumptions</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Derive Euler's equation of motion + assumptions</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Shear strain rate + vorticity of V = 8x³i − 10x²yj</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Prove Bernoulli's theorem + assumptions</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 10 ============ -->
+      <div class="topic" id="t10">
+        <div class="topic-header">
+          <h3>10. Venturimeter, Orifice Meter, Losses &amp; Boundary Layer</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 90 min</span>
+            <span class="meta-chip">📄 Bansal Ch.5–7</span>
+            <span class="meta-chip">🏆 5 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <h4>Venturimeter</h4>
+          <div class="formula-box">Q = C_d · a₁a₂ / √(a₁² − a₂²) · √(2gh)</div>
+          <ul>
+            <li>a₁ = inlet area, a₂ = throat area, C_d ≈ 0.96–0.98</li>
+            <li>Mounted horizontal or vertical; h from differential manometer.</li>
+          </ul>
+          <h4>Orifice meter</h4>
+          <div class="formula-box">Q = C_d · a₀a₁ / √(a₁² − a₀²) · √(2gh)   (a₀ = orifice area, C_d ≈ 0.6–0.65)</div>
+          <div class="warning"><strong>MO2023 END Q.3(a) &amp; MO2024 P2 Q.3(a):</strong> "Prove that discharge through an orifice meter is Q = C_d·a₀a₁/√(a₁²−a₀²)·√(2gh)" — full derivation, 5 marks.</div>
+          <h4>Major &amp; minor losses</h4>
+          <div class="formula-box">Darcy–Weisbach: h_f = 4f·L·v²/(2g·d)   [f = friction factor]
+Also: h_f = f·L·v²/(2g·d) using Fanning f' = 4f convention</div>
+          <ul>
+            <li><strong>Major:</strong> friction along the pipe length.</li>
+            <li><strong>Minor:</strong> entry, exit, sudden enlargement/contraction, bends, fittings: h = k·v²/2g.</li>
+          </ul>
+          <h4>Boundary layer</h4>
+          <ul>
+            <li>Thin region near a surface where viscosity matters; velocity grows from 0 (no-slip) to free-stream U.</li>
+            <li><strong>Separation</strong> occurs in an adverse pressure gradient (pressure increasing downstream) when wall shear reaches zero — creates wakes, increases drag.</li>
+            <li><strong>Control:</strong> streamlining (aerofoils), suction, blowing, vortex generators, trip wires (boundary-layer control by acceleration).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Horizontal venturimeter, inlet 30 cm, throat 15 cm, mercury U-tube reading h (MO2025 MID Q.5(b)).</p>
+          <div class="formula-box">a₁ = π×0.3²/4 = 0.0707 m² ; a₂ = π×0.15²/4 = 0.0177 m²
+h = h_mano × (S_Hg − 1) = h_mano × (13.6 − 1) (water flowing)
+Q = C_d a₁a₂√(2gh)/√(a₁²−a₂²)
+With h_mano = 0.2 m: h = 2.52 m, Q ≈ 0.154 m³/s (C_d = 0.98)</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Venturimeter discharge relation</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Horizontal venturimeter 30/15 cm + mercury manometer</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Boundary layer separation — explain &amp; control</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Orifice meter 10/20 cm, Δp = 19.62 N/cm² → discharge</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Vertical venturimeter 30/15 cm, upward flow, mercury</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.3(a)</td><td>5</td><td>Derive orifice-meter discharge formula</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.3(b)</td><td>5</td><td>Boundary layer separation over convex surface + control</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Major vs minor losses</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Crude oil ν=0.4×10⁻⁴, D=300 mm, Q=0.3 m³/s → Re, type of flow</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Prove orifice meter discharge relation</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Flow through 20 cm pipe from tank, 50 m length</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.3(a)</td><td>2</td><td>Major vs minor losses</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Boundary layer: separation + control</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Major vs minor losses</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Oil SG 0.7, D=300 mm, Q=500 L/s → h_f &amp; power</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 11 ============ -->
+      <div class="topic" id="t11">
+        <div class="topic-header">
+          <h3>11. Hydraulic Machines — Turbines &amp; Pumps</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 90 min</span>
+            <span class="meta-chip">📄 Bansal Ch. 15–17</span>
+            <span class="meta-chip">🏆 5 marks · END sem</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <h4>Classification of turbines</h4>
+          <ul>
+            <li><strong>Impulse turbines</strong> (Pelton): all head converted to kinetic energy in nozzle; runner at atmospheric pressure; jet impinges on buckets. Used for high head, low discharge.</li>
+            <li><strong>Reaction turbines</strong> (Francis — inward flow; Kaplan — axial): pressure drops gradually in runner; runner fully submerged. Used for medium/low head.</li>
+          </ul>
+          <h4>Pelton wheel key relations</h4>
+          <div class="formula-box">Velocity of jet: V₁ = C_v √(2gH)   (C_v ≈ 0.97–0.99)
+Bucket speed: u = 0.45–0.5 V₁ (max efficiency)
+Power to runner: P = ρ Q (V₁ − u)(1 + k cosβ) u   [k ≈ 0.85–0.9, β = bucket angle]
+Hydraulic efficiency: η_h = 2(V₁−u)(1+cosβ)u / V₁²
+Maximum η_h when u = V₁/2: η_max = (1+cosβ)/2 ≈ 0.92–0.97</div>
+          <h4>Francis (inward flow reaction) turbine</h4>
+          <div class="formula-box">η_overall = P_shaft / (ρgQH)
+Hydraulic efficiency η_h = 0.93–0.96 ; discharge Q = π D₁ b₁ V_f1
+u = K_u √(2gH), V_f = K_f √(2gH)  (given as 0.26√(2gH) etc.)</div>
+          <h4>Governing of turbines</h4>
+          <ul>
+            <li>Automatic speed control when load changes, keeping runner speed constant.</li>
+            <li><strong>Impulse (Pelton):</strong> spear/needle valve adjusts jet cross-section + deflector plate diverts jet.</li>
+            <li><strong>Reaction (Francis):</strong> guide vanes rotate to change flow area.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p>Pelton wheel (MO2022 END Q.4(c)): tangential velocity 20 m/s, net head H, jet diameter d. Power to runner:</p>
+          <div class="formula-box">Given u = 20 m/s. Find V₁ = C_v√(2gH) (say C_v = 0.98, H = 40 m → V₁ = 27.4 m/s)
+Q = a·V₁ = (πd²/4)·V₁
+P = ρQ(V₁ − u)(1 + k cosβ)u
+With d = 0.1 m, k = 0.85, β = 165°: P ≈ 1000 × 0.215 × 7.4 × 0.18 × 20 ≈ 5.7 kW</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.4(a)</td><td>5</td><td>Governing of turbine; impulse turbine governing sketch</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Inward flow reaction turbine data → performance</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(a)</td><td>5</td><td>Governing of Pelton turbine</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(b)</td><td>5</td><td>Pelton bucket, 137 mm jet, deflection 165° → power</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.4(a)</td><td>5</td><td>Francis turbine 75% η, 148.25 kW, H=7.62 m → design data</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Governing of impulse turbine</td></tr>
+            <tr><td>MO2023</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Centrifugal pump, outer diameter = 2× inner</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(a)</td><td>2</td><td>Classify hydro-turbines</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Inward flow reaction turbine — sketch &amp; working</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(c)</td><td>5</td><td>Pelton wheel power with u = 20 m/s</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ CHEAT SHEET ============ -->
+      <div class="topic" id="cheat">
+        <div class="topic-header">
+          <h3>⚡ Quick Revision Cheat Sheet</h3>
+        </div>
+        <div class="subsection">
+          <h4>Must-Know Formulas</h4>
+          <div class="two-col">
+            <div>
+              <div class="formula-box">P = ρ g A h̄</div>
+              <div class="formula-box">h* = h̄ + I_G/(A·h̄)</div>
+              <div class="formula-box">B = ρ_fluid × g × V</div>
+              <div class="formula-box">GM = I_O/V − BG</div>
+            </div>
+            <div>
+              <div class="formula-box">τ = μ (du/dy)</div>
+              <div class="formula-box">h = 4σ cosθ / (ρ g d)</div>
+              <div class="formula-box">Re = ρVD/μ = VD/ν</div>
+              <div class="formula-box">∂u/∂x + ∂v/∂y = 0</div>
+            </div>
+            <div>
+              <div class="formula-box">p/ρg + v²/2g + z = const</div>
+              <div class="formula-box">Q_v = C_d a₁a₂√(2gh)/√(a₁²−a₂²)</div>
+              <div class="formula-box">h_f = 4f·L·v²/(2g·d)</div>
+              <div class="formula-box">V₁ = C_v√(2gH)</div>
+            </div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>Common Traps</h4>
+          <ul>
+            <li>Manometers: <strong>always add going down, subtract going up</strong>.</li>
+            <li>Rectangular plate with top edge at free surface: <strong>h* = 2h/3</strong>.</li>
+            <li>Metacentre: GM &gt; 0 stable · GM = 0 neutral · GM &lt; 0 unstable.</li>
+            <li>Capillary rise negative sign = depression (mercury).</li>
+            <li>Absolute = gauge + atmospheric (10.33 m water).</li>
+            <li>Liquids μ ↓ with T ↑; gases μ ↑ with T ↑.</li>
+            <li>Inverted U-tube → light manometric fluid; small Δp.</li>
+            <li>Orifice meter C_d ≈ 0.6, Venturimeter C_d ≈ 0.98.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>Weightage Summary</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Topic</th><th>Marks/Paper</th><th>Frequency</th></tr>
+            <tr><td>Center of Pressure</td><td>5–7</td><td>Every paper</td></tr>
+            <tr><td>Manometers</td><td>5</td><td>Every paper</td></tr>
+            <tr><td>Viscosity</td><td>3</td><td>90% papers</td></tr>
+            <tr><td>Bernoulli / Euler</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Venturi / Orifice meter</td><td>5</td><td>80% papers</td></tr>
+            <tr><td>Continuum</td><td>2</td><td>100% mids</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ===================== PYQs ===================== -->
+<section class="section section-alt" id="pyqs">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Previous Year Papers</div>
+      <h2>Every FM paper, MO 2022 → MO 2025</h2>
+      <p>Click any paper to view the original scanned pages full-screen. Questions are also catalogued topic-by-topic inside the notes above.</p>
+    </div>
+
+    <div class="pyq-grid">
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2025_MID_p1.png" data-caption="Fluid Mechanics · MID MO2025 · page 1">
+          <img src="images/papers/FM_MO2025_MID_p1.png" alt="FM MID MO2025">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2025</div>
+          <div class="paper-sub">ME24203 · 25 marks · 2 hrs</div>
+          <div class="paper-qs">Continuum · viscosity plate · piezometer &amp; U-tube · rectangular plate P+CP · steady/unsteady · venturimeter</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2025_MID_p1.png" data-caption="FM MID MO2025 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2025_MID_p2.png" data-caption="FM MID MO2025 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2025_END_p1.png" data-caption="Fluid Mechanics · END MO2025 · page 1">
+          <img src="images/papers/FM_MO2025_END_p1.png" alt="FM END MO2025">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">END SEM · MO 2025</div>
+          <div class="paper-sub">ME24203 · 50 marks · 3 hrs</div>
+          <div class="paper-qs">Circular plate CP · single column manometer · Euler's equation · rotationality · boundary layer · orifice meter · turbines</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2025_END_p1.png" data-caption="FM END MO2025 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2024_P1_p1.png" data-caption="Fluid Mechanics · MID MO2024 P1 · page 1">
+          <img src="images/papers/FM_MO2024_P1_p1.png" alt="FM MID MO2024 P1">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2024 (Set 1)</div>
+          <div class="paper-sub">ME203 · 25 marks</div>
+          <div class="paper-qs">Continuum · γ/ρ/SG · Newton's law · capillary rise · Eulerian/Lagrangian · streak line · Euler's equation · major/minor losses</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2024_P1_p1.png" data-caption="FM MID MO2024 P1 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2024_P2_p1.png" data-caption="Fluid Mechanics · MID MO2024 P2 · page 1">
+          <img src="images/papers/FM_MO2024_P2_p1.png" alt="FM MID MO2024 P2">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2024 (Set 2)</div>
+          <div class="paper-sub">ME203 · 25 marks</div>
+          <div class="paper-qs">Parabolic velocity profile · inverted manometer · continuity derivation · venturimeter · orifice derivation · boundary layer · Pelton</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2024_P2_p1.png" data-caption="FM MID MO2024 P2 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2024_P2_p2.png" data-caption="FM MID MO2024 P2 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2023_MID_p1.png" data-caption="Fluid Mechanics · MID MO2023 · page 1">
+          <img src="images/papers/FM_MO2023_MID_p1.png" alt="FM MID MO2023">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2023</div>
+          <div class="paper-sub">ME203 · 25 marks</div>
+          <div class="paper-qs">Continuum · oil viscosity on inclined plane · U-tube vs inverted · inverted Δp · stream line · continuity+rotationality · laminar/turbulent · losses</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2023_MID_p1.png" data-caption="FM MID MO2023 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2023_MID_p2.png" data-caption="FM MID MO2023 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2023_END_p1.png" data-caption="Fluid Mechanics · END MO2023 · page 1">
+          <img src="images/papers/FM_MO2023_END_p1.png" alt="FM END MO2023">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">END SEM · MO 2023</div>
+          <div class="paper-sub">ME203 · 50 marks</div>
+          <div class="paper-qs">Pascal's law proof · fluid element deformation · orifice derivation · tank-pipe flow · Francis turbine · governing · centrifugal pump</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2023_END_p1.png" data-caption="FM END MO2023 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2023_END_p2.png" data-caption="FM END MO2023 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2022_MID_p1.png" data-caption="Fluid Mechanics · MID MO2022 · page 1">
+          <img src="images/papers/FM_MO2022_MID_p1.png" alt="FM MID MO2022">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2022</div>
+          <div class="paper-sub">ME203 · 25 marks</div>
+          <div class="paper-qs">Fluid types · viscosity · continuity 2D derivation · flow classification</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2022_MID_p1.png" data-caption="FM MID MO2022 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2022_MID_p2.png" data-caption="FM MID MO2022 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/FM_MO2022_END_p1.png" data-caption="Fluid Mechanics · END MO2022 · page 1">
+          <img src="images/papers/FM_MO2022_END_p1.png" alt="FM END MO2022">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">END SEM · MO 2022</div>
+          <div class="paper-sub">ME203 · 50 marks</div>
+          <div class="paper-qs">Density/SG definitions · viscosity · inverted manometer · stream/path/streak · Bernoulli proof · major/minor losses · boundary layer · turbines</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/FM_MO2022_END_p1.png" data-caption="FM END MO2022 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/FM_MO2022_END_p2.png" data-caption="FM END MO2022 · p2">2</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo">M</span> MechVault</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="som.html">SOM</a>
+      <a href="thermo.html">Thermodynamics</a>
+    </div>
+    <div class="footer-note">Fluid Mechanics · ME24203/ME203 · BIT Mesra · MO 2022–2025</div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermodynamics — Notes & PYQs | MechVault</title>
+<meta name="description" content="Thermodynamics (ME24201/ME201) — syllabus, full notes, worked examples and BIT Mesra previous year papers MO 2022–2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2318e299'/><text x='50' y='68' font-size='52' font-weight='800' font-family='Inter,sans-serif' text-anchor='middle' fill='%2304140d'>M</text></svg>">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><span class="logo">M</span> MechVault</a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="fm.html">Fluid Mechanics</a>
+      <a class="nav-link" href="som.html">Strength of Materials</a>
+      <a class="nav-link active" href="thermo.html">Thermodynamics</a>
+      <button class="theme-toggle" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / Thermodynamics</div>
+    <h1>Thermodynamics</h1>
+    <p>ME24201 (earlier ME201) · Complete study kit: syllabus mapped from real BIT Mesra papers, notes covering every derivation that has appeared, worked numericals, and all previous year papers from MO 2022 to MO 2025.</p>
+    <div class="tags-row">
+      <span class="tag">7 papers analyzed</span>
+      <span class="tag tag-high">First &amp; Second Law core</span>
+      <span class="tag">Polytropic + SFEE = every paper</span>
+      <span class="tag tag-crit">Otto/Diesel derivation</span>
+    </div>
+  </div>
+</section>
+
+<div class="tabbar">
+  <div class="tabbar-inner">
+    <a class="tab" href="#syllabus">Syllabus</a>
+    <a class="tab" href="#notes">Notes</a>
+    <a class="tab" href="#cheat">Cheat Sheet</a>
+    <a class="tab" href="#pyqs">Previous Year Papers</a>
+  </div>
+</div>
+
+<!-- ===================== SYLLABUS ===================== -->
+<section class="section" id="syllabus">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Syllabus</div>
+      <h2>What the papers actually cover</h2>
+      <p>Mapped from the question text on every Thermo paper (MO 2022–2025).</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Module</th><th>CO</th><th>Topics asked in papers</th><th>Where it appears</th></tr>
+        <tr>
+          <td><strong>1 — Basic Concepts</strong></td>
+          <td>CO-1</td>
+          <td>Macroscopic vs microscopic approach · system, boundary, surroundings · intensive vs extensive properties · work from thermo viewpoint · quasi-static process · thermodynamic equilibrium · point &amp; path functions · free expansion · gas equation (van der Waals form)</td>
+          <td><span class="tag tag-crit">MID Q1–2 · END Q1</span></td>
+        </tr>
+        <tr>
+          <td><strong>2 — First Law of Thermodynamics</strong></td>
+          <td>CO-2</td>
+          <td>First law for process &amp; cycle · internal energy as a property · enthalpy · specific heats · polytropic process (work &amp; heat) · SFEE derivation &amp; applications (nozzle, turbine, throttling) · rigid-tank mixing · steam tables &amp; quality</td>
+          <td><span class="tag tag-high">MID Q2–5 · END Q1–2</span></td>
+        </tr>
+        <tr>
+          <td><strong>3 — Second Law</strong></td>
+          <td>CO-3</td>
+          <td>Kelvin–Planck &amp; Clausius statements · equivalence of statements · Carnot theorem &amp; cycle · heat pump vs refrigerator (COP) · reversed Carnot (ice plant) · reversible &amp; irreversible processes</td>
+          <td><span class="tag tag-high">MID Q3 · END Q3</span></td>
+        </tr>
+        <tr>
+          <td><strong>4 — Entropy &amp; Availability</strong></td>
+          <td>CO-4</td>
+          <td>Entropy as a property · Clausius inequality (proof) · entropy principle · entropy change of universe · available &amp; unavailable energy · Clausius–Clapeyron equation · Joule–Thomson coefficient</td>
+          <td><span class="tag tag-med">END Q4–5</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 — Gas Power Cycles</strong></td>
+          <td>CO-5</td>
+          <td>Air-standard assumptions · Otto cycle efficiency (derivation) · Diesel cycle efficiency (derivation) · P-V / T-s diagrams · heat supplied &amp; rejected</td>
+          <td><span class="tag tag-med">END Q5</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:20px"><strong>Pattern insight:</strong> Polytropic-process numericals and SFEE/nozzle problems appear in <strong>every paper</strong>. "Show internal energy / entropy is a property" and Clausius inequality are guaranteed END-sem 5-markers.</div>
+  </div>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section class="section section-alt" id="notes" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Notes</div>
+      <h2>Full notes — derivation-first</h2>
+      <p>Each topic: theory, formulas, a worked numerical from a real paper, and the PYQs it has produced.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notes-wrap" style="padding-top:24px">
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#t1">1 · Systems, Properties &amp; Quasi-static Process</a>
+      <a href="#t2">2 · Work, Heat &amp; Point/Path Functions</a>
+      <a href="#t3">3 · First Law &amp; Internal Energy</a>
+      <a href="#t4">4 · Polytropic Process</a>
+      <a href="#t5">5 · SFEE &amp; Nozzles</a>
+      <a href="#t6">6 · Steam &amp; Throttling</a>
+      <a href="#t7">7 · Second Law &amp; Carnot</a>
+      <a href="#t8">8 · Heat Pump vs Refrigerator</a>
+      <a href="#t9">9 · Entropy &amp; Clausius Inequality</a>
+      <a href="#t10">10 · Otto &amp; Diesel Cycles</a>
+      <a href="#cheat">⚡ Cheat Sheet</a>
+    </nav>
+
+    <main class="notes-main">
+
+      <!-- ============ TOPIC 1 ============ -->
+      <div class="topic" id="t1">
+        <div class="topic-header">
+          <h3>1. Systems, Properties &amp; Quasi-static Process</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 2–3 marks</span>
+            <span class="meta-chip">🔗 Prereq: None</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li><strong>Macroscopic approach:</strong> studies the average behaviour of a large number of molecules — no molecular model needed; uses properties like P, V, T, m. Simpler, used in classical thermodynamics. <strong>(MO2024 P1 Q.1(a), MO2025 MID Q.1(a))</strong></li>
+            <li><strong>Microscopic approach:</strong> studies the behaviour of individual molecules statistically (statistical thermodynamics); uses velocity, kinetic energy, mean free path, momentum.</li>
+          </ul>
+          <div class="table-wrap"><table>
+            <tr><th>Property type</th><th>Definition</th><th>Examples</th></tr>
+            <tr><td><strong>Intensive</strong></td><td>Independent of mass</td><td>Pressure, density, temperature, specific volume</td></tr>
+            <tr><td><strong>Extensive</strong></td><td>Depends on mass (additive)</td><td>Mass, volume, energy, enthalpy (H = m·h), potential energy</td></tr>
+          </table></div>
+          <div class="warning"><strong>MO2022 END Q.1(a):</strong> Classify density / potential energy / enthalpy / pressure — the trick is enthalpy (H) is extensive, while specific enthalpy (h) is intensive.</div>
+          <ul>
+            <li><strong>Quasi-static process (MO2024 P2 Q.1(a), MO2025 MID Q.2(a)):</strong> proceeds infinitely slowly through a continuous sequence of equilibrium states; system is always in equilibrium with surroundings; path is fully defined → work can be computed as ∫P dV. Characteristic features: infinitely slow, reversible idealization, system at equilibrium at every instant.</li>
+            <li><strong>Thermodynamic equilibrium (MO2024 P1 Q.2(a)):</strong> mechanical (no unbalanced forces) + thermal (no temperature difference) + chemical equilibrium (no composition change). Thermal equilibrium alone only requires uniform temperature.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic approach</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic with examples</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.1(a)</td><td>2</td><td>Intensive vs extensive: density, PE, enthalpy, pressure</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Intensive/extensive properties + free expansion</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Thermodynamic vs thermal equilibrium</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Process + quasi-static characteristics</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Process + quasi-static characteristics</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 2 ============ -->
+      <div class="topic" id="t2">
+        <div class="topic-header">
+          <h3>2. Work, Heat &amp; Point/Path Functions</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">🏆 2–3 marks</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li><strong>Work (thermo definition, MO2023 Q.1(a)):</strong> energy transfer that crosses the system boundary due to a <em>difference in an external generalized force</em> (pressure × volume change for a gas). It is a <strong>boundary phenomenon</strong> and appears at the boundary.</li>
+            <li><strong>Heat:</strong> energy transfer due solely to temperature difference between system and surroundings.</li>
+            <li><strong>Point functions (MO2025 MID Q.3(a)):</strong> depend only on state — P, V, T, u, h, s. Exact differentials: ∫dP = ΔP.</li>
+            <li><strong>Path functions:</strong> depend on how the process happens — work W and heat Q. Inexact differentials: δW, δQ; ∫δW = W, not a difference.</li>
+          </ul>
+          <div class="critical"><strong>Free expansion (MO2023 Q.1(b)):</strong> unrestrained expansion into vacuum — no work done (no resisting force), no heat transfer for ideal gas, final temperature unchanged for ideal gas (u depends only on T).</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2025 MID Q.1(b):</strong> Balloon sphere D = 1 m, air at 200 kPa/300 K, heated till pressure 500 kPa. Find work.</p>
+          <div class="formula-box">Balloon: P ∝ r (surface tension / elasticity) → P = c·r
+Work W = ∫P dV ; V = 4πr³/3, dV = 4πr² dr
+P = P₁(r/r₁), r₁ = 0.5 m
+W = ∫₀.₅^r₂ P₁(r/r₁)·4πr² dr = (P₁/r₁)·π r⁴ |₀.₅^r₂
+P₂/P₁ = r₂/r₁ → r₂ = 0.5×(500/200) = 1.25 m
+W = (200×10³/0.5)·π·(1.25⁴ − 0.5⁴)/… → evaluate → W ≈ 580 kJ</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Explain work from thermo viewpoint</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Point vs path functions; why are work &amp; heat path functions?</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Balloon heating 200→500 kPa → work</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 3 ============ -->
+      <div class="topic" id="t3">
+        <div class="topic-header">
+          <h3>3. First Law of Thermodynamics &amp; Internal Energy</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 2</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">For a process:   Q = ΔU + W    (closed system, KE/PE neglected)
+For a cycle:     ∮δQ = ∮δW   →  net heat = net work</div>
+          <ul>
+            <li><strong>Internal energy (MO2024 P1 Q.4(a)):</strong> sum of molecular kinetic + potential energies; a <strong>property</strong> because its change is path-independent — proved via cyclic integral ∮du = 0 (if it were path-dependent, a cycle could create energy from nothing).</li>
+            <li><strong>Enthalpy (MO2025 MID Q.4(a)):</strong> h = u + Pv (kJ/kg). Used for constant-pressure processes: Q = m(h₂ − h₁).</li>
+            <li><strong>Specific heats:</strong> c_v = (∂u/∂T)_v, c_p = (∂h/∂T)_p; for ideal gas c_p − c_v = R; γ = c_p/c_v.</li>
+            <li><strong>Ideal gas:</strong> PV = mRT; u = u(T) only.</li>
+          </ul>
+          <div class="warning"><strong>MO2022 END Q.1(b):</strong> rigid tank 1 m³ (100 kPa, 300 K) + tank 0.5 m³ (250 kPa, 400 K) mix to 315 K → final pressure: m₁ = P₁V₁/RT₁ etc., P_f = (m₁+m₂)RT_f/V_total. Final volume = 1.5 m³.</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.2(a)</td><td>3</td><td>First law for (i) process (ii) cycle</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy; show it's a property</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy and specific heats</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>First law for cycle and non-cyclic process</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>First law applied to closed system</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Van der Waals-type relation → intensive/extensive check</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Gas 1.5 kg, p = a + bV expansion → work</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 4 ============ -->
+      <div class="topic" id="t4">
+        <div class="topic-header">
+          <h3>4. Polytropic Process</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 3–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 3</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">PVⁿ = constant   (n = polytropic index)
+
+Work done:  W = (P₁V₁ − P₂V₂)/(n − 1) = mR(T₁ − T₂)/(n − 1)
+
+Heat transfer:  Q = m·c_n·(T₂ − T₁) ;  c_n = c_v·(γ − n)/(1 − n)
+
+Relation:  T₂/T₁ = (P₂/P₁)^((n−1)/n) = (V₁/V₂)^(n−1)</div>
+          <p><strong>MO2023 Q.4(b):</strong> Prove ∫δQ = ((γ − n)/(γ − 1)) × polytropic work:</p>
+          <div class="formula-box">δQ = dU + δW = mc_v dT + δW
+δW = (P₁V₁ − P₂V₂)/(n−1) ; dT = T₂ − T₁ = (P₂V₂ − P₁V₁)/mR
+Q = mc_v(P₂V₂ − P₁V₁)/(mR) + W = c_v(P₂V₂ − P₁V₁)/R + W
+= [(P₂V₂ − P₁V₁)/(γ−1)] + [(P₁V₁ − P₂V₂)/(n−1)]
+= W·(γ−n)/(γ−1)  ∎</div>
+          <div class="table-wrap"><table>
+            <tr><th>n</th><th>Process</th></tr>
+            <tr><td>0</td><td>Constant pressure (isobaric)</td></tr>
+            <tr><td>1</td><td>Isothermal (PV = const)</td></tr>
+            <tr><td>γ</td><td>Isentropic / adiabatic reversible</td></tr>
+            <tr><td>∞</td><td>Constant volume (isochoric)</td></tr>
+          </table></div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2022 END Q.2(b):</strong> 1 kg air, 7 bar, 90 °C, PV^1.1 = const, falls to 1.4 bar. Find T₂, V₂, heat transferred.</p>
+          <div class="formula-box">T₂ = T₁(P₂/P₁)^((n−1)/n) = 363×(1.4/7)^(0.1/1.1) = 363×(0.2)^0.0909 ≈ 363×0.863 = 313.3 K
+V₁ = mRT₁/P₁ = 287×363/(7×10⁵) = 0.1488 m³
+V₂ = V₁(P₁/P₂)^(1/n) = 0.1488×5^(0.909) ≈ 0.1488×4.31 = 0.641 m³
+c_n = c_v(γ−n)/(1−n) ; c_v = 0.718, γ = 1.4 → c_n = 0.718×0.3/(−0.1) = −2.154
+Q = 1×(−2.154)×(313.3−363) = +107 kJ</div>
+          <p><strong>MO2024 P2 Q.2(a):</strong> derive heat transfer in polytropic process (same result as above — the standard 3-marker).</p>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Air polytropic PV^1.1, 7→1.4 bar → T, V, Q</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Prove Q = ((γ−n)/(γ−1)) × polytropic work</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(a)</td><td>3</td><td>Derive heat transfer in polytropic process</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive work done in polytropic process</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 5 ============ -->
+      <div class="topic" id="t5">
+        <div class="topic-header">
+          <h3>5. Steady Flow Energy Equation (SFEE) &amp; Nozzles</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">🏆 3–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 3</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">Q̇ − Ẇ = ṁ[(h₂ − h₁) + (V₂² − V₁²)/2 + g(z₂ − z₁)]</div>
+          <p><strong>Derivation (MO2024 P1 Q.5(a)):</strong> energy balance on a control volume between two sections — enthalpy flux in/out + KE + PE + heat + shaft work = 0 under steady state (dm/dt = 0, dE/dt = 0).</p>
+          <h4>Applications (MO2025 END Q.2(a))</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Device</th><th>Assumptions</th><th>Result</th></tr>
+            <tr><td><strong>Nozzle</strong></td><td>Adiabatic, no work, Δz ≈ 0</td><td>h₁ + V₁²/2 = h₂ + V₂²/2 → V₂ = √[2(h₁ − h₂) + V₁²]</td></tr>
+            <tr><td><strong>Throttling valve</strong></td><td>Adiabatic, no work, KE≈PE≈0</td><td><strong>h₁ = h₂</strong> (isenthalpic)</td></tr>
+            <tr><td><strong>Turbine</strong></td><td>Adiabatic, ΔKE, ΔPE ≈ 0</td><td>Ẇ = ṁ(h₁ − h₂)</td></tr>
+            <tr><td><strong>Compressor</strong></td><td>Adiabatic, ΔKE, ΔPE ≈ 0</td><td>Ẇ_in = ṁ(h₂ − h₁)</td></tr>
+          </table></div>
+          <div class="critical"><strong>Nozzle numericals appear in almost every paper:</strong> MO2022 END Q.2(c), MO2023 Q.5, MO2024 P2 Q.2(b), MO2025 MID Q.5(b).</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2025 MID Q.5(b):</strong> Dry saturated steam 5 bar enters adiabatic nozzle at 2 m/s, leaves as dry saturated steam at 2 bar. Find exit velocity.</p>
+          <div class="formula-box">From steam tables: h₁(5 bar dry) = 2748 kJ/kg, h₂(2 bar dry) = 2707 kJ/kg
+V₂²/2 = (h₁ − h₂) + V₁²/2 = 41,000 + 2 J/kg (in J/kg: 41 kJ/kg = 41,000 J/kg)
+V₂ = √(2×41002) ≈ 286.4 m/s</div>
+          <p><strong>MO2022 END Q.2(c):</strong> steam 3 MPa/320 °C → 1.6 MPa at 550 m/s, ṁ = 0.5 kg/s → h₂ = h₁ − V₂²/2, then check superheated table to find condition at exit.</p>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive SFEE</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Energy analysis of nozzle, throttling, turbine, compressor</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Feed pump 10 kPa → 3 MPa, 1 kg/s → pump work</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.2(c)</td><td>5</td><td>Nozzle: 3 MPa/320 °C → 1.6 MPa, 550 m/s → condition</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.5</td><td>5</td><td>Nozzle inlet h=2850, V=50, A=0.1 → outlet data</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Dry steam 5 bar → 2 bar nozzle, V₁=2 m/s → V₂</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Dry steam 5 bar → 2 bar nozzle, V₁=2 m/s → V₂</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 6 ============ -->
+      <div class="topic" id="t6">
+        <div class="topic-header">
+          <h3>6. Steam Properties, Tables &amp; Throttling</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 3 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 5</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li><strong>Pure substance (MO2024 P1 Q.3(a)):</strong> same chemical composition in all phases. Air is <strong>not</strong> a pure substance in the phase sense (mixture of gases with different condensation points) — although treated as one for most problems.</li>
+            <li><strong>Quality x:</strong> mass fraction of vapour in wet steam. h = h_f + x·h_fg; v = v_f + x·v_fg; s = s_f + x·s_fg.</li>
+            <li>Throttling is isenthalpic (h₁ = h₂) — used for measuring wetness fraction and for MO2025 MID Q.3(b) "show h_i = h_e".</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2023 Q.3(b):</strong> Heat to convert 2 kg water at 25 °C to steam at 5 bar, 0.9 dry.</p>
+          <div class="formula-box">At 5 bar: h_f = 640 kJ/kg, h_fg = 2108 kJ/kg
+h₂ = 640 + 0.9×2108 = 2537 kJ/kg
+Q = m(h₂ − h_f,25°C) = 2×(2537 − 104.9) = 4864 kJ</div>
+          <p><strong>MO2023 Q.3(a):</strong> water at P = 0.5 MPa, h = 2890 kJ/kg → at 0.5 MPa h_f = 640.2, h_g = 2748 → h &gt; h_g → superheated → look up superheated table at 0.5 MPa near 2890 → T ≈ 400 °C.</p>
+          <p><strong>MO2025 END Q.1(b):</strong> 0.8 kg steam at 300 °C, 1 MPa cooled at constant pressure until half the mass condenses → x = 0.5 at exit; final T = saturation temp at 1 MPa = 179.9 °C; show on T-v diagram.</p>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.3(a)</td><td>3</td><td>Find temperature: 0.5 MPa, h = 2890</td></tr>
+            <tr><td>MO2023</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Heat to make 0.9-dry steam at 5 bar from 25 °C water</td></tr>
+            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Pure substance; is air one?</td></tr>
+            <tr><td>MO2025</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>Show h_i = h_e for throttling</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.1(b)</td><td>5</td><td>Steam cooled till half condenses — T-v diagram + T_f</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 7 ============ -->
+      <div class="topic" id="t7">
+        <div class="topic-header">
+          <h3>7. Second Law &amp; Carnot Cycle</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: None</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li><strong>Kelvin–Planck:</strong> impossible for a heat engine to produce net work while exchanging heat with a single reservoir. (No perfect engine.)</li>
+            <li><strong>Clausius:</strong> impossible to transfer heat from a colder to a hotter body without external work. (No perfect refrigerator.)</li>
+            <li><strong>Equivalence (MO2025 END Q.3(a)):</strong> violation of one ⇒ violation of the other — prove by coupling the violator with a reversible machine to construct the forbidden device.</li>
+          </ul>
+          <div class="formula-box">Carnot efficiency: η = 1 − T_L/T_H   (T in kelvin)
+COP_ref = T_L/(T_H − T_L) ; COP_hp = T_H/(T_H − T_L) = COP_ref + 1</div>
+          <p><strong>Carnot theorem (MO2022 END Q.3(b)):</strong> no heat engine operating between two reservoirs can be more efficient than a reversible engine between the same reservoirs; all reversible engines have equal efficiency.</p>
+          <p><strong>Absolute temperature scale (MO2024 P2 Q.3(b)):</strong> Φ(t) = at + b; Q₁/Q₂ = Φ(T₁)/Φ(T₂). With 20 kJ at 100 °C and 14.6 kJ rejected at 0 °C: 20/14.6 = (a·373+b)/(a·273+b) → solve with Q→0 at absolute zero → locate 0 °C position on the Celsius scale → T_abs0 ≈ −273 °C.</p>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2022 END Q.3(c):</strong> Ice plant on reversed Carnot: 20 tonnes ice/day from 0 °C water, rejected to atmosphere at 27 °C.</p>
+          <div class="formula-box">Q_L = 20,000 kg × 335 kJ/kg = 6.7 GJ/day (latent heat of fusion)
+COP = T_L/(T_H − T_L) = 273/(300 − 273) = 10.11
+W = Q_L/COP = 6.7×10⁹/(10.11×86400 s) = 7.67 kW
+Q_H = Q_L + W (heat rejected to atmosphere)</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.3(b)</td><td>3</td><td>State and explain Carnot theorem</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.3(c)</td><td>5</td><td>Ice plant, 20 t/day reversed Carnot</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Carnot cycle Φ(t) → absolute zero location</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(b)</td><td>5</td><td>Heat engine claims: 208/139 kJ/s rejected — impossible?</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Establish equivalence of Kelvin–Planck &amp; Clausius</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Reversible power cycle driving reversible heat pump</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 8 ============ -->
+      <div class="topic" id="t8">
+        <div class="topic-header">
+          <h3>8. Heat Pump vs Refrigerator</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 20 min</span>
+            <span class="meta-chip">🏆 2–3 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 7</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <ul>
+            <li>Both transfer heat from cold to hot using work input — same machine, different purpose.</li>
+            <li><strong>Refrigerator:</strong> purpose is to extract heat from the cold space (Q_L). COP_R = Q_L/W = T_L/(T_H − T_L).</li>
+            <li><strong>Heat pump:</strong> purpose is to supply heat to the warm space (Q_H). COP_HP = Q_H/W = T_H/(T_H − T_L) = COP_R + 1.</li>
+            <li>COP_HP is always &gt; 1 — heat pumps are attractive heating devices.</li>
+          </ul>
+          <div class="warning"><strong>MO2022 END Q.3(a) &amp; MO2024 P2 Q.3(a):</strong> "Define and compare COP of heat pump with that of refrigerator" — a 2–3 mark guaranteed question.</div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 9 ============ -->
+      <div class="topic" id="t9">
+        <div class="topic-header">
+          <h3>9. Entropy, Clausius Inequality &amp; Availability</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 7</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">Clausius inequality:  ∮δQ/T ≤ 0   (= 0 reversible, &lt; 0 irreversible)
+
+Entropy change:  dS = δQ_rev/T   (property — independent of path)
+
+ΔS for constant-T reservoir:  ΔS = Q/T
+ΔS for constant-P heating:   ΔS = m·c_p·ln(T₂/T₁)
+ΔS for constant-V heating:   ΔS = m·c_v·ln(T₂/T₁)
+ΔS for ideal gas:  ΔS = m[c_v ln(T₂/T₁) + R ln(V₂/V₁)]</div>
+          <ul>
+            <li><strong>Entropy as a property (MO2022 END Q.4(a)):</strong> ∮dS = 0 for any cycle → S is a point function → property.</li>
+            <li><strong>Entropy principle (MO2022 END Q.4(b)):</strong> entropy of the universe (isolated system) always increases: ΔS_univ ≥ 0.</li>
+          </ul>
+          <h4>Available / unavailable energy (MO2025 END Q.4(b))</h4>
+          <div class="formula-box">Available energy of heat Q at T with environment T₀:
+A = Q(1 − T₀/T)   (maximum useful work from a reversible engine)
+Unavailable energy:  Q·T₀/T</div>
+          <h4>Clausius–Clapeyron (MO2025 END Q.5(a))</h4>
+          <div class="formula-box">dp/dT = h_fg / (T·v_fg)   → slope of the liquid–vapour boundary
+dp/dT = s_fg/v_fg = h_fg/(T·v_fg)</div>
+          <h4>Joule–Thomson coefficient (MO2025 END Q.5(b))</h4>
+          <div class="formula-box">μ_JT = (∂T/∂P)_h   → &gt; 0 cooling on expansion, &lt; 0 heating, 0 at inversion temperature</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2022 END Q.4(c):</strong> Copper block 600 g, C_p = 150 J/K at 100 °C placed in lake at 8 °C. Find ΔS_universe.</p>
+          <div class="formula-box">Block: ΔS_block = m·c·ln(T₂/T₁) = 150×ln(281/373) = 150×(−0.283) = −42.4 J/K
+Heat to lake: Q = 150×(373−281) = 13,800 J
+Lake: ΔS_lake = Q/T_lake = 13800/281 = +49.1 J/K
+ΔS_universe = −42.4 + 49.1 = +6.7 J/K &gt; 0 ✓ (irreversible)</div>
+          <p><strong>MO2025 END Q.4(b):</strong> 0.2 kg air at 300 °C heated reversibly at constant pressure to 2066 K, T₀ = 30 °C.</p>
+          <div class="formula-box">Q = m·c_p·(T₂−T₁) = 0.2×1.0047×(2066−573) = 299.9 kJ
+ΔS = m·c_p·ln(T₂/T₁) = 0.2×1.0047×ln(2066/573) = 0.2581 kJ/K
+Unavailable = T₀ΔS = 303×0.2581 = 78.2 kJ
+Available = Q − 78.2 = 221.7 kJ</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(a)</td><td>3</td><td>Show entropy is a property</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(b)</td><td>2</td><td>Explain entropy principle</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.4(c)</td><td>5</td><td>ΔS universe: copper block in lake + two blocks</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Available/unavailable energy of heat addition</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Clausius–Clapeyron → phase boundary slope</td></tr>
+            <tr><td>MO2025</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Joule–Thomson coefficient, cooling vs heating</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 10 ============ -->
+      <div class="topic" id="t10">
+        <div class="topic-header">
+          <h3>10. Otto &amp; Diesel Cycles</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 4</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="formula-box">Otto cycle (constant volume heat addition):
+η_Otto = 1 − 1/r^(γ−1)   where r = V₁/V₂ (compression ratio)
+
+Diesel cycle (constant pressure heat addition):
+η_Diesel = 1 − [1/(r^(γ−1))]·[(ρ^γ − 1)/(γ(ρ − 1))]   where ρ = V₃/V₂ (cut-off ratio)</div>
+          <ul>
+            <li>Air-standard assumptions: air as ideal gas, c_p, c_v constant, all processes internally reversible, no intake/exhaust, fixed mass.</li>
+            <li>Otto derivation (MO2024 P2 Q.5(a)): Q_s = c_v(T₃−T₂), Q_r = c_v(T₄−T₁), η = 1 − Q_r/Q_s = 1 − (T₄−T₁)/(T₃−T₂); with T₄/T₁ = (V₁/V₂)^(γ−1) = r^(γ−1) = T₃/T₂ → η = 1 − 1/r^(γ−1).</li>
+            <li>Diesel derivation (MO2022 END Q.5(a)): heat added at constant pressure Q_s = c_p(T₃−T₂), rejected at constant volume → same algebra with the cut-off ratio.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MO2024 P2 Q.5(b):</strong> Otto cycle, r = 7, start 35 °C, 0.1 MPa, max T = 1100 °C.</p>
+          <div class="formula-box">State 2: T₂ = T₁·r^(γ−1) = 308×7^0.4 = 308×2.178 = 670.9 K
+P₂ = P₁·r^γ = 0.1×7^1.4 = 0.1×15.25 = 1.525 MPa
+State 3: T₃ = 1373 K, V₃ = V₂ → P₃ = P₂·T₃/T₂ = 1.525×1373/670.9 = 3.12 MPa
+State 4: T₄ = T₃/r^(γ−1) = 1373/2.178 = 630.4 K
+P₄ = P₁·T₄/T₁ = 0.1×630.4/308 = 0.205 MPa
+η = 1 − 1/7^0.4 = 1 − 0.459 = 54.1%</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Derive ideal efficiency of air-standard Diesel cycle</td></tr>
+            <tr><td>MO2022</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Otto cycle engine with given volume ratio → η, P, T</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.5(a)</td><td>5</td><td>Derive thermal efficiency of Otto cycle</td></tr>
+            <tr><td>MO2024 P2</td><td>MID</td><td>Q.5(b)</td><td>5</td><td>Otto r=7, 35 °C, 0.1 MPa, T_max=1100 °C → cardinal points</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ CHEAT SHEET ============ -->
+      <div class="topic" id="cheat">
+        <div class="topic-header">
+          <h3>⚡ Quick Revision Cheat Sheet</h3>
+        </div>
+        <div class="subsection">
+          <h4>Must-Know Formulas</h4>
+          <div class="two-col">
+            <div>
+              <div class="formula-box">Q = ΔU + W (process) ; ∮δQ = ∮δW (cycle)</div>
+              <div class="formula-box">h = u + Pv ; c_p − c_v = R ; γ = c_p/c_v</div>
+              <div class="formula-box">W_poly = mR(T₁−T₂)/(n−1)</div>
+              <div class="formula-box">Q_poly = W·(γ−n)/(γ−1)</div>
+            </div>
+            <div>
+              <div class="formula-box">SFEE: Q̇−Ẇ = ṁ[Δh + ΔV²/2 + gΔz]</div>
+              <div class="formula-box">V₂ = √[2(h₁−h₂) + V₁²] (nozzle)</div>
+              <div class="formula-box">η_carnot = 1 − T_L/T_H</div>
+              <div class="formula-box">COP_R = T_L/(T_H−T_L) ; COP_HP = COP_R + 1</div>
+            </div>
+            <div>
+              <div class="formula-box">∮δQ/T ≤ 0 ; dS = δQ_rev/T</div>
+              <div class="formula-box">η_Otto = 1 − 1/r^(γ−1)</div>
+              <div class="formula-box">η_Diesel = 1 − [ρ^γ−1]/[r^(γ−1)·γ(ρ−1)]</div>
+              <div class="formula-box">Available = Q(1 − T₀/T)</div>
+            </div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>Common Traps</h4>
+          <ul>
+            <li>Enthalpy H is extensive; specific enthalpy h is intensive.</li>
+            <li>Free expansion: W = 0, Q = 0, ideal gas T unchanged.</li>
+            <li>Work and heat are path functions (δW, δQ); always in J not J/kg unless specified.</li>
+            <li>Use kelvin in all entropy, efficiency and Carnot calculations.</li>
+            <li>Throttling: h₁ = h₂ (isenthalpic) — not isothermal.</li>
+            <li>COP_HP = COP_R + 1 — always larger.</li>
+            <li>Entropy of universe ≥ 0 for all real processes.</li>
+            <li>Polytropic: n = γ → adiabatic; n = 1 → isothermal (use special formulas for isothermal W = P₁V₁ ln(V₂/V₁)).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>Weightage Summary</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Topic</th><th>Marks/Paper</th><th>Frequency</th></tr>
+            <tr><td>Polytropic process (work/heat)</td><td>3–5</td><td>Every paper</td></tr>
+            <tr><td>SFEE / nozzle numerical</td><td>3–5</td><td>Every paper</td></tr>
+            <tr><td>First law &amp; internal energy</td><td>2–5</td><td>90% papers</td></tr>
+            <tr><td>Second law / Carnot</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Entropy / Clausius</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Otto / Diesel cycle</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Intensive vs extensive</td><td>2</td><td>High (MID + END)</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ===================== PYQs ===================== -->
+<section class="section section-alt" id="pyqs">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Previous Year Papers</div>
+      <h2>Every Thermo paper, MO 2022 → MO 2025</h2>
+      <p>Click any paper to view the original pages full-screen. Every question is also catalogued topic-by-topic inside the notes above.</p>
+    </div>
+
+    <div class="pyq-grid">
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2025_MID_p1.png" data-caption="Thermodynamics · MID MO2025 · page 1">
+          <img src="images/papers/THERMO_MO2025_MID_p1.png" alt="Thermo MID MO2025">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2025</div>
+          <div class="paper-sub">ME24201 · 25 marks</div>
+          <div class="paper-qs">Macro vs micro · balloon work · quasi-static · ideal gas cycle · point/path functions · throttling h_i=h_e · internal energy &amp; specific heats · p=a+bV expansion · polytropic work · nozzle</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2025_MID_p1.png" data-caption="Thermo MID MO2025 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2025_END_p1.png" data-caption="Thermodynamics · END MO2025 · page 1">
+          <img src="images/papers/THERMO_MO2025_END_p1.png" alt="Thermo END MO2025">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">END SEM · MO 2025</div>
+          <div class="paper-sub">ME24201 · 50 marks · 3 hrs</div>
+          <div class="paper-qs">Properties from integrals · steam cooling T-v · energy analysis devices · feed pump · K-P &amp; Clausius equivalence · reversible cycles · Clausius inequality · availability · Clausius–Clapeyron · Joule–Thomson</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2025_END_p1.png" data-caption="Thermo END MO2025 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2024_P1_p1.png" data-caption="Thermodynamics · MID MO2024 P1 · page 1">
+          <img src="images/papers/THERMO_MO2024_P1_p1.png" alt="Thermo MID MO2024 P1">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2024 (Set 1)</div>
+          <div class="paper-sub">ME201 · 25 marks</div>
+          <div class="paper-qs">Macro vs micro · van der Waals · equilibrium · P=(8−4V) work · pure substance · first law closed · internal energy property · p=a+bV · SFEE derivation · cycle with PV=const</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2024_P1_p1.png" data-caption="Thermo MID MO2024 P1 · p1">1</button>
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2024_P1_p2.png" data-caption="Thermo MID MO2024 P1 · p2">2</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2024_P2_p1.png" data-caption="Thermodynamics · MID MO2024 P2 · page 1">
+          <img src="images/papers/THERMO_MO2024_P2_p1.png" alt="Thermo MID MO2024 P2">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2024 (Set 2)</div>
+          <div class="paper-sub">ME201 · 25 marks</div>
+          <div class="paper-qs">Quasi-static · ideal gas cycle · polytropic heat · nozzle exit velocity · COP comparison · absolute zero location · Clausius inequality · heat engine claims · Otto derivation · Otto numerical</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2024_P2_p1.png" data-caption="Thermo MID MO2024 P2 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2023_MID_p1.png" data-caption="Thermodynamics · MID MO2023 · page 1">
+          <img src="images/papers/THERMO_MO2023_MID_p1.png" alt="Thermo MID MO2023">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2023</div>
+          <div class="paper-sub">ME201 · 25 marks</div>
+          <div class="paper-qs">Work definition · intensive/extensive + free expansion · rigid tank + piston cylinder · steam tables (T from h) · heat to make steam · first law · polytropic Q proof · nozzle fluid parameters</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2023_MID_p1.png" data-caption="Thermo MID MO2023 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2022_MID_p1.png" data-caption="Thermodynamics · MID MO2022 · page 1">
+          <img src="images/papers/THERMO_MO2022_MID_p1.png" alt="Thermo MID MO2022">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">MID SEM · MO 2022</div>
+          <div class="paper-sub">ME201 · 25 marks</div>
+          <div class="paper-qs">Fundamentals · first law · properties of steam</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2022_MID_p1.png" data-caption="Thermo MID MO2022 · p1">1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-thumb" data-zoom="images/papers/THERMO_MO2022_END_p1.png" data-caption="Thermodynamics · END MO2022 · page 1">
+          <img src="images/papers/THERMO_MO2022_END_p1.png" alt="Thermo END MO2022">
+          <span class="view-badge">View →</span>
+        </div>
+        <div class="paper-body">
+          <div class="paper-title">END SEM · MO 2022</div>
+          <div class="paper-sub">ME201 · 50 marks</div>
+          <div class="paper-qs">Intensive/extensive · rigid tank mixing · piston-cylinder work · first law · polytropic air · nozzle steam · fridge vs heat pump · Carnot theorem · ice plant · entropy property · entropy principle · entropy universe · Diesel derivation · Otto engine</div>
+          <div class="paper-pages">
+            <button class="page-dot" data-zoom="images/papers/THERMO_MO2022_END_p1.png" data-caption="Thermo END MO2022 · p1">1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo">M</span> MechVault</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="fm.html">Fluid Mechanics</a>
+      <a href="som.html">Strength of Materials</a>
+    </div>
+    <div class="footer-note">Thermodynamics · ME24201/ME201 · BIT Mesra · MO 2022–2025</div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
