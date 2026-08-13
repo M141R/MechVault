@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Semester {{ semester.number }} · MechVault{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="/">Semesters</a> / Semester {{ semester.number }}</div>
+<h2>Semester {{ semester.number }} {% if semester.name %}<span class="muted">— {{ semester.name }}</span>{% endif %}</h2>
+<div class="grid">
+  {% for s in subjects %}
+  <a class="card" href="/subject/{{ s.id }}">
+    <div class="card-title">{{ s.name }}</div>
+    {% if s.code %}<div class="muted tag">{{ s.code }}</div>{% endif %}
+  </a>
+  {% else %}
+  <div class="empty">No subjects yet.</div>
+  {% endfor %}
+</div>
+{% endblock %}

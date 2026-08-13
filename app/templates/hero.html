@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}MechVault · Study Platform{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="display">MechVault</h1>
+  <p class="sub">Semester-wise Mechanical Engineering notes, PYQs, tutorial sheets &amp; a personal lag dashboard — all in one place, on a Pi.</p>
+</section>
+<section class="grid">
+  {% for s in semesters %}
+  <a class="card sem-card" href="/semester/{{ s.id }}">
+    <div class="sem-num">{{ s.number }}</div>
+    <div>
+      <div class="card-title">Semester {{ s.number }}</div>
+      <div class="muted">{{ s.name or '—' }}</div>
+    </div>
+  </a>
+  {% else %}
+  <div class="empty">No semesters yet. The owner can add them from the Admin panel.</div>
+  {% endfor %}
+</section>
+{% if not ai_on %}
+<div class="alert">AI generation is offline (no <span class="mono">OPENCODE_ZEN_API_KEY</span> set). Notes show seeded content; set the key to enable live generation.</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{{ topic.name }} · MechVault{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="/">Semesters</a> / <a href="/semester/{{ semester.id }}">Sem {{ semester.number }}</a> / <a href="/subject/{{ subject.id }}">{{ subject.name }}</a> / {{ module.name }}</div>
+<h2>{{ topic.name }}</h2>
+
+{% if note and (note.status=='published' or (user and user.role=='owner')) %}
+  <div class="note">{{ note_html | safe }}</div>
+  {% if user and user.role=='owner' and note.status!='published' %}
+    <div class="alert">Owner preview of a <b>draft</b>. Publish it from the Admin panel.</div>
+  {% endif %}
+{% else %}
+  <div class="alert">Notes for this topic aren't published yet.{% if not user %} <a href="/login">Login</a> as owner to preview.{% endif %}</div>
+{% endif %}
+
+<div class="section">
+  <h3>Your progress</h3>
+  {% if user %}
+  <form id="prog" hx-post="/progress" hx-trigger="change" hx-target="#prog-msg">
+    <input type="hidden" name="topic_id" value="{{ topic.id }}">
+    <label>Mastery (0–5): <span class="mono" id="mval">{{ progress.mastery if progress else 0 }}</span></label>
+    <input type="range" min="0" max="5" name="mastery" value="{{ progress.mastery if progress else 0 }}" oninput="document.getElementById('mval').textContent=this.value">
+    <label style="display:flex;align-items:center;gap:8px;margin-top:10px">
+      <input type="checkbox" name="completed" style="width:auto" {% if progress and progress.completed %}checked{% endif %}> Mark as completed
+    </label>
+  </form>
+  <div id="prog-msg" class="muted" style="font-size:13px">Saved automatically on change.</div>
+  {% else %}
+  <p class="muted"><a href="/login">Login</a> to track your progress on this topic.</p>
+  {% endif %}
+</div>
+
+{% if resources %}
+<div class="section"><h3>Source material</h3><ul>{% for r in resources %}<li class="muted">{{ r.kind }}: {{ r.filename }}</li>{% endfor %}</ul></div>
+{% endif %}
+
+{% if papers %}
+<h3>PYQ / Tutorial for this topic</h3>
+{% for p in papers %}
+<div class="section">
+  <h3 style="margin-top:0">{{ p.title }} <span class="badge">{{ p.kind }}</span></h3>
+  <div class="paper-actions">
+    <a class="btn-secondary" href="/paper/{{ p.id }}">View (watermarked)</a>
+    <a class="btn-ghost" href="/paper/{{ p.id }}?download=1">Download</a>
+  </div>
+  <div class="paper-wrap"><embed src="/paper/{{ p.id }}" type="application/pdf"></div>
+</div>
+{% endfor %}
+{% endif %}
+
+<script>
+(function(){
+  if(!document.querySelector('input[name=mastery]')) return;
+  var start=Date.now();
+  setInterval(function(){
+    var secs=Math.floor((Date.now()-start)/1000);
+    if(secs<10) return;
+    fetch('/api/pulse',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'subject_id={{ subject.id }}&seconds='+secs});
+    start=Date.now();
+  },30000);
+})();
+</script>
+{% endblock %}

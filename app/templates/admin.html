@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Admin · MechVault{% endblock %}
+{% block content %}
+<h2>Admin</h2>
+{% if not ai_on %}<div class="alert">AI generation is <b>offline</b>. Set <span class="mono">OPENCODE_ZEN_API_KEY</span> in <span class="mono">mechvault/.env</span> to enable live note generation.</div>{% endif %}
+{% if request.query_params.get('job') %}
+<div class="alert">Generation job #{{ request.query_params.get('job') }} started — <span id="job" hx-get="/admin/job/{{ request.query_params.get('job') }}" hx-trigger="every 3s" hx-swap="outerHTML">running…</span></div>
+{% endif %}
+
+<div class="section">
+  <h3>Syllabus builder</h3>
+  <form method="post" action="/admin/semester" class="row">
+    <div><label>Semester #</label><input name="number" type="number" placeholder="3"></div>
+    <div><label>Name</label><input name="name" placeholder="Mechanical Engineering"></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Add semester</button></div>
+  </form>
+  <form method="post" action="/admin/subject" class="row">
+    <div><label>Semester</label><select name="semester_id">{% for s in semesters %}<option value="{{ s.id }}">Sem {{ s.number }}</option>{% endfor %}</select></div>
+    <div><label>Subject</label><input name="name" placeholder="Fluid Mechanics"></div>
+    <div><label>Code</label><input name="code" placeholder="ME-201"></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Add subject</button></div>
+  </form>
+  <form method="post" action="/admin/module" class="row">
+    <div><label>Subject</label><select name="subject_id">{% for s in subjects %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></div>
+    <div><label>Module #</label><input name="number" type="number"></div>
+    <div><label>Name</label><input name="name"></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Add module</button></div>
+  </form>
+  <form method="post" action="/admin/topic" class="row">
+    <div><label>Module</label><select name="module_id">{% for m in modules %}<option value="{{ m.id }}">{{ m.name }}</option>{% endfor %}</select></div>
+    <div style="flex-basis:100%"><label>Topic</label><input name="name" placeholder="Pascal's Law"></div>
+    <div style="flex-basis:100%"><label>Description</label><textarea name="description" placeholder="Syllabus text for this topic"></textarea></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Add topic</button></div>
+  </form>
+</div>
+
+<div class="section">
+  <h3>Ingest &amp; generate notes (per topic)</h3>
+  <form method="post" action="/admin/resource" enctype="multipart/form-data" class="row">
+    <div><label>Topic</label><select name="topic_id">{% for t in topics %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select></div>
+    <div><label>Source kind</label><select name="kind"><option>book</option><option>ppt</option><option>syllabus</option><option>other</option></select></div>
+    <div style="flex-basis:100%"><label>Files (PDF / PPTX)</label><input type="file" name="files" multiple></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Extract &amp; Generate notes</button></div>
+  </form>
+  <p class="muted" style="font-size:13px">Uploads are extracted to text; the AI writes a draft note (if key is set). Owner reviews &amp; publishes.</p>
+</div>
+
+<div class="section">
+  <h3>Upload PYQ / Tutorial sheet</h3>
+  <form method="post" action="/admin/paper" enctype="multipart/form-data" class="row">
+    <div><label>Kind</label><select name="kind"><option>pyq</option><option>tutorial</option></select></div>
+    <div><label>Subject</label><select name="subject_id">{% for s in subjects %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></div>
+    <div><label>Topic (optional)</label><select name="topic_id"><option value="0">— none —</option>{% for t in topics %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select></div>
+    <div style="flex-basis:100%"><label>Title</label><input name="title" placeholder="Endsem 2023 PYQ"></div>
+    <div style="flex-basis:100%"><label>PDF</label><input type="file" name="file"></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Upload paper</button></div>
+  </form>
+</div>
+
+<div class="section">
+  <h3>Notes review</h3>
+  {% for n in notes %}
+  <div style="border-top:1px solid var(--border);padding:14px 0">
+    <b>{{ topics_by_id.get(n.topic_id, 'Topic #'+n.topic_id|string) }}</b> <span class="badge {{ 'ok' if n.status=='published' else 'draft' }}">{{ n.status }}</span>
+    {% if n.model %}<span class="muted tag">{{ n.model }}</span>{% endif %}
+    <form method="post" action="/admin/note/edit/{{ n.id }}" style="margin-top:8px">
+      <textarea name="content">{{ n.content_markdown }}</textarea>
+      <button class="btn-secondary">Save draft</button>
+    </form>
+    <form method="post" action="/admin/note/publish/{{ n.id }}" style="display:inline;margin-top:8px"><button class="btn-primary">Publish</button></form>
+  </div>
+  {% else %}
+  <div class="muted">No notes yet.</div>
+  {% endfor %}
+</div>
+
+<div class="section">
+  <h3>Users</h3>
+  {% for u in users %}
+  <form method="post" action="/admin/user/role/{{ u.id }}" class="row" style="align-items:center;border-top:1px solid var(--border);padding:10px 0">
+    <div style="flex:2"><span>{{ u.name or u.email }}</span> <span class="muted tag">{{ u.email }}</span></div>
+    <div style="flex:1"><select name="role"><option value="student" {% if u.role=='student' %}selected{% endif %}>student</option><option value="owner" {% if u.role=='owner' %}selected{% endif %}>owner</option></select></div>
+    <div><button class="btn-primary">Set</button></div>
+  </form>
+  {% endfor %}
+</div>
+{% endblock %}

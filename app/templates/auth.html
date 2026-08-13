@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}MechVault · {{ 'Login' if mode=='login' else 'Sign up' }}{% endblock %}
+{% block content %}
+<div style="max-width:420px;margin:40px auto">
+  <h2>{{ 'Welcome back' if mode=='login' else 'Create your account' }}</h2>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form class="form" method="post" action="/{{ mode }}">
+    {% if mode=='register' %}
+    <label>Name</label><input name="name" required placeholder="Your name">
+    {% endif %}
+    <label>Email</label><input name="email" type="email" required placeholder="you@bitmesra.ac.in">
+    <label>Password</label><input name="password" type="password" required placeholder="••••••••">
+    <div style="margin-top:18px"><button class="btn-primary" style="width:100%">{{ 'Login' if mode=='login' else 'Sign up' }}</button></div>
+  </form>
+  <p class="muted" style="text-align:center;margin-top:16px">
+    {% if mode=='login' %}New here? <a href="/register">Create an account</a>{% else %}Already have one? <a href="/login">Login</a>{% endif %}
+  </p>
+</div>
+{% endblock %}

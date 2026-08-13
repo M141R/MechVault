@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ subject.name }} · MechVault{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="/">Semesters</a> / <a href="/semester/{{ semester.id }}">Sem {{ semester.number }}</a> / {{ subject.name }}</div>
+<h2>{{ subject.name }}{% if subject.code %} <span class="tag">{{ subject.code }}</span>{% endif %}</h2>
+
+<h3>Modules &amp; Topics</h3>
+{% for m, topics in modules %}
+<div class="section">
+  <h3 style="margin-top:0">Module {{ m.number }}: {{ m.name }}</h3>
+  <div class="topic-list">
+    {% for t in topics %}
+    <div class="topic-row">
+      <a href="/topic/{{ t.id }}">{{ t.name }}</a>
+    </div>
+    {% else %}
+    <div class="muted">No topics in this module.</div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+
+<h3>PYQ &amp; Tutorial Sheets</h3>
+<div class="grid">
+  {% for p in papers %}
+  <div class="card">
+    <div class="card-title">{{ p.title }}</div>
+    <div class="muted"><span class="badge">{{ p.kind }}</span></div>
+    <div class="paper-actions">
+      <a class="btn-secondary" href="/paper/{{ p.id }}">View</a>
+      <a class="btn-ghost" href="/paper/{{ p.id }}?download=1">Download</a>
+    </div>
+  </div>
+  {% else %}
+  <div class="empty">No papers uploaded yet.</div>
+  {% endfor %}
+</div>
+{% endblock %}

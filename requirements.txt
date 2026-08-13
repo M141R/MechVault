@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+argon2-cffi
+jinja2
+pymupdf
+python-pptx
+pypdf
+httpx
+python-multipart
+itsdangerous

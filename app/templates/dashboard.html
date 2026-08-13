@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · MechVault{% endblock %}
+{% block content %}
+<h2>Hello, {{ user.name or user.email }}</h2>
+<div class="stat-row">
+  <div class="stat"><div class="num">{{ done_topics }}/{{ total_topics }}</div><div class="lbl">Topics completed</div></div>
+  <div class="stat"><div class="num">{{ (total_min/60)|round(1) }}h</div><div class="lbl">Time invested</div></div>
+  <div class="stat"><div class="num">{{ (rec_week/60)|round(0) }}h</div><div class="lbl">Recommended / wk</div></div>
+  <div class="stat"><div class="num">{{ subjects|length }}</div><div class="lbl">Active subjects</div></div>
+</div>
+
+<h3>Lag heatmap — mastery per topic (0 = untouched, 5 = mastered)</h3>
+<div class="heatmap">
+  {% for sname, mname, tname, mastery, freq, tid in lag %}
+  <div class="heat-row">
+    <div class="heat-name" title="{{ sname }} · {{ mname }}">{{ tname }}</div>
+    <div class="heat-cell c{{ mastery }}">{{ mastery }}</div>
+    <div class="muted" style="font-size:13px">{{ sname }} · {{ mname }}{% if freq %} · {{ freq }} paper(s){% endif %}</div>
+  </div>
+  {% else %}
+  <div class="empty">No topics yet — add syllabus in Admin.</div>
+  {% endfor %}
+</div>
+
+<h3>Time invested by subject</h3>
+<table>
+  <tr><th>Subject</th><th>Minutes</th></tr>
+  {% for s, m in by_subject.items() %}<tr><td>{{ s }}</td><td class="mono">{{ m }}</td></tr>{% else %}<tr><td colspan="2" class="muted">No study sessions logged yet.</td></tr>{% endfor %}
+</table>
+
+<div class="section">
+  <h3>Log study time manually</h3>
+  <form method="post" action="/session/add" class="row">
+    <div><label>Subject</label><select name="subject_id">{% for s in subjects %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></div>
+    <div><label>Minutes</label><input name="minutes" type="number" value="30"></div>
+    <div style="flex-basis:100%"><label>Note</label><input name="note" placeholder="what you studied"></div>
+    <div style="flex-basis:100%"><button class="btn-primary">Add session</button></div>
+  </form>
+</div>
+{% endblock %}
