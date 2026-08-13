@@ -312,4 +312,136 @@
     }
   }
   renderSiteNav();
+
+  /* ============================================================
+     SECURITY & ACCESS GUARD  (client-side — a deterrent, NOT
+     real security. For true access control, put Dokploy Basic
+     Auth / Cloudflare Access in front of the site.)
+     Change SECURITY.password below to set your access code.
+     ============================================================ */
+  var SECURITY = {
+    enabled: true,
+    password: "mechvault",            // CHANGE ME — set your own access password
+    lockRightClick: true,
+    lockCopy: true,
+    lockCut: true,
+    lockSelect: true,
+    lockDrag: true,
+    lockPrint: true,
+    lockDevtools: true,
+    lockScreenshot: true,            // deterrents only; OS screenshots can't be blocked
+    watermark: "MECHVAULT · CONFIDENTIAL",
+    sessionTTL: 8 * 60 * 60 * 1000   // 8h session
+  };
+
+  function prevent(e) { if (e && e.preventDefault) { e.preventDefault(); e.stopPropagation(); } return false; }
+
+  function sha256(str) {
+    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(function (buf) {
+        return Array.prototype.map.call(new Uint8Array(buf), function (x) {
+          return ("0" + x.toString(16)).slice(-2);
+        }).join("");
+      });
+    }
+    var h = 0; str = String(str);
+    for (var i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) | 0; }
+    return Promise.resolve(("0000000" + (h >>> 0).toString(16)).slice(-8));
+  }
+
+  function addWatermark() {
+    var t = SECURITY.watermark || "CONFIDENTIAL";
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150">' +
+      '<text x="6" y="80" font-family="monospace" font-size="15" fill="black" transform="rotate(-22 150 75)">' +
+      t + '</text></svg>';
+    var wm = document.createElement("div");
+    wm.className = "guard-watermark";
+    wm.setAttribute("aria-hidden", "true");
+    wm.style.backgroundImage = "url(\"data:image/svg+xml;utf8," + encodeURIComponent(svg) + "\")";
+    document.body.appendChild(wm);
+  }
+
+  function enableDeterrents() {
+    if (SECURITY.lockRightClick) document.addEventListener("contextmenu", prevent);
+    if (SECURITY.lockCopy) document.addEventListener("copy", prevent);
+    if (SECURITY.lockCut) document.addEventListener("cut", prevent);
+    if (SECURITY.lockSelect) document.addEventListener("selectstart", prevent);
+    if (SECURITY.lockDrag) document.addEventListener("dragstart", prevent);
+    if (SECURITY.lockPrint) {
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) prevent(e);
+      });
+      window.addEventListener("beforeprint", prevent);
+    }
+    if (SECURITY.lockDevtools) {
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "F12") prevent(e);
+        if ((e.ctrlKey || e.metaKey) && (e.key === "u" || e.key === "U")) prevent(e);
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey &&
+            (e.key === "I" || e.key === "i" || e.key === "J" || e.key === "j" || e.key === "C" || e.key === "c")) prevent(e);
+      });
+    }
+    if (SECURITY.lockScreenshot) {
+      document.addEventListener("keyup", function (e) {
+        if (e.key === "PrintScreen") { try { if (navigator.clipboard) navigator.clipboard.writeText(""); } catch (_) {} }
+      });
+      window.addEventListener("blur", function () { document.body.classList.add("guard-blur"); });
+      window.addEventListener("focus", function () { document.body.classList.remove("guard-blur"); });
+    }
+    if (SECURITY.watermark) addWatermark();
+  }
+
+  function unlock() {
+    try { sessionStorage.setItem("mv_auth", String(Date.now())); } catch (e) {}
+    var ov = document.querySelector(".guard");
+    if (ov) ov.remove();
+    document.body.classList.remove("guard-pending");
+    document.body.classList.add("guard-active");
+    enableDeterrents();
+  }
+
+  function startGuard() {
+    var KEY = "mv_auth";
+    try {
+      var t = parseInt(sessionStorage.getItem(KEY) || "0", 10);
+      if (t && (Date.now() - t) < SECURITY.sessionTTL) { unlock(); return; }
+    } catch (e) {}
+
+    var ov = document.createElement("div");
+    ov.className = "guard";
+    ov.innerHTML =
+      '<div class="guard-card">' +
+        '<div class="guard-logo">M</div>' +
+        '<h2 class="guard-title">MechVault is locked</h2>' +
+        '<p class="guard-sub">Enter the access password to continue.</p>' +
+        '<form class="guard-form">' +
+          '<input class="guard-input" type="password" placeholder="Access password" autocomplete="off" />' +
+          '<button class="guard-btn" type="submit">Unlock</button>' +
+        '</form>' +
+        '<div class="guard-error" hidden>Incorrect password.</div>' +
+      '</div>';
+    document.body.appendChild(ov);
+    document.body.classList.add("guard-pending");
+
+    var input = ov.querySelector(".guard-input");
+    var err = ov.querySelector(".guard-error");
+    setTimeout(function () { try { input.focus(); } catch (e) {} }, 60);
+
+    ov.querySelector(".guard-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var val = input.value;
+      Promise.all([sha256(val), sha256(SECURITY.password)]).then(function (r) {
+        if (r[0] === r[1]) { unlock(); }
+        else { err.hidden = false; input.value = ""; try { input.focus(); } catch (e) {} }
+      });
+    });
+  }
+
+  function initSecurity() {
+    if (!SECURITY.enabled) return;
+    try { startGuard(); }
+    catch (e) { document.body.classList.remove("guard-pending"); }  // fail-open: never lock owner out
+  }
+
+  initSecurity();
 })();

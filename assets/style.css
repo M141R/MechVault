@@ -429,3 +429,53 @@ td strong { color: var(--blueprint); }
   .toc { position: static; }
   .two-col { grid-template-columns: 1fr; }
 }
+
+/* ===================== ACCESS GUARD + SECURITY ===================== */
+.guard{
+  position:fixed; inset:0; z-index:10000;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+  background:
+    radial-gradient(1000px 500px at 50% -10%, rgba(30,58,95,.10), transparent 60%),
+    var(--paper, #f6f7f9);
+}
+.guard-card{
+  width:min(380px,100%);
+  background:var(--surface,#fff);
+  border:1px solid var(--hairline,#d7dce2);
+  border-radius:16px;
+  padding:30px 26px;
+  box-shadow:0 24px 70px rgba(20,30,50,.16);
+  text-align:center;
+}
+.guard-logo{
+  width:46px;height:46px;border-radius:12px;margin:0 auto 14px;
+  background:var(--blueprint,#1e3a5f);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;font-size:22px;
+}
+.guard-title{font-family:"Space Grotesk",system-ui,sans-serif;font-size:20px;margin:0 0 6px;color:var(--ink,#1c2127);}
+.guard-sub{margin:0 0 18px;color:var(--ink-2,#545c66);font-size:14px;}
+.guard-form{display:flex;gap:8px;}
+.guard-input{
+  flex:1;min-width:0;padding:11px 12px;font-size:15px;font-family:inherit;
+  border:1px solid var(--hairline,#d7dce2);border-radius:10px;color:var(--ink,#1c2127);
+  background:var(--surface,#fff);
+}
+.guard-input:focus{outline:none;border-color:var(--blueprint,#1e3a5f);box-shadow:0 0 0 3px var(--blueprint-soft,rgba(30,58,95,.12));}
+.guard-btn{
+  padding:11px 18px;border:none;border-radius:10px;cursor:pointer;font-family:inherit;
+  background:var(--annotation,#e2603a);color:#fff;font-weight:600;font-size:15px;
+}
+.guard-btn:hover{background:var(--annotation-ink,#b8431f);}
+.guard-error{margin-top:12px;color:var(--annotation-ink,#b8431f);font-size:13px;}
+
+body.guard-pending{overflow:hidden;}
+body.guard-active,
+body.guard-active *{ -webkit-user-select:none !important; user-select:none !important; -webkit-touch-callout:none !important; }
+body.guard-active img{ -webkit-user-drag:none; }
+body.guard-blur{ filter:blur(12px); }
+.guard-watermark{
+  position:fixed; inset:0; z-index:9000; pointer-events:none;
+  opacity:.05; background-repeat:repeat;
+}
