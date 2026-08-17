@@ -185,8 +185,7 @@
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <p>Given the plane-stress state (σₓ, σᵧ, τₓᵧ) on x–y faces, find the stresses on a plane whose normal makes angle <strong>θ</strong> with the x-axis:</p>
-          <div class="formula-box">σ_θ = (σₓ + σᵧ)/2 + (σₓ − σᵧ)/2 · cos 2θ + τₓᵧ · sin 2θ
-τ_θ = (σₓ − σᵧ)/2 · sin 2θ − τₓᵧ · cos 2θ</div>
+          <div class="formula-box">$$\sigma_\theta = (\sigma_{x} + \sigmaᵧ)/2 + (\sigma_{x} - \sigmaᵧ)/2 \cdot \cos 2\theta + \tau_{x}ᵧ \cdot \sin 2\theta\\\tau_\theta = (\sigma_{x} - \sigmaᵧ)/2 \cdot \sin 2\theta - \tau_{x}ᵧ \cdot \cos 2\theta$$</div>
           <ul>
             <li>Derivation: take a wedge element, apply force equilibrium in the normal and tangential directions, divide by area.</li>
             <li>Sign convention: tensile σ positive; τ positive when it tends to rotate the element anticlockwise; θ measured anticlockwise from x-axis.</li>
@@ -285,9 +284,7 @@ tan 2θₚ = 2×40 / (50 − (−10)) = 80/60 = 1.333 → 2θₚ = 53.13° → �
 εᵧ = (σᵧ − νσₓ)/E
 γₓᵧ = τₓᵧ / G ,   G = E / [2(1+ν)]</div>
           <p>Solving for stresses from measured strains (strain rosette / gauge data):</p>
-          <div class="formula-box">σₓ = E(εₓ + νεᵧ)/(1 − ν²)
-σᵧ = E(εᵧ + νεₓ)/(1 − ν²)
-τₓᵧ = G γₓᵧ</div>
+          <div class="formula-box">$$\sigma_{x} = E(\epsilon_{x} + \nu\epsilonᵧ)/(1 - \nu^{2})\\\sigmaᵧ = E(\epsilonᵧ + \nu\epsilon_{x})/(1 - \nu^{2})\\\tau_{x}ᵧ = G \gamma_{x}ᵧ$$</div>
           <div class="warning"><strong>MO2025 END Q.1(b):</strong> εₓ = −400×10⁻⁶, εᵧ = 200×10⁻⁶, γₓᵧ = 800×10⁻⁶, E = 200 GPa, ν = 0.3 → find principal stresses and max shear. Plug strains into the formulas above, then use Topic 2 formulas on the resulting σₓ, σᵧ, τₓᵧ.</div>
         </div>
         <div class="subsection">
@@ -358,7 +355,7 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="formula-box">M/I = σ/y = E/R</div>
+          <div class="formula-box">$$M/I = \sigma/y = E/R$$</div>
           <ul>
             <li><strong>M</strong> = bending moment · <strong>I</strong> = second moment of area about NA · <strong>σ</strong> = bending stress at distance y from NA · <strong>R</strong> = radius of curvature</li>
             <li>σ = M·y/I ; max at the extreme fibres: σ_max = M·y_max/I = M/Z</li>
@@ -371,8 +368,7 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
         <div class="subsection">
           <h4>📘 Worked Example</h4>
           <p><strong>MO2025 MID Q.5(b):</strong> Band saw 20 mm × 0.8 mm over 600 mm diameter pulleys, E = 200 GPa.</p>
-          <div class="formula-box">y_max = 0.4 mm ; R = 300 mm
-σ_max = E·y_max/R = 200×10⁹ × 0.4×10⁻³ / 0.3 = 266.7 MPa</div>
+          <div class="formula-box">$$y_\max = 0.4 mm ; R = 300 mm\\\sigma_\max = E\cdot y_\max/R = 200\times10^{9} \times 0.4\times10^{-3} / 0.3 = 266.7 MPa$$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
@@ -399,7 +395,7 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="formula-box">τ = V·Aȳ / (I·b)</div>
+          <div class="formula-box">$$\tau = V\cdot Aȳ / (I\cdot b)$$</div>
           <ul>
             <li><strong>V</strong> = shear force at section · <strong>Aȳ</strong> = first moment of area above the level · <strong>I</strong> = M.I. of whole section · <strong>b</strong> = width at the level</li>
           </ul>
@@ -609,21 +605,21 @@ At r = 0.12 m: r² = 0.0144
           <h4>Must-Know Formulas</h4>
           <div class="two-col">
             <div>
-              <div class="formula-box">σ_θ = (σₓ+σᵧ)/2 + (σₓ−σᵧ)/2 cos2θ + τₓᵧ sin2θ</div>
-              <div class="formula-box">τ_θ = (σₓ−σᵧ)/2 sin2θ − τₓᵧ cos2θ</div>
+              <div class="formula-box">$$\sigma_\theta = (\sigma_{x}+\sigmaᵧ)/2 + (\sigma_{x}-\sigmaᵧ)/2 \cos2\theta + \tau_{x}ᵧ \sin2\theta$$</div>
+              <div class="formula-box">$$\tau_\theta = (\sigma_{x}-\sigmaᵧ)/2 \sin2\theta - \tau_{x}ᵧ \cos2\theta$$</div>
               <div class="formula-box">σ₁,₂ = σ_avg ± R ; R = √[((σₓ−σᵧ)/2)² + τₓᵧ²]</div>
-              <div class="formula-box">tan2θₚ = 2τₓᵧ/(σₓ−σᵧ)</div>
+              <div class="formula-box">$$\tan2\theta_{p} = 2\tau_{x}ᵧ/(\sigma_{x}-\sigmaᵧ)$$</div>
             </div>
             <div>
               <div class="formula-box">τ = V·Aȳ/(I·b) ; τ_max(rect) = 3V/2bd</div>
-              <div class="formula-box">M/I = σ/y = E/R ; σ = M/Z</div>
+              <div class="formula-box">$$M/I = \sigma/y = E/R ; \sigma = M/Z$$</div>
               <div class="formula-box">EI d²y/dx² = M ; δ_cant_P = PL³/3EI</div>
               <div class="formula-box">P_cr = π²EI/L_eff²</div>
             </div>
             <div>
               <div class="formula-box">σ_h = pd/2t ; σ_l = pd/4t</div>
-              <div class="formula-box">σ_r = A − B/r² ; σ_t = A + B/r²</div>
-              <div class="formula-box">εₓ = (σₓ − νσᵧ)/E ; G = E/2(1+ν)</div>
+              <div class="formula-box">$$\sigma_r = A - B/r^{2} ; \sigma_t = A + B/r^{2}$$</div>
+              <div class="formula-box">$$\epsilon_{x} = (\sigma_{x} - \nu\sigmaᵧ)/E ; G = E/2(1+\nu)$$</div>
               <div class="formula-box">Euler L_eff: p-p L · fixed-free 2L · f-f L/2</div>
             </div>
           </div>
