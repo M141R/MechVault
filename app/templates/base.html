@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/htmx.org@1.9.12" defer></script>
 <link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="nav">
@@ -30,5 +33,31 @@
   {% block content %}{% endblock %}
 </main>
 <footer class="footer">MechVault · BIT Mesra Mechanical Engineering · running on a Raspberry Pi 5</footer>
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+  document.querySelectorAll("formula-box, .formula-box").forEach(function (el) {
+    var txt = el.textContent.trim();
+    if (!txt) return;
+    try {
+      var tmp = document.createElement("div");
+      katex.render(txt, tmp, {displayMode: true, throwOnError: true});
+      if (tmp.querySelector(".katex-error")) return;
+      el.innerHTML = tmp.innerHTML;
+      el.classList.add("katex-formula");
+    } catch (e) { /* keep original text on parse failure */ }
+  });
+});
+</script>
 </body>
 </html>
