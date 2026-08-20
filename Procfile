@@ -1,1 +1,1 @@
-web: python -m http.server 3000
+web: node dist/server/entry.mjs

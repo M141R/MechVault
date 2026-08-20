@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "node dist/server/entry.mjs",
     "typecheck": "astro check",
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit migrate",
@@ -16,6 +17,7 @@
     "port:content": "node scripts/port-content.mjs"
   },
   "dependencies": {
+    "@astrojs/node": "^11.1.4",
     "@astrojs/vercel": "^11.0.6",
     "@aws-sdk/client-s3": "^3.1113.0",
     "@neondatabase/serverless": "^1.1.0",
