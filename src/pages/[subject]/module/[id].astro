@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getSubject, getModule } from "../../../lib/subjects";
+
+const slug = Astro.params.subject ?? "";
+const idRaw = Astro.params.id ?? "";
+const subject = getSubject(slug);
+const id = Number(idRaw);
+const mod = subject && Number.isInteger(id) ? getModule(subject, id) : null;
+
+if (!subject || !mod) {
+  return Astro.redirect(subject ? `/${subject.slug}` : "/");
+}
+
+const shortTitle = mod.title.replace(/^Module \d+ — /, "");
+const pageTitle = `${shortTitle} — ${subject.name} | MechVault`;
+const modpyq = subject.slug === "fm" ? subject.content.modpyqCards[id - 1] ?? null : null;
+const prev = getModule(subject, id - 1);
+const next = getModule(subject, id + 1);
+---
+<BaseLayout title={pageTitle} description={`${subject.name} Module ${id}: ${shortTitle} — notes, formulas and previous year questions from this module.`} active={subject.navKey}>
+  <div class="container module-top">
+    <div class="crumbs"><a href="/">Home</a> / <a href={`/${subject.slug}`}>{subject.name}</a> / Module {id}</div>
+  </div>
+  <div class="container"><div data-progress="M1,M2,M3,M4,M5" data-progress-key={subject.slug} class="progress-panel"></div></div>
+
+  <div class="container">
+    <div class="module-page-head">
+      <span class="mchip">M{id}</span>
+      <h1>{shortTitle}</h1>
+      <p>{mod.topics.map((t) => t.label).join(" · ")}</p>
+    </div>
+  </div>
+
+  <div class="container module-page-body">
+    <Fragment set:html={mod.html} />
+  </div>
+
+  {
+    modpyq && (
+      <section class="section section-alt" id="modpyq">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-eyebrow">PYQs from this module</div>
+            <h2>Every past question from Module {id}</h2>
+            <p>All the times Module {id} showed up in a BIT Mesra paper — each question links to the exact scanned page it appeared on.</p>
+          </div>
+          <Fragment set:html={modpyq} />
+        </div>
+      </section>
+    )
+  }
+
+  <nav class="module-nav container" aria-label="Module navigation">
+    {
+      prev ? (
+        <a class="module-nav-link module-nav-prev" href={`/${subject.slug}/module/${prev.id}`} aria-label={`Previous module: ${prev.title.replace(/^Module \d+ — /, "")}`}>
+          <span class="module-nav-arrow" aria-hidden="true">←</span>
+          <span><small>Previous</small>{prev.title.replace(/^Module \d+ — /, "")}</span>
+        </a>
+      ) : (
+        <span class="module-nav-spacer" aria-hidden="true"></span>
+      )
+    }
+    <a class="module-nav-up" href={`/${subject.slug}`}>All modules</a>
+    {
+      next ? (
+        <a class="module-nav-link module-nav-next" href={`/${subject.slug}/module/${next.id}`} aria-label={`Next module: ${next.title.replace(/^Module \d+ — /, "")}`}>
+          <span><small>Next</small>{next.title.replace(/^Module \d+ — /, "")}</span>
+          <span class="module-nav-arrow" aria-hidden="true">→</span>
+        </a>
+      ) : (
+        <span class="module-nav-spacer" aria-hidden="true"></span>
+      )
+    }
+  </nav>
+</BaseLayout>

@@ -1,0 +1,127 @@
+---
+import { getSessionSafe, type AuthUser } from "../lib/auth";
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: string;
+  /** Public pages (login/register/pending) pass this to skip the DB call. */
+  skipSession?: boolean;
+}
+
+const {
+  title = "MechVault | 3rd Semester Study Hub · BIT Mesra",
+  description = "Fluid Mechanics, Strength of Materials and Thermodynamics: syllabus, notes, previous year papers and a question bank for BIT Mesra Mechanical 3rd semester.",
+  active = "",
+  /** Public pages (login/register/pending) pass this to skip the DB call. */
+  skipSession = false,
+} = Astro.props;
+
+// Determine active state: if not explicitly set, check if we're on a subject page or the subjects page
+const computedActive = active || (Astro.url.pathname.startsWith('/fm/') || 
+                                 Astro.url.pathname.startsWith('/som/') || 
+                                 Astro.url.pathname.startsWith('/thermo/') || 
+                                 Astro.url.pathname === '/fm' || 
+                                 Astro.url.pathname === '/som' || 
+                                 Astro.url.pathname === '/thermo' ||
+                                 Astro.url.pathname === '/subjects')
+  ? 'subjects' 
+  : active;
+
+let user: AuthUser | null = null;
+if (!skipSession) {
+  try {
+    const session = await getSessionSafe(Astro.request.headers);
+    user = (session?.user ?? null) as AuthUser | null;
+  } catch {
+    // DB not ready yet — render with an unauthenticated nav.
+  }
+}
+
+// Full-page forensic watermark tile: the signed-in username is baked into two
+// SVG data-URIs (one per theme) and tiled across the viewport at low opacity.
+// Any screenshot or print of the page carries the owner's identity.
+const wmOwner = user?.username ?? user?.name ?? "user";
+const wmTile = (fill: string, opacity: string) =>
+  `<svg xmlns='http://www.w3.org/2000/svg' width='480' height='320'><text x='240' y='160' text-anchor='middle' font-family='JetBrains Mono, monospace' font-size='16' font-weight='600' fill='${fill}' fill-opacity='${opacity}' transform='rotate(-20 240 160)'>${wmOwner}</text></svg>`;
+const wmStyle =
+  `--wm-tile-light:url("data:image/svg+xml,${encodeURIComponent(wmTile("%236b7280", "0.09"))}");` +
+  `--wm-tile-dark:url("data:image/svg+xml,${encodeURIComponent(wmTile("%23d7dce2", "0.10"))}")`;
+
+const links = [
+  { href: "/", label: "Home", key: "home" },
+  { href: "/subjects", label: "Subjects", key: "subjects" },
+];
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%231e3a5f'/><text x='50' y='70' font-size='56' font-weight='700' font-family='monospace' text-anchor='middle' fill='%23fff'>M</text></svg>">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/"><span class="logo">M</span> MechVault</a>
+      <div class="nav-links">
+        {links.map((l) => (
+          <a class:list={["nav-link", { active: computedActive === l.key }]} href={l.href}>{l.label}</a>
+        ))}
+        <form class="search-wrap" role="search">
+          <input class="search-input" type="search" placeholder="Search notes, formulas…" aria-label="Search the site">
+          <div class="search-results" role="status" aria-live="polite"></div>
+        </form>
+        <button class="search-trigger" type="button" aria-label="Open search" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></button>
+        <button class="theme-toggle" aria-label="Toggle theme"></button>
+        {
+          user ? (
+            <span class="auth-chip">
+              <span class="auth-user" title={user.name ?? ""}>{user.username ?? user.name ?? "user"}</span>
+              {user.role === "admin" && <a class="auth-admin" href="/admin">Admin</a>}
+              <form method="post" action="/api/auth/sign-out">
+                <button class="auth-logout" type="submit">Sign out</button>
+              </form>
+            </span>
+          ) : (
+            <a class="auth-login" href="/login">Sign in</a>
+          )
+        }
+      </div>
+    </div>
+  </nav>
+
+  {user && (
+    <>
+      <div class="watermark" aria-hidden="true" style={wmStyle}></div>
+      <div class="print-blackout" aria-hidden="true">
+        <div class="print-blackout-note">
+          <strong>MechVault</strong>
+          <span>Printing is disabled. This page belongs to {wmOwner}.</span>
+        </div>
+      </div>
+    </>
+  )}
+
+  <slot />
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><span class="logo">M</span> MechVault</div>
+      <nav class="footer-links" id="site-subjects" aria-label="Subjects"></nav>
+      <div class="footer-note"><span id="site-semester-label">3rd Semester</span> · BIT Mesra · MO 2022–2025</div>
+    </div>
+  </footer>
+
+  <script src="/assets/app.js" is:inline></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+node_modules
+dist
+.astro
+.git
+fm.html
+som.html
+thermo.html
+index.html
+study-guide.html
+assets
+scripts
+drizzle
+Dockerfile
+Procfile
+books
+syllabus

@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSubject } from "../../lib/subjects";
+
+const slug = Astro.params.subject ?? "";
+const subject = getSubject(slug);
+
+if (!subject?.bookFile) {
+  return Astro.redirect(subject ? `/${subject.slug}` : "/");
+}
+
+const bookSrc = `/api/file?path=${encodeURIComponent(subject.bookFile)}`;
+const pageTitle = `${subject.name} textbook — reader | MechVault`;
+---
+
+<BaseLayout title={pageTitle} active={subject.navKey}>
+  <div class="container book-head">
+    <div class="crumbs"><a href="/">Home</a> / <a href={`/${subject.slug}`}>{subject.name}</a> / Textbook</div>
+    <div class="book-head-row">
+      <div>
+        <h1>Textbook</h1>
+        <p class="lede">Read {subject.name} inline. The book is watermarked to your account and prints are blocked.</p>
+      </div>
+      <a class="btn btn-ghost" href={bookSrc} target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+  </div>
+
+  <main class="book-frame-wrap">
+    <iframe
+      class="book-frame"
+      src={bookSrc}
+      title={`${subject.name} textbook`}
+      loading="lazy"
+    ></iframe>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .book-head {
+    padding: 36px 0 24px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .book-head .crumbs {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+  .book-head .crumbs a { color: var(--ink-3); }
+  .book-head .crumbs a:hover { color: var(--annotation); }
+  .book-head-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .book-head h1 {
+    font-size: clamp(26px, 3.5vw, 34px);
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+  .book-head .lede {
+    color: var(--ink-2);
+    font-size: 15px;
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .book-frame-wrap {
+    padding: 24px var(--container-pad, 24px) 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .book-frame {
+    width: 100%;
+    height: calc(100vh - 260px);
+    min-height: 480px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+</style>

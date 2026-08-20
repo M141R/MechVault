@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSessionSafe, type AuthUser } from "../lib/auth";
+
+let loggedIn: AuthUser | null = null;
+try {
+  const session = await getSessionSafe(Astro.request.headers);
+  if (session) loggedIn = session.user as AuthUser;
+} catch {
+  // Neon still cold-starting — render the form; the client will handle retries.
+}
+if (loggedIn) {
+  const next = Astro.url.searchParams.get("next") || "/";
+  return Astro.redirect(loggedIn.status === "approved" ? next : "/pending");
+}
+---
+<BaseLayout title="Sign in · MechVault" skipSession>
+  <section class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">M</div>
+      <h1>Sign in</h1>
+      <p class="auth-sub">Access the MechVault study hub with your username.</p>
+      <form id="login-form" class="auth-form">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" autocomplete="username" required autofocus>
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" autocomplete="current-password" required>
+        </label>
+        <div class="auth-error" hidden></div>
+        <button type="submit" class="btn btn-accent auth-submit">Sign in →</button>
+      </form>
+      <p class="auth-alt">Don't have an account? <a href="/register">Request access</a></p>
+    </div>
+  </section>
+
+  <script>
+    import { authClient } from "../lib/auth-client";
+    const next = new URLSearchParams(window.location.search).get("next") || "/";
+    const form = document.getElementById("login-form") as HTMLFormElement;
+    const err = form.querySelector(".auth-error") as HTMLDivElement;
+    const btn = form.querySelector(".auth-submit") as HTMLButtonElement;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      btn.disabled = true;
+      const fd = new FormData(form);
+      const { error } = await authClient.signIn.username({
+        username: String(fd.get("username") || "").trim(),
+        password: String(fd.get("password") || ""),
+      });
+      btn.disabled = false;
+      if (error) {
+        err.hidden = false;
+        err.textContent = error.message || "Incorrect username or password.";
+        return;
+      }
+      window.location.href = next;
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSubject } from "../lib/subjects";
+
+interface Props {
+  slug: "fm" | "som" | "thermo";
+}
+
+const { slug } = Astro.props;
+const subject = getSubject(slug);
+if (!subject) throw new Error(`No subject data for "${slug}"`);
+const { content } = subject;
+
+const tabs = [
+  { id: "syllabus", href: "#syllabus", label: "Syllabus", panel: "syllabus-panel" },
+  { id: "modules", href: "#modules", label: "Modules", panel: "modules-panel" },
+  { id: "cheat", href: "#cheat", label: "Cheat Sheet", panel: "cheat-panel" },
+  { id: "pyqs", href: "#pyqs", label: "Previous Year Papers", panel: "pyqs-panel" },
+];
+const title = `${subject.name} — Notes & PYQs | MechVault`;
+const description = `${subject.name} (${subject.code}): official syllabus, module-by-module notes and every previous year paper — BIT Mesra MO 2022–2025.`;
+---
+<BaseLayout title={title} description={description} active={subject.navKey}>
+  <Fragment set:html={content.pageHead} />
+
+  {subject.bookFile && (
+    <div class="container">
+      <a class="book-pill" href={`/${subject.slug}/book`} aria-label={`Read the ${subject.name} textbook in the browser`}>
+        <span class="book-pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </span>
+        <span>Read the textbook in the browser →</span>
+      </a>
+    </div>
+  )}
+
+  <div class="tabbar" role="tablist" aria-label="Subject sections">
+    <div class="tabbar-inner">
+      {tabs.map((t, i) => (
+        <button
+          role="tab"
+          id={t.id}
+          class="tab"
+          aria-selected={i === 0}
+          aria-controls={t.panel}
+          tabindex={i === 0 ? "0" : "-1"}
+          data-href={t.href}
+        >
+          {t.label}
+        </button>
+      ))}
+    </div>
+  </div>
+  <div class="container"><div data-progress="M1,M2,M3,M4,M5" class="progress-panel"></div></div>
+
+  <!-- ===================== SYLLABUS (official PDF) ===================== -->
+  <section class="section" id="syllabus" role="tabpanel" aria-labelledby="syllabus" aria-hidden="false" data-tab-panel="syllabus-panel">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Syllabus</div>
+        <h2>Prescribed syllabus — {subject.code}</h2>
+        <p>Straight from the official BIT Mesra syllabus sheet for {subject.name}. {subject.syllabus.length} modules, topics as written in the PDF.</p>
+      </div>
+
+      <div class="syllabus-modules">
+        {subject.syllabus.map((m) => (
+          <div class="syllabus-module">
+            <div class="syllabus-module-head">
+              <span class="mchip">M{m.num}</span>
+              <h3>{m.name}</h3>
+            </div>
+            <ul>
+              {m.topics.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {content.insight && <Fragment set:html={content.insight} />}
+      {content.bansal && <Fragment set:html={content.bansal} />}
+    </div>
+  </section>
+
+  <!-- ===================== MODULE INDEX ===================== -->
+  <section class="section section-alt" id="modules" role="tabpanel" aria-labelledby="modules" aria-hidden="true" data-tab-panel="modules-panel">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Modules</div>
+        <h2>Notes, module by module</h2>
+        <p>Each module has its own page: derivation-first notes, worked examples, book questions and the exact PYQs that came from that module.</p>
+      </div>
+      <div class="module-grid">
+        {content.modules.map((m) => (
+          <a class="module-card" href={`/${subject.slug}/module/${m.id}`}>
+            <span class="mchip">M{m.id}</span>
+            <h3>{m.title.replace(/^Module \d+ — /, "")}</h3>
+            <p>{m.topics.length} topic{m.topics.length === 1 ? "" : "s"} · {m.topics.map((t) => t.label).join(" · ")}</p>
+            <span class="module-card-go">Open module →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CHEAT SHEET ===================== -->
+  <section class="section section-alt" id="cheat" role="tabpanel" aria-labelledby="cheat" aria-hidden="true" data-tab-panel="cheat-panel">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Cheat Sheet</div>
+        <h2>Quick revision</h2>
+        <p>The formulas and traps that decide exam marks — in one place.</p>
+      </div>
+      {content.cheat && <Fragment set:html={content.cheat} />}
+    </div>
+  </section>
+
+  <!-- ===================== PREVIOUS YEAR PAPERS ===================== -->
+  {content.pyqs && (
+    <Fragment set:html={content.pyqs.replace('<section class="section section-alt" id="pyqs">', '<section class="section section-alt" id="pyqs" role="tabpanel" aria-labelledby="pyqs" aria-hidden="true" data-tab-panel="pyqs-panel">')} />
+  )}
+</BaseLayout>
+
+<script is:inline>
+  // Tabbar ARIA + arrow-key navigation (runs after hydration)
+  (function () {
+    const tablist = document.querySelector('.tabbar[role="tablist"]');
+    if (!tablist) return;
+    /** @type {HTMLButtonElement[]} */
+    const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+    /** @type {HTMLElement[]} */
+    const panels = Array.from(document.querySelectorAll('[data-tab-panel]'));
+
+    function activateTab(tab) {
+      tabs.forEach(t => {
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+        t.classList.remove('active');
+      });
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+      tab.classList.add('active');
+
+      const panelId = tab.getAttribute('aria-controls');
+      panels.forEach(p => {
+        const isActive = p.getAttribute('data-tab-panel') === panelId;
+        p.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        p.hidden = !isActive;
+      });
+
+      // Update URL hash without scroll
+      const href = tab.getAttribute('data-href');
+      if (href) history.replaceState(null, '', href);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        const idx = tabs.indexOf(tab);
+        let nextIdx = idx;
+        if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') nextIdx = 0;
+        else if (e.key === 'End') nextIdx = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        tabs[nextIdx].focus();
+        activateTab(tabs[nextIdx]);
+      });
+    });
+
+    // Initialize: hide inactive panels
+    panels.forEach((p, i) => {
+      if (i !== 0) { p.setAttribute('aria-hidden', 'true'); p.hidden = true; }
+    });
+  })();
+</script>

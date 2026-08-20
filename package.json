@@ -1,0 +1,34 @@
+{
+  "name": "mechvault",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "MechVault — BIT Mesra ME 3rd sem study hub (Astro SSR + Better Auth + Postgres + R2)",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "seed:admin": "tsx scripts/seed-admin.ts",
+    "upload:r2": "node scripts/upload-r2.mjs",
+    "port:content": "node scripts/port-content.mjs"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^11.0.6",
+    "@aws-sdk/client-s3": "^3.1113.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "astro": "^7.2.3",
+    "better-auth": "^1.7.1",
+    "drizzle-orm": "^0.45.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^22.10.0",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}

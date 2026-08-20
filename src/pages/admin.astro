@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Admin · MechVault">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Admin</div>
+        <h2>Approve user accounts</h2>
+        <p>Accounts stay <strong>pending</strong> until approved. Only approved users can access the study material.</p>
+      </div>
+      <div class="table-wrap">
+        <table id="admin-table">
+          <thead>
+            <tr><th>User</th><th>Status</th><th>Created</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    type AdminUser = {
+      id: string;
+      name: string | null;
+      username: string | null;
+      status: string;
+      role: string;
+      createdAt: string;
+    };
+    async function refresh() {
+      const res = await fetch("/api/admin/users");
+      const users: AdminUser[] = await res.json();
+      const tbody = document.querySelector("#admin-table tbody") as HTMLTableSectionElement;
+      if (!users.length) {
+        tbody.innerHTML = '<tr><td colspan="4">No users yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map((u) => `
+        <tr>
+          <td><strong>${u.username ?? u.name}</strong><br><span class="muted">${u.name}</span></td>
+          <td><span class="tag ${u.status === "approved" ? "tag-high" : u.status === "pending" ? "tag-crit" : ""}">${u.status}</span></td>
+          <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+          <td>
+            ${u.status === "pending" ? `
+              <button class="btn btn-accent" data-action="approved" data-id="${u.id}">Approve</button>
+              <button class="btn btn-secondary" data-action="rejected" data-id="${u.id}">Reject</button>
+            ` : u.status === "rejected" ? `
+              <button class="btn btn-accent" data-action="approved" data-id="${u.id}">Approve</button>
+            ` : `<span class="muted">OK</span>`}
+          </td>
+        </tr>`).join("");
+    }
+    document.addEventListener("click", async (e) => {
+      const btn = (e.target as HTMLElement).closest("[data-action]") as HTMLButtonElement | null;
+      if (!btn) return;
+      await fetch("/api/admin/set-status", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ userId: btn.dataset.id, status: btn.dataset.action }),
+      });
+      refresh();
+    });
+    refresh();
+  </script>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSessionSafe, type AuthUser } from "../lib/auth";
+
+let loggedIn: AuthUser | null = null;
+try {
+  const session = await getSessionSafe(Astro.request.headers);
+  if (session) loggedIn = session.user as AuthUser;
+} catch {
+  // Neon still cold-starting — render the form; the client will handle retries.
+}
+if (loggedIn) {
+  return Astro.redirect(loggedIn.status === "approved" ? "/" : "/pending");
+}
+---
+<BaseLayout title="Request access · MechVault" skipSession>
+  <section class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">M</div>
+      <h1>Request access</h1>
+      <p class="auth-sub">Create a username and password. An admin must approve your account before you can study.</p>
+      <form id="register-form" class="auth-form">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" autocomplete="username" minlength="3" maxlength="30" required autofocus>
+        </label>
+        <label>
+          <span>Display name (optional)</span>
+          <input type="text" name="name" autocomplete="name">
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label>
+          <span>Confirm password</span>
+          <input type="password" name="confirm" autocomplete="new-password" minlength="8" required>
+        </label>
+        <div class="auth-error" hidden></div>
+        <button type="submit" class="btn btn-accent auth-submit">Create account →</button>
+      </form>
+      <p class="auth-alt">Already approved? <a href="/login">Sign in</a></p>
+    </div>
+  </section>
+
+  <script>
+    import { authClient } from "../lib/auth-client";
+    const form = document.getElementById("register-form") as HTMLFormElement;
+    const err = form.querySelector(".auth-error") as HTMLDivElement;
+    const btn = form.querySelector(".auth-submit") as HTMLButtonElement;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const fd = new FormData(form);
+      const username = String(fd.get("username") || "").trim();
+      const name = String(fd.get("name") || "").trim() || username;
+      const password = String(fd.get("password") || "");
+      const confirm = String(fd.get("confirm") || "");
+      if (password !== confirm) {
+        err.hidden = false;
+        err.textContent = "Passwords do not match.";
+        return;
+      }
+      btn.disabled = true;
+      const { error } = await authClient.signUp.email({
+        username,
+        name,
+        email: `${username}@mechvault.local`,
+        password,
+      });
+      btn.disabled = false;
+      if (error) {
+        err.hidden = false;
+        err.textContent = error.message || "Could not create account. Try a different username.";
+        return;
+      }
+      window.location.href = "/pending";
+    });
+  </script>
+</BaseLayout>

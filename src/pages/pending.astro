@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Account pending approval · MechVault" skipSession>
+  <section class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">M</div>
+      <h1>Account pending approval</h1>
+      <p class="auth-sub">Your account was created and is waiting for an admin to approve it. Once approved you'll be able to sign in and access all notes, papers and books.</p>
+      <div class="pending-note">
+        <span class="pending-dot"></span> Status: <strong>Pending review</strong>
+      </div>
+      <p class="auth-alt"><a href="/">Back to home</a> · <a href="/logout">Sign out</a></p>
+    </div>
+  </section>
+</BaseLayout>
