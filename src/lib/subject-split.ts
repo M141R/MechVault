@@ -112,8 +112,9 @@ export function splitSubject(raw: string): SubjectContent {
         const id = chip ? parseInt(text(chip).replace(/\D/g, ""), 10) : null;
         if (id === null) continue;
 
-        // Drop the module-head so module pages can render their own header.
-        const clone = { ...c, childNodes: (c.childNodes ?? []).filter((k) => !(isEl(k) && hasClass(k, "module-head"))) };
+        // Drop the module-head and the inline toc so module pages can render
+        // their own left-hand TOC + right-hand notes grid.
+        const clone = { ...c, childNodes: (c.childNodes ?? []).filter((k) => !(isEl(k) && (hasClass(k, "module-head") || (k.tagName === "nav" && hasClass(k, "toc"))))) };
 
         modules.push({
           id,
@@ -158,7 +159,7 @@ export function splitSubject(raw: string): SubjectContent {
   return {
     pageHead: pageHead ? serializeOuter(pageHead as any) : "",
     modules,
-    cheat: findById(frag, "cheat") ? serializeOuter(findById(frag, "cheat") as any) : "",
+    cheat: findById(frag, "cheat-sheet") ? serializeOuter(findById(frag, "cheat-sheet") as any) : "",
     modpyqCards,
     pyqs: pyqs ? serializeOuter(pyqs as any) : "",
     insight,

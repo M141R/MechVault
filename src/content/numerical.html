@@ -1,0 +1,478 @@
+﻿<section class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="/">Home</a> / Numerical Methods</div>
+    <h1>Numerical Methods</h1>
+    <p>Complete study kit from the official BIT Mesra syllabus — root-finding, linear systems, interpolation,
+      integration and differential equations, with worked algorithms and properly rendered math. PYQs will be added once
+      papers are indexed.</p>
+    <div class="tags-row">
+      <span class="tag tag-high">Newton-Raphson core</span>
+      <span class="tag">Simpson's rules</span>
+      <span class="tag tag-crit">Runge-Kutta 4</span>
+    </div>
+    <div class="blueprint">
+      <div class="title-block">
+        <div><b>MECHVAULT</b></div>
+        <div>NUM</div>
+        <div>SEM-III</div>
+        <div>SHEET NUM-01</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section class="section section-alt" id="notes" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Notes</div>
+      <h2>Full notes — in official syllabus order</h2>
+      <p>Every module covered in plain language — the idea behind each method, quotable definitions, formulas, and a
+        hand-worked example you can reproduce in an exam.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notes-wrap" style="padding-top:24px">
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#t1">M1 · Errors &amp; Root-Finding</a>
+      <a href="#t2">M2 · Linear Systems</a>
+      <a href="#t3">M3 · Interpolation</a>
+      <a href="#t4">M4 · Differentiation &amp; Integration</a>
+      <a href="#t5">M5 · ODEs — Euler &amp; Runge-Kutta</a>
+      <a href="#cheat-sheet">⚡ Cheat Sheet</a>
+    </nav>
+    <main class="notes-main">
+
+      <!-- MODULE 1 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M1</span>
+          <h3>Module 1 — Errors &amp; Nonlinear Equations</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Bisection, Regula-Falsi, Secant &amp;
+            Newton-Raphson</a>
+        </nav>
+
+        <div class="topic" id="t1">
+          <div class="topic-header">
+            <h3>1. Bisection, Regula-Falsi, Secant &amp; Newton-Raphson</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 90 min</span><span class="meta-chip">🔗 Prereq: None</span>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> computers cannot solve f(x) = 0 directly — every method here
+              just narrows a bracket or slides downhill using repeated guesses. The differences are speed vs safety.
+            </div>
+            <ul>
+              <li><strong>Error vocabulary:</strong> round-off error (finite digits), truncation error (cutting an
+                infinite process), absolute error $E_a=|x_{true}-x_{approx}|$, relative error $E_r=E_a/|x_{true}|$.
+                Errors propagate: for $z=x+y$ errors add; for products/quotients relative errors add.</li>
+              <li><strong>Bisection:</strong> needs a sign change f(a)f(b) &lt; 0; halve the interval each step, keep
+                the half that still changes sign. Always converges, linearly slow: error halves per step.</li>
+              <li><strong>Regula-falsi (false position):</strong> same bracketing safety but joins (a,f(a))-(b,f(b))
+                with a straight line and uses its root as the next point — usually faster than bisection.</li>
+              <li><strong>Secant:</strong> same line-idea but without needing a sign bracket — uses two latest points.
+                Superlinear (order ≈ 1.62), but can wander off.</li>
+              <li><strong>Newton-Raphson:</strong> slide down the tangent at the current guess:</li>
+            </ul>
+            <div class="formula-box">$x_{i+1}=x_i-\dfrac{f(x_i)}{f'(x_i)}$ — quadratic convergence: correct digits
+              roughly double each step.
+              Fails when f' ≈ 0 (flat), poor initial guess, or multiple roots.
+              General iterative form: $x=g(x)$ fixed-point iteration converges iff $|g'(x)|&lt;1$ near the root.</div>
+          <figure class="figure"><svg viewBox="0 0 240 185" role="img" aria-label="Newton-Raphson tangents"><line x1="30" y1="160" x2="228" y2="160" stroke="var(--ink-3)" stroke-width="1.2"/>
+<path d="M32 22 C70 95 100 140 150 157 S215 166 228 168" stroke="var(--blueprint)" fill="none" stroke-width="1.8"/>
+<text x="212" y="34" font-size="11" fill="var(--ink-3)" font-family="var(--mono)">f(x)</text>
+<line x1="205" y1="160" x2="205" y2="163" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
+<line x1="120" y1="160" x2="120" y2="157" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
+<line x1="148" y1="160" x2="148" y2="159" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
+<line x1="205" y1="162" x2="120" y2="157" stroke="var(--annotation)" stroke-width="1.6"/>
+<line x1="120" y1="156.5" x2="149" y2="159.4" stroke="var(--annotation)" stroke-width="1.6"/>
+<circle cx="205" cy="162.5" r="3.5" fill="var(--annotation)"/>
+<circle cx="120" cy="156.5" r="3.5" fill="var(--annotation)"/>
+<circle cx="151" cy="158" r="4" fill="var(--blueprint)"/>
+<text x="199" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8320;</text>
+<text x="113" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8321;</text>
+<text x="142" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8322;</text>
+<text x="144" y="147" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">root</text></svg><figcaption>Newton-Raphson: each tangent&#8217;s x-intercept becomes the next guess &#8212; steps shrink rapidly as the iteration closes in on the root.</figcaption></figure>
+          </div>
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Truncation error:</strong> The error caused by replacing an infinite mathematical process with
+                a finite number of steps (e.g. stopping a Taylor series early).</li>
+              <li><strong>Round-off error:</strong> The error introduced because numbers are stored with a finite number
+                of significant digits.</li>
+              <li><strong>Order of convergence:</strong> How fast successive errors shrink: if e(k+1) ≈ C·e(k)^p, p is
+                the order (bisection p = 1, secant p ≈ 1.618, Newton-Raphson p = 2).</li>
+              <li><strong>Bisection method:</strong> A bracketing root-finding method which repeatedly halves an
+                interval containing a sign change; guaranteed to converge.</li>
+              <li><strong>Newton-Raphson method:</strong> An open iterative method that follows the tangent line at the
+                current estimate to find the next, converging quadratically near a simple root.</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Solve x³ − 2x − 5 = 0 by Newton-Raphson from x₀ = 2:
+              f(x) = x³−2x−5, f'(x)=3x²−2
+              $x_1 = 2 - \dfrac{8-4-5}{12-2} = 2.1$
+              $x_2 = 2.1 - \dfrac{9.261-4.2-5}{13.23-2} = 2.0946$
+              $x_3 = 2.0946 - \dfrac{0.0055}{11.16} \approx \mathbf{2.09455}$ ✓ (digits doubling as promised)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 2 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M2</span>
+          <h3>Module 2 — System of Linear Equations</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Gaussian Elimination, LU &amp; Iterative
+            Methods</a>
+        </nav>
+
+        <div class="topic" id="t2">
+          <div class="topic-header">
+            <h3>2. Gaussian Elimination, LU Decomposition &amp; Iterative Methods</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> two philosophies — eliminate variables directly (exact up to
+              round-off, finite steps) or iterate from a guess (cheap per step for huge sparse systems, must converge).
+            </div>
+            <ul>
+              <li><strong>Gaussian elimination:</strong> forward elimination to upper-triangular form using row
+                operations (pivot = divide by diagonal), then back-substitution. Cost ≈ n³/3 multiplications.</li>
+              <li><strong>Gauss-Jordan:</strong> keep eliminating above AND below pivots → identity matrix; right side
+                becomes the answer. No back-substitution needed, ~50 % more work.</li>
+              <li><strong>LU (Crout/Doolittle):</strong> factor A = LU once, then solve LUX = b via two cheap triangular
+                solves — perfect when many b's share one A. Partial pivoting (swap rows for biggest pivot) controls
+                round-off.</li>
+            </ul>
+            <div class="formula-box">Jacobi update: $$x_i^{(k+1)}=\dfrac{1}{a_{ii}}\Big[b_i-\sum_{j\ne
+              i}a_{ij}x_j^{(k)}\Big]$$ (all old values)
+              Gauss-Seidel: same formula but use NEWEST available values → converges ~2× faster.
+              Convergence guaranteed if A is diagonally dominant: $|a_{ii}|>\sum_{j\ne i}|a_{ij}|$.</div>
+          </div>
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Pivoting:</strong> Interchanging equations (rows) during elimination so the pivot element is
+                the largest available in magnitude, minimising round-off amplification.</li>
+              <li><strong>LU decomposition:</strong> Writing A = LU where L is lower- and U upper-triangular, allowing
+                repeated solutions for different right-hand sides with only two triangular solves.</li>
+              <li><strong>Gauss-Seidel method:</strong> An iterative solution scheme that immediately uses updated
+                component values within the same sweep, converging under diagonal dominance.</li>
+              <li><strong>Diagonal dominance:</strong> Property |aii| ≥ Σ|aij| (j ≠ i) for every row, strictly somewhere
+                — a sufficient condition for convergence of Jacobi/Gauss-Seidel iterations.</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Solve x + y = 3, 2x − y = 0 by Gauss-Seidel from (0, 0):
+              From eq1: x = 3 − y → x₁ = 3
+              From eq2: y = 2x − y_old? no — y = 2x exactly: y₁ = 2(3) − 0 = ... use rearranged y = 2x: y₁ = 6?? check:
+              2(3) − 6 = 0 ✓
+              Iterate: x₂ = 3 − 6 = −3, y₂ = −6; x₃ = 9, y₃ = 18 — DIVERGES!
+              Rows are NOT diagonally dominant (row2: |−1| &lt; 2). Swap equation order:
+              now x from eq(2x−y=0): x = y/2 → x₁ = 0; y = 3 − x → y₁ = 3; x₂ = 1.5, y₂ = 1.5; x₃ = 0.75...→ converging
+              to (1, 2) ✓
+              Lesson: equation ORDER decides convergence — reorder for dominance.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 3 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M3</span>
+          <h3>Module 3 — Interpolation</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lagrange &amp; Newton's Difference
+            Formulas</a>
+        </nav>
+
+        <div class="topic" id="t3">
+          <div class="topic-header">
+            <h3>3. Lagrange &amp; Newton's Difference Formulas</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> interpolation draws the unique polynomial through your data
+              points and reads between them. Equal spacing? Newton's forward/backward saves work. Uneven spacing?
+              Lagrange or divided differences.</div>
+            <ul>
+              <li><strong>Lagrange (unequal spacing friendly):</strong></li>
+            </ul>
+            <div class="formula-box">$P(x)=\sum_{k} y_k\prod_{j\ne k}\dfrac{x-x_j}{x_k-x_j}$ — no table needed, weights
+              built straight from nodes.</div>
+            <ul>
+              <li><strong>Divided differences:</strong> build a triangle: first column f[x_i,x_j] = (f_j−f_i)/(x_j−x_i);
+                higher columns repeat on shorter intervals. Top entries become coefficients of Newton's
+                divided-difference polynomial.</li>
+              <li><strong>Equal spacing shortcuts:</strong> define Δ (forward) and ∇ (backward) differences; then:</li>
+            </ul>
+            <div class="formula-box">Newton forward (near top): $P(x_0+hu)=y_0+u\Delta
+              y_0+\dfrac{u(u-1)}{2!}\Delta^2y_0+\dfrac{u(u-1)(u-2)}{3!}\Delta^3y_0+\cdots$
+              Newton backward (near bottom): replace u→v measured from last node with ∇ differences.</div>
+            <ul>
+              <li><strong>Choosing:</strong> interpolate close to the START → forward; close to END → backward; middle →
+                central/Stirling (beyond scope) or fit divided difference.</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Interpolation:</strong> Estimating the value of a function between known tabulated points
+                using a polynomial fitted through those points.</li>
+              <li><strong>Shift operator Δ:</strong> Δy(x) = y(x+h); repeated application builds the forward-difference
+                table used in Newton's formulas.</li>
+              <li><strong>Divided difference:</strong> The coefficient f[x₀,…,xₖ] defined recursively as (f[x₁,…,xₖ] −
+                f[x₀,…,xₖ₋₁])/(xₖ − x₀), symmetric in its arguments.</li>
+              <li><strong>Lagrange interpolation:</strong> Direct construction of the interpolating polynomial as a
+                weighted sum of node-specific basis polynomials, valid for unequal spacing.</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Points (1, 1), (2, 8), (3, 27) — estimate f(2.5) by Lagrange:
+              $P=\dfrac{(2.5-2)(2.5-3)}{(1-2)(1-3)}(1)+\dfrac{(2.5-1)(2.5-3)}{(2-1)(2-3)}(8)+\dfrac{(2.5-1)(2.5-2)}{(3-1)(3-2)}(27)$
+              = 0.125(1) + 0.75(8) + 0.125·? recompute third weight: (1.5×0.5)/2 = 0.375 → 0.375×27 = 10.125
+              Total = 0.125 + 6 + 10.125 = $\mathbf{16.25}$ — exact, since data came from x³ and P is cubic-degree ≤ 2?
+              (16.25 vs true 15.625 shows quadratic fit limitation — good discussion point.)</div>
+          </div>
+        </div>
+      </div>
+      <!-- MODULE 4 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M4</span>
+          <h3>Module 4 — Differentiation &amp; Integration</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Trapezoidal &amp; Simpson's Rules</a>
+        </nav>
+
+        <div class="topic" id="t4">
+          <div class="topic-header">
+            <h3>4. Differentiation &amp; Integration — Newton-Cotes Rules</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: Topic
+                3</span></div>
+          </div>
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes
+              (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step
+              size h.</div>
+            <ul>
+              <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of
+                the function:
+            </ul>
+            <div class="formula-box">$f'(x_0)=\dfrac{1}{h}\Big[\Delta
+              y_0-\tfrac{1}{2}\Delta^2y_0+\tfrac{1}{3}\Delta^3y_0-\cdots\Big]$ — derivative at a tabular point.</div>
+            <ul>
+              <li><strong>Trapezoidal rule:</strong> join points with straight lines (works with ANY number of
+                intervals):</li>
+            </ul>
+            <div class="formula-box">$I\approx\dfrac{h}{2}\big[y_0+2(y_1+y_2+\cdots+y_{n-1})+y_n\big]$,
+              $h=\dfrac{b-a}{n}$
+              Error $\propto h^{2}$ · exact for straight lines only.</div>
+            <ul>
+              <li><strong>Simpson's 1/3:</strong> pass parabolas through triplets of points — n must be EVEN:</li>
+              <li><strong>Simpson's 3/8:</strong> cubics through quads — n must be a multiple of 3:</li>
+            </ul>
+            <div class="formula-box">$I\approx\dfrac{h}{3}\big[y_0+4(y_{odd})+2(y_{even,\,interior})+y_n\big]$ · error
+              $\propto h^{4}$ · exact up to cubic.
+              $I\approx\dfrac{3h}{8}\big[y_0+3(y_1{+}y_2)+2y_3+3(y_4{+}y_5)+2y_6+\cdots+y_n\big]$</div>
+            <figure class="figure"><svg viewBox="0 0 245 160" role="img" aria-label="Trapezoidal rule"><line x1="28" y1="145" x2="232" y2="145" stroke="var(--ink-3)" stroke-width="1.2"/>
+<path d="M35 128 C80 60 140 42 225 38" stroke="var(--blueprint)" fill="none" stroke-width="1.8"/>
+<polygon points="35,128 95,88 95,145 35,145" fill="var(--blueprint-soft)" opacity="0.7"/>
+<polygon points="95,88 160,52 160,145 95,145" fill="var(--blueprint-soft)" opacity="0.7"/>
+<polygon points="160,52 225,39 225,145 160,145" fill="var(--blueprint-soft)" opacity="0.7"/>
+<line x1="95" y1="30" x2="95" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
+<line x1="160" y1="26" x2="160" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
+<line x1="225" y1="24" x2="225" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
+<text x="98" y="24" font-size="11" fill="var(--ink-3)" font-family="var(--mono)">f(x)</text>
+<text x="60" y="136" font-size="10.5" fill="var(--annotation-ink)" font-family="var(--mono)">chords cut under the curve</text></svg><figcaption>Trapezoidal rule joins sample points with straight chords &#8212; on a convex curve every strip loses a sliver of area; Simpson&#8217;s parabolas hug the curve and kill most of that error.</figcaption></figure>
+            <ul>
+              <li><strong>Picking a rule:</strong> Simpson 1/3 is the default exam choice (check even intervals!);
+                trapezoidal when intervals are odd or data noisy; Richardson/Romberg = combine two h values to kill
+                leading error term (extra credit).</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Newton-Cotes formulas:</strong> A family of integration rules that replace f(x) between
+                equally-spaced nodes by an interpolating polynomial of degree n and integrate that exactly.</li>
+              <li><strong>Trapezoidal rule:</strong> Newton-Cotes rule with n = 1 — area under straight chords
+                connecting consecutive data points.</li>
+              <li><strong>Simpson's one-third rule:</strong> Newton-Cotes rule with n = 2 — integrates quadratic
+                interpolants exactly; requires an even number of equal intervals.</li>
+              <li><strong>Degree of precision:</strong> The highest polynomial degree a quadrature rule integrates
+                exactly (trapezoidal: 1; Simpson 1/3: 3).</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Evaluate $I=\int_0^1\dfrac{dx}{1+x^2}$ (exact π/4 = 0.785398) with h = 0.25:
+              y values: 1, 0.9412, 0.8, 0.6400, 0.5
+              Trapezoid: $\frac{0.25}{2}[1+2(0.9412+0.8+0.64)+0.5]=0.125\times6.2624=\mathbf{0.7828}$
+              Simpson 1/3: $\frac{0.25}{3}[1+4(0.9412+0.64)+2(0.8)+0.5]$
+              $=\frac{0.25}{3}[1+6.3248+1.6+0.5]=\frac{2.3549}{3}\times?$ compute: sum=9.4248×0.08333=\mathbf{0.7854}$ ✓
+              matches π/4 to 4 decimals.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 5 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M5</span>
+          <h3>Module 5 — Ordinary Differential Equations</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 5 · Topics</div><a href="#t5">5 · Euler, Modified Euler &amp; Runge-Kutta</a>
+        </nav>
+
+        <div class="topic" id="t5">
+          <div class="topic-header">
+            <h3>5. Solving y' = f(x, y) — Euler to Runge-Kutta 4</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: Topic
+                4</span></div>
+          </div>
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> march forward in small steps h: at each point ask "which way
+              is the solution heading?" (slope) and step there. Better methods just ask the slope more cleverly before
+              committing.</div>
+            <ul>
+              <li><strong>Euler's method:</strong> follow the tangent blindly — cheap, order 1, drifts badly unless h
+                tiny:</li>
+              <li><strong>Modified Euler (Heun):</strong> predict with Euler, correct using the average of start/end
+                slopes — order 2 predictor-corrector:</li>
+            </ul>
+            <div class="formula-box">Euler: $y_{n+1}=y_n+h\,f(x_n,y_n)$
+              Heun: $\tilde y=y_n+h f(x_n,y_n)$ then $y_{n+1}=y_n+\dfrac{h}{2}\big[f(x_n,y_n)+f(x_{n+1},\tilde y)\big]$
+              RK2 (general midpoint form): $y_{n+1}=y_n+k_2$ with $k_1=hf(x_n,y_n)$,
+              $k_2=hf(x_n+\tfrac{h}{2},y_n+\tfrac{k_1}{2})$
+              Runge-Kutta 4 (the workhorse, order 4):
+              $$k_1=hf(x_n,y_n)\quad k_2=hf\!\big(x_n+\tfrac{h}{2},y_n+\tfrac{k_1}{2}\big)$$
+              $$k_3=hf\!\big(x_n+\tfrac{h}{2},y_n+\tfrac{k_2}{2}\big)\quad k_4=hf(x_n+h,y_n+k_3)$$
+              $$y_{n+1}=y_n+\tfrac{1}{6}(k_1+2k_2+2k_3+k_4)$$
+              RK4 needs no derivatives beyond f itself and no starting values — why it beats multi-step methods in
+              coursework.</div>
+          </div>
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Initial-value problem:</strong> An ODE together with enough starting conditions y(x₀) = y₀ to
+                pin down a unique solution, solved by marching forward in x.</li>
+              <li><strong>Euler's method:</strong> First-order single-step method advancing along the tangent at each
+                point: y(n+1) = yn + h·f(xn, yn).</li>
+              <li><strong>Predictor-corrector:</strong> A scheme that first estimates (predicts) the next value with one
+                formula, then refines it (corrects) using another, e.g. modified Euler.</li>
+              <li><strong>Runge-Kutta method:</strong> A single-step method built from several weighted slope
+                evaluations inside each step, achieving high order without higher derivatives; RK4 has fourth-order
+                accuracy.</li>
+              <li><strong>Local truncation error:</strong> Error committed in a single step assuming previous values
+                were exact; global error accumulates these over the interval.</li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">dy/dx = y, y(0) = 1, h = 0.1 — compare methods at x = 0.1 (true e^0.1 = 1.105171):
+              Euler: y₁ = 1 + 0.1(1) = \mathbf{1.100000} (error 5.2e-3)
+              Modified Euler: ŷ = 1.1; y₁ = 1 + 0.05(1 + 1.1) = \mathbf{1.105000} (error 1.7e-4)
+              RK4: k₁=0.1, k₂=k₃=hf(0.05, 1.05)=0.105, k₄=hf(0.1, 1.105)=0.1105
+              y₁ = 1 + (1/6)[0.1+2(0.105)+2(0.105)+0.1105] = 1 + (1/6)(0.6305) = \mathbf{1.105083}
+              (error 8.8e-5 at half the Heun cost per order — RK4 earns its reputation)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHEAT SHEET -->
+      <div class="topic" id="cheat-sheet">
+        <div class="topic-header">
+          <h3>⚡ Quick Revision Cheat Sheet</h3>
+        </div>
+        <div class="subsection">
+          <h4>Formulas by Module</h4>
+          <details id="cheat-m1" open>
+            <summary><strong>M1 — Roots</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box">Newton-Raphson: $x_{i+1}=x_i-\dfrac{f(x_i)}{f'(x_i)}$ (order 2)
+                  Bisection halves bracket each step (order 1)</div>
+              </div>
+              <div>
+                <div class="formula-box">Secant uses two past points, no derivative
+                  Fixed point x=g(x) converges iff |g'|&lt;1
+                  Orders: bisection 1 · secant 1.62 · NR 2</div>
+              </div>
+            </div>
+          </details>
+          <details id="cheat-m2" open>
+            <summary><strong>M2 — Linear Systems</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box">Jacobi: all-old values in update
+                  Gauss-Seidel: newest values immediately (~2× faster)</div>
+              </div>
+              <div>
+                <div class="formula-box">Converges if diagonally dominant $|a_{ii}|&gt;\sum|a_{ij}|$
+                  A = LU → two triangular solves per new b</div>
+              </div>
+            </div>
+          </details>
+          <details id="cheat-m3" open>
+            <summary><strong>M3 — Interpolation</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box">Lagrange: $P=\sum y_k\prod_{j\ne k}\dfrac{x-x_j}{x_k-x_j}$
+                  Divided differences build Newton coefficients</div>
+              </div>
+              <div>
+                <div class="formula-box">Forward near top: u = (x−x₀)/h with Δ terms
+                  Backward near bottom: ∇ terms from last node</div>
+              </div>
+            </div>
+          </details>
+          <details id="cheat-m4" open>
+            <summary><strong>M4 — Integration</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box">Trapezoid: $\frac{h}{2}[y_0+2\Sigma y_{int}+y_n]$, any n
+                  Simpson ⅓: $\frac{h}{3}[y_0+4y_{odd}+2y_{even}+y_n]$, n EVEN</div>
+              </div>
+              <div>
+                <div class="formula-box">Simpson ⅜: $\frac{3h}{8}[\dots]$, n multiple of 3
+                  Precision degree: trap 1 · Simpson 3</div>
+              </div>
+            </div>
+          </details>
+          <details id="cheat-m5" open>
+            <summary><strong>M5 — ODEs</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box">Euler: $y_{n+1}=y_n+hf(x_n,y_n)$
+                  Heun: average start/end slopes (order 2)</div>
+              </div>
+              <div>
+                <div class="formula-box">RK4: $y_{n+1}=y_n+\tfrac{1}{6}(k_1+2k_2+2k_3+k_4)$
+                  k₂,k₃ at midpoint, k₄ at full step (order 4)</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>

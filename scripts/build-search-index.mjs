@@ -5,6 +5,9 @@ const SLUGS = {
   fm: "Fluid Mechanics",
   som: "Strength of Materials",
   thermo: "Thermodynamics",
+  materials: "Materials Engineering",
+  manufacturing: "Manufacturing Processes",
+  numerical: "Numerical Methods",
 };
 
 function isEl(n) {

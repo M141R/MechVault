@@ -14,7 +14,7 @@ if (!subject || !mod) {
 
 const shortTitle = mod.title.replace(/^Module \d+ — /, "");
 const pageTitle = `${shortTitle} — ${subject.name} | MechVault`;
-const modpyq = subject.slug === "fm" ? subject.content.modpyqCards[id - 1] ?? null : null;
+const modpyq = subject.content.modpyqCards[id - 1] ?? null;
 const prev = getModule(subject, id - 1);
 const next = getModule(subject, id + 1);
 ---
@@ -29,10 +29,19 @@ const next = getModule(subject, id + 1);
       <span class="mchip">M{id}</span>
       <h1>{shortTitle}</h1>
       <p>{mod.topics.map((t) => t.label).join(" · ")}</p>
+      <a class="module-cheat-link" href={`/${subject.slug}#cheat-m${id}`}>⚡ Module {id} formulas on the cheat sheet</a>
     </div>
   </div>
 
   <div class="container module-page-body">
+    {mod.topics.length > 0 && (
+      <nav class="toc">
+        <div class="toc-label">Module {id} · Topics</div>
+        {mod.topics.map((t) => (
+          <a href={`#${t.id}`}>{t.label}</a>
+        ))}
+      </nav>
+    )}
     <Fragment set:html={mod.html} />
   </div>
 

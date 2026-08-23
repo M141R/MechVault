@@ -14,13 +14,6 @@
   "b": "Syllabus for Fluid Mechanics (BIT Mesra 3rd semester, MO 2022–2025)."
  },
  {
-  "t": "Fluid Mechanics — Cheat Sheet",
-  "s": "Fluid Mechanics · Cheat Sheet",
-  "u": "/fm",
-  "a": "cheat",
-  "b": "Cheat Sheet for Fluid Mechanics (BIT Mesra 3rd semester, MO 2022–2025)."
- },
- {
   "t": "Fluid Mechanics — Previous Year Papers",
   "s": "Fluid Mechanics · Previous Year Papers",
   "u": "/fm",
@@ -39,49 +32,49 @@
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t1",
-  "b": "1. Continuum Concept ⏱ 15 min 📄 Bansal Ch.1 §1.1–1.3 🏆 2 marks 🔗 Prereq: None 📝 Theory Notes Real fluids are molecular , but we treat them as continuum when studying macroscopi"
+  "b": "1. Continuum Concept ⏱ 15 min 📄 Bansal Ch.1 §1.1–1.3 🏆 2 marks 🔗 Prereq: None 📖 Exam Definitions — quote these in your answers Continuum: matter treated as perfectly continuous"
  },
  {
   "t": "2 · Fluid Properties",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t2",
-  "b": "2. Fluid Properties ⏱ 90 min 📄 Bansal Ch.1 §1.4–1.9 🏆 3–5 marks 📝 Density, Specific Weight, Specific Gravity Property Symbol SI Unit Formula Mass density ρ kg/m³ ρ = m/V Specifi"
+  "b": "2. Fluid Properties ⏱ 90 min 📄 Bansal Ch.1 §1.4–1.9 🏆 3–5 marks 📖 Exam Definitions — quote these in your answers Specific weight gamma = weight per unit volume = rho*g. Surface "
  },
  {
   "t": "3 · Pressure & Pascal's Law",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t3",
-  "b": "3. Pressure & Pascal's Law ⏱ 30 min 📄 Bansal Ch.2 §2.1–2.3 🏆 2–3 marks 📝 Theory Notes Pascal's Law: Pressure at any point in a static fluid is equal in all directions . p = γh ="
+  "b": "3. Pressure & Pascal's Law ⏱ 30 min 📄 Bansal Ch.2 §2.1–2.3 🏆 2–3 marks 📖 Exam Definitions — quote these in your answers Pascal's law: pressure applied to confined fluid transmit"
  },
  {
   "t": "4 · Total Pressure on Plane Surfaces",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t4",
-  "b": "4. Total Pressure on Plane Surfaces ⏱ 30 min 📄 Bansal Ch.2 §2.4 🏆 5 marks 📝 Theory Notes $$P = \\rho g A \\bar{h}$$ P = total pressure force (N) · A = area (m²) · h̄ = depth of ce"
+  "b": "4. Total Pressure on Plane Surfaces ⏱ 30 min 📄 Bansal Ch.2 §2.4 🏆 5 marks 📖 Exam Definitions — quote these in your answers Total pressure: resultant hydrostatic force on a plane"
  },
  {
   "t": "5 · Center of Pressure",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t5",
-  "b": "5. Center of Pressure ⏱ 45 min 📄 Bansal Ch.2 §2.5 🏆 5–7 marks 📝 Theory Notes $$h* = \\bar{h} + I_G / (A \\cdot \\bar{h})$$ h* = depth of center of pressure · I_G = moment of inerti"
+  "b": "5. Center of Pressure ⏱ 45 min 📄 Bansal Ch.2 §2.5 🏆 5–7 marks 📖 Exam Definitions — quote these in your answers Centre of pressure for inclined plane: h* = hbar + I_G*sin^2(theta"
  },
  {
   "t": "6 · Buoyancy, Archimedes' Principle & Metacentre",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t6",
-  "b": "6. Buoyancy, Archimedes' Principle & Metacentre ⏱ 45 min 📄 Bansal Ch.2 §2.6–2.7 🏆 5 marks 📝 Theory Notes Buoyant Force B = ρ_fluid × g × V_displaced Direction: vertically upward"
+  "b": "6. Buoyancy, Archimedes' Principle & Metacentre ⏱ 45 min 📄 Bansal Ch.2 §2.6–2.7 🏆 5 marks 📖 Exam Definitions — quote these in your answers Buoyancy: upward force equal to weight"
  },
  {
   "t": "7 · Pressure Measurement — Manometers",
   "s": "Fluid Mechanics · Module 1",
   "u": "/fm/module/1",
   "a": "t7",
-  "b": "7. Pressure Measurement — Manometers ⏱ 60 min 📄 Bansal Ch.2 §2.8–2.12 🏆 5 marks 📝 Theory Notes Piezometer tube $$p = \\rho g h$$ Open tube at the point of measurement. Cannot mea"
+  "b": "7. Pressure Measurement — Manometers ⏱ 60 min 📄 Bansal Ch.2 §2.8–2.12 🏆 5 marks 📖 Exam Definitions — quote these in your answers Manometer: pressure measured by balancing agains"
  },
  {
   "t": "Module 2 — Kinematics & Dynamics",
@@ -95,14 +88,14 @@
   "s": "Fluid Mechanics · Module 2",
   "u": "/fm/module/2",
   "a": "t8",
-  "b": "8. Stream Lines, Flow Types & Continuity ⏱ 60 min 📄 Bansal Ch.5–6 🏆 5 marks 🔗 Prereq: None 📝 Theory Notes Concept Definition Property Stream line Line tangent to velocity vecto"
+  "b": "8. Stream Lines, Flow Types & Continuity ⏱ 60 min 📄 Bansal Ch.5–6 🏆 5 marks 🔗 Prereq: None 📖 Exam Definitions — quote these in your answers Streamline: curve everywhere tangent"
  },
  {
   "t": "9 · Euler's Equation & Bernoulli's Theorem",
   "s": "Fluid Mechanics · Module 2",
   "u": "/fm/module/2",
   "a": "t9",
-  "b": "9. Euler's Equation & Bernoulli's Theorem ⏱ 60 min 📄 Bansal Ch.5 🏆 3–5 marks 🔗 Prereq: Continuity 📝 Theory Notes Euler's equation of motion (along a streamline, ideal fluid): d"
+  "b": "9. Euler's Equation & Bernoulli's Theorem ⏱ 60 min 📄 Bansal Ch.5 🏆 3–5 marks 🔗 Prereq: Continuity 📖 Exam Definitions — quote these in your answers Bernoulli's theorem: steady, "
  },
  {
   "t": "Module 3 — Closed Conduit Flow",
@@ -116,35 +109,35 @@
   "s": "Fluid Mechanics · Module 3",
   "u": "/fm/module/3",
   "a": "t10",
-  "b": "10. Venturimeter, Orifice Meter, Losses & Boundary Layer ⏱ 90 min 📄 Bansal Ch.5–7 🏆 5 marks 📝 Theory Notes Venturimeter Q = C_d · a₁a₂ / √(a₁² − a₂²) · √(2gh) a₁ = inlet area, a"
+  "b": "10. Venturimeter, Orifice Meter, Losses & Boundary Layer ⏱ 90 min 📄 Bansal Ch.5–7 🏆 5 marks 📖 Exam Definitions — quote these in your answers Venturimeter: converging-diverging d"
  },
  {
   "t": "Module 4 — Hydraulic Turbines",
   "s": "Fluid Mechanics · Module 4",
   "u": "/fm/module/4",
   "a": "",
-  "b": "M4 Module 4 — Hydraulic Turbines Module 4 · Topics 11 · Hydraulic Turbines 11. Hydraulic Turbines ⏱ 90 min 📄 Bansal Ch. 15–17 🏆 5 marks · END sem 📝 Theory Notes Classification o"
+  "b": "M4 Module 4 — Hydraulic Turbines Module 4 · Topics 11 · Hydraulic Turbines 11. Hydraulic Turbines ⏱ 90 min 📄 Bansal Ch. 15–17 🏆 5 marks · END sem 📖 Exam Definitions — quote thes"
  },
  {
   "t": "11 · Hydraulic Turbines",
   "s": "Fluid Mechanics · Module 4",
   "u": "/fm/module/4",
   "a": "t11",
-  "b": "11. Hydraulic Turbines ⏱ 90 min 📄 Bansal Ch. 15–17 🏆 5 marks · END sem 📝 Theory Notes Classification of turbines Impulse turbines (Pelton): all head converted to kinetic energy "
+  "b": "11. Hydraulic Turbines ⏱ 90 min 📄 Bansal Ch. 15–17 🏆 5 marks · END sem 📖 Exam Definitions — quote these in your answers Impulse turbine: all pressure drop occurs in the nozzle; "
  },
  {
   "t": "Module 5 — Pumps",
   "s": "Fluid Mechanics · Module 5",
   "u": "/fm/module/5",
   "a": "",
-  "b": "M5 Module 5 — Pumps Module 5 · Topics 12 · Pumps — Centrifugal & Reciprocating 12. Pumps — Centrifugal & Reciprocating ⏱ 45 min 📄 Bansal Ch.16–17 🏆 5 marks · END sem 📝 Theory No"
+  "b": "M5 Module 5 — Pumps Module 5 · Topics 12 · Pumps — Centrifugal & Reciprocating 12. Pumps — Centrifugal & Reciprocating ⏱ 45 min 📄 Bansal Ch.16–17 🏆 5 marks · END sem 📖 Exam Defi"
  },
  {
   "t": "12 · Pumps — Centrifugal & Reciprocating",
   "s": "Fluid Mechanics · Module 5",
   "u": "/fm/module/5",
   "a": "t12",
-  "b": "12. Pumps — Centrifugal & Reciprocating ⏱ 45 min 📄 Bansal Ch.16–17 🏆 5 marks · END sem 📝 Theory Notes Classification of pumps Rotodynamic (centrifugal) : energy imparted by a ro"
+  "b": "12. Pumps — Centrifugal & Reciprocating ⏱ 45 min 📄 Bansal Ch.16–17 🏆 5 marks · END sem 📖 Exam Definitions — quote these in your answers Manometric head Hm: total head developed "
  },
  {
   "t": "Strength of Materials — Syllabus",
@@ -152,13 +145,6 @@
   "u": "/som",
   "a": "syllabus",
   "b": "Syllabus for Strength of Materials (BIT Mesra 3rd semester, MO 2022–2025)."
- },
- {
-  "t": "Strength of Materials — Cheat Sheet",
-  "s": "Strength of Materials · Cheat Sheet",
-  "u": "/som",
-  "a": "cheat",
-  "b": "Cheat Sheet for Strength of Materials (BIT Mesra 3rd semester, MO 2022–2025)."
  },
  {
   "t": "Strength of Materials — Previous Year Papers",
@@ -179,21 +165,21 @@
   "s": "Strength of Materials · Module 1",
   "u": "/som/module/1",
   "a": "t1",
-  "b": "1. Normal & Shear Stress on an Inclined Plane ⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📝 Theory Notes Given the plane-stress state (σₓ, σᵧ, τₓᵧ) on x–y faces, find the stresses on a pl"
+  "b": "1. Normal & Shear Stress on an Inclined Plane ⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📖 Exam Definitions — quote these in your answers Normal stress: intensity of force acting perpend"
  },
  {
   "t": "2 · Principal Stresses, Planes & Mohr's Circle",
   "s": "Strength of Materials · Module 1",
   "u": "/som/module/1",
   "a": "t2",
-  "b": "2. Principal Stresses, Planes & Mohr's Circle ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 1 📝 Theory Notes Principal stresses: σ₁,₂ = (σₓ + σᵧ)/2 ± √[ ((σₓ − σᵧ)/2)² + τₓᵧ² ] Orientation"
+  "b": "2. Principal Stresses, Planes & Mohr's Circle ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 1 📖 Exam Definitions — quote these in your answers Principal planes: planes carrying zero shear "
  },
  {
   "t": "3 · Generalized Hooke's Law & Strain Analysis",
   "s": "Strength of Materials · Module 1",
   "u": "/som/module/1",
   "a": "t3",
-  "b": "3. Generalized Hooke's Law & Strain Analysis ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 2 📝 Theory Notes εₓ = (σₓ − νσᵧ)/E (plane stress) εᵧ = (σᵧ − νσₓ)/E γₓᵧ = τₓᵧ / G , G = E / [2(1+"
+  "b": "3. Generalized Hooke's Law & Strain Analysis ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 2 📖 Exam Definitions — quote these in your answers Generalized Hooke's law: relations linking all"
  },
  {
   "t": "Module 2 — Bending & Shear",
@@ -207,21 +193,21 @@
   "s": "Strength of Materials · Module 2",
   "u": "/som/module/2",
   "a": "t4",
-  "b": "4. Shear Force & Bending Moment Diagrams ⏱ 60 min 🏆 2–4 marks 🔗 Prereq: None 📝 Theory Notes Relationships between load, shear and bending moment (MO2025 END Q.2(a)): dV/dx = −w("
+  "b": "4. Shear Force & Bending Moment Diagrams ⏱ 60 min 🏆 2–4 marks 🔗 Prereq: None 📖 Exam Definitions — quote these in your answers Shear force at a section: algebraic sum of transver"
  },
  {
   "t": "5 · Flexure Formula & Bending Stress",
   "s": "Strength of Materials · Module 2",
   "u": "/som/module/2",
   "a": "t5",
-  "b": "5. Flexure Formula & Bending Stress ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes $$M/I = \\sigma/y = E/R$$ M = bending moment · I = second moment of area about NA · σ = be"
+  "b": "5. Flexure Formula & Bending Stress ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 4 📖 Exam Definitions — quote these in your answers Flexure formula: M/I = sigma/y = E/R — bending stress v"
  },
  {
   "t": "6 · Shear Stress in Beams",
   "s": "Strength of Materials · Module 2",
   "u": "/som/module/2",
   "a": "t6",
-  "b": "6. Shear Stress in Beams ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes $$\\tau = V\\cdot Aȳ / (I\\cdot b)$$ V = shear force at section · Aȳ = first moment of area above the l"
+  "b": "6. Shear Stress in Beams ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📖 Exam Definitions — quote these in your answers Shear stress distribution in beams: tau = V*A*ybar/(I*b), paraboli"
  },
  {
   "t": "Module 3 — Deflection & Columns",
@@ -235,49 +221,49 @@
   "s": "Strength of Materials · Module 3",
   "u": "/som/module/3",
   "a": "t7",
-  "b": "7. Beam Deflection — Macaulay's Method ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 4–5 📝 Theory Notes EI d²y/dx² = M(x) Macaulay's method: express M(x) in one equation with step bracke"
+  "b": "7. Beam Deflection — Macaulay's Method ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 4–5 📖 Exam Definitions — quote these in your answers Macaulay's method: double integration of EI·y\" ="
  },
  {
   "t": "8 · Euler Buckling of Columns",
   "s": "Strength of Materials · Module 3",
   "u": "/som/module/3",
   "a": "t8",
-  "b": "8. Euler Buckling of Columns ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes P_cr = π²EI / L_eff² L_eff = effective length (both ends pinned: L ; one fixed one free: 2L ; bo"
+  "b": "8. Euler Buckling of Columns ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📖 Exam Definitions — quote these in your answers Euler buckling load: P_cr = pi^2*E*I / L_eff^2 — the axial loa"
  },
  {
   "t": "8b · Torsion of Circular Shafts",
   "s": "Strength of Materials · Module 3",
   "u": "/som/module/3",
   "a": "t8b",
-  "b": "8b. Torsion of Circular Shafts ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes Torsion formula: T/J = τ/r = Gθ/L Polar second moment J — solid shaft: J = πd⁴/32 ; hollow sha"
+  "b": "8b. Torsion of Circular Shafts ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📖 Exam Definitions — quote these in your answers Torsion equation: T/J = tau/r = G*theta/L for circular shaft"
  },
  {
   "t": "Module 4 — Curved Beams & Shear Center",
   "s": "Strength of Materials · Module 4",
   "u": "/som/module/4",
   "a": "",
-  "b": "M4 Module 4 — Curved Beams & Shear Center Module 4 · Topics 9 · Curved Beams & Shear Center 9. Curved Beams & Shear Center ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes Cu"
+  "b": "M4 Module 4 — Curved Beams & Shear Center Module 4 · Topics 9 · Curved Beams & Shear Center 9. Curved Beams & Shear Center ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📖 Exam Definition"
  },
  {
   "t": "9 · Curved Beams & Shear Center",
   "s": "Strength of Materials · Module 4",
   "u": "/som/module/4",
   "a": "t9",
-  "b": "9. Curved Beams & Shear Center ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📝 Theory Notes Curved beams For a curved beam (neutral axis shifted towards centre of curvature), the stress "
+  "b": "9. Curved Beams & Shear Center ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 5 📖 Exam Definitions — quote these in your answers Winkler-Bach theory: curved-beam stress distribution is hype"
  },
  {
   "t": "Module 5 — Thin & Thick Cylinders",
   "s": "Strength of Materials · Module 5",
   "u": "/som/module/5",
   "a": "",
-  "b": "M5 Module 5 — Thin & Thick Cylinders Module 5 · Topics 10 · Thin & Thick Cylinders 10. Thin & Thick Cylinders ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 1 📝 Theory Notes Thin cylinder"
+  "b": "M5 Module 5 — Thin & Thick Cylinders Module 5 · Topics 10 · Thin & Thick Cylinders 10. Thin & Thick Cylinders ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 1 📖 Exam Definitions — quote t"
  },
  {
   "t": "10 · Thin & Thick Cylinders",
   "s": "Strength of Materials · Module 5",
   "u": "/som/module/5",
   "a": "t10",
-  "b": "10. Thin & Thick Cylinders ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 1 📝 Theory Notes Thin cylinder (t < d/20) Hoop stress: σ_h = p·d / (2t) Longitudinal: σ_l = p·d / (4t) Max shear:"
+  "b": "10. Thin & Thick Cylinders ⏱ 60 min 🏆 5–6 marks 🔗 Prereq: Topic 1 📖 Exam Definitions — quote these in your answers Thin cylinder hoop stress: sigma_h = p*d/(2t) — circumferentia"
  },
  {
   "t": "Thermodynamics — Syllabus",
@@ -287,13 +273,6 @@
   "b": "Syllabus for Thermodynamics (BIT Mesra 3rd semester, MO 2022–2025)."
  },
  {
-  "t": "Thermodynamics — Cheat Sheet",
-  "s": "Thermodynamics · Cheat Sheet",
-  "u": "/thermo",
-  "a": "cheat",
-  "b": "Cheat Sheet for Thermodynamics (BIT Mesra 3rd semester, MO 2022–2025)."
- },
- {
   "t": "Thermodynamics — Previous Year Papers",
   "s": "Thermodynamics · Previous Year Papers",
   "u": "/thermo",
@@ -301,108 +280,339 @@
   "b": "Previous Year Papers for Thermodynamics (BIT Mesra 3rd semester, MO 2022–2025)."
  },
  {
-  "t": "Module 1 — Basic Concepts",
+  "t": "Module 1 — Introduction & Fundamental Concepts",
   "s": "Thermodynamics · Module 1",
   "u": "/thermo/module/1",
   "a": "",
-  "b": "M1 Module 1 — Basic Concepts Module 1 · Topics 1 · Systems, Properties & Quasi-static Process 2 · Work, Heat & Point/Path Functions 1. Systems, Properties & Quasi-static Process ⏱ "
+  "b": "M1 Module 1 — Introduction & Fundamental Concepts Module 1 · Topics 1 · Systems, Properties & Equilibrium 2 · Zeroth Law, Ideal Gas & Pure Substances 3 · Work, Heat & Their Compari"
  },
  {
-  "t": "1 · Systems, Properties & Quasi-static Process",
+  "t": "1 · Systems, Properties & Equilibrium",
   "s": "Thermodynamics · Module 1",
   "u": "/thermo/module/1",
   "a": "t1",
-  "b": "1. Systems, Properties & Quasi-static Process ⏱ 45 min 🏆 2–3 marks 🔗 Prereq: None 📝 Theory Notes Macroscopic approach: studies the average behaviour of a large number of molecul"
+  "b": "1. Systems, Properties & Equilibrium ⏱ 45 min 🏆 2–5 marks 🔗 Prereq: None 📝 Theory Notes Big idea: thermodynamics stands on a few carefully chosen words — system, property, proce"
  },
  {
-  "t": "2 · Work, Heat & Point/Path Functions",
+  "t": "2 · Zeroth Law, Ideal Gas & Pure Substances",
   "s": "Thermodynamics · Module 1",
   "u": "/thermo/module/1",
   "a": "t2",
-  "b": "2. Work, Heat & Point/Path Functions ⏱ 30 min 🏆 2–3 marks 📝 Theory Notes Work (thermo definition, MO2023 Q.1(a)): energy transfer that crosses the system boundary due to a differ"
+  "b": "2. Zeroth Law, Ideal Gas & Pure Substances ⏱ 60 min 🏆 2–5 marks 🔗 Prereq: Topic 1 📝 Theory Notes Big idea: the Zeroth law gives us temperature, the ideal-gas law links p, V and "
+ },
+ {
+  "t": "3 · Work, Heat & Their Comparison",
+  "s": "Thermodynamics · Module 1",
+  "u": "/thermo/module/1",
+  "a": "t3",
+  "b": "3. Work, Heat & Their Comparison ⏱ 45 min 🏆 2–5 marks 🔗 Prereq: Topic 1 📝 Theory Notes Big idea: work and heat are energy crossing the boundary while things happen. They belong "
  },
  {
   "t": "Module 2 — First Law of Thermodynamics",
   "s": "Thermodynamics · Module 2",
   "u": "/thermo/module/2",
   "a": "",
-  "b": "M2 Module 2 — First Law of Thermodynamics Module 2 · Topics 3 · First Law of Thermodynamics & Internal Energy 4 · Polytropic Process 5 · Steady Flow Energy Equation (SFEE) & Nozzle"
+  "b": "M2 Module 2 — First Law of Thermodynamics Module 2 · Topics 4 · First Law, Internal Energy & Non-flow Processes 5 · Enthalpy & Specific Heats 6 · Control Volume — SFEE & Applicatio"
  },
  {
-  "t": "3 · First Law of Thermodynamics & Internal Energy",
-  "s": "Thermodynamics · Module 2",
-  "u": "/thermo/module/2",
-  "a": "t3",
-  "b": "3. First Law of Thermodynamics & Internal Energy ⏱ 45 min 🏆 2–5 marks 🔗 Prereq: Topic 2 📝 Theory Notes For a process: Q = ΔU + W (closed system, KE/PE neglected) For a cycle: ∮δ"
- },
- {
-  "t": "4 · Polytropic Process",
+  "t": "4 · First Law, Internal Energy & Non-flow Processes",
   "s": "Thermodynamics · Module 2",
   "u": "/thermo/module/2",
   "a": "t4",
-  "b": "4. Polytropic Process ⏱ 45 min 🏆 3–5 marks 🔗 Prereq: Topic 3 📝 Theory Notes PVⁿ = constant (n = polytropic index) Work done: W = (P₁V₁ − P₂V₂)/(n − 1) = mR(T₁ − T₂)/(n − 1) Heat"
+  "b": "4. First Law, Internal Energy & Non-flow Processes ⏱ 75 min 🏆 2–5 marks 🔗 Prereq: Topics 1–3 📝 Theory Notes Big idea: energy is never created or destroyed. Heat added minus work"
  },
  {
-  "t": "5 · Steady Flow Energy Equation (SFEE) & Nozzles",
+  "t": "5 · Enthalpy & Specific Heats",
   "s": "Thermodynamics · Module 2",
   "u": "/thermo/module/2",
   "a": "t5",
-  "b": "5. Steady Flow Energy Equation (SFEE) & Nozzles ⏱ 60 min 🏆 3–5 marks 🔗 Prereq: Topic 3 📝 Theory Notes $$Q̇ - Ẇ = ṁ[(h_{2} - h_{1}) + (V_{2}^{2} - V_{1}^{2})/2 + g(z_{2} - z_{1}"
+  "b": "5. Enthalpy & Specific Heats ⏱ 30 min 🏆 2–3 marks 🔗 Prereq: Topic 4 📝 Theory Notes Big idea: c v heats gas in a locked box; c p heats it under a free piston — so c p is always b"
  },
  {
-  "t": "6 · Steam Properties, Tables & Throttling",
+  "t": "6 · Control Volume — SFEE & Applications",
   "s": "Thermodynamics · Module 2",
   "u": "/thermo/module/2",
   "a": "t6",
-  "b": "6. Steam Properties, Tables & Throttling ⏱ 45 min 🏆 3 marks 🔗 Prereq: Topic 5 📝 Theory Notes Pure substance (MO2024 P1 Q.3(a)): same chemical composition in all phases. Air is n"
+  "b": "6. Control Volume — SFEE & Applications ⏱ 75 min 🏆 3–5 marks 🔗 Prereq: Topics 4–5 📝 Theory Notes Big idea: the steady-flow energy equation is energy bookkeeping for machines: wh"
  },
  {
-  "t": "Module 3 — Second Law",
+  "t": "Module 3 — Second Law of Thermodynamics",
   "s": "Thermodynamics · Module 3",
   "u": "/thermo/module/3",
   "a": "",
-  "b": "M3 Module 3 — Second Law Module 3 · Topics 7 · Second Law & Carnot Cycle 8 · Heat Pump vs Refrigerator 7. Second Law & Carnot Cycle ⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📝 Theory No"
+  "b": "M3 Module 3 — Second Law of Thermodynamics Module 3 · Topics 7 · Limits of First Law · Engines & Fridges · Statements 8 · Carnot Cycle, Theorems & Corollaries 9 · Reversibility & A"
  },
  {
-  "t": "7 · Second Law & Carnot Cycle",
+  "t": "7 · Limits of First Law · Engines & Fridges · Statements",
   "s": "Thermodynamics · Module 3",
   "u": "/thermo/module/3",
   "a": "t7",
-  "b": "7. Second Law & Carnot Cycle ⏱ 45 min 🏆 5 marks 🔗 Prereq: None 📝 Theory Notes Kelvin–Planck: impossible for a heat engine to produce net work while exchanging heat with a single"
+  "b": "7. Limits of First Law · Engines & Fridges · Statements ⏱ 60 min 🏆 2–5 marks 🔗 Prereq: Module 2 📝 Theory Notes Big idea: the first law counts energy but knows no direction — a c"
  },
  {
-  "t": "8 · Heat Pump vs Refrigerator",
+  "t": "8 · Carnot Cycle, Theorems & Corollaries",
   "s": "Thermodynamics · Module 3",
   "u": "/thermo/module/3",
   "a": "t8",
-  "b": "8. Heat Pump vs Refrigerator ⏱ 20 min 🏆 2–3 marks 🔗 Prereq: Topic 7 📝 Theory Notes Both transfer heat from cold to hot using work input — same machine, different purpose. Refrig"
+  "b": "8. Carnot Cycle, Theorems & Corollaries ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 7 📝 Theory Notes Big idea: the Carnot cycle is the best any engine can do between two temperatures — a"
  },
  {
-  "t": "Module 4 — Entropy & Availability",
-  "s": "Thermodynamics · Module 4",
-  "u": "/thermo/module/4",
-  "a": "",
-  "b": "M4 Module 4 — Entropy & Availability Module 4 · Topics 9 · Entropy, Clausius Inequality & Availability 9. Entropy, Clausius Inequality & Availability ⏱ 60 min 🏆 5 marks 🔗 Prereq:"
- },
- {
-  "t": "9 · Entropy, Clausius Inequality & Availability",
-  "s": "Thermodynamics · Module 4",
-  "u": "/thermo/module/4",
+  "t": "9 · Reversibility & Absolute Temperature Scale",
+  "s": "Thermodynamics · Module 3",
+  "u": "/thermo/module/3",
   "a": "t9",
-  "b": "9. Entropy, Clausius Inequality & Availability ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 7 📝 Theory Notes Clausius inequality: ∮δQ/T ≤ 0 (= 0 reversible, < 0 irreversible) Entropy chan"
+  "b": "9. Reversibility & the Absolute Temperature Scale ⏱ 30 min 🏆 2–5 marks 🔗 Prereq: Topic 8 📝 Theory Notes Big idea: a reversible process is one whose movie can be played backwards"
  },
  {
-  "t": "Module 5 — Gas Power Cycles",
+  "t": "Module 4 — Entropy & Exergy",
+  "s": "Thermodynamics · Module 4",
+  "u": "/thermo/module/4",
+  "a": "",
+  "b": "M4 Module 4 — Entropy & Exergy Module 4 · Topics 10 · Entropy, Clausius Inequality & the Entropy Principle 11 · Availability & Exergy 10. Entropy, Clausius Inequality & the Entropy"
+ },
+ {
+  "t": "10 · Entropy, Clausius Inequality & the Entropy Principle",
+  "s": "Thermodynamics · Module 4",
+  "u": "/thermo/module/4",
+  "a": "t10",
+  "b": "10. Entropy, Clausius Inequality & the Entropy Principle ⏱ 90 min 🏆 5 marks 🔗 Prereq: Module 3 📝 Theory Notes Big idea: entropy keeps score of \"spread-out\" energy. The universe'"
+ },
+ {
+  "t": "11 · Availability & Exergy",
+  "s": "Thermodynamics · Module 4",
+  "u": "/thermo/module/4",
+  "a": "t11",
+  "b": "11. Availability & Exergy ⏱ 75 min 🏆 5 marks 🔗 Prereq: Topic 10 📝 Theory Notes Big idea: energy is conserved, but useful work is not. Only the part of heat that could drive a re"
+ },
+ {
+  "t": "Module 5 — Thermodynamic Property Relations",
   "s": "Thermodynamics · Module 5",
   "u": "/thermo/module/5",
   "a": "",
-  "b": "M5 Module 5 — Gas Power Cycles Module 5 · Topics 10 · Otto & Diesel Cycles 10. Otto & Diesel Cycles ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes Syllabus fit: Otto & Dies"
+  "b": "M5 Module 5 — Thermodynamic Property Relations Module 5 · Topics 12 · Maxwell Relations, Clapeyron, c_p−c_v, Joule–Thomson 13 · Supplement — Otto & Diesel Cycles 12. Property Relat"
  },
  {
-  "t": "10 · Otto & Diesel Cycles",
+  "t": "12 · Maxwell Relations, Clapeyron, c_p−c_v, Joule–Thomson",
   "s": "Thermodynamics · Module 5",
   "u": "/thermo/module/5",
-  "a": "t10",
-  "b": "10. Otto & Diesel Cycles ⏱ 45 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes Syllabus fit: Otto & Diesel cycle efficiency derivations are M5 (END sem Q5) — study the derivation "
+  "a": "t12",
+  "b": "12. Property Relations — Maxwell, Clapeyron, c p −c v , Joule–Thomson ⏱ 75 min 🏆 5 marks 🔗 Prereq: Topics 10–11 📝 Theory Notes Big idea: write four short energy equations (\"pote"
+ },
+ {
+  "t": "13 · Supplement — Otto & Diesel Cycles",
+  "s": "Thermodynamics · Module 5",
+  "u": "/thermo/module/5",
+  "a": "t13",
+  "b": "13. Supplement — Air-Standard Cycles: Otto & Diesel ⏱ 60 min 🏆 5 marks 🔗 Prereq: Topic 4 📝 Theory Notes Why this page exists: the printed syllabus puts property relations in Mod"
+ },
+ {
+  "t": "Module 1 — Introduction to Materials & Crystallography",
+  "s": "Materials Engineering · Module 1",
+  "u": "/materials/module/1",
+  "a": "",
+  "b": "M1 Module 1 — Introduction to Materials & Crystallography Module 1 · Topics 1 · Crystals, Defects & Metallography 1. Crystals, Defects & Metallography ⏱ 90 min 🔗 Prereq: None 📝 T"
+ },
+ {
+  "t": "1 · Crystals, Defects & Metallography",
+  "s": "Materials Engineering · Module 1",
+  "u": "/materials/module/1",
+  "a": "t1",
+  "b": "1. Crystals, Defects & Metallography ⏱ 90 min 🔗 Prereq: None 📝 Theory Notes Big idea: properties of metals come from how atoms stack. Learn the stacking rules (crystal structures"
+ },
+ {
+  "t": "Module 2 — Phase Diagrams & the Fe–C System",
+  "s": "Materials Engineering · Module 2",
+  "u": "/materials/module/2",
+  "a": "",
+  "b": "M2 Module 2 — Phase Diagrams & the Fe–C System Module 2 · Topics 2 · Gibbs Rule, Lever Rule & Iron–Carbon Diagram 2. Gibbs Rule, Lever Rule & Iron–Carbon Diagram ⏱ 90 min 🔗 Prereq"
+ },
+ {
+  "t": "2 · Gibbs Rule, Lever Rule & Iron–Carbon Diagram",
+  "s": "Materials Engineering · Module 2",
+  "u": "/materials/module/2",
+  "a": "t2",
+  "b": "2. Gibbs Rule, Lever Rule & Iron–Carbon Diagram ⏱ 90 min 🔗 Prereq: Topic 1 📝 Theory Notes Big idea: a phase diagram is a map telling you which phases exist at any temperature-com"
+ },
+ {
+  "t": "Module 3 — Transformation Curves & Heat Treatment",
+  "s": "Materials Engineering · Module 3",
+  "u": "/materials/module/3",
+  "a": "",
+  "b": "M3 Module 3 — Transformation Curves & Heat Treatment Module 3 · Topics 3 · TTT/CCT & Heat Treatment of Steel 3. TTT/CCT Curves & Heat Treatment of Steel ⏱ 90 min 🔗 Prereq: Topic 2"
+ },
+ {
+  "t": "3 · TTT/CCT & Heat Treatment of Steel",
+  "s": "Materials Engineering · Module 3",
+  "u": "/materials/module/3",
+  "a": "t3",
+  "b": "3. TTT/CCT Curves & Heat Treatment of Steel ⏱ 90 min 🔗 Prereq: Topic 2 📝 Theory Notes Big idea: the Fe–C diagram says WHAT phases are stable; TTT/CCT curves say HOW FAST you must"
+ },
+ {
+  "t": "Module 4 — Types of Alloys & Applications",
+  "s": "Materials Engineering · Module 4",
+  "u": "/materials/module/4",
+  "a": "",
+  "b": "M4 Module 4 — Types of Alloys & Applications Module 4 · Topics 4 · Cast Irons, Steels, Non-Ferrous Alloys & Ceramics 4. Cast Irons, Steels, Non-Ferrous Alloys & Ceramics ⏱ 60 min \ud83d"
+ },
+ {
+  "t": "4 · Cast Irons, Steels, Non-Ferrous Alloys & Ceramics",
+  "s": "Materials Engineering · Module 4",
+  "u": "/materials/module/4",
+  "a": "t4",
+  "b": "4. Cast Irons, Steels, Non-Ferrous Alloys & Ceramics ⏱ 60 min 🔗 Prereq: Topic 2 📝 Theory Notes Big idea: this module is a catalogue with logic — every alloy family exists because"
+ },
+ {
+  "t": "Module 5 — Material Testing Methods",
+  "s": "Materials Engineering · Module 5",
+  "u": "/materials/module/5",
+  "a": "",
+  "b": "M5 Module 5 — Material Testing Methods Module 5 · Topics 5 · Mechanical Testing, Fatigue, Creep & Corrosion 5. Mechanical Testing, Fatigue, Creep & Corrosion ⏱ 75 min 🔗 Prereq: No"
+ },
+ {
+  "t": "5 · Mechanical Testing, Fatigue, Creep & Corrosion",
+  "s": "Materials Engineering · Module 5",
+  "u": "/materials/module/5",
+  "a": "t5",
+  "b": "5. Mechanical Testing, Fatigue, Creep & Corrosion ⏱ 75 min 🔗 Prereq: None 📝 Theory Notes Big idea: design needs numbers and numbers come from tests: pull it (tensile), dent it (h"
+ },
+ {
+  "t": "Module 1 — Casting",
+  "s": "Manufacturing Processes · Module 1",
+  "u": "/manufacturing/module/1",
+  "a": "",
+  "b": "M1 Module 1 — Casting Module 1 · Topics 1 · Sand, Die, Centrifugal & Investment Casting 1. Sand, Die, Centrifugal & Investment Casting ⏱ 75 min 🔗 Prereq: None 📝 Theory Notes Big "
+ },
+ {
+  "t": "1 · Sand, Die, Centrifugal & Investment Casting",
+  "s": "Manufacturing Processes · Module 1",
+  "u": "/manufacturing/module/1",
+  "a": "t1",
+  "b": "1. Sand, Die, Centrifugal & Investment Casting ⏱ 75 min 🔗 Prereq: None 📝 Theory Notes Big idea: casting = pour liquid metal into a shaped cavity and let it freeze. Every variant "
+ },
+ {
+  "t": "Module 2 — Theory of Metal Cutting",
+  "s": "Manufacturing Processes · Module 2",
+  "u": "/manufacturing/module/2",
+  "a": "",
+  "b": "M2 Module 2 — Theory of Metal Cutting Module 2 · Topics 2 · Tool Geometry, Chips, Forces & Tool Life 2. Tool Geometry, Chips, Forces & Tool Life ⏱ 75 min 🔗 Prereq: None 📝 Theory "
+ },
+ {
+  "t": "2 · Tool Geometry, Chips, Forces & Tool Life",
+  "s": "Manufacturing Processes · Module 2",
+  "u": "/manufacturing/module/2",
+  "a": "t2",
+  "b": "2. Tool Geometry, Chips, Forces & Tool Life ⏱ 75 min 🔗 Prereq: None 📝 Theory Notes Big idea: cutting metal = shearing a thin layer ahead of a wedge. Everything — angles, chip typ"
+ },
+ {
+  "t": "Module 3 — Machine Tools",
+  "s": "Manufacturing Processes · Module 3",
+  "u": "/manufacturing/module/3",
+  "a": "",
+  "b": "M3 Module 3 — Machine Tools Module 3 · Topics 3 · Lathe, Shaper, Milling, Drilling & Grinding 3. Lathe, Shaper, Milling, Drilling & Grinding ⏱ 75 min 🔗 Prereq: Topic 2 📝 Theory N"
+ },
+ {
+  "t": "3 · Lathe, Shaper, Milling, Drilling & Grinding",
+  "s": "Manufacturing Processes · Module 3",
+  "u": "/manufacturing/module/3",
+  "a": "t3",
+  "b": "3. Lathe, Shaper, Milling, Drilling & Grinding ⏱ 75 min 🔗 Prereq: Topic 2 📝 Theory Notes Big idea: a machine tool is defined by which motion spins (cutting) and which slides (fee"
+ },
+ {
+  "t": "Module 4 — Metal Deformation Processes",
+  "s": "Manufacturing Processes · Module 4",
+  "u": "/manufacturing/module/4",
+  "a": "",
+  "b": "M4 Module 4 — Metal Deformation Processes Module 4 · Topics 4 · Rolling, Forging, Extrusion & Sheet Metal 4. Rolling, Forging, Extrusion & Sheet-Metal Forming ⏱ 75 min 🔗 Prereq: M"
+ },
+ {
+  "t": "4 · Rolling, Forging, Extrusion & Sheet Metal",
+  "s": "Manufacturing Processes · Module 4",
+  "u": "/manufacturing/module/4",
+  "a": "t4",
+  "b": "4. Rolling, Forging, Extrusion & Sheet-Metal Forming ⏱ 75 min 🔗 Prereq: Materials M3 (recrystallization) 📝 Theory Notes Big idea: forming squeezes metal into shape instead of sha"
+ },
+ {
+  "t": "Module 5 — Welding",
+  "s": "Manufacturing Processes · Module 5",
+  "u": "/manufacturing/module/5",
+  "a": "",
+  "b": "M5 Module 5 — Welding Module 5 · Topics 5 · Gas, Arc, Resistance Welding & Brazing 5. Gas, Arc, Resistance Welding & Soldering/Brazing ⏱ 60 min 🔗 Prereq: None 📝 Theory Notes Big "
+ },
+ {
+  "t": "5 · Gas, Arc, Resistance Welding & Brazing",
+  "s": "Manufacturing Processes · Module 5",
+  "u": "/manufacturing/module/5",
+  "a": "t5",
+  "b": "5. Gas, Arc, Resistance Welding & Soldering/Brazing ⏱ 60 min 🔗 Prereq: None 📝 Theory Notes Big idea: welding melts parent metal (fusion) or squeezes hot plastic metal together (r"
+ },
+ {
+  "t": "Module 1 — Errors & Nonlinear Equations",
+  "s": "Numerical Methods · Module 1",
+  "u": "/numerical/module/1",
+  "a": "",
+  "b": "M1 Module 1 — Errors & Nonlinear Equations Module 1 · Topics 1 · Bisection, Regula-Falsi, Secant & Newton-Raphson 1. Bisection, Regula-Falsi, Secant & Newton-Raphson ⏱ 90 min 🔗 Pr"
+ },
+ {
+  "t": "1 · Bisection, Regula-Falsi, Secant &\n            Newton-Raphson",
+  "s": "Numerical Methods · Module 1",
+  "u": "/numerical/module/1",
+  "a": "t1",
+  "b": "1. Bisection, Regula-Falsi, Secant & Newton-Raphson ⏱ 90 min 🔗 Prereq: None 📝 Theory Notes Big idea: computers cannot solve f(x) = 0 directly — every method here just narrows a b"
+ },
+ {
+  "t": "Module 2 — System of Linear Equations",
+  "s": "Numerical Methods · Module 2",
+  "u": "/numerical/module/2",
+  "a": "",
+  "b": "M2 Module 2 — System of Linear Equations Module 2 · Topics 2 · Gaussian Elimination, LU & Iterative Methods 2. Gaussian Elimination, LU Decomposition & Iterative Methods ⏱ 75 min \ud83d"
+ },
+ {
+  "t": "2 · Gaussian Elimination, LU & Iterative\n            Methods",
+  "s": "Numerical Methods · Module 2",
+  "u": "/numerical/module/2",
+  "a": "t2",
+  "b": "2. Gaussian Elimination, LU Decomposition & Iterative Methods ⏱ 75 min 🔗 Prereq: None 📝 Theory Notes Big idea: two philosophies — eliminate variables directly (exact up to round-"
+ },
+ {
+  "t": "Module 3 — Interpolation",
+  "s": "Numerical Methods · Module 3",
+  "u": "/numerical/module/3",
+  "a": "",
+  "b": "M3 Module 3 — Interpolation Module 3 · Topics 3 · Lagrange & Newton's Difference Formulas 3. Lagrange & Newton's Difference Formulas ⏱ 60 min 🔗 Prereq: None 📝 Theory Notes Big id"
+ },
+ {
+  "t": "3 · Lagrange & Newton's Difference\n            Formulas",
+  "s": "Numerical Methods · Module 3",
+  "u": "/numerical/module/3",
+  "a": "t3",
+  "b": "3. Lagrange & Newton's Difference Formulas ⏱ 60 min 🔗 Prereq: None 📝 Theory Notes Big idea: interpolation draws the unique polynomial through your data points and reads between t"
+ },
+ {
+  "t": "Module 4 — Differentiation & Integration",
+  "s": "Numerical Methods · Module 4",
+  "u": "/numerical/module/4",
+  "a": "",
+  "b": "M4 Module 4 — Differentiation & Integration Module 4 · Topics 4 · Trapezoidal & Simpson's Rules 4. Differentiation & Integration — Newton-Cotes Rules ⏱ 60 min 🔗 Prereq: Topic 3 📝"
+ },
+ {
+  "t": "4 · Trapezoidal & Simpson's Rules",
+  "s": "Numerical Methods · Module 4",
+  "u": "/numerical/module/4",
+  "a": "t4",
+  "b": "4. Differentiation & Integration — Newton-Cotes Rules ⏱ 60 min 🔗 Prereq: Topic 3 📝 Theory Notes Big idea: integration numerically = replace the curve with easy shapes (straight l"
+ },
+ {
+  "t": "Module 5 — Ordinary Differential Equations",
+  "s": "Numerical Methods · Module 5",
+  "u": "/numerical/module/5",
+  "a": "",
+  "b": "M5 Module 5 — Ordinary Differential Equations Module 5 · Topics 5 · Euler, Modified Euler & Runge-Kutta 5. Solving y' = f(x, y) — Euler to Runge-Kutta 4 ⏱ 75 min 🔗 Prereq: Topic 4"
+ },
+ {
+  "t": "5 · Euler, Modified Euler & Runge-Kutta",
+  "s": "Numerical Methods · Module 5",
+  "u": "/numerical/module/5",
+  "a": "t5",
+  "b": "5. Solving y' = f(x, y) — Euler to Runge-Kutta 4 ⏱ 75 min 🔗 Prereq: Topic 4 📝 Theory Notes Big idea: march forward in small steps h: at each point ask \"which way is the solution "
  }
 ]

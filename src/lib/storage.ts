@@ -74,20 +74,28 @@ export async function getFileStream(path: string): Promise<FileResult | null> {
 
   // Local fallback (dev, or repo-shipped objects like PYQ images): serve from
   // the repo folders, which Vercel includes in the function unless ignored.
-  const local = join(projectRoot, ...path.split("/"));
-  try {
-    const info = await stat(local);
-    const buf = await readFile(local);
-    const web = new ReadableStream({
-      start(controller) {
-        controller.enqueue(new Uint8Array(buf));
-        controller.close();
-      },
-    });
-    return { stream: web, size: info.size };
-  } catch {
-    return null;
+  // Images were moved under `public/` (commit a41b4e6), so try both the repo
+  // root and `public/` — the path in the URL stays `images/...` either way.
+  const candidates = [
+    join(projectRoot, ...path.split("/")),
+    join(projectRoot, "public", ...path.split("/")),
+  ];
+  for (const local of candidates) {
+    try {
+      const info = await stat(local);
+      const buf = await readFile(local);
+      const web = new ReadableStream({
+        start(controller) {
+          controller.enqueue(new Uint8Array(buf));
+          controller.close();
+        },
+      });
+      return { stream: web, size: info.size };
+    } catch {
+      // try next candidate
+    }
   }
+  return null;
 }
 
 export { createReadStream };

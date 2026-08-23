@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSubject } from "../lib/subjects";
 
 interface Props {
-  slug: "fm" | "som" | "thermo";
+  slug: "fm" | "som" | "thermo" | "materials" | "manufacturing" | "numerical";
 }
 
 const { slug } = Astro.props;
@@ -54,7 +54,7 @@ const description = `${subject.name} (${subject.code}): official syllabus, modul
   <div class="container"><div data-progress="M1,M2,M3,M4,M5" class="progress-panel"></div></div>
 
   <!-- ===================== SYLLABUS (official PDF) ===================== -->
-  <section class="section" id="syllabus" role="tabpanel" aria-labelledby="syllabus" aria-hidden="false" data-tab-panel="syllabus-panel">
+  <section class="section" id="syllabus-panel" role="tabpanel" aria-labelledby="syllabus" aria-hidden="false" data-tab-panel="syllabus-panel">
     <div class="container">
       <div class="section-head">
         <div class="section-eyebrow">Syllabus</div>
@@ -82,7 +82,7 @@ const description = `${subject.name} (${subject.code}): official syllabus, modul
   </section>
 
   <!-- ===================== MODULE INDEX ===================== -->
-  <section class="section section-alt" id="modules" role="tabpanel" aria-labelledby="modules" aria-hidden="true" data-tab-panel="modules-panel">
+  <section class="section section-alt" id="modules-panel" role="tabpanel" aria-labelledby="modules" aria-hidden="true" data-tab-panel="modules-panel">
     <div class="container">
       <div class="section-head">
         <div class="section-eyebrow">Modules</div>
@@ -103,7 +103,7 @@ const description = `${subject.name} (${subject.code}): official syllabus, modul
   </section>
 
   <!-- ===================== CHEAT SHEET ===================== -->
-  <section class="section section-alt" id="cheat" role="tabpanel" aria-labelledby="cheat" aria-hidden="true" data-tab-panel="cheat-panel">
+  <section class="section section-alt" id="cheat-panel" role="tabpanel" aria-labelledby="cheat" aria-hidden="true" data-tab-panel="cheat-panel">
     <div class="container">
       <div class="section-head">
         <div class="section-eyebrow">Cheat Sheet</div>
@@ -115,9 +115,22 @@ const description = `${subject.name} (${subject.code}): official syllabus, modul
   </section>
 
   <!-- ===================== PREVIOUS YEAR PAPERS ===================== -->
-  {content.pyqs && (
-    <Fragment set:html={content.pyqs.replace('<section class="section section-alt" id="pyqs">', '<section class="section section-alt" id="pyqs" role="tabpanel" aria-labelledby="pyqs" aria-hidden="true" data-tab-panel="pyqs-panel">')} />
-  )}
+  <section class="section section-alt" id="pyqs-panel" role="tabpanel" aria-labelledby="pyqs" aria-hidden="true" data-tab-panel="pyqs-panel">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">PYQs by Module</div>
+        <h2>Every past question, grouped by module</h2>
+        <p>Verified against the BIT Mesra papers. Each group shows the original scanned page; every question links to the exact page it appeared on.</p>
+      </div>
+      {content.modpyqCards.length > 0 ? (
+        <Fragment set:html={content.modpyqCards.join("")} />
+      ) : content.pyqs ? (
+        <Fragment set:html={content.pyqs} />
+      ) : (
+        <p style="color:var(--ink-3)">No PYQs indexed for this subject yet.</p>
+      )}
+    </div>
+  </section>
 </BaseLayout>
 
 <script is:inline>
@@ -172,5 +185,20 @@ const description = `${subject.name} (${subject.code}): official syllabus, modul
     panels.forEach((p, i) => {
       if (i !== 0) { p.setAttribute('aria-hidden', 'true'); p.hidden = true; }
     });
+
+    // Cheat sheet: a crib sheet's job is "everything at a glance", so the module
+    // plates default to open. The jump-index opens (and scrolls to) its plate.
+    const sheet = document.querySelector('#cheat-panel');
+    if (sheet) {
+      sheet.querySelectorAll('details').forEach((d) => { d.open = true; });
+      sheet.querySelectorAll('a.jump-link').forEach((a) => {
+        a.addEventListener('click', () => {
+          const id = a.getAttribute('href');
+          if (!id || id.charAt(0) !== '#') return;
+          const target = sheet.querySelector(id);
+          if (target && target.tagName === 'DETAILS') target.open = true;
+        });
+      });
+    }
   })();
 </script>

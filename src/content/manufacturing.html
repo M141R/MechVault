@@ -1,0 +1,337 @@
+﻿<section class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="/">Home</a> / Manufacturing Processes</div>
+    <h1>Manufacturing Processes</h1>
+    <p>ME24204 · Complete study kit from the official BIT Mesra syllabus — casting, metal cutting, machine tools, forming and welding, written in plain language with exam definitions and formula plates. PYQs will be added once papers are indexed.</p>
+    <div class="tags-row">
+      <span class="tag tag-high">Casting &amp; cutting core</span>
+      <span class="tag">Taylor tool life</span>
+      <span class="tag tag-crit">Welding processes</span>
+    </div>
+    <div class="blueprint"><div class="title-block"><div><b>MECHVAULT</b></div><div>MFG</div><div>SEM-III</div><div>SHEET MFG-01</div></div></div>
+  </div>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section class="section section-alt" id="notes" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Notes</div>
+      <h2>Full notes — in official syllabus order</h2>
+      <p>Every module of the BIT Mesra syllabus sheet, covered in plain language — theory, quotable definitions, formulas and worked examples.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notes-wrap" style="padding-top:24px">
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#t1">M1 · Casting</a>
+      <a href="#t2">M2 · Theory of Metal Cutting</a>
+      <a href="#t3">M3 · Machine Tools</a>
+      <a href="#t4">M4 · Metal Deformation Processes</a>
+      <a href="#t5">M5 · Welding</a>
+      <a href="#cheat-sheet">⚡ Cheat Sheet</a>
+    </nav>
+    <main class="notes-main">
+
+    <!-- MODULE 1 -->
+    <div class="module-block">
+      <div class="module-head"><span class="mchip">M1</span><h3>Module 1 — Casting</h3></div>
+      <nav class="toc"><div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Sand, Die, Centrifugal &amp; Investment Casting</a></nav>
+
+      <div class="topic" id="t1">
+        <div class="topic-header">
+          <h3>1. Sand, Die, Centrifugal &amp; Investment Casting</h3>
+          <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> casting = pour liquid metal into a shaped cavity and let it freeze. Every variant differs only in HOW the cavity is made and HOW the metal gets there.</div>
+          <ul>
+            <li><strong>Sand casting route:</strong> make a pattern (a slightly oversized copy of the part) → pack sand around it in flasks → remove pattern → add core for internal cavities → close mould → pour → shake out → fettle. Cheap tooling, any metal, but rough surface and loose tolerance.</li>
+            <li><strong>Pattern allowances (why patterns are bigger/odd-shaped):</strong> shrinkage (metal contracts on freezing — add ~1–2 % by metal), machining (extra stock where surfaces will be cut), draft (taper so the pattern lifts out cleanly), distortion (compensate warpage of thin odd shapes), rattle/shake (for easy-collapsing sand shapes).</li>
+            <li><strong>Gating system jobs:</strong> pouring basin (receive and settle the stream) → sprue (vertical channel; tapered to avoid air aspiration) → runner (distribute) → gate (control entry speed/direction) → riser (molten reserve that feeds shrinkage during solidification) plus core and vents. Chvorinov's rule says flat/thick sections freeze slowest:</li>
+          </ul>
+          <div class="formula-box">$t_s = B\left(\dfrac{V}{A}\right)^{n}$ , n ≈ 2  — risers are made fat ($V/A$ large) so they stay liquid longest.
+Shrinkage allowance = dimension × shrinkage % (e.g. 100 mm Al casting @ 1.3 % → pattern 101.3 mm)</div>
+          <ul>
+            <li><strong>Centrifugal casting:</strong> spin the mould; true centrifugal makes pipe-like parts with no core (centrifugal force flings metal outward, impurities inward to be machined off); semi-centrifugal uses cores for shaped parts; centrifuged arranges many small moulds around one spinning table.</li>
+            <li><strong>Die casting:</strong> permanent steel dies + high pressure. Hot chamber (plunger sits IN the melt — gooseneck): fast cycle, only low-melting alloys (Zn, Mg, Pb). Cold chamber (ladle pours each shot into a cold shot sleeve): handles higher-melting Al, Cu alloys because the injection unit stays out of the melt.</li>
+            <li><strong>Investment casting (lost-wax):</strong> inject wax patterns → assemble on a tree → dip in ceramic slurry, build shell → melt out wax → fire shell → pour. Near-net-shape, superb finish, complex geometry (turbine blades), but expensive per part.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Pattern:</strong> A replica of the object to be cast, slightly enlarged by allowances, used to form the mould cavity in sand.</li>
+            <li><strong>Riser (feed head):</strong> A reservoir of molten metal in the mould that feeds the casting during solidification to compensate shrinkage.</li>
+            <li><strong>Draft allowance:</strong> The taper given to vertical pattern faces so the pattern can be withdrawn without tearing the mould walls.</li>
+            <li><strong>Hot-chamber die casting:</strong> A die-casting process in which the injection plunger operates immersed in the molten-metal pot, suited to low-melting alloys like zinc.</li>
+            <li><strong>Investment casting:</strong> A precision casting process using expendable wax patterns surrounded by a ceramic shell which is emptied of wax before pouring.</li>
+            <li><strong>Chvorinov's rule:</strong> Solidification time is proportional to the square of volume-to-surface-area ratio: t = B(V/A)².</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <div class="formula-box">A cube side 100 mm and a sphere of equal volume are cast from the same alloy:
+cube $V/A = a/6 = 16.7$ mm → $t \propto (16.7)^2 = 278$
+sphere $V/A = D/6$ with $D=(6V/\pi)^{1/3}=124$ mm → $V/A=20.7$ mm → $t\propto427$
+The sphere freezes ≈1.54× slower — shape alone changes feeding behaviour.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module-block">
+      <div class="module-head"><span class="mchip">M2</span><h3>Module 2 — Theory of Metal Cutting</h3></div>
+      <nav class="toc"><div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Tool Geometry, Chips, Forces &amp; Tool Life</a></nav>
+
+      <div class="topic" id="t2">
+        <div class="topic-header">
+          <h3>2. Tool Geometry, Chips, Forces &amp; Tool Life</h3>
+          <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> cutting metal = shearing a thin layer ahead of a wedge. Everything — angles, chip type, forces, wear, life — follows from that shear zone.</div>
+          <ul>
+            <li><strong>Single-point tool angles (ASA system):</strong> back rake (top face slope — positive eases flow), side rake, end/side relief (clearance so only the edge touches), end/side cutting-edge angles, nose radius. Higher rake → lower force, weaker tip.</li>
+            <li><strong>Orthogonal cutting model:</strong> cutting edge ⊥ cutting velocity (2-D analysis); oblique = inclined edge (real life, 3-D forces).</li>
+            <li><strong>Chip types:</strong> discontinuous (brittle materials / low speed — segments), continuous (ductile + high speed + good lubrication — ideal finish), continuous with built-up edge (low-speed ductile cutting; BUE welds onto rake face, ruins finish, periodically breaks off), serrated (thermal chips in Ti superalloys).</li>
+            <li><strong>Shear-plane relations:</strong> chip thickness ratio $r=t_1/t_2$ (uncut/chip thickness, always &lt; 1); shear angle from Merchant:</li>
+          </ul>
+          <div class="formula-box">$\tan\phi=\dfrac{r\cos\alpha}{1-r\sin\alpha}$
+Merchant: $\phi = 45^{\circ}+\dfrac{\alpha}{2}-\dfrac{\beta}{2}$  (α rake, β friction angle)
+Cutting power: $P = F_c V$ ; specific energy $u = \dfrac{F_c V}{MRR}$</div>
+<figure class="figure"><svg viewBox="0 0 255 175" role="img" aria-label="Orthogonal cutting model"><rect x="18" y="92" width="94" height="60" fill="var(--surface-2)" stroke="var(--ink-3)"/><line x1="30" y1="92" x2="18" y2="104" stroke="var(--ink-3)" stroke-width="0.8"/><line x1="52" y1="92" x2="36" y2="108" stroke="var(--ink-3)" stroke-width="0.8"/><line x1="74" y1="92" x2="58" y2="108" stroke="var(--ink-3)" stroke-width="0.8"/><path d="M116 88 C130 62 142 50 162 40" stroke="var(--ink-2)" stroke-width="7" fill="none" opacity="0.28"/><line x1="112" y1="90" x2="140" y2="52" stroke="var(--blueprint)" stroke-width="1.8"/><line x1="112" y1="90" x2="124" y2="114" stroke="var(--blueprint)" stroke-width="1.8"/><polygon points="112,90 140,52 196,52 196,116 124,116" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="1.2"/><line x1="112" y1="90" x2="46" y2="56" stroke="var(--annotation)" stroke-dasharray="5 3" stroke-width="1.5"/><path d="M46 78 l-12 0 m4 -3 l-4 3 l4 3" stroke="var(--ink-2)" fill="none" stroke-width="1.2"/><text x="146" y="44" font-size="10" fill="var(--ink-2)" font-family="var(--mono)">chip</text><text x="141" y="66" font-size="10" fill="var(--ink-2)" font-family="var(--mono)">rake &#945;</text><text x="126" y="106" font-size="9.5" fill="var(--ink-3)" font-family="var(--mono)">flank</text><text x="44" y="48" font-size="10" fill="var(--annotation-ink)" font-family="var(--mono)">shear plane &#966;</text><text x="22" y="126" font-size="10" fill="var(--ink-3)" font-family="var(--mono)">feed</text></svg><figcaption>Orthogonal cutting: the layer ahead of the edge shears along plane &#966; into a chip that flows up the rake face (&#945; = rake angle, lower face = flank with relief clearance).</figcaption></figure>
+          <ul>
+            <li><strong>Taylor tool-life equation</strong> — the exam favourite:</li>
+          </ul>
+          <div class="formula-box">$VT^{n}=C \Rightarrow T=\Big(\dfrac{C}{V}\Big)^{1/n}$ — V cutting speed, T tool life (min).
+Higher n = tougher material response; C = cutting speed giving 1-min life.</div>
+          <ul>
+            <li><strong>Tool failure modes:</strong> gradual flank wear (measure land width VB ≈ 0.3 mm criterion), crater wear on rake (diffusion at high speed), sudden fracture (excessive force/shock), plastic deformation of edge, thermal cracking (intermittent cuts).</li>
+            <li><strong>Tool materials ladder:</strong> HSS (cheap, tough, ≤ 30 m/min steel) → uncoated/carbide inserts (WC-Co, 3–5× HSS speeds) → coated carbide (TiN/TiAlN — standard today) → ceramics/CMC (very hot, brittle) → CBN (hardened steels) → diamond (nonferrous, graphite, composites — never ferrous: carbon affinity).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Orthogonal cutting:</strong> A simplified two-dimensional cutting arrangement in which the cutting edge is perpendicular to the direction of cutting velocity.</li>
+            <li><strong>Built-up edge (BUE):</strong> A layer of work material pressure-welded onto the rake face during cutting of ductile metals at low speed, which alters the effective geometry and degrades surface finish.</li>
+            <li><strong>Chip thickness ratio:</strong> Ratio of uncut chip thickness to chip thickness, r = t₁/t₂, always less than 1 because the chip shortens as it thickens.</li>
+            <li><strong>Taylor's tool-life equation:</strong> VTⁿ = C relating cutting speed V and tool life T; n depends on tool–work pair and C on cutting conditions.</li>
+            <li><strong>Flank wear:</strong> Wear land developed on the relief face of the tool behind the cutting edge, used as the standard tool-failure criterion (VB ≈ 0.3 mm).</li>
+            <li><strong>Coolant/cutting fluid roles:</strong> Cooling, lubrication, chip flushing and corrosion protection of the freshly cut surface.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <div class="formula-box">Carbide tool: V₁ = 60 m/min gives T₁ = 30 min; n = 0.25.
+$C = V_1T_1^{\,n} = 60\times30^{0.25} = 60\times2.340 = 140.4$
+Life at V₂ = 80 m/min:
+$T_2 = \left(\dfrac{140.4}{80}\right)^{1/0.25} = (1.755)^{4} \approx \mathbf{9.5\ min}$
+Speed up 33 %, life drops 68 % — Taylor in action.</div>
+        </div>
+      </div>
+    </div>
+<!-- MODULE 3 -->
+    <div class="module-block">
+      <div class="module-head"><span class="mchip">M3</span><h3>Module 3 — Machine Tools</h3></div>
+      <nav class="toc"><div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lathe, Shaper, Milling, Drilling &amp; Grinding</a></nav>
+
+      <div class="topic" id="t3">
+        <div class="topic-header">
+          <h3>3. Lathe, Shaper, Milling, Drilling &amp; Grinding</h3>
+          <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: Topic 2</span></div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> a machine tool is defined by which motion spins (cutting) and which slides (feed). Lathe: work rotates. Shaper: tool reciprocates. Milling/drilling: tool rotates. Grinding: abrasive wheel rotates.</div>
+          <ul>
+            <li><strong>Lathe:</strong> headstock (spindle + speed box), bed (guideways), carriage/saddle (feed), tailstock (supports long jobs / drills), leadscrew for threads. Operations: turning, facing, taper turning (compound-rest swivel or tailstock offset), knurling, thread cutting. Key formulas:</li>
+          </ul>
+          <div class="formula-box">Cutting speed: $V=\dfrac{\pi D N}{1000}$ m/min  (D mm, N rpm)
+Turning time: $T=\dfrac{L}{f\,N}$  (f feed mm/rev)
+Tailstock offset for taper: $S=\dfrac{D-d}{2}\times\dfrac{L_{work}}{l}$</div>
+          <ul>
+            <li><strong>Shaper:</strong> ram carries the tool on quick-return mechanism (Whitworth/crank-slotted lever — cutting stroke slow, return fast ≈ 2:1); table feeds at each stroke; used for flat surfaces, slots, keyways. Stroke length = job length + 20–25 mm approach/over-travel.</li>
+            <li><strong>Milling:</strong> multi-tooth rotating cutter. Up-milling (conventional — cutter against feed, chip thickens from zero, better for hard skins) vs down/climb milling (with feed, thick-to-thin chip, better finish but needs backlash-free machine). Operations: slabbing, face milling, slotting, gear cutting with dividing head.</li>
+            <li><strong>Drilling:</strong> twist drill has two cutting lips, chisel edge (no real cutting — pushes), margins for guiding; operations: drilling, reaming (sizing), boring (enlarging/truing), tapping (internal threads).</li>
+            <li><strong>Grinding:</strong> abrasive wheel spec = abrasive | grit | grade | structure | bond (e.g. A-46-K-5-V). Soft materials → hard grades hold grits longer; hard materials → soft grades release dull grits (self-sharpening). Processes: surface, cylindrical, internal, centreless (through-feed small rollers/pins).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Taper turning:</strong> Producing a conical surface on a lathe by compound-rest swivelling or tailstock offset so that the tool travels at the half-cone angle.</li>
+            <li><strong>Quick-return mechanism:</strong> The shaper drive that makes the cutting stroke slower than the idle return stroke, reducing non-cutting time.</li>
+            <li><strong>Climb (down) milling:</strong> Cutter rotation direction same as feed direction; chip starts thick and ends thin, giving better finish but requiring rigid backlash-free machines.</li>
+            <li><strong>Grain size (grit number):</strong> Sieve count defining abrasive particle size in a grinding wheel — larger number = finer grain.</li>
+            <li><strong>Self-sharpening:</strong> Property of a correctly chosen soft-grade wheel in which dulled grains fracture or pull out, exposing fresh sharp abrasive.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <div class="formula-box">Turn a 60 mm bar down a 200 mm length at N = 300 rpm, f = 0.3 mm/rev:
+$V=\dfrac{\pi\times60\times300}{1000}=\mathbf{56.5\ m/min}$
+$T=\dfrac{L}{fN}=\dfrac{200}{0.3\times300}=\mathbf{2.22\ min}$
+Shaper: job 120 mm → stroke = 150 mm; if ratio 2:1 and cutting 25 strokes/min, average cutting velocity uses forward-stroke share only.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module-block">
+      <div class="module-head"><span class="mchip">M4</span><h3>Module 4 — Metal Deformation Processes</h3></div>
+      <nav class="toc"><div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Rolling, Forging, Extrusion &amp; Sheet Metal</a></nav>
+
+      <div class="topic" id="t4">
+        <div class="topic-header">
+          <h3>4. Rolling, Forging, Extrusion &amp; Sheet-Metal Forming</h3>
+          <div class="meta-rail"></div>
+          <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: Materials M3 (recrystallization)</span></div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> forming squeezes metal into shape instead of shaving it away — no chips, refined grain flow, stronger parts. Temperature decides everything: hot working above recrystallization, cold below it.</div>
+          <ul>
+            <li><strong>Hot vs cold working:</strong> hot — no strain hardening, big shape changes, low forces, but scale/rough finish; cold — strain-hardened strength, tight tolerance, good finish, but higher forces and limited reduction per pass.</li>
+            <li><strong>Rolling:</strong> stock squeezed between counter-rotating rolls. Maximum draft (one-pass bite) set by friction:</li>
+          </ul>
+          <div class="formula-box">Max draft: $\Delta h_{max}=\mu^{2}R$  ·  Contact length $L=\sqrt{R\,\Delta h}$
+Roll force $F=\bar{\sigma}\,w\,L$ (mean flow stress × width × contact length)
+Rolling mills: two-high (reversing), three-high, four-high (+backup rolls), cluster/tandem trains.
+Products: plates, strips, rails, I-beams, threaded rod.</div>
+          <ul>
+            <li><strong>Forging:</strong> open-die (simple flat/platen tools — big ingots, operator skill shapes it), closed/impression die (matched cavities + gutter flash that blocks out and ensures fill), press vs hammer (slow squeeze vs impact). Defects: cold shuts, laps, unfilled sections, die mismatch.</li>
+            <li><strong>Extrusion:</strong> push billet through a die — direct (ram moves billet, high friction) vs indirect (die moves toward stationary billet, ~30 % lower force); hot extrusion at ~⅔ T<sub>m</sub>; impact extrusion cold for tubes/cans. Extrusion ratio:</li>
+          </ul>
+          <div class="formula-box">$R=\dfrac{A_o}{A_e}$  — typical hot-extrusion range 10–100; force rises with R and flow stress.</div>
+          <ul>
+            <li><strong>Sheet-metal operations:</strong> blanking (the FALLER... careful: the cut-out piece IS the product) vs piercing/punching (the hole matters, slug is scrap) — clearance ~5–10 % of thickness per side; deep drawing draws a cup through a die — watch drawing ratio d/p ≤ ~2 and blank-holder pressure to stop wrinkling; bending leaves springback (over-bend to compensate, bend radius ≥ ~1t).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Recrystallization (in forming):</strong> Formation of new strain-free equiaxed grains in a deformed metal when heated above its recrystallization temperature, replacing the strain-hardened structure.</li>
+            <li><strong>Maximum draft:</strong> Greatest possible reduction in one rolling pass, Δh = μ²R, beyond which the rolls merely skid instead of biting the stock.</li>
+            <li><strong>Flash:</strong> The thin excess metal squeezed out around the parting line in closed-die forging, acting as a pressure seal that forces metal to fill the die cavity.</li>
+            <li><strong>Extrusion ratio:</strong> Ratio of billet cross-section area to extruded product area, R = Ao/Ae, a measure of deformation severity.</li>
+            <li><strong>Blanking vs piercing:</strong> In blanking the punched-out piece is the product; in piercing the surrounding sheet is the product and the punched slug is scrap.</li>
+            <li><strong>Springback:</strong> Elastic recovery of sheet metal after bending, causing the final angle to open slightly beyond the die angle; compensated by over-bending.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <div class="formula-box">Steel strip rolled on 300 mm-radius rolls with μ = 0.25:
+$\Delta h_{max}=0.25^{2}\times300=18.75$ mm (theoretical bite limit)
+For an actual pass Δh = 9 mm: contact length $L=\sqrt{300\times9}=\mathbf{52\ mm}$
+Extrude Ø150 mm billet to Ø30 mm rod: $R=\dfrac{150^2}{30^2}=\mathbf{25}$ — well within hot-extrusion practice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module-block">
+      <div class="module-head"><span class="mchip">M5</span><h3>Module 5 — Welding</h3></div>
+      <nav class="toc"><div class="toc-label">Module 5 · Topics</div><a href="#t5">5 · Gas, Arc, Resistance Welding &amp; Brazing</a></nav>
+
+      <div class="topic" id="t5">
+        <div class="topic-header">
+          <h3>5. Gas, Arc, Resistance Welding &amp; Soldering/Brazing</h3>
+          <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> welding melts parent metal (fusion) or squeezes hot plastic metal together (resistance); brazing/soldering join WITHOUT melting parents using a filler with lower melting point. Pick process by metal, thickness and position.</div>
+          <ul>
+            <li><strong>Oxy-acetylene flame:</strong> oxygen + C₂H₂ burn at ≈3100–3300 °C. Flame types: neutral (equal volumes — general steel work), carburising/reducing (excess acetylene — hardfacing, Al), oxidising (excess O₂ — brass/Zn bronzes, prevents Zn fuming loss).</li>
+            <li><strong>SMAW/MMAW (stick):</strong> consumable flux-coated electrode; flux burns → shielding gas + slag cover + stabilisers; simplest, any position, outdoor-friendly; electrode changes interrupt work.</li>
+            <li><strong>SAW (submerged arc):</strong> bare wire under granular flux blanket; deep penetration, very high deposition, flat/horizontal only — pressure vessels, beams, ship plate.</li>
+            <li><strong>GTAW (TIG):</strong> non-consumable tungsten + argon shield; filler added by hand; supreme quality/control — stainless, Ti, aerospace thin sections, root passes.</li>
+            <li><strong>GMAW (MIG/MAG):</strong> continuously-fed wire electrode through gun with Ar/CO₂ shield; fast, all positions, easy to learn; CO₂ cheap mode = spatter + slightly rougher bead.</li>
+            <li><strong>Resistance welding:</strong> press parts between copper electrodes, pass huge current for milliseconds — heat Q = I²Rt concentrates at interface contact resistance → nugget forms. Spot (sheets, auto bodies), seam (overlapping spots via roller electrodes), projection (nuts/bosses).</li>
+          </ul>
+          <div class="formula-box">Spot-weld heat: $H=I^{2}RT$ joules
+e.g. I = 8000 A, R = 100 µΩ, T = 0.2 s → H = 64×10⁶ × 10⁻⁴ × 0.2 = \mathbf{1280\ J}</div>
+          <ul>
+            <li><strong>Soldering vs brazing:</strong> both bond with filler melting BELOW parent metals' solidus and NO base-metal fusion. Solder: filler melts &lt; 450 °C (Sn-Pb, Sn-Ag — electronics, plumbing). Braze: filler &gt; 450 °C (Cu-Zn brass, Ag alloys — stronger joints, torch/furnace heated); flux removes oxides in both; joint strength comes from capillary gap design (~0.05–0.15 mm).</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Neutral flame:</strong> Oxy-acetylene flame with chemically balanced gases producing no oxidising or carburising effect — standard for steel welding.</li>
+            <li><strong>Flux:</strong> A material applied during welding/brazing that cleans the joint area by removing oxides, shields the molten pool, and improves wetting.</li>
+            <li><strong>GTAW (TIG):</strong> An arc-welding process using a non-consumable tungsten electrode shielded by inert argon/helium, with optional hand-fed filler — highest control and quality.</li>
+            <li><strong>Resistance spot welding:</strong> Joining overlapping sheets by the heat of I²R generated at their contact interface while copper electrodes clamp them, forming a weld nugget.</li>
+            <li><strong>Brazing:</strong> A joining process in which a filler metal with liquidus above 450 °C but below the parent metals' solidus is drawn into a close-fitting joint by capillary action without melting the parent metal.</li>
+            <li><strong>Weld decay:</strong> Intergranular corrosion of sensitised austenitic stainless steel in the heat-affected zone near welds, prevented by low-carbon grades or Ti/Nb stabilisation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- CHEAT SHEET -->
+    <div class="topic" id="cheat-sheet">
+      <div class="topic-header"><h3>⚡ Quick Revision Cheat Sheet</h3></div>
+      <div class="subsection">
+        <h4>Formulas &amp; Facts by Module</h4>
+        <details id="cheat-m1" open><summary><strong>M1 — Casting</strong></summary>
+          <div class="two-col"><div>
+            <div class="formula-box">Chvorinov: $t_s=B\left(\dfrac{V}{A}\right)^{2}$
+Allowances: shrinkage · machining · draft · distortion · shake</div>
+          </div><div>
+            <div class="formula-box">Hot chamber → Zn, Mg, Pb (low m.p.)
+Cold chamber → Al, Cu (high m.p.)
+Investment = lost-wax ceramic shell</div>
+          </div></div>
+        </details>
+        <details id="cheat-m2" open><summary><strong>M2 — Metal Cutting</strong></summary>
+          <div class="two-col"><div>
+            <div class="formula-box">Taylor: $VT^{n}=C \Rightarrow T=(C/V)^{1/n}$
+$\tan\phi=\dfrac{r\cos\alpha}{1-r\sin\alpha}$, $r=t_1/t_2&lt;1$</div>
+          </div><div>
+            <div class="formula-box">Merchant: $\phi=45^{\circ}+\tfrac{\alpha}{2}-\tfrac{\beta}{2}$
+Power $P=F_cV$ · flank wear criterion VB ≈ 0.3 mm
+Chips: discontinuous / continuous / BUE / serrated</div>
+          </div></div>
+        </details>
+        <details id="cheat-m3" open><summary><strong>M3 — Machine Tools</strong></summary>
+          <div class="two-col"><div>
+            <div class="formula-box">$V=\dfrac{\pi D N}{1000}$ · $T=\dfrac{L}{fN}$
+Tailstock offset $S=\dfrac{D-d}{2}\cdot\dfrac{L_{work}}{l}$</div>
+          </div><div>
+            <div class="formula-box">Shaper: quick-return ≈ 2:1
+Milling: up = feed against cutter · down/climb = with
+Wheel spec A-46-K-5-V (abrasive-grit-grade-structure-bond)</div>
+          </div></div>
+        </details>
+        <details id="cheat-m4" open><summary><strong>M4 — Forming</strong></summary>
+          <div class="two-col"><div>
+            <div class="formula-box">Max draft $\Delta h=\mu^2R$ · contact $L=\sqrt{R\Delta h}$
+Extrusion ratio $R=A_o/A_e$</div>
+          </div><div>
+            <div class="formula-box">Forging flash = pressure seal ensuring die fill
+Blanking: piece is product · piercing: hole is product
+Clearance ≈ 5–10 % thickness · springback → overbend</div>
+          </div></div>
+        </details>
+        <details id="cheat-m5" open><summary><strong>M5 — Welding</strong></summary>
+          <div class="two-col"><div>
+            <div class="formula-box">Spot weld heat $H=I^2RT$
+Flames: neutral / carburising (excess C₂H₂) / oxidising (excess O₂)</div>
+          </div><div>
+            <div class="formula-box">GTAW tungsten + Ar · GMAW wire + CO₂/Ar · SAW flux blanket
+Solder &lt; 450 °C &lt; braze — capillary gap 0.05–0.15 mm</div>
+          </div></div>
+        </details>
+      </div>
+    </div>
+
+    </main>
+  </div>
+</div>

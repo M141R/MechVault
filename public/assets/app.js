@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    MechVault — interactions
    theme · search · exam toggle (mid/end) · progress tracker
    accordion · scroll-spy · lightbox · KaTeX · keyboard
@@ -323,7 +323,22 @@
              sheet: "SHEET TH-01", meta: ["ME24201 / ME201", "7 papers", "2022-2025"], progress: 72,
              paperCount: 7,
              blurb: "Macroscopic vs microscopic, work & heat, first law, properties of steam, second law, nozzles — with the full PYQ bank.",
-             tags: [{ t: "Notes expanding", c: "tag-med" }, { t: "PYQ bank" }] }
+             tags: [{ t: "Notes expanding", c: "tag-med" }, { t: "PYQ bank" }] },
+           { code: "materials", name: "Materials Engineering", file: "/materials",
+             sheet: "SHEET MAT-01", meta: ["ME24202", "syllabus kit"], progress: 100,
+             paperCount: 0,
+             blurb: "Crystallography, Miller indices, phase diagrams, Fe–C system, TTT curves, heat treatment, alloys and material testing — exam definitions included.",
+             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] },
+           { code: "manufacturing", name: "Manufacturing Processes", file: "/manufacturing",
+             sheet: "SHEET MFG-01", meta: ["ME24204", "syllabus kit"], progress: 100,
+             paperCount: 0,
+             blurb: "Casting, metal cutting, lathe–milling–drilling, rolling–forging–extrusion, welding processes — module notes with formula plates.",
+             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] },
+           { code: "numerical", name: "Numerical Methods", file: "/numerical",
+             sheet: "SHEET NUM-01", meta: ["BIT Mesra", "syllabus kit"], progress: 100,
+             paperCount: 0,
+             blurb: "Root-finding, linear systems, interpolation, Newton–Cotes integration and Runge–Kutta ODEs — worked algorithms with proper math rendering.",
+             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] }
         ]
       }
       /* sem4: { id:"sem4", label:"4th Semester", subjects:[

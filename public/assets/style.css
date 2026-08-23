@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    MechVault — Engineering-Drawing design system
    Concept: a structural-drawing / drafting sheet.
    Display + UI  : Familjen Grotesk (industrial grotesque)
@@ -415,6 +415,8 @@ th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--ha
 th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); background: var(--surface-2); border-bottom: 1px solid var(--border-strong); }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--blueprint-soft); }
+tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 50%, transparent); }
+tbody tr:hover { background: var(--blueprint-soft); }
 td strong { color: var(--blueprint); }
 
 /* ===================== CALLOUTS ===================== */
@@ -426,17 +428,39 @@ td strong { color: var(--blueprint); }
 .callout.warn .ctitle { color: var(--warn); }
 
 /* ===================== FORMULA BOX / MATH ===================== */
-.formula-box { background: var(--surface-2); border: 1px solid color-mix(in srgb, var(--annotation) 45%, transparent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-family: var(--mono); font-size: 14px; color: var(--ink); overflow-x: auto; white-space: pre-wrap; }
+.formula-box { background: var(--surface-2); border: 1px solid color-mix(in srgb, var(--annotation) 45%, transparent); border-left: 3px solid var(--annotation); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-family: var(--mono); font-size: 13.5px; line-height: 1.75; color: var(--ink); overflow-x: auto; white-space: pre-wrap; }
 .formula-box .flabel { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--annotation-ink); display: block; margin-bottom: 6px; }
+.formula-box .katex-display { margin: 10px 0; }
 .katex { font-size: 1.05em; }
 
 /* ===================== TOPIC / NOTES ===================== */
 .topic { border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--surface); padding: 22px 24px; margin-bottom: 18px; scroll-margin-top: calc(var(--nav-h) + 56px); }
-.topic h3 { font-size: 19px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.topic h3 { font-size: 19px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--hairline); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .topic .mod-tag { font-family: var(--mono); font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-pill); background: var(--blueprint-soft); color: var(--blueprint); letter-spacing: 0.03em; }
 .topic p { color: var(--ink-2); }
 .topic .worked { border-top: 1px dashed var(--hairline); margin-top: 14px; padding-top: 14px; }
 .topic .worked .wlabel { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--annotation-ink); display: block; margin-bottom: 8px; }
+
+/* ---- notes reading rhythm ---- */
+.topic p { color: var(--ink); line-height: 1.7; }
+.topic ul { list-style: none; margin: 12px 0 6px; padding: 0; }
+.topic ul > li { position: relative; padding: 8px 2px 8px 26px; border-top: 1px dashed var(--hairline); color: var(--ink); font-size: 15px; line-height: 1.68; }
+.topic ul > li:first-child { border-top: none; padding-top: 4px; }
+.topic ul > li::before { content: "—"; position: absolute; left: 2px; top: 8px; color: var(--annotation); font-family: var(--mono); }
+.topic ol { margin: 12px 0 6px; padding-left: 24px; color: var(--ink); font-size: 15px; line-height: 1.68; }
+.topic ol > li { padding: 3px 0; }
+.topic strong { color: var(--blueprint); font-weight: 650; }
+.topic em { color: var(--ink-3); font-style: normal; font-family: var(--mono); font-size: 13px; }
+
+/* ---- exam-definition plates (§-marked, spec-sheet style) ---- */
+h4.defs-h { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--annotation-ink); border-top: 1px solid var(--hairline); padding-top: 16px; margin-top: 20px; }
+.defs-h + ul { background: var(--surface-2); border: 1px solid var(--hairline); border-radius: var(--radius-sm); padding: 6px 18px; margin: 10px 0; list-style: none; }
+.defs-h + ul > li { position: relative; border-top: 1px dotted var(--hairline); padding: 9px 2px 9px 28px; font-size: 14.5px; line-height: 1.62; color: var(--ink-2); }
+.defs-h + ul > li:first-child { border-top: none; }
+.defs-h + ul > li::before { content: "\2022"; left: 2px; top: 9px; color: var(--blueprint); font-weight: 700; }
+.defs-h + ul strong { color: var(--blueprint); }
+
+
 
 /* ===================== ACCORDION ===================== */
 .acc-item { border: 1px solid var(--hairline); border-radius: var(--radius-sm); margin: 10px 0; background: var(--surface); overflow: hidden; }
@@ -459,7 +483,7 @@ td strong { color: var(--blueprint); }
 .progress-mods label.done { background: var(--annotation-soft); border-color: color-mix(in srgb, var(--annotation) 35%, transparent); color: var(--annotation-ink); }
 
 /* ===================== TOC ===================== */
-.toc { position: sticky; top: calc(var(--nav-h) + 70px); align-self: start; border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--surface); padding: 16px 18px; font-size: 13.5px; }
+.toc { align-self: start; border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--surface); padding: 16px 18px; font-size: 13.5px; }
 .toc .toc-title { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin-bottom: 10px; }
 .toc a { display: block; padding: 5px 0; color: var(--ink-2); border-left: 2px solid transparent; padding-left: 10px; margin-left: -2px; }
 .toc a:hover { color: var(--ink); }
@@ -594,7 +618,11 @@ td strong { color: var(--blueprint); }
 .module-page-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 26px 0 20px; border-bottom: 1px solid var(--hairline); margin-bottom: 26px; }
 .module-page-head h1 { font-size: clamp(26px, 3.6vw, 36px); margin: 0; }
 .module-page-head p { flex-basis: 100%; color: var(--ink-2); font-family: var(--mono); font-size: 12px; margin: 0; }
-.module-page-body { min-width: 0; }
+.module-cheat-link { font-family: var(--mono); font-size: 12px; color: var(--blueprint); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 7px 14px; transition: all 0.15s ease; }
+.module-cheat-link:hover { border-color: var(--blueprint); }
+.module-page-body { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 34px; align-items: start; padding-bottom: 40px; }
+.module-page-body > .module-block { max-width: 880px; }
+.module-page-body .toc { align-self: start; }
 .module-nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 34px 0 0; }
 .module-nav-link { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--surface); padding: 12px 18px; color: var(--ink); transition: all 0.15s ease; max-width: 46%; }
 .module-nav-link:hover { border-color: var(--blueprint); color: var(--blueprint); }
@@ -614,6 +642,7 @@ td strong { color: var(--blueprint); }
 /* ===================== RESPONSIVE (notes / pyq) ===================== */
 @media (max-width: 860px) {
   .notes-wrap { grid-template-columns: 1fr; }
+.module-page-body { grid-template-columns: 1fr; }
   .toc { position: static; }
   .two-col { grid-template-columns: 1fr; }
   .search-input { width: 150px; }
@@ -709,4 +738,15 @@ td strong { color: var(--blueprint); }
     display:flex;flex-direction:column;gap:10px;font-size:14px;color:#9aa4b2;
   }
   .print-blackout-note strong{color:#fff;font-size:18px;font-weight:700;}
+}
+
+/* ---- inline svg figures ---- */
+.fig-row { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin:18px 0 8px; }
+.fig-row .figure { flex:1 1 170px; max-width:260px; margin:4px 0; }
+.figure svg { width:100%; height:auto; display:block; border:1px solid var(--hairline); border-radius:var(--radius-sm); background:var(--surface); }
+
+/* ---- a11y: label contrast floor + reduced motion ---- */
+.toc-label, .pp-title, .formula-box .flabel, .topic .worked .wlabel, .section-eyebrow { font-size: 11px; color: var(--ink-2); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }

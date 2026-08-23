@@ -1,6 +1,9 @@
-import fmRaw from "../content/fm.html?raw";
+﻿import fmRaw from "../content/fm.html?raw";
 import somRaw from "../content/som.html?raw";
 import thermoRaw from "../content/thermo.html?raw";
+import materialsRaw from "../content/materials.html?raw";
+import manufacturingRaw from "../content/manufacturing.html?raw";
+import numericalRaw from "../content/numerical.html?raw";
 import { splitSubject, type SubjectContent } from "./subject-split";
 
 export interface SyllabusModule {
@@ -10,7 +13,7 @@ export interface SyllabusModule {
 }
 
 export interface Subject {
-  slug: "fm" | "som" | "thermo";
+  slug: "fm" | "som" | "thermo" | "materials" | "manufacturing" | "numerical";
   name: string;
   short: string;
   code: string;
@@ -163,6 +166,162 @@ const THERMO_SYLLABUS: SyllabusModule[] = [
   },
 ];
 
+const MATERIALS_SYLLABUS: SyllabusModule[] = [
+  {
+    num: 1,
+    name: "Introduction to materials & crystallography",
+    topics: [
+      "Classification of engineering solids and their properties; crystalline vs non-crystalline structure",
+      "Crystallography — space lattice, unit cell, crystal systems; elemental and compound crystal structures",
+      "Indexing of directions and planes (Miller indices); influence of crystal structure on properties",
+      "Crystal defects (point, line, surface, volume); solid solutions; solidification of pure metals and alloys",
+      "Metallography — sample preparation, optical microscopy, microstructure interpretation; characterization techniques",
+    ],
+  },
+  {
+    num: 2,
+    name: "Phase diagrams & the Fe–C system",
+    topics: [
+      "Thermodynamics of solids — phase, component, Gibbs and Helmholtz free energy",
+      "Gibbs phase rule and degrees of freedom; invariant and non-invariant transformations",
+      "Binary phase diagrams — isomorphous, eutectic, peritectic, monotectic systems; lever rule",
+      "Iron–carbon (iron–cementite) equilibrium diagram; steels and cast irons — microstructures and classification",
+      "Effect of alloying elements on steel; alloy steels; important non-ferrous alloys; strengthening mechanisms",
+    ],
+  },
+  {
+    num: 3,
+    name: "Transformation curves & heat treatment",
+    topics: [
+      "Kinetics of phase transformation — diffusion and shear mechanisms",
+      "Isothermal (TTT) and continuous-cooling (CCT) transformation diagrams for steel",
+      "Heat treatment of steel — annealing, normalizing, hardening, tempering; special treatments (TMT, austempering, martempering)",
+      "Hardenability and the Jominy end-quench test; mechanism of hardening",
+      "Cold and hot working; strain hardening; recovery, recrystallization and grain growth",
+      "Surface and case hardening; quenching media and stages; heat-treatment defects and remedies",
+    ],
+  },
+  {
+    num: 4,
+    name: "Types of alloys & applications",
+    topics: [
+      "Plain and alloyed cast irons — grey, spheroidal-graphite, white, malleable: composition, microstructure, applications",
+      "Non-ferrous alloys — aluminium, copper, lead, zinc, titanium, magnesium and nickel based",
+      "Stainless steels, maraging steels and superalloys — grades, heat treatment, applications",
+      "Engineering ceramics — classification, fabrication and properties; refractory, glass, cutting-tool ceramics",
+      "Engineering polymers — synthesis, structure, properties and applications",
+    ],
+  },
+  {
+    num: 5,
+    name: "Material testing methods",
+    topics: [
+      "Mechanical properties under tension and compression; hardness and friction; wear — definition and types",
+      "Fatigue, impact and creep — definitions, types and significance; combinations of properties and testing",
+      "Functional properties — thermal/electrical conductivity, magnetism, surface energy, wetting",
+      "Corrosion and oxidation — types, conditions, laws, thermodynamics, kinetics and prevention",
+      "Case studies of engineering failures — stress, wear, erosion, fatigue, thermal cycles, corrosion, creep",
+    ],
+  },
+];
+
+const MANUFACTURING_SYLLABUS: SyllabusModule[] = [
+  {
+    num: 1,
+    name: "Casting",
+    topics: [
+      "Introduction to foundry processes and their importance",
+      "Sand casting — patterns, pattern allowances, gating system components and their significance",
+      "Centrifugal casting; hot-chamber and cold-chamber die casting; investment casting",
+    ],
+  },
+  {
+    num: 2,
+    name: "Theory of metal cutting",
+    topics: [
+      "Geometry of single-point cutting tools",
+      "Introduction to orthogonal cutting; tool forces in orthogonal cutting",
+      "Types of chips; tool failure and tool life; cutting tool materials",
+    ],
+  },
+  {
+    num: 3,
+    name: "Machine tools",
+    topics: [
+      "Construction, operations and specifications of lathe and shaper",
+      "Construction, operations and specifications of milling and drilling machines",
+      "Introduction to grinding and types of grinding processes",
+    ],
+  },
+  {
+    num: 4,
+    name: "Metal deformation processes",
+    topics: [
+      "Recovery, recrystallization and grain growth; hot working vs cold working",
+      "Rolling — classification, rolling mills, products and main variables",
+      "Forging — open-die and closed-die operations; extrusion — hot and cold processes",
+      "Sheet-metal forming — blanking and piercing, deep drawing, bending",
+    ],
+  },
+  {
+    num: 5,
+    name: "Welding",
+    topics: [
+      "Principle, working and applications of oxy-acetylene gas welding",
+      "Electric arc welding — MMAW/SMAW, SAW, GTAW and GMAW",
+      "Resistance welding; soldering and brazing",
+    ],
+  },
+];
+
+const NUMERICAL_SYLLABUS: SyllabusModule[] = [
+  {
+    num: 1,
+    name: "Errors & nonlinear equations",
+    topics: [
+      "Types and sources of errors; propagation of errors",
+      "Bisection method; regula-falsi method; secant method",
+      "Newton–Raphson method and its variants; general iterative method",
+    ],
+  },
+  {
+    num: 2,
+    name: "System of linear equations",
+    topics: [
+      "Gaussian elimination and Gauss–Jordan methods",
+      "LU decomposition (Crout's method)",
+      "Gauss–Jacobi and Gauss–Seidel iterative methods",
+    ],
+  },
+  {
+    num: 3,
+    name: "Interpolation",
+    topics: [
+      "Lagrange interpolation",
+      "Newton's divided-difference interpolation formula",
+      "Interpolating polynomials using Newton's forward and backward differences",
+    ],
+  },
+  {
+    num: 4,
+    name: "Differentiation & integration",
+    topics: [
+      "Differentiation using interpolation formulas",
+      "Newton–Cotes integration formulas — trapezoidal rule",
+      "Simpson's one-third and three-eighth rules",
+    ],
+  },
+  {
+    num: 5,
+    name: "Ordinary differential equations",
+    topics: [
+      "Euler's method and modified Euler's method",
+      "Runge–Kutta methods of second order",
+      "Runge–Kutta fourth-order method for initial-value problems",
+    ],
+  },
+];
+
 export const SUBJECTS: Record<string, Subject> = {
   fm: {
     slug: "fm",
@@ -205,7 +364,46 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(thermoRaw),
     syllabus: THERMO_SYLLABUS,
     paperCount: 7,
-    progress: 72,
+    progress: 100,
+  },
+  materials: {
+    slug: "materials",
+    name: "Materials Engineering",
+    short: "MAT",
+    code: "ME24202",
+    navKey: "materials",
+    description:
+      "Materials Engineering · Complete study kit from the official BIT Mesra syllabus: crystallography, phase diagrams, heat treatment, alloys and material testing — with exam definitions and formula plates.",
+    content: splitSubject(materialsRaw),
+    syllabus: MATERIALS_SYLLABUS,
+    paperCount: 0,
+    progress: 100,
+  },
+  manufacturing: {
+    slug: "manufacturing",
+    name: "Manufacturing Processes",
+    short: "MFG",
+    code: "ME24204",
+    navKey: "manufacturing",
+    description:
+      "Manufacturing Processes · Complete study kit from the official BIT Mesra syllabus: casting, metal cutting, machine tools, forming and welding — with exam definitions and formula plates.",
+    content: splitSubject(manufacturingRaw),
+    syllabus: MANUFACTURING_SYLLABUS,
+    paperCount: 0,
+    progress: 100,
+  },
+  numerical: {
+    slug: "numerical",
+    name: "Numerical Methods",
+    short: "NUM",
+    code: "BIT Mesra",
+    navKey: "numerical",
+    description:
+      "Numerical Methods · Complete study kit from the official BIT Mesra syllabus: root-finding, linear systems, interpolation, integration and ODEs — with worked algorithms and formula plates.",
+    content: splitSubject(numericalRaw),
+    syllabus: NUMERICAL_SYLLABUS,
+    paperCount: 0,
+    progress: 100,
   },
 };
 

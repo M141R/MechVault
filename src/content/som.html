@@ -165,6 +165,13 @@
             <span class="meta-chip">🔗 Prereq: None</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Normal stress: intensity of force acting perpendicular to a plane, sigma = P/A.</li>
+            <li>Shear stress: intensity of force parallel to a plane, tau.</li>
+            <li>Hooke's law: within the elastic limit stress is proportional to strain; modulus E = sigma/e.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <p>Given the plane-stress state (σₓ, σᵧ, τₓᵧ) on x–y faces, find the stresses on a plane whose normal makes angle <strong>θ</strong> with the x-axis:</p>
@@ -205,6 +212,13 @@ P/A = 200×10³ / (50×100×10⁻⁶) = 40 MPa
             <span class="meta-chip">🔗 Prereq: Topic 1</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Principal planes: planes carrying zero shear stress; normal stresses on them are principal stresses (max/min).</li>
+            <li>Mohr's circle: graphical transformation of stress — every plane's (sigma, tau) lies on a circle of diameter sigma1-sigma2.</li>
+            <li>Strain rosette: three strain gauges at known angles used to compute principal strains.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">Principal stresses:
@@ -261,6 +275,12 @@ tan 2θₚ = 2×40 / (50 − (−10)) = 80/60 = 1.333 → 2θₚ = 53.13° → �
             <span class="meta-chip">🔗 Prereq: Topic 2</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Generalized Hooke's law: relations linking all six stresses and strains through E, G and K.</li>
+            <li>Volumetric strain: change of volume per unit volume; E = 2G(1+nu) = 3K(1-2nu).</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">εₓ = (σₓ − νσᵧ)/E      (plane stress)
@@ -325,6 +345,13 @@ tan 2θₚ = γₓᵧ / (εₓ − εᵧ)
             <span class="meta-chip">🔗 Prereq: None</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Shear force at a section: algebraic sum of transverse forces on one side of the section.</li>
+            <li>Bending moment at a section: algebraic sum of moments of forces on one side about that section.</li>
+            <li>Point of contraflexure: section where bending moment changes sign and equals zero.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <p><strong>Relationships between load, shear and bending moment (MO2025 END Q.2(a)):</strong></p>
@@ -370,6 +397,12 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
             <span class="meta-chip">🔗 Prereq: Topic 4</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Flexure formula: M/I = sigma/y = E/R — bending stress varies linearly across depth.</li>
+            <li>Section modulus Z = I/y_max; sigma_max = M/Z.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">$$M/I = \sigma/y = E/R$$</div>
@@ -410,6 +443,11 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
             <span class="meta-chip">🔗 Prereq: Topic 5</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Shear stress distribution in beams: tau = V*A*ybar/(I*b), parabolic for rectangles, maximum at neutral axis.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">$$\tau = V\cdot Aȳ / (I\cdot b)$$</div>
@@ -459,6 +497,12 @@ Shape: V linear from 0 → −100 ; M parabolic from 0 → −100</div>
             <span class="meta-chip">🔗 Prereq: Topic 4–5</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Macaulay's method: double integration of EI·y" = M with bracket terms keeping constants common for the whole beam.</li>
+            <li>Moment-area theorems relate slope/deflection changes to areas of the M/EI diagram.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">EI d²y/dx² = M(x)</div>
@@ -516,6 +560,13 @@ Free end x = L: y = −P(L/2)³/6EI = −PL³/48EI
             <span class="meta-chip">🔗 Prereq: Topic 5</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Euler buckling load: P_cr = pi^2*E*I / L_eff^2 — the axial load at which a perfect column buckles elastically.</li>
+            <li>Slenderness ratio: L_eff/r_min; effective length depends on end conditions (0.5L fixed-fixed ... 2L pinned-free).</li>
+            <li>Rankine-Gordon formula: empirical combination of crushing and Euler loads valid for intermediate columns.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">P_cr = π²EI / L_eff²</div>
@@ -549,6 +600,12 @@ Free end x = L: y = −P(L/2)³/6EI = −PL³/48EI
             <span class="meta-chip">🔗 Prereq: Topic 5</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Torsion equation: T/J = tau/r = G*theta/L for circular shafts in elastic torsion.</li>
+            <li>Polar modulus J/r; power transmitted P = 2*pi*N*T/60.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <div class="formula-box">Torsion formula: T/J = τ/r = Gθ/L
@@ -601,6 +658,12 @@ Angle of twist: θ = TL/GJ</div>
             <span class="meta-chip">🔗 Prereq: Topic 5</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Winkler-Bach theory: curved-beam stress distribution is hyperbolic; inner fibre stress exceeds simple flexure prediction.</li>
+            <li>Shear centre: point through which a transverse load must act to produce bending without twist.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <h4>Curved beams</h4>
@@ -671,6 +734,13 @@ A = 35×70 = 2450 mm² = 2.45×10⁻³ m²
             <span class="meta-chip">🔗 Prereq: Topic 1</span>
           </div>
         </div>
+        
+          <h4 class="defs-h">&#128214; Exam Definitions &#8212; quote these in your answers</h4>
+          <ul>
+            <li>Thin cylinder hoop stress: sigma_h = p*d/(2t) — circumferential, twice the longitudinal stress.</li>
+            <li>Longitudinal stress: sigma_l = p*d/(4t).</li>
+            <li>Thick cylinder (Lame): radial and hoop stresses vary as A - B/r^2 across the wall.</li>
+          </ul>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
           <h4>Thin cylinder (t &lt; d/20)</h4>
@@ -721,65 +791,407 @@ At r = 0.12 m: r² = 0.0144
       </div>
       </div>
 
-      <!-- ============ CHEAT SHEET ============ -->
-      <div class="topic" id="cheat">
-        <div class="topic-header">
-          <h3>⚡ Quick Revision Cheat Sheet</h3>
-        </div>
+      <!-- ============ CHEAT SHEET ============ ============ -->
+      <div class="topic" id="cheat-sheet">
+        <div class="topic-header"><h3>&#9889; Quick Revision Cheat Sheet</h3></div>
         <div class="subsection">
-          <h4>Must-Know Formulas</h4>
-          <div class="two-col">
-            <div>
-              <div class="formula-box">$$\sigma_\theta = (\sigma_{x}+\sigmaᵧ)/2 + (\sigma_{x}-\sigmaᵧ)/2 \cos2\theta + \tau_{x}ᵧ \sin2\theta$$</div>
-              <div class="formula-box">$$\tau_\theta = (\sigma_{x}-\sigmaᵧ)/2 \sin2\theta - \tau_{x}ᵧ \cos2\theta$$</div>
-              <div class="formula-box">σ₁,₂ = σ_avg ± R ; R = √[((σₓ−σᵧ)/2)² + τₓᵧ²]</div>
-              <div class="formula-box">$$\tan2\theta_{p} = 2\tau_{x}ᵧ/(\sigma_{x}-\sigmaᵧ)$$</div>
-            </div>
-            <div>
-              <div class="formula-box">τ = V·Aȳ/(I·b) ; τ_max(rect) = 3V/2bd</div>
-              <div class="formula-box">$$M/I = \sigma/y = E/R ; \sigma = M/Z$$</div>
-              <div class="formula-box">EI d²y/dx² = M ; δ_cant_P = PL³/3EI</div>
-              <div class="formula-box">P_cr = π²EI/L_eff²</div>
-            </div>
-            <div>
-              <div class="formula-box">σ_h = pd/2t ; σ_l = pd/4t</div>
-              <div class="formula-box">$$\sigma_r = A - B/r^{2} ; \sigma_t = A + B/r^{2}$$</div>
-              <div class="formula-box">$$\epsilon_{x} = (\sigma_{x} - \nu\sigmaᵧ)/E ; G = E/2(1+\nu)$$</div>
-              <div class="formula-box">Euler L_eff: p-p L · fixed-free 2L · f-f L/2</div>
-            </div>
-          </div>
-        </div>
-        <div class="subsection">
-          <h4>Common Traps</h4>
-          <ul>
-            <li>τ is max at the <strong>neutral axis</strong>, zero at the fibres; σ is max at the fibres, zero at NA.</li>
-            <li>Buckling occurs about the <strong>weaker</strong> axis (smaller I).</li>
-            <li>Principal planes → τ = 0. Max shear planes → 45° from principal.</li>
-            <li>Thick cylinder stresses are max at the <strong>inner</strong> surface.</li>
-            <li>Sign convention: compressive σ negative — keep signs through Mohr's circle.</li>
-            <li>Euler valid only for slender columns; short columns crush.</li>
-            <li>Macaulay brackets: integrate as (x−a)ⁿ with brackets intact; only expand for x ≥ a.</li>
-          </ul>
-        </div>
-        <div class="subsection">
-          <h4>Weightage Summary</h4>
-          <div class="table-wrap"><table>
-            <tr><th>Topic</th><th>Marks/Paper</th><th>Frequency</th></tr>
-            <tr><td>Inclined-plane / principal stress</td><td>5</td><td>Every paper</td></tr>
-            <tr><td>Shear stress in beam (derivation)</td><td>5</td><td>2/3 papers</td></tr>
-            <tr><td>Euler buckling + limitations</td><td>5</td><td>Every END sem</td></tr>
-            <tr><td>Thin/thick cylinders</td><td>5–6</td><td>Every END sem</td></tr>
-            <tr><td>Flexure formula</td><td>5</td><td>2/3 papers</td></tr>
-            <tr><td>Macaulay deflection</td><td>5–6</td><td>Every END sem</td></tr>
-          </table></div>
+          <h4>Must-Know Formulas by Module</h4>
+          <details id="cheat-m1" open><summary><strong>M1 &#8212; Stress Transformation &amp; Mohr</strong></summary>
+            <div class="two-col"><div>
+              <div class="formula-box">Inclined plane ($\theta$ from x-face):
+$\sigma_\theta=\tfrac{\sigma_x+\sigma_y}{2}+\tfrac{\sigma_x-\sigma_y}{2}\cos2\theta+\tau_{xy}\sin2\theta$
+$\tau_\theta=\tfrac{\sigma_x-\sigma_y}{2}\sin2\theta-\tau_{xy}\cos2\theta$</div>
+              <div class="formula-box">Principal stresses: $\sigma_{1,2}=\tfrac{\sigma_x+\sigma_y}{2}\pm R$, $R=\sqrt{\big(\tfrac{\sigma_x-\sigma_y}{2}\big)^2+\tau_{xy}^2}$
+$\tan2\theta_p=\dfrac{2\tau_{xy}}{\sigma_x-\sigma_y}$ &#183; $\tau_{max}=R$</div>
+            </div><div>
+              <div class="formula-box">Strain relations: $\epsilon_1=\tfrac{\epsilon_x+\epsilon_y}{2}\pm\sqrt{\big(\tfrac{\epsilon_x-\epsilon_y}{2}\big)^2+\tfrac{\gamma_{xy}^2}{4}}$
+Rosette (45&#176;): $\epsilon_x=\epsilon_a,\ \epsilon_y=\epsilon_c,\ \gamma_{xy}=2\epsilon_b-\epsilon_a-\epsilon_c$</div>
+            </div></div>
+          </details>
+          <details id="cheat-m2" open><summary><strong>M2 &#8212; SFD/BMD, Flexure &amp; Shear in Beams</strong></summary>
+            <div class="two-col"><div>
+              <div class="formula-box">Relations: $w=-\dfrac{dV}{dx}=-\dfrac{d^2M}{dx^2}$ &#183; $V=\dfrac{dM}{dx}$
+Max BM where $V=0$. UDL on simple span: $M_{max}=\dfrac{wL^2}{8}$
+Point load centre: $M=\dfrac{PL}{4}$</div>
+              <div class="formula-box">Flexure: $\dfrac{M}{I}=\dfrac{\sigma}{y}=\dfrac{E}{R}$ &#183; $\sigma_{max}=\dfrac{M}{Z}$, $Z=I/y_{max}$
+Rect $Z=bh^2/6$ &#183; Circle $Z=\pi d^3/32$</div>
+            </div><div>
+              <div class="formula-box">Shear stress: $\tau=\dfrac{VA\bar y}{I b}$
+Rectangle: $\tau_{max}=1.5\,\tau_{avg}$ &#183; Circle: $4/3$
+Parallel axis: $I=I_G+Ah^2$</div>
+            </div></div>
+          </details>
+          <details id="cheat-m3" open><summary><strong>M3 &#8212; Deflection &amp; Torsion</strong></summary>
+            <div class="two-col"><div>
+              <div class="formula-box">Cantilever end load: $\delta=\dfrac{PL^3}{3EI}$; UDL tip $\dfrac{wL^4}{8EI}$
+SS centre load $\dfrac{PL^3}{48EI}$; UDL $\dfrac{5wL^4}{384EI}$
+Macaulay: $EI\,y''=M$ with bracket terms $\langle x-a\rangle^n$</div>
+            </div><div>
+              <div class="formula-box">Torsion: $\dfrac{T}{J}=\dfrac{\tau}{r}=\dfrac{G\theta}{L}$, solid $J=\dfrac{\pi d^4}{32}$
+Power: $P=\dfrac{2\pi NT}{60}$ &#183; $\tau_{max}$ at surface</div>
+            </div></div>
+          </details>
+          <details id="cheat-m4" open><summary><strong>M4 &#8212; Columns &amp; Energy Methods</strong></summary>
+            <div class="two-col"><div>
+              <div class="formula-box">Euler: $P_{cr}=\dfrac{\pi^2EI}{L_{eff}^2}$;
+$L_{eff}$: pinned 1.0L &#183; fixed-free 2L &#183; fixed-fixed 0.5L &#183; fixed-pinned 0.7L
+Slenderness $=L_{eff}/r$</div>
+              <div class="formula-box">Rankine: $\dfrac{1}{P_R}=\dfrac{1}{P_C}+\dfrac{1}{P_E}$</div>
+            </div><div>
+              <div class="formula-box">Strain energy: axial $U=\dfrac{P^2L}{2AE}$;
+bending $U=\int\dfrac{M^2}{2EI}dx$; torsion $U=\int\dfrac{T^2}{2GJ}dx$
+Castigliano: $\delta=\partial U/\partial P$</div>
+            </div></div>
+          </details>
+          <details id="cheat-m5" open><summary><strong>M5 &#8212; Cylinders</strong></summary>
+            <div class="two-col"><div>
+              <div class="formula-box">Thin: hoop $\sigma_h=\dfrac{pd}{2t}$ (twice) longitudinal $\sigma_l=\dfrac{pd}{4t}$
+Sphere: $\sigma=pd/(4t)$</div>
+            </div><div>
+              <div class="formula-box">Thick (Lam&eacute;): $\sigma_r=A-\dfrac{B}{r^2}$, $\sigma_\theta=A+\dfrac{B}{r^2}$
+Shrink fit produces interfacial pressure &#8594; superpose Lam&eacute; solutions.</div>
+            </div></div>
+          </details>
         </div>
       </div>
 
-    </main>
+    <!-- ===================== PYQs ===================== -->
+<section class="section section-alt" id="modpyq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">PYQs by Module</div>
+      <h2>Every past question, grouped by module</h2>
+      <p>All questions from MO 2022–2025, grouped under the module they came from — practice module by module.</p>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">1</span> <strong>Stresses & Strains</strong> <span class="tag">CO-1</span> <span class="tag tag-high">19 PYQs</span></div>
+      <div class="paper-group">
+        <h4>MID MO2022 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="MID MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" alt="SOM_MO2022_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1</strong></td><td>5</td><td>At a certain point in a material σₓ = S, σᵧ = S/2 and τₓᵧ = S/4. If the maximum shear stress is not to exceed 120 MN/m², determine S. Also determine the corresponding values of the principal stresses <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="Q.1 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2</strong></td><td>5</td><td>Figure 1 shows a rigid bar ABC hinged at A and suspended at points B and C by two bars BD and CE made of aluminium and steel respectively. The bar carries a load of 20 kN midway between B and C. Cross-sectional areas: aluminium bar BD = 3 mm², steel bar CE = 2 mm². Determine the load taken up by each bar and the respective stresses developed. Take E<sub>Al</sub> = 70 kN/mm², E<sub>S</sub> = 200 kN/mm² <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="Q.2 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_END_p1.png" alt="SOM_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1</strong></td><td>10</td><td>The strain components at a given point are εₓ = −533×10⁻⁶, εᵧ = 67×10⁻⁶ and γₓᵧ = −626×10⁻⁶. If E = 200 GPa and ν = 0.30, find the stress components whose normal is at 45° from the x axis <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="Q.1 · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2023 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="MID MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" alt="SOM_MO2023_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1</strong></td><td>5</td><td>A steel bar with a butt-welded joint (57° to the axis, width 100 mm) carries an axial tensile load of 400 kN. If the normal and shear stresses on the plane of the butt weld must be limited to 70 MPa and 45 MPa respectively, determine the minimum thickness t required for the bar <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="Q.1 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2</strong></td><td>5</td><td>Derive the expressions for principal stresses and maximum shearing stress in plane stress condition described by σₓ, σᵧ and τₓᵧ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="Q.2 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3</strong></td><td>5</td><td>For the stress element shown in figure (100 MPa normal, 80 MPa normal, 60 MPa shear), find the normal and shear stresses on plane AB at 48° <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="Q.3 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2023 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="END MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_END_p1.png" alt="SOM_MO2023_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>5</td><td>Derive expressions for the normal and shear stresses on an inclined plane for the plane stress condition given by σₓ, σᵧ and τₓᵧ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.1(a) · END MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>5</td><td>The stress condition on the outer surface of a body is σₓ = 50 MPa, σᵧ = −10 MPa and τₓᵧ = 40 MPa. Determine the orientation of the principal planes and the values of the principal stresses <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.1(b) · END MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2024 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="MID MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" alt="SOM_MO2024_P1 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1</strong></td><td>5</td><td>At a point on the surface of a machine part, the state of stress on two elements inclined at angle θ are shown in figure. Prove that σₓ + σᵧ = σₓ′ + σᵧ′ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="Q.1 · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2</strong></td><td>5</td><td>For the stress element shown in figure, find the normal and shear stresses on plane AB (48°; 100 MPa normal, 80 MPa normal, 60 MPa shear) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="Q.2 · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3</strong></td><td>5</td><td>At a point on the surface of an alloy steel machine part (E = 210 GPa, ν = 0.30) under biaxial stress, measured strains were εₓ = +1394×10⁻⁶, εᵧ = −660×10⁻⁶, γₓᵧ = +2054×10⁻⁶. Determine the principal strains and the maximum shear stress at the point <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="Q.3 · MID MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" alt="SOM_MO2024_P2 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="END MO2024 · page 2"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" alt="SOM_MO2024_P2 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>5</td><td>The stresses shown in figure act at a point in a stressed body (125 MPa normal, 95 MPa normal, 20° inclined plane a-b). Determine the normal and shear stresses on the inclined plane a-b <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="Q.1(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>5</td><td>The stresses on two perpendicular planes at a point on the outside surface of a solid circular bar (200 MPa normal, 25 MPa shear) are shown. Determine the orientation of the principal planes and the values of the principal stresses <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="Q.1(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2025 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="MID MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" alt="SOM_MO2025_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Illustrate a non-zero state of stress where |τmax| = |τmin| = |σ₁| = |σ₂| <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.1(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>Two wooden joists 50 mm × 100 mm are glued along AB. P = 200 kN and the glue joint is at 60° to the load axis. Find the normal and shearing stress in the glue <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.1(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2</strong></td><td>5</td><td>For the stress element shown in figure, find the principal stresses and their orientation with respect to the x-axis. Also find the stress components on planes at 45° and 135° <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.2 · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3</strong></td><td>5</td><td>The strain components are εₓ = −800×10⁻⁶, εᵧ = 200×10⁻⁶, γₓᵧ = −800×10⁻⁶. Using E = 200 GPa and ν = 0.3, find the stress components acting on the face whose normal is at +20° from the x-axis <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.3 · MID MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_END_p1.png" alt="SOM_MO2025_END paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="END MO2025 · page 2"><img src="/api/file?path=images/papers/SOM_MO2025_END_p2.png" alt="SOM_MO2025_END paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>5</td><td>For the element shown in Fig. Q.1(a) (σₓ, σᵧ, 30 MPa shear), determine the values of σₓ and σᵧ if the principal stresses are known to be 20 MPa and −80 MPa <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="Q.1(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>5</td><td>εₓ = −400×10⁻⁶, εᵧ = 200×10⁻⁶ and γₓᵧ = 800×10⁻⁶. If E = 200 GPa and ν = 0.3, determine the principal stresses and maximum shearing stress <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="Q.1(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">2</span> <strong>Bending & Shear</strong> <span class="tag">CO-2</span> <span class="tag tag-high">18 PYQs</span></div>
+      <div class="paper-group">
+        <h4>MID MO2022 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="MID MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" alt="SOM_MO2022_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3</strong></td><td>5</td><td>Draw the shear force and bending moment diagrams for the simply supported beam shown loaded in Figure 2 (5 kN point load, 2 kN/m UDL over part span, 10 kN point load). Clearly mark the position of the maximum bending moment and determine its value <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="Q.3 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4</strong></td><td>5</td><td>Derive the complete expression for the bending stresses in a beam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="Q.4 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5</strong></td><td>5</td><td>Determine the distribution of shear stress of a rectangular beam having width B and height H, taking F as the shear force <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_MID_p1.png" data-caption="Q.5 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_END_p1.png" alt="SOM_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.2</strong></td><td>10</td><td>An I-section girder, 200 mm wide × 300 mm deep with flange and web thickness 20 mm, is used as a simply supported beam of span 7 m. It carries a distributed load of 5 kN/m and a concentrated load of 20 kN at mid-span. Determine (i) the second moment of area of the cross-section, (ii) the maximum stress set up <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="Q.2 · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2023 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="MID MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" alt="SOM_MO2023_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4</strong></td><td>5</td><td>Explain shear forces and bending moments in beams with neat diagrams. Also explain the sign convention <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="Q.4 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5</strong></td><td>5</td><td>Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN point load at 1 m, 50 kN point load, 60 kN/m UDL over the last 2 m; spans 1 m, 2 m, 2 m) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_MID_p1.png" data-caption="Q.5 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2023 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="END MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_END_p1.png" alt="SOM_MO2023_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>5</td><td>Derive an expression for the shear stress in a beam of rectangular cross section <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.2(a) · END MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>5</td><td>A machine part is acted upon by a 3 kN.m bending moment. Cross-section shown in Figure (90 mm flange, stepped web). Knowing E = 165 GPa, determine the maximum tensile and compressive stresses in the machine part <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.2(b) · END MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2024 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="MID MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" alt="SOM_MO2024_P1 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4</strong></td><td>5</td><td>Derive the expression for bending stress in a beam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="Q.4 · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5</strong></td><td>5</td><td>Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN at 1 m, 50 kN at 3 m, 60 kN/m over last 2 m) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P1_p1.png" data-caption="Q.5 · MID MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" alt="SOM_MO2024_P2 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="END MO2024 · page 2"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" alt="SOM_MO2024_P2 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>5</td><td>The beam of figure (T-section: flange 100 mm × 50 mm, web 37.5 mm × 200 mm) is made of a material with tensile and compressive yield strength 200 MPa. Determine the maximum resisting moment the beam can support if yielding must be avoided <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="Q.2(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>5</td><td>Derive an expression for shear stress in a beam of rectangular cross section <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="Q.2(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2025 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="MID MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" alt="SOM_MO2025_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4</strong></td><td>5</td><td>Write the shear-force and bending-moment equations for the beam shown (simply supported ABC; AB = 2 m with point load 80 kN at B, UDL 10 kN/m over the entire 10 m span). Draw the SFD and BM diagram marking salient points including maximum BM <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.4 · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>3</td><td>Derive the flexure formula for a beam subjected to pure bending <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.5(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>2</td><td>A high-strength steel band saw 20 mm wide × 0.8 mm thick runs over pulleys of 600 mm diameter. Find the maximum flexural stress. E = 200 GPa <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_MID_p1.png" data-caption="Q.5(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_END_p1.png" alt="SOM_MO2025_END paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="END MO2025 · page 2"><img src="/api/file?path=images/papers/SOM_MO2025_END_p2.png" alt="SOM_MO2025_END paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>2</td><td>Derive the relationship between load, shear force and bending moment for beam problems <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="Q.2(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>4</td><td>Write the shear force and bending moment equations for the cantilever beam shown (UDL w₀ over half the length from free end A; fixed at C). Draw the diagrams specifying values at load-changing points. Take w₀ = 50 kN/m, L = 2 m <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="Q.2(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(c)</strong></td><td>4</td><td>In a laboratory test of a beam loaded by end couples, fibres at layer AB increase 60×10⁻³ mm over a 200 mm gauge length whereas those at CD decrease 100×10⁻³ mm (layer distances 30 mm, 120 mm, 75 mm per figure). Using E = 70 GPa, determine the flexural stress at the top and bottom fibres <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="Q.2(c) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">3</span> <strong>Deflection & Columns</strong> <span class="tag">CO-3</span> <span class="tag tag-high">9 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_END_p1.png" alt="SOM_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3</strong></td><td>10</td><td>A concentrated load of 300 N is applied to the simply supported beam shown in Fig. 2 (R₁ = 100 N, R₂ = 200 N). Determine the equations of the elastic curve between each change of load point and the maximum deflection in the beam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="Q.3 · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4</strong></td><td>10</td><td>(a) Derive the complete torsion equation for a circular shaft. (b) The solid shaft is fixed to the support at C and subjected to the torsional loadings shown (Fig. 3). Determine the shear stress at points A and B and sketch the shear stress on volume elements located at these points <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="Q.4 · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2023 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="END MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_END_p1.png" alt="SOM_MO2023_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>5</td><td>What do you understand by buckling of a column? Derive an expression for Euler buckling load (P<sub>cr</sub>) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.3(a) · END MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>5</td><td>A cantilever beam of length L is acted upon by a point load at distance L/2 from the fixed end. Find the deflection at the free end. Take EI as constant <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.3(b) · END MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" alt="SOM_MO2024_P2 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="END MO2024 · page 2"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" alt="SOM_MO2024_P2 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>5</td><td>The beam is loaded and supported as shown (simply supported, point loads P at L and 2L). Use Macaulay’s functions to determine the deflection: (a) at distance x = L from the left support, (b) at the middle of the span <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.3(a) · END MO2024 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>5</td><td>A 5 m long column with the cross section shown (four identical timber pieces, hollow box 100 mm × 100 mm) is constructed with E = 14 GPa, timbers nailed to act as a unit. Determine the Euler buckling load considering hinged-hinged support <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.3(b) · END MO2024 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_END_p1.png" alt="SOM_MO2025_END paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="END MO2025 · page 2"><img src="/api/file?path=images/papers/SOM_MO2025_END_p2.png" alt="SOM_MO2025_END paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>6</td><td>The simply supported beam shown carries a uniform load of intensity w₀ symmetrically distributed over part of its length (a + 2b + a). Determine the maximum deflection δ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.3(a) · END MO2025 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>4</td><td>A 50 mm diameter steel shaft rotates at 240 rpm. If the shearing stress is limited to 80 MPa, determine the maximum power that can be transmitted <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.3(b) · END MO2025 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>5</td><td>Write a short note on limitations of Euler's long column formula <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.4(b) · END MO2025 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">4</span> <strong>Curved Beams & Shear Center</strong> <span class="tag">CO-4</span> <span class="tag tag-high">5 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2023 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="END MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_END_p1.png" alt="SOM_MO2023_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>5</td><td>Derive an expression for stress distribution due to bending moment in a curved beam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.4(a) · END MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>5</td><td>A channel section is used as a cantilever beam supporting load P at the free end (flanges 125 mm, webs 230 mm + 230 mm, metal 12 mm thick). Assuming all of the section effective in resisting flexural stresses and only the web resists vertical shearing stresses, locate the shear center (e) with respect to the center of the web <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.4(b) · END MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" alt="SOM_MO2024_P2 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="END MO2024 · page 2"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" alt="SOM_MO2024_P2 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>5</td><td>Derive an expression for the shear center of the C-channel shown in figure (thickness t_f, t_w; depth h; flange width b) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.4(a) · END MO2024 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>5</td><td>A curved bar with rectangular cross section (width 35 mm, height 70 mm, inside radius 50 mm) is subjected to a bending moment M = 4500 N.m acting in the direction shown. Determine the bending stresses in the curved bar at points A and B <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.4(b) · END MO2024 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_END_p1.png" alt="SOM_MO2025_END paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="END MO2025 · page 2"><img src="/api/file?path=images/papers/SOM_MO2025_END_p2.png" alt="SOM_MO2025_END paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>5</td><td>A circular bar bent into the shape of a half ring is supported vertically as shown (radius R, horizontal load P at C). Determine the horizontal movement of point C <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.4(a) · END MO2025 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">5</span> <strong>Thin & Thick Cylinders</strong> <span class="tag">CO-5</span> <span class="tag tag-high">7 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/SOM_MO2022_END_p1.png" alt="SOM_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5</strong></td><td>10</td><td>Calculate the minimum wall thickness for a thin-walled cylindrical pressure vessel to carry a gas at a pressure of 10 MPa. Diameter of the vessel is 0.6 m and the stress is limited to 85 MPa <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2022_END_p1.png" data-caption="Q.5 · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2023 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="END MO2023 · page 1"><img src="/api/file?path=images/papers/SOM_MO2023_END_p1.png" alt="SOM_MO2023_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>5</td><td>Derive expressions for hoop stress and longitudinal stress in thin cylinders <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.5(a) · END MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>5</td><td>A thick cylinder of 100 mm internal radius and 150 mm external radius is subjected to an internal pressure of 60 MPa and an external pressure of 30 MPa. Determine the hoop and radial stresses at the radius of 120 mm <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2023_END_p1.png" data-caption="Q.5(b) · END MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p1.png" alt="SOM_MO2024_P2 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="END MO2024 · page 2"><img src="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" alt="SOM_MO2024_P2 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>5</td><td>Derive the expressions for hoop stress and longitudinal stress in a thin cylinder with neat diagrams <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.5(a) · END MO2024 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>5</td><td>A thick-walled cylindrical pressure vessel of inner diameter 200 mm and outer diameter 300 mm is made of hardened steel with yield strength 430 MPa. Determine the maximum internal pressure that may be applied if yield strength must not be exceeded <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2024_P2_p2.png" data-caption="Q.5(b) · END MO2024 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/SOM_MO2025_END_p1.png" alt="SOM_MO2025_END paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="END MO2025 · page 2"><img src="/api/file?path=images/papers/SOM_MO2025_END_p2.png" alt="SOM_MO2025_END paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>6</td><td>Derive expressions for tangential and radial stresses for a thick-walled cylinder subjected to inside and outside pressures Pᵢ and Pₒ respectively <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.5(a) · END MO2025 · p2">📄 p2</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>4</td><td>A tank shown in Fig. Q.5(b) (400 mm × 600 mm) is fabricated from 1 mm thick steel sheet. Calculate the longitudinal and circumferential stresses caused by an internal pressure of 500 kPa <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/SOM_MO2025_END_p2.png" data-caption="Q.5(b) · END MO2025 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ===================== PYQs ===================== -->
 <section class="section section-alt" id="pyqs">
   <div class="container">
     <div class="section-head">

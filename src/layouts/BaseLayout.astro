@@ -45,8 +45,8 @@ const wmOwner = user?.username ?? user?.name ?? "user";
 const wmTile = (fill: string, opacity: string) =>
   `<svg xmlns='http://www.w3.org/2000/svg' width='480' height='320'><text x='240' y='160' text-anchor='middle' font-family='JetBrains Mono, monospace' font-size='16' font-weight='600' fill='${fill}' fill-opacity='${opacity}' transform='rotate(-20 240 160)'>${wmOwner}</text></svg>`;
 const wmStyle =
-  `--wm-tile-light:url("data:image/svg+xml,${encodeURIComponent(wmTile("%236b7280", "0.09"))}");` +
-  `--wm-tile-dark:url("data:image/svg+xml,${encodeURIComponent(wmTile("%23d7dce2", "0.10"))}")`;
+  `--wm-tile-light:url("data:image/svg+xml,${encodeURIComponent(wmTile("#6b7280", "0.09"))}");` +
+  `--wm-tile-dark:url("data:image/svg+xml,${encodeURIComponent(wmTile("#d7dce2", "0.10"))}")`;
 
 const links = [
   { href: "/", label: "Home", key: "home" },

@@ -1,6 +1,7 @@
-# Local study material — keep out of git (PYQ images live in the repo instead)
+
 books/
 syllabus/
+dev.log
 # Node / Astro
 node_modules/
 dist/

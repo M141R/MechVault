@@ -1,4 +1,4 @@
-
+﻿
 
 
 
@@ -11,7 +11,7 @@
       <span class="tag">7 papers analyzed</span>
       <span class="tag tag-high">First &amp; Second Law core</span>
       <span class="tag">Polytropic + SFEE = every paper</span>
-      <span class="tag tag-crit">Otto/Diesel derivation</span>
+      <span class="tag tag-crit">Property relations derivations</span>
     </div>
     <div class="blueprint">
       <div class="bp-head">
@@ -39,7 +39,7 @@
             <span class="mchip" title="M2 — First Law">M2</span>
             <span class="mchip" title="M3 — Second Law">M3</span>
             <span class="mchip end" title="M4 — Entropy &amp; Availability">M4</span>
-            <span class="mchip end" title="M5 — Gas Power Cycles">M5</span>
+            <span class="mchip end" title="M5 — Property Relations">M5</span>
             <span class="bp-tail">all modules · 10 marks each (2 × 5)</span>
           </div>
         </div>
@@ -116,8 +116,8 @@
   <div class="container">
     <div class="section-head">
       <div class="section-eyebrow">Notes</div>
-      <h2>Full notes — derivation-first</h2>
-      <p>Each topic: theory, formulas, a worked numerical from a real paper, and the PYQs it has produced.</p>
+      <h2>Full notes — in official syllabus order</h2>
+      <p>Every topic from the BIT Mesra syllabus sheet (ME24201), module by module — written in plain language, with full derivations, step-by-step solutions to real paper numericals, and the PYQs each topic has produced.</p>
     </div>
   </div>
 </section>
@@ -126,17 +126,20 @@
   <div class="notes-wrap" style="padding-top:24px">
     <nav class="toc">
       <div class="toc-label">On this page</div>
-      <a href="#t1">1 · Systems, Properties &amp; Quasi-static Process</a>
-      <a href="#t2">2 · Work, Heat &amp; Point/Path Functions</a>
-      <a href="#t3">3 · First Law &amp; Internal Energy</a>
-      <a href="#t4">4 · Polytropic Process</a>
-      <a href="#t5">5 · SFEE &amp; Nozzles</a>
-      <a href="#t6">6 · Steam &amp; Throttling</a>
-      <a href="#t7">7 · Second Law &amp; Carnot</a>
-      <a href="#t8">8 · Heat Pump vs Refrigerator</a>
-      <a href="#t9">9 · Entropy &amp; Clausius Inequality</a>
-      <a href="#t10">10 · Otto &amp; Diesel Cycles</a>
-      <a href="#cheat">⚡ Cheat Sheet</a>
+      <a href="#t1">M1 · Systems, Properties &amp; Equilibrium</a>
+      <a href="#t2">M1 · Zeroth Law, Ideal Gas &amp; Steam Tables</a>
+      <a href="#t3">M1 · Work &amp; Heat</a>
+      <a href="#t4">M2 · First Law &amp; Internal Energy</a>
+      <a href="#t5">M2 · Enthalpy &amp; Specific Heats</a>
+      <a href="#t6">M2 · SFEE &amp; Applications</a>
+      <a href="#t7">M3 · Second-Law Statements</a>
+      <a href="#t8">M3 · Carnot Cycle &amp; Theorems</a>
+      <a href="#t9">M3 · Reversibility &amp; Absolute Scale</a>
+      <a href="#t10">M4 · Entropy &amp; Clausius Inequality</a>
+      <a href="#t11">M4 · Availability &amp; Exergy</a>
+      <a href="#t12">M5 · Property Relations</a>
+      <a href="#t13">M5 · Otto &amp; Diesel (paper extra)</a>
+      <a href="#cheat-sheet">⚡ Cheat Sheet</a>
     </nav>
 
     <main class="notes-main">
@@ -145,103 +148,297 @@
       <div class="module-block">
         <div class="module-head">
           <span class="mchip">M1</span>
-          <h3>Module 1 — Basic Concepts</h3>
+          <h3>Module 1 — Introduction &amp; Fundamental Concepts</h3>
         </div>
         <nav class="toc">
           <div class="toc-label">Module 1 · Topics</div>
-          <a href="#t1">1 · Systems, Properties &amp; Quasi-static Process</a>
-          <a href="#t2">2 · Work, Heat &amp; Point/Path Functions</a>
+          <a href="#t1">1 · Systems, Properties &amp; Equilibrium</a>
+          <a href="#t2">2 · Zeroth Law, Ideal Gas &amp; Pure Substances</a>
+          <a href="#t3">3 · Work, Heat &amp; Their Comparison</a>
         </nav>
 
       <!-- ============ TOPIC 1 ============ -->
       <div class="topic" id="t1">
         <div class="topic-header">
-          <h3>1. Systems, Properties &amp; Quasi-static Process</h3>
+          <h3>1. Systems, Properties &amp; Equilibrium</h3>
           <div class="meta-row">
             <span class="meta-chip">⏱ 45 min</span>
-            <span class="meta-chip">🏆 2–3 marks</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
             <span class="meta-chip">🔗 Prereq: None</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> thermodynamics stands on a few carefully chosen words — system, property, process, equilibrium. Once these are clear, everything after this page feels easier.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Macroscopic approach:</strong> studies the average behaviour of a large number of molecules — no molecular model needed; uses properties like P, V, T, m. Simpler, used in classical thermodynamics. <strong>(MO2024 P1 Q.1(a), MO2025 MID Q.1(a))</strong></li>
-            <li><strong>Microscopic approach:</strong> studies the behaviour of individual molecules statistically (statistical thermodynamics); uses velocity, kinetic energy, mean free path, momentum.</li>
+            <li><strong>System:</strong> A quantity of matter or a region in space chosen for study.</li>
+            <li><strong>Surroundings:</strong> Everything external to the system.</li>
+            <li><strong>Boundary:</strong> The real or imaginary surface separating the system from the surroundings; it may be fixed or moving.</li>
+            <li><strong>Closed system (control mass):</strong> A system of fixed mass across whose boundary only energy, never matter, can cross.</li>
+            <li><strong>Open system (control volume):</strong> A properly selected region in space through which mass and energy flow continuously.</li>
+            <li><strong>Isolated system:</strong> A system that exchanges neither mass nor energy with its surroundings.</li>
+            <li><strong>Property:</strong> Any measurable characteristic of a system, such as pressure, temperature or density.</li>
+            <li><strong>Intensive property:</strong> A property independent of the mass of the system (pressure, temperature, density).</li>
+            <li><strong>Extensive property:</strong> A property whose value depends on the mass of the system and is additive over parts (total volume, total energy).</li>
+            <li><strong>State:</strong> The condition of a system described completely by its properties at a given instant.</li>
+            <li><strong>Process:</strong> A change of state of a system along a definite path.</li>
+            <li><strong>Cycle:</strong> A sequence of processes that returns the system to its initial state.</li>
+            <li><strong>Point function:</strong> A quantity whose value depends only on the state and not on the path (P, V, T, u).</li>
+            <li><strong>Path function:</strong> A quantity whose value depends on the path followed between two states (heat, work).</li>
+            <li><strong>Quasi-static process:</strong> A process carried out infinitely slowly, such that at every instant the system is infinitesimally close to a state of thermodynamic equilibrium — i.e. a succession of equilibrium states.</li>
+            <li><strong>Thermodynamic equilibrium:</strong> The state of a system in which no spontaneous change of any property occurs; it exists only when thermal, mechanical and chemical equilibrium hold simultaneously.</li>
+          </ul>
+          <ul>
+            <li><strong>Two ways to look at matter.</strong> Stand back and watch the big picture — that is the <strong>macroscopic approach</strong>. Zoom in and track every molecule — that is the <strong>microscopic approach</strong>. To know your tyre pressure you never count air molecules; a gauge reads the average push of billions of them. That average view is classical thermodynamics, and this course uses it throughout. The molecule-tracking method (statistical thermodynamics) is powerful but needs heavy mathematics. <em>(MO2024 P1 Q.1(a), MO2025 MID Q.1(a))</em></li>
           </ul>
           <div class="table-wrap"><table>
-            <tr><th>Property type</th><th>Definition</th><th>Examples</th></tr>
-            <tr><td><strong>Intensive</strong></td><td>Independent of mass</td><td>Pressure, density, temperature, specific volume</td></tr>
-            <tr><td><strong>Extensive</strong></td><td>Depends on mass (additive)</td><td>Mass, volume, energy, enthalpy (H = m·h), potential energy</td></tr>
+            <tr><th></th><th>Macroscopic (big picture)</th><th>Microscopic (per molecule)</th></tr>
+            <tr><td><strong>What you study</strong></td><td>The system as a whole</td><td>Individual molecules</td></tr>
+            <tr><td><strong>What you track</strong></td><td>P, V, T, m — few and measurable</td><td>Molecule speeds, energies, positions</td></tr>
+            <tr><td><strong>Molecular model needed?</strong></td><td>No</td><td>Yes</td></tr>
+            <tr><td><strong>Also called</strong></td><td>Classical thermodynamics</td><td>Statistical thermodynamics</td></tr>
           </table></div>
-          <div class="warning"><strong>MO2022 END Q.1(a):</strong> Classify density / potential energy / enthalpy / pressure — the trick is enthalpy (H) is extensive, while specific enthalpy (h) is intensive.</div>
           <ul>
-            <li><strong>Quasi-static process (MO2024 P2 Q.1(a), MO2025 MID Q.2(a)):</strong> proceeds infinitely slowly through a continuous sequence of equilibrium states; system is always in equilibrium with surroundings; path is fully defined → work can be computed as ∫P dV. Characteristic features: infinitely slow, reversible idealization, system at equilibrium at every instant.</li>
-            <li><strong>Thermodynamic equilibrium (MO2024 P1 Q.2(a)):</strong> mechanical (no unbalanced forces) + thermal (no temperature difference) + chemical equilibrium (no composition change). Thermal equilibrium alone only requires uniform temperature.</li>
+            <li><strong>System, surroundings, boundary.</strong> Whatever you choose to study is the <strong>system</strong>; everything else is the <strong>surroundings</strong>; the surface separating them is the <strong>boundary</strong>. Picture a cup of tea: tea = system, room = surroundings, cup wall + tea surface = boundary. The boundary can be fixed, or it can move like a piston.</li>
           </ul>
-          <h4>Zeroth law &amp; simple compressible substances</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Type of system</th><th>Can mass cross?</th><th>Can energy cross?</th><th>Example</th></tr>
+            <tr><td><strong>Closed</strong> (fixed mass)</td><td>No — mass stays inside</td><td>Yes</td><td>Gas sealed in a piston–cylinder</td></tr>
+            <tr><td><strong>Open</strong> (control volume)</td><td>Yes — flows in and out</td><td>Yes</td><td>Turbine, pump, nozzle</td></tr>
+            <tr><td><strong>Isolated</strong></td><td>No</td><td>No</td><td>Perfectly insulated rigid tank</td></tr>
+          </table></div>
+          <div class="callout"><strong>Control volume:</strong> instead of following a blob of gas around, draw an imaginary fence around a machine and watch whatever crosses it. That fenced region is the control volume; the fence is the control surface. Every steady-flow device is analysed this way.</div>
           <ul>
-            <li><strong>Zeroth law:</strong> if bodies A and B are each in thermal equilibrium with a third body C, they are in thermal equilibrium with each other — this defines the concept of <em>temperature</em> and makes thermometry possible (a thermometer measures C's state, which equals A's and B's).</li>
-            <li><strong>Control volume:</strong> a fixed region in space through which mass flows continuously; its analysis uses the steady-flow energy equation (SFEE), with mass and energy crossing the boundary.</li>
-            <li><strong>Simple compressible substance:</strong> a substance in which two independent intensive properties fix the state — e.g. P and T, or P and v — with all other properties determined.</li>
+            <li><strong>State and properties.</strong> The <strong>state</strong> is the condition of the system right now, described by its <strong>properties</strong> (pressure, volume, temperature…). Fix any two independent intensive properties and the whole state is fixed.</li>
+            <li><strong>Intensive or extensive?</strong> Cut the system into two halves. If the property keeps the same value in each half → <strong>intensive</strong> (pressure, temperature, density). If each half now holds only half of it → <strong>extensive</strong> (mass, total volume, total energy). Anything divided by mass (v, u, h) becomes specific and acts intensive. <em>(MO2022 END Q.1(a): enthalpy H is extensive; specific enthalpy h is intensive.)</em></li>
+            <li><strong>Process and cycle.</strong> A <strong>process</strong> changes the state along a definite path. A <strong>cycle</strong> is a chain of processes that returns the system to its starting state.</li>
+            <li><strong>Point functions vs path functions.</strong> A point function answers "<em>where are you?</em>" — P, V, T, u, h, s depend only on the state, never on the route. A path function answers "<em>how much happened along the way?</em>" — work and heat. Drive Delhi → Jaipur: the destination coordinates don't care which road you took, but the kilometres on the odometer do. That is why we write dP and dV (exact differentials) but δW and δQ (inexact). <em>(MO2025 MID Q.3(a))</em></li>
+            <li><strong>Quasi-static process</strong> <em>(MO2024 P2 Q.1(a), MO2025 MID Q.2(a)).</em> "Quasi-static" means <em>almost static</em>: the process runs so slowly that the system stays essentially balanced at every moment. Exam-ready features: infinitely slow; every intermediate state is an equilibrium state; the whole path shows on the P–V diagram — which is the only reason we may compute $W=\int P\,dV$; and it is the ideal version of a real process, the seed of reversibility.</li>
+            <li><strong>Simple compressible substance:</strong> one whose only important work mode is expanding against pressure (no electrical, magnetic or surface effects). Two independent intensive properties fix its complete state.</li>
+            <li><strong>Units (SI) in ten seconds.</strong> Base units: kilogram, metre, second, kelvin. Everything else builds from them: F = ma gives the newton (kg·m/s²); pressure = N/m² (pascal); energy = N·m (joule); power = J/s (watt).</li>
+            <li><strong>Thermodynamic equilibrium</strong> <em>(MO2024 P1 Q.2(a))</em> means the system has fully settled — nothing changes if left alone. All three conditions must hold together: <strong>thermal</strong> (same T everywhere), <strong>mechanical</strong> (no unbalanced forces, uniform p) and <strong>chemical</strong> (no composition drift or reaction). Uniform temperature alone is just thermal equilibrium — that is the difference the paper asks about.</li>
           </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>MID MO2022 Q.1(b):</strong> A tank has two rooms separated by a membrane. Room A holds 2 kg of air with specific volume 0.5 m³/kg. Room B holds 0.75 m³ of air of density 0.8 kg/m³. The membrane breaks and the air settles into one uniform state. Find the final specific volume.</p>
+          <div class="formula-box">Room A volume: $V_A = m_A v_A = 2 \times 0.5 = 1\ \text{m}^3$
+Room B mass: $m_B = \rho_B V_B = 0.8 \times 0.75 = 0.6\ \text{kg}$
+
+After rupture, treat both rooms as ONE closed system:
+total mass $= 2.6$ kg, total volume $= 1.75$ m³
+
+$v_f = \dfrac{1.75}{2.6} \approx 0.673\ \text{m}^3/\text{kg}$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic approach</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic with examples</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.1(a)</td><td>2</td><td>Intensive vs extensive: density, PE, enthalpy, pressure</td></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Intensive/extensive properties + free expansion</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Thermodynamic vs thermal equilibrium</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Process + quasi-static characteristics</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Process + quasi-static characteristics</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Importance of quasi-static process</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Two-room tank mixing → final specific volume (worked above)</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Distinguish point vs path function with examples</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>When is work equal to ∫p·dV? (quasi-static path)</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.1(a)</td><td>2</td><td>Intensive vs extensive: density, PE, enthalpy, pressure</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Intensive/extensive properties + free expansion</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic approach</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Thermodynamic vs thermal equilibrium</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.1(a)</td><td>5</td><td>Process + quasi-static process + characteristic features</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Macroscopic vs microscopic with examples</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.2(a)</td><td>2</td><td>Process + quasi-static characteristics</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Point vs path functions; why are work &amp; heat path functions?</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.1(a)</td><td>5</td><td>Which integrals (∫p dV etc.) count as properties?</td></tr>
           </table></div>
         </div>
       </div>
 
+
       <!-- ============ TOPIC 2 ============ -->
       <div class="topic" id="t2">
         <div class="topic-header">
-          <h3>2. Work, Heat &amp; Point/Path Functions</h3>
+          <h3>2. Zeroth Law, Ideal Gas &amp; Pure Substances</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 30 min</span>
-            <span class="meta-chip">🏆 2–3 marks</span>
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 1</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> the Zeroth law gives us temperature, the ideal-gas law links p, V and T for gases far from condensation, and the steam tables tell you exactly where water sits between liquid and vapour.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Work (thermo definition, MO2023 Q.1(a)):</strong> energy transfer that crosses the system boundary due to a <em>difference in an external generalized force</em> (pressure × volume change for a gas). It is a <strong>boundary phenomenon</strong> and appears at the boundary.</li>
-            <li><strong>Heat:</strong> energy transfer due solely to temperature difference between system and surroundings.</li>
-            <li><strong>Point functions (MO2025 MID Q.3(a)):</strong> depend only on state — P, V, T, u, h, s. Exact differentials: ∫dP = ΔP.</li>
-            <li><strong>Path functions:</strong> depend on how the process happens — work W and heat Q. Inexact differentials: δW, δQ; ∫δW = W, not a difference.</li>
+            <li><strong>Zeroth law:</strong> When two bodies A and B are each in thermal equilibrium with a third body C, then A and B are in thermal equilibrium with each other. This law establishes temperature as a property.</li>
+            <li><strong>Ideal gas:</strong> A gas that obeys the equation of state pV = mRT at all states.</li>
+            <li><strong>Pure substance:</strong> A substance of homogeneous and invariable chemical composition throughout its mass, in every phase (water qualifies even as liquid + vapour).</li>
+            <li><strong>Saturated liquid:</strong> Liquid at the boiling temperature corresponding to the given pressure — about to vaporise.</li>
+            <li><strong>Dry saturated vapour:</strong> Steam that has just completed vaporisation and holds no liquid droplets.</li>
+            <li><strong>Quality (dryness fraction), x:</strong> The ratio of the mass of vapour to the total mass of a liquid&#8211;vapour mixture.</li>
+            <li><strong>Superheated vapour:</strong> Vapour at a temperature higher than the saturation temperature for its pressure.</li>
+            <li><strong>Sensible heat:</strong> Heat that changes the temperature of a body without altering its phase.</li>
+            <li><strong>Latent heat:</strong> Heat absorbed or rejected during a change of phase at constant temperature (e.g. h_fg for boiling).</li>
           </ul>
-          <div class="critical"><strong>Free expansion (MO2023 Q.1(b)):</strong> unrestrained expansion into vacuum — no work done (no resisting force), no heat transfer for ideal gas, final temperature unchanged for ideal gas (u depends only on T).</div>
+          <h4>Zeroth law — where temperature comes from</h4>
+          <ul>
+            <li><strong>The law:</strong> if A is in thermal balance with C, and B is separately in thermal balance with C, then A and B are in thermal balance with each other.</li>
+            <li><strong>Why it matters:</strong> this quiet little statement makes "temperature" a real, comparable property. It also explains the thermometer: let C be the thermometer. Touch it to A → get a reading. Touch it to B → same reading. Therefore A and B have equal temperature, even though they never touched each other.</li>
+          </ul>
+          <h4>Ideal gas</h4>
+          <div class="formula-box">$pV = mRT$   (mass form)
+$pV = n\,\bar{R}T$   (mole form)
+$pv = RT$   (per kg)
+
+Universal constant: $\bar R = 8.314\ \text{kJ/(kmol\cdot K)}$
+Per-kg: $R = \bar R / M$; for air $M = 28.97 \Rightarrow R = 0.287\ \text{kJ/kg\cdot K}$</div>
+          <ul>
+            <li>An ideal gas obeys this at every state. Real gases follow it well when they are far from turning liquid — low pressure, high temperature.</li>
+            <li><strong>Real-gas aside:</strong> nearer condensation we correct with van der Waals: $(p + a/v^2)(v - b) = RT$, where $a$ accounts for molecules attracting each other and $b$ for the space they occupy. One paper asked for displacement work with exactly this equation — see Topic 3.</li>
+          </ul>
+          <h4>Pure substances, phases &amp; steam tables</h4>
+          <ul>
+            <li><strong>Pure substance</strong> <em>(MO2024 P1 Q.3(a))</em>: matter whose chemical make-up is identical everywhere, in every phase. Water qualifies even as a liquid-plus-vapour mixture — both parts are H₂O. Air strictly fails: on cooling, nitrogen and oxygen condense at different temperatures, so the phases differ in composition. As a plain gas, though, air is treated as pure for most problems.</li>
+            <li><strong>The phase journey of water:</strong> compressed liquid → saturated liquid (about to boil) → wet mixture (liquid + vapour together) → saturated vapour (just finished boiling) → superheated vapour. Boiling happens at one fixed temperature for each pressure — the saturation temperature.</li>
+            <li><strong>Quality x</strong> measures how much of a wet mixture is vapour, by mass: x = 0 means all liquid, x = 1 means all vapour.</li>
+          </ul>
+          <div class="formula-box">$v = v_f + x\,v_{fg}, \qquad h = h_f + x\,h_{fg}, \qquad s = s_f + x\,s_{fg}$
+(f = saturated liquid, g = saturated vapour, fg = difference)</div>
+          <div class="callout"><strong>Steam-table algorithm — use it in every numerical.</strong> Step 1: compare your given h with the saturated table at that pressure. Below h<sub>f</sub> → compressed liquid (take h ≈ h<sub>f</sub> at the same T). Between h<sub>f</sub> and h<sub>g</sub> → wet mixture → solve for x. Above h<sub>g</sub> → superheated → interpolate in the superheat table. Step 2–3 follow from whichever case you land in.</div>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2025 MID Q.1(b):</strong> Balloon sphere D = 1 m, air at 200 kPa/300 K, heated till pressure 500 kPa. Find work.</p>
-          <div class="formula-box">Balloon: P ∝ r (surface tension / elasticity) → P = c·r
-Work W = ∫P dV ; V = 4πr³/3, dV = 4πr² dr
-P = P₁(r/r₁), r₁ = 0.5 m
-W = ∫₀.₅^r₂ P₁(r/r₁)·4πr² dr = (P₁/r₁)·π r⁴ |₀.₅^r₂
-P₂/P₁ = r₂/r₁ → r₂ = 0.5×(500/200) = 1.25 m
-W = (200×10³/0.5)·π·(1.25⁴ − 0.5⁴) = 4×10⁵·π·(2.4414 − 0.0625) = 4×10⁵·π·2.3789 ≈ 2.99×10⁶ J ≈ 3 MJ
-(surface work + atmosphere displacement) — final answer ≈ 3 MJ, not 580 kJ</div>
+          <h4>📘 Worked Examples</h4>
+          <p><strong>MID MO2023 Q.3(a):</strong> Find the temperature of water at p = 0.5 MPa and h = 2890 kJ/kg.</p>
+          <div class="formula-box">At 0.5 MPa: $T_{sat} = 151.9^{\circ}\text{C}$, $h_g = 2748.7$ kJ/kg.
+Since $2890 > h_g$ → superheated.
+Superheat table at 0.5 MPa: $h_{200^{\circ}\text{C}} = 2855.4$, $h_{250^{\circ}\text{C}} = 2960.7$
+Interpolate: $T = 200 + \dfrac{2890 - 2855.4}{2960.7 - 2855.4}\times50 = \mathbf{216^{\circ}\text{C}}$</div>
+          <p><strong>END MO2025 Q.1(b):</strong> 0.8 kg of steam at 300 °C, 1 MPa is cooled at constant pressure until half the mass has condensed. Show the process on a T–v diagram; find final temperature and volume change.</p>
+          <div class="formula-box">Half condensed → $x = 0.5$ at exit.
+Constant pressure line entering the dome → final $T = T_{sat}(1\ \text{MPa}) = 179.9^{\circ}\text{C}$
+$v_1 = 0.2579\ \text{m}^3/\text{kg}$ (superheated), $v_2 = v_f + x v_{fg} = 0.001127 + 0.5(0.1944-0.001127) = 0.0977$
+$\Delta V = m(v_2-v_1) = 0.8(0.0977-0.2579) = \mathbf{-0.128\ m^3}$
+On T–v: move left along the 1 MPa line from the superheat region into the dome, ending mid-dome.</div>
+          <p><strong>MID MO2022 Q.2(b):</strong> Dry saturated steam at 10 bar is cooled at constant volume down to 3 bar. Find the dryness fraction.</p>
+          <div class="formula-box">Constant volume → $v_2 = v_1 = v_g(10\ \text{bar}) = 0.1944$
+At 3 bar: $v_g = 0.6058 > v_2$ → wet.
+$x_2 = \dfrac{0.1944 - 0.001073}{0.6058 - 0.001073} \approx \mathbf{0.32}$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Explain work from thermo viewpoint</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Point vs path functions; why are work &amp; heat path functions?</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Balloon heating 200→500 kPa → work</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Constant-volume cooling 10 → 3 bar → dryness (worked above)</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.3(a)</td><td>3</td><td>Find T at p = 0.5 MPa, h = 2890 kJ/kg (worked above)</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Heat needed: 2 kg water 25 °C → steam 5 bar, 0.9 dry</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Pure substance — definition; can air be one?</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>Show h₁ = h₂ for throttling</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.1(b)</td><td>5</td><td>Steam cooled until half condenses — diagram + T_f (worked above)</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 3 ============ -->
+      <div class="topic" id="t3">
+        <div class="topic-header">
+          <h3>3. Work, Heat &amp; Their Comparison</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 1</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> work and heat are energy crossing the boundary while things happen. They belong to processes, not states — a system never "contains" work or heat.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Work (thermodynamic definition):</strong> Work is done by a system during a given operation if the sole effect of the interaction on things external to the system could be reduced to the raising of a weight.</li>
+            <li><strong>Displacement (moving-boundary) work:</strong> Boundary work done by a gas expanding against a piston; for a quasi-static process, W = &#8747;p dV.</li>
+            <li><strong>Free expansion:</strong> The unrestrained expansion of a gas into vacuum; no work is done, and for an insulated ideal gas there is no temperature change.</li>
+            <li><strong>Heat:</strong> The form of energy that crosses a system boundary solely because of a temperature difference between the system and its surroundings.</li>
+            <li><strong>Adiabatic process:</strong> A process during which no heat crosses the system boundary.</li>
+          </ul>
+          <h4>Work — the thermodynamic definition</h4>
+          <ul>
+            <li><strong>Definition</strong> <em>(MO2023 Q.1(a))</em>: work is done by a system if its only effect outside could have been the lifting of a weight. Simpler view: work is energy crossing the boundary driven by anything except a temperature difference.</li>
+            <li><strong>Three habits of work:</strong> it shows up only at the boundary; it depends on the whole path (δW, not dW); saying "the system contains work" is meaningless — it is transit energy, not stored energy. Positive sign = work done <em>by</em> the system.</li>
+          </ul>
+          <h4>Moving-boundary work</h4>
+          <div class="formula-box">$\delta W = p\,dV \quad\Rightarrow\quad W_{1-2} = \int_{1}^{2} p\,dV$
+Only valid when the process is quasi-static — otherwise there is no single p to use.
+Graph meaning: area under the curve on the p–V diagram.</div>
+          <div class="table-wrap"><table>
+            <tr><th>Path</th><th>Work</th></tr>
+            <tr><td>Constant pressure</td><td>$W = p(V_2 - V_1)$</td></tr>
+            <tr><td>Constant volume</td><td>$W = 0$</td></tr>
+            <tr><td>Isothermal ideal gas</td><td>$W = p_1V_1\ln(V_2/V_1)$</td></tr>
+            <tr><td>Polytropic $pV^n=C$</td><td>$W = (p_1V_1-p_2V_2)/(n-1)$</td></tr>
+            <tr><td>Linear law $p=a+bV$</td><td>$W = a(V_2-V_1)+\tfrac{b}{2}(V_2^2-V_1^2)$</td></tr>
+          </table></div>
+          <h4>Other work modes ("other systems" in the syllabus)</h4>
+          <div class="table-wrap"><table>
+            <tr><th>System</th><th>Driving "force"</th><th>Driving "displacement"</th><th>δW</th></tr>
+            <tr><td>Shaft / paddle wheel</td><td>Torque τ</td><td>Angle dθ</td><td>$\tau\,d\theta$</td></tr>
+            <tr><td>Electrical</td><td>Voltage e</td><td>Charge dq</td><td>$e\,dq = e\,i\,dt$</td></tr>
+            <tr><td>Stretched wire</td><td>Tension 𝔉</td><td>Elongation dx</td><td>$-\mathfrak{F}\,dx$</td></tr>
+            <tr><td>Surface film (soap bubble)</td><td>Surface tension σ</td><td>Area increase dA</td><td>$-\sigma\,dA$</td></tr>
+            <tr><td>Magnetic material</td><td>Field strength H</td><td>Magnetisation dI</td><td>$-\mu_0 H\,dI$ per volume</td></tr>
+          </table></div>
+          <div class="critical"><strong>Free expansion</strong> <em>(MO2023 Q.1(b))</em>: gas rushes into vacuum with nothing resisting → <strong>W = 0</strong>. Insulated tank → <strong>Q = 0</strong>. First law then says ΔU = 0, and for an ideal gas that means temperature does not change. The process is still irreversible — the turbulence wastes the chance to lift a weight.</div>
+          <h4>Heat &amp; comparison</h4>
+          <ul>
+            <li><strong>Heat:</strong> energy crossing the boundary purely because system and surroundings are at different temperatures. Positive sign = heat supplied <em>to</em> the system.</li>
+          </ul>
+          <div class="table-wrap"><table>
+            <tr><th>Same for both</th><th>Different between them</th></tr>
+            <tr><td>Both are energy in transit across the boundary</td><td>Work is driven by any potential except temperature; heat needs exactly a temperature difference</td></tr>
+            <tr><td>Both are path functions, never properties</td><td>Work converts fully into heat, but heat cannot fully convert into work in a cycle (second law)</td></tr>
+            <tr><td>Both exist only during interactions, never stored</td><td>Work is orderly, macroscopic transfer; heat is disorderly, molecular transfer</td></tr>
+            <tr><td>Neither has a "per unit mass" version worth writing</td><td>Sign conventions differ: +Q enters, +W leaves</td></tr>
+          </table></div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Examples</h4>
+          <p><strong>MID MO2025 Q.1(b):</strong> A spherical balloon (D = 1 m) holds air at 200 kPa, 300 K. Heating raises the pressure to 500 kPa, with p proportional to diameter. Find the work done.</p>
+          <div class="formula-box">$V=\tfrac43\pi r^3 \Rightarrow dV = 4\pi r^2 dr$;  p ∝ r, $r_1 = 0.5$ m
+$p_2/p_1 = r_2/r_1 \Rightarrow r_2 = 0.5\times\tfrac{500}{200} = 1.25$ m
+
+$W=\int_{r_1}^{r_2}\!\! p\,dV = \frac{\pi p_1}{r_1}\left(r_2^4-r_1^4\right)
+= \frac{\pi(200\,000)}{0.5}(1.25^4-0.5^4)\approx\mathbf{3.0\ MJ}$</div>
+          <p><strong>MID MO2023 Q.2:</strong> A 1 m³ rigid tank of air at 15 bar, 27 °C connects through a valve to a piston–cylinder. The piston (area 0.1 m²) floats once cylinder pressure reaches 2.5 bar. Valve opens until the piston rises 2 m slowly, then closes. Temperature stays 27 °C throughout. Final tank pressure?</p>
+          <div class="formula-box">Initial tank mass: $m_i = \dfrac{1500\times1}{0.287\times300} = 17.42$ kg
+
+While floating, the cylinder pins pressure at 2.5 bar:
+swept volume $= 0.1\times2 = 0.2$ m³ → mass transferred $= \dfrac{250\times0.2}{86.1} = 0.58$ kg
+
+Mass left in the tank: $16.84$ kg, still 1 m³, still 300 K:
+$p_f = \dfrac{16.84\times0.287\times300}{1} \approx \mathbf{14.5\ bar}$</div>
+          <p><strong>MID MO2024 Q.1(b):</strong> Gas obeying $(p+a/V^2)(V-b)=mRT$. Displacement work for constant-T expansion $V_1\to V_2$, evaluated for 10 kg going 1 m³ → 10 m³ at 293 K, a = 15.7×10⁴ N·m⁴, b = 1.07×10⁻² m³, R = 0.278 kJ/kg·K.</p>
+          <div class="formula-box">$p = \dfrac{mRT}{V-b}-\dfrac{a}{V^2}$
+
+$W = mRT\ln\dfrac{V_2-b}{V_1-b} + a\left(\dfrac{1}{V_2}-\dfrac{1}{V_1}\right)$
+
+Numbers (keep units consistent):
+$mRT = 10\times278\times293 = 8.145\times10^5$ J; ratio $= \tfrac{9.9893}{0.9893}=10.096$
+First term $= 8.145\times10^5\times\ln 10.096 = 1.883\times10^6$ J
+Second term $= 15.7\times10^4(\tfrac1{10}-1) = -1.413\times10^5$ J
+$W \approx \mathbf{1742\ kJ}$</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>p = 14V + 2.44 compression 0.09 → 0.03 m³ → |W| ≈ 19.7 kJ</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.1(a)</td><td>2</td><td>Explain work from thermodynamics viewpoint</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.2</td><td>5</td><td>Tank + floating piston, final pressure (worked above)</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>van der Waals-type displacement work (worked above)</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>p = (8−4V) bar, W supplied 150 kJ → final p, V</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Balloon heating 200 → 500 kPa → work (worked above)</td></tr>
           </table></div>
         </div>
       </div>
       </div>
+
+
 
       <!-- ============ MODULE 2 ============ -->
       <div class="module-block">
@@ -251,100 +448,108 @@ W = (200×10³/0.5)·π·(1.25⁴ − 0.5⁴) = 4×10⁵·π·(2.4414 − 0.0625
         </div>
         <nav class="toc">
           <div class="toc-label">Module 2 · Topics</div>
-          <a href="#t3">3 · First Law of Thermodynamics &amp; Internal Energy</a>
-          <a href="#t4">4 · Polytropic Process</a>
-          <a href="#t5">5 · Steady Flow Energy Equation (SFEE) &amp; Nozzles</a>
-          <a href="#t6">6 · Steam Properties, Tables &amp; Throttling</a>
+          <a href="#t4">4 · First Law, Internal Energy &amp; Non-flow Processes</a>
+          <a href="#t5">5 · Enthalpy &amp; Specific Heats</a>
+          <a href="#t6">6 · Control Volume — SFEE &amp; Applications</a>
         </nav>
-
-      <!-- ============ TOPIC 3 ============ -->
-      <div class="topic" id="t3">
-        <div class="topic-header">
-          <h3>3. First Law of Thermodynamics &amp; Internal Energy</h3>
-          <div class="meta-row">
-            <span class="meta-chip">⏱ 45 min</span>
-            <span class="meta-chip">🏆 2–5 marks</span>
-            <span class="meta-chip">🔗 Prereq: Topic 2</span>
-          </div>
-        </div>
-        <div class="subsection">
-          <h4>📝 Theory Notes</h4>
-          <div class="formula-box">For a process:   Q = ΔU + W    (closed system, KE/PE neglected)
-For a cycle:     ∮δQ = ∮δW   →  net heat = net work</div>
-          <ul>
-            <li><strong>Internal energy (MO2024 P1 Q.4(a)):</strong> sum of molecular kinetic + potential energies; a <strong>property</strong> because its change is path-independent — proved via cyclic integral ∮du = 0 (if it were path-dependent, a cycle could create energy from nothing).</li>
-            <li><strong>Enthalpy (MO2025 MID Q.4(a)):</strong> h = u + Pv (kJ/kg). Used for constant-pressure processes: Q = m(h₂ − h₁).</li>
-            <li><strong>Specific heats:</strong> c_v = (∂u/∂T)_v, c_p = (∂h/∂T)_p; for ideal gas c_p − c_v = R; γ = c_p/c_v.</li>
-            <li><strong>Ideal gas:</strong> PV = mRT; u = u(T) only.</li>
-          </ul>
-          <div class="warning"><strong>MO2022 END Q.1(b):</strong> rigid tank 1 m³ (100 kPa, 300 K) + tank 0.5 m³ (250 kPa, 400 K) mix to 315 K → final pressure: m₁ = P₁V₁/RT₁ etc., P_f = (m₁+m₂)RT_f/V_total. Final volume = 1.5 m³.</div>
-        </div>
-        <div class="subsection">
-          <h4>🎓 BIT Mesra PYQs</h4>
-          <div class="table-wrap"><table>
-            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.2(a)</td><td>3</td><td>First law for (i) process (ii) cycle</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy; show it's a property</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy and specific heats</td></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>First law for cycle and non-cyclic process</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>First law applied to closed system</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.1(b)</td><td>3</td><td>Van der Waals-type relation → intensive/extensive check</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Gas 1.5 kg, p = a + bV expansion → work</td></tr>
-          </table></div>
-        </div>
-      </div>
 
       <!-- ============ TOPIC 4 ============ -->
       <div class="topic" id="t4">
         <div class="topic-header">
-          <h3>4. Polytropic Process</h3>
+          <h3>4. First Law, Internal Energy &amp; Non-flow Processes</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 45 min</span>
-            <span class="meta-chip">🏆 3–5 marks</span>
-            <span class="meta-chip">🔗 Prereq: Topic 3</span>
+            <span class="meta-chip">⏱ 75 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topics 1–3</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="formula-box">PVⁿ = constant   (n = polytropic index)
-
-Work done:  W = (P₁V₁ − P₂V₂)/(n − 1) = mR(T₁ − T₂)/(n − 1)
-
-Heat transfer:  Q = m·c_n·(T₂ − T₁) ;  c_n = c_v·(γ − n)/(1 − n)
-
-Relation:  T₂/T₁ = (P₂/P₁)^((n−1)/n) = (V₁/V₂)^(n−1)</div>
-          <p><strong>MO2023 Q.4(b):</strong> Prove ∫δQ = ((γ − n)/(γ − 1)) × polytropic work:</p>
-          <div class="formula-box">δQ = dU + δW = mc_v dT + δW
-δW = (P₁V₁ − P₂V₂)/(n−1) ; dT = T₂ − T₁ = (P₂V₂ − P₁V₁)/mR
-Q = mc_v(P₂V₂ − P₁V₁)/(mR) + W = c_v(P₂V₂ − P₁V₁)/R + W
-= [(P₂V₂ − P₁V₁)/(γ−1)] + [(P₁V₁ − P₂V₂)/(n−1)]
-= W·(γ−n)/(γ−1)  ∎</div>
+          <div class="callout"><strong>Big idea:</strong> energy is never created or destroyed. Heat added minus work delivered equals the change in stored energy of the system.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>First law (cyclic statement):</strong> When a closed system executes a complete cycle, the net heat interaction equals the net work interaction: &#8730;&#948;Q = &#8730;&#948;W.</li>
+            <li><strong>First law (non-cyclic statement):</strong> For a closed system changing state, Q &#8722; W = &#916;U — heat supplied minus work done equals the gain in stored internal energy.</li>
+            <li><strong>Internal energy:</strong> The sum of the kinetic and potential energies of the molecules of a system; a point function whose change depends only on the end states.</li>
+            <li><strong>Law of conservation of energy:</strong> Energy can neither be created nor destroyed, although it may be converted from one form into another.</li>
+            <li><strong>PMM-1 (perpetual motion machine of the first kind):</strong> A hypothetical device that delivers work continuously without consuming any energy — impossible by the first law.</li>
+          </ul>
+          <ul>
+            <li><strong>Joule's experiment:</strong> stirring water with a paddle wheel warmed it by exactly the same amount as supplying heat would have. Conclusion: heat and work are two currencies of the same thing — energy — with a fixed exchange rate.</li>
+            <li><strong>First law for a cycle:</strong> go around any complete loop and you return to the starting state, so stored energy change is zero:
+            $$\oint \delta Q = \oint \delta W$$
+            Net heat in = net work out. <em>(MO2022 END Q.2(a), MO2023 Q.4(a))</em></li>
+            <li><strong>PMM-1 (perpetual motion machine of the first kind):</strong> an imaginary machine that keeps producing work without any energy input. The first law forbids it — no machine creates energy from nothing.</li>
+            <li><strong>For a process (not a cycle):</strong>
+            $$Q - W = \Delta U$$
+            valid for a closed system with KE/PE neglected. U is the <strong>internal energy</strong>.</li>
+            <li><strong>Why internal energy is a property</strong> <em>(MO2022 MID Q.4(a), MO2024 P1 Q.4(a))</em>: take states 1 → 2 by path A, and back 2 → 1 by path B, forming a loop. The cyclic law gives $\Delta U_A = \Delta U_B$ — otherwise the loop could manufacture energy from nothing. Since every path between the same end points gives the same ΔU, u depends only on state: it is a property. Physically, u is the sum of molecular kinetic energies plus inter-molecular potential energy.</li>
+            <li><strong>Closed-system bookkeeping:</strong> $E_2-E_1 = Q-W$ with $E = U + \text{KE} + \text{PE}$; for stationary systems it shrinks to $Q = \Delta U + W$. Consequences worth quoting in exams: heat and work are mutually convertible; an isolated system's energy never changes; PMM-1 is impossible.</li>
+          </ul>
+          <h4>The five non-flow processes — learn this table cold</h4>
           <div class="table-wrap"><table>
-            <tr><th>n</th><th>Process</th></tr>
-            <tr><td>0</td><td>Constant pressure (isobaric)</td></tr>
-            <tr><td>1</td><td>Isothermal (PV = const)</td></tr>
-            <tr><td>γ</td><td>Isentropic / adiabatic reversible</td></tr>
-            <tr><td>∞</td><td>Constant volume (isochoric)</td></tr>
+            <tr><th>Process</th><th>Held constant</th><th>Work W</th><th>Heat Q</th></tr>
+            <tr><td>Constant volume</td><td>V</td><td>0</td><td>$mc_v(T_2-T_1)$</td></tr>
+            <tr><td>Constant pressure</td><td>p</td><td>$mR(T_2-T_1)$</td><td>$mc_p(T_2-T_1)$</td></tr>
+            <tr><td>Isothermal (ideal gas)</td><td>T</td><td>$mRT\ln(v_2/v_1)$</td><td>$Q=W$</td></tr>
+            <tr><td>Reversible adiabatic</td><td>$pV^\gamma$</td><td>$\dfrac{mR(T_1-T_2)}{\gamma-1}$</td><td>0</td></tr>
+            <tr><td>Polytropic $pV^n=C$</td><td>n</td><td>$\dfrac{mR(T_1-T_2)}{n-1}$</td><td>$W\left(\dfrac{\gamma-n}{\gamma-1}\right)$</td></tr>
           </table></div>
+          <div class="callout"><strong>Polytropic family:</strong> n = 0 constant pressure · n = 1 isothermal · n = γ adiabatic · n = ∞ constant volume. Exam-favourite proof <em>(MO2023 Q.4(b), MO2024 P2 Q.2(a), MO2025 MID Q.5(a))</em>: start from $\delta Q = mc_vdT + \delta W$, substitute the polytropic work and ideal-gas temperature relation, use $c_v = R/(\gamma-1)$, and everything collapses to $Q = W(\gamma-n)/(\gamma-1)$.</div>
+          <div class="callout"><strong>Rigid-tank mixing pattern:</strong> connect tanks → masses add ($m=m_1+m_2$), volumes add ($V=V_1+V_2$). If the joined tank is rigid AND insulated, $\Delta U=0$ forces $mT_f = m_1T_1+m_2T_2$ (ideal gas); then $p_f = mRT_f/V$.</div>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2022 END Q.2(b):</strong> 1 kg air, 7 bar, 90 °C, PV^1.1 = const, falls to 1.4 bar. Find T₂, V₂, heat transferred.</p>
-          <div class="formula-box">T₂ = T₁(P₂/P₁)^((n−1)/n) = 363×(1.4/7)^(0.1/1.1) = 363×(0.2)^0.0909 ≈ 363×0.863 = 313.3 K
-V₁ = mRT₁/P₁ = 287×363/(7×10⁵) = 0.1488 m³
-V₂ = V₁(P₁/P₂)^(1/n) = 0.1488×5^(0.909) ≈ 0.1488×4.31 = 0.641 m³
-c_n = c_v(γ−n)/(1−n) ; c_v = 0.718, γ = 1.4 → c_n = 0.718×0.3/(−0.1) = −2.154
-Q = 1×(−2.154)×(313.3−363) = +107 kJ</div>
-          <p><strong>MO2024 P2 Q.2(a):</strong> derive heat transfer in polytropic process (same result as above — the standard 3-marker).</p>
+          <h4>📘 Worked Examples</h4>
+          <p><strong>END MO2022 Q.1(b):</strong> A 1 m³ tank at 100 kPa, 300 K connects to a 0.5 m³ tank at 250 kPa, 400 K. They settle at 315 K. Final pressure?</p>
+          <div class="formula-box">$m_1=\frac{100\times1}{0.287\times300}=1.161$ kg;  $m_2=\frac{250\times0.5}{0.287\times400}=1.089$ kg
+$m = 2.250$ kg in $V = 1.5$ m³
+$p_f=\dfrac{mRT_f}{V}=\dfrac{2.250\times0.287\times315}{1.5}\approx\mathbf{135.6\ kPa}$</div>
+          <p><strong>MID MO2022 Q.4(b):</strong> Insulated tanks A (0.6 m³, 200 kPa, 200 °C) and B (0.3 m³, 500 kPa, 130 °C) are connected. Final pressure?</p>
+          <div class="formula-box">$m_A=0.884$ kg, $m_B=1.297$ kg
+Rigid + insulated → $T_f=\dfrac{m_AT_A+m_BT_B}{m}=\dfrac{418+523}{2.181}\approx431$ K
+$p_f=\dfrac{2.181\times0.287\times431}{0.9}\approx\mathbf{300\ kPa}$</div>
+          <p><strong>MID MO2024 Q.4(b) / MID MO2025 Q.4(b):</strong> 1.5 kg gas expands quasi-statically along p = a + bV from 1000 kPa, 0.20 m³ to 200 kPa, 1.2 m³. Given u = 1.5pv − 85 kJ/kg, find net heat transfer and maximum internal energy reached.</p>
+          <div class="formula-box">$b=(200-1000)/(1.2-0.2)=-800$, $a=1160$
+$W=\int(a+bV)dV = 1160(1.0)-400(1.44-0.04)=600$ kJ
+$v_1=0.1333,\ v_2=0.8$ m³/kg → $u_1=115$, $u_2=155$ kJ/kg
+$\Delta U = 1.5\times40=60$ kJ → $Q=W+\Delta U=\mathbf{660\ kJ}$
+Total stored energy along path: $U=pV-127.5=1160V-800V^2-127.5$
+Maximum where derivative vanishes: $V^*=0.725$ m³
+$u_{max}=1.5\times580\times(0.725/1.5)-85\approx\mathbf{335.5\ kJ/kg}$</div>
+          <p><strong>MID MO2024 Q.5(b):</strong> Cycle: 1–2 constant p = 1.4 bar from $V_1=0.028$ m³ doing $W_{12}=10.5$ kJ; 2–3 compression along pV = C with $U_3=U_2$; 3–1 constant volume with $U_1-U_3=-26.4$ kJ. Sketch; find net work, $Q_{12}$; verify ∑Q = ∑W.</p>
+          <div class="formula-box">$V_2 = V_1+\dfrac{W_{12}}{p}=0.028+0.075=0.103$ m³
+2–3: pV = C with $U_3=U_2$ → isothermal → $V_3=V_1=0.028$ m³
+$W_{23}=p_2V_2\ln(V_3/V_2)=14.42\times(-1.303)=-18.8$ kJ; $W_{31}=0$
+Net work $=10.5-18.8=\mathbf{-8.3\ kJ}$ (net work goes IN — reversed cycle)
+$Q_{23}=W_{23}=-18.8$ kJ (ΔU = 0 on isotherm); $Q_{31}=-26.4$ kJ (given)
+$\Delta U_{cycle}=0 \Rightarrow \Delta U_{12}=26.4 \Rightarrow Q_{12}=36.9$ kJ
+Check: $\sum Q = 36.9-18.8-26.4 = -8.3$ kJ $=\sum W$ ✓</div>
+          <p><strong>END MO2022 Q.2(b):</strong> 1 kg air at 7 bar, 90 °C expands along $pV^{1.1}=C$ to 1.4 bar. Find $T_2$, $V_2$, Q.</p>
+          <div class="formula-box">$T_2=363\left(\tfrac15\right)^{0.0909}=313.6$ K
+$v_1=\dfrac{0.287\times363}{700}=0.1489$; $v_2=v_1\times5^{0.909}=0.643\ \text{m}^3$
+$c_n=c_v\dfrac{\gamma-n}{1-n}=0.718\times\dfrac{0.3}{-0.1}=-2.154$
+$Q=c_n(T_2-T_1)=(-2.154)(-49.4)\approx\mathbf{+106\ kJ}$ (heat flows IN even while the gas cools — that negative $c_n$ surprises everyone)</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Air polytropic PV^1.1, 7→1.4 bar → T, V, Q</td></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Prove Q = ((γ−n)/(γ−1)) × polytropic work</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(a)</td><td>3</td><td>Derive heat transfer in polytropic process</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive work done in polytropic process</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Show internal energy is a property</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Insulated tanks A+B → final pressure (worked above)</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.1(b)</td><td>3</td><td>Two-tank mixing → final pressure (worked above)</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.2(a)</td><td>2</td><td>First law for a process and for a cycle</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Air pV^1.1, 7→1.4 bar → T₂, V₂, Q (worked above)</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>First law: cycle vs non-cyclic process</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Prove Q = ((γ−n)/(γ−1)) × polytropic work</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>First law for a closed system changing state</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy; show it is a property</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>p = a+bV with u(p,v) → Q and u_max (worked above)</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Three-process cycle: sketch, net W, ΣQ=ΣW (worked above)</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.1(b)</td><td>5</td><td>Ideal-gas cycle: ×3 heating, isothermal, const-p return → net work per kg ≈ 130 kJ/kg</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Derive heat transfer in a polytropic process</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy and specific heats</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.4(b)</td><td>3</td><td>Repeat of the p = a+bV problem</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive polytropic work</td></tr>
           </table></div>
         </div>
       </div>
@@ -352,91 +557,137 @@ Q = 1×(−2.154)×(313.3−363) = +107 kJ</div>
       <!-- ============ TOPIC 5 ============ -->
       <div class="topic" id="t5">
         <div class="topic-header">
-          <h3>5. Steady Flow Energy Equation (SFEE) &amp; Nozzles</h3>
+          <h3>5. Enthalpy &amp; Specific Heats</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 60 min</span>
-            <span class="meta-chip">🏆 3–5 marks</span>
-            <span class="meta-chip">🔗 Prereq: Topic 3</span>
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">🏆 2–3 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 4</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="formula-box">$$Q̇ - Ẇ = ṁ[(h_{2} - h_{1}) + (V_{2}^{2} - V_{1}^{2})/2 + g(z_{2} - z_{1})]$$</div>
-          <p><strong>Derivation (MO2024 P1 Q.5(a)):</strong> energy balance on a control volume between two sections — enthalpy flux in/out + KE + PE + heat + shaft work = 0 under steady state (dm/dt = 0, dE/dt = 0).</p>
-          <h4>Applications (MO2025 END Q.2(a))</h4>
-          <div class="table-wrap"><table>
-            <tr><th>Device</th><th>Assumptions</th><th>Result</th></tr>
-            <tr><td><strong>Nozzle</strong></td><td>Adiabatic, no work, Δz ≈ 0</td><td>h₁ + V₁²/2 = h₂ + V₂²/2 → V₂ = √[2(h₁ − h₂) + V₁²]</td></tr>
-            <tr><td><strong>Throttling valve</strong></td><td>Adiabatic, no work, KE≈PE≈0</td><td><strong>h₁ = h₂</strong> (isenthalpic)</td></tr>
-            <tr><td><strong>Turbine</strong></td><td>Adiabatic, ΔKE, ΔPE ≈ 0</td><td>Ẇ = ṁ(h₁ − h₂)</td></tr>
-            <tr><td><strong>Compressor</strong></td><td>Adiabatic, ΔKE, ΔPE ≈ 0</td><td>Ẇ_in = ṁ(h₂ − h₁)</td></tr>
-          </table></div>
-          <div class="critical"><strong>Nozzle numericals appear in almost every paper:</strong> MO2022 END Q.2(c), MO2023 Q.5, MO2024 P2 Q.2(b), MO2025 MID Q.5(b).</div>
-          <h4>Boiler &amp; heat exchanger applications</h4>
+          <div class="callout"><strong>Big idea:</strong> c<sub>v</sub> heats gas in a locked box; c<sub>p</sub> heats it under a free piston — so c<sub>p</sub> is always bigger, because part of the heat escapes as expansion work. Enthalpy bundles internal energy with the "push-along" cost pv.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Boiler:</strong> heat is added at constant pressure to turn water into steam; no work is done (W = 0) and KE/PE changes are negligible, so SFEE reduces to <strong>q = h₂ − h₁</strong>.</li>
-            <li><strong>Heat exchanger:</strong> no work and negligible KE/PE; heat is transferred from the hot stream to the cold stream, and the energy balance reads <strong>h_hot_in − h_hot_out = h_cold_out − h_cold_in</strong>.</li>
+            <li><strong>Enthalpy:</strong> The sum of the internal energy and the flow (pressure&#8211;volume) work of a fluid: h = u + pv.</li>
+            <li><strong>Specific heat at constant volume:</strong> The heat required to raise the temperature of unit mass by one degree at constant volume: c_v = (&#8706;u/&#8706;T)_v.</li>
+            <li><strong>Specific heat at constant pressure:</strong> The heat required to raise the temperature of unit mass by one degree at constant pressure: c_p = (&#8706;h/&#8706;T)_p.</li>
+            <li><strong>Mayer&#8217;s relation:</strong> For an ideal gas, c_p &#8722; c_v = R.</li>
+          </ul>
+          <ul>
+            <li><strong>Enthalpy:</strong> $h=u+pv$ (kJ/kg). Why invent it? A flowing stream must push the fluid ahead of it — carrying energy $pv$ per kg called flow work. So what arrives is $u+pv=h$. Bonus: for any constant-pressure process, $Q=\Delta H$.</li>
+            <li><strong>Specific heats:</strong>
+            $$c_v=\left(\frac{\partial u}{\partial T}\right)_v,\qquad c_p=\left(\frac{\partial h}{\partial T}\right)_p$$
+            heat added per kg per degree rise, at fixed volume / fixed pressure. $c_p>c_v$ always.</li>
+            <li><strong>Mayer's relation (three lines):</strong> for an ideal gas $h=u+RT$; differentiate: $dh=du+R\,dT$; divide by dT:
+            $$c_p-c_v=R,\qquad \gamma=\frac{c_p}{c_v},\qquad c_v=\frac{R}{\gamma-1},\quad c_p=\frac{\gamma R}{\gamma-1}$$
+            Air numbers: $c_v=0.718$, $c_p=1.005$ kJ/kg·K, γ = 1.4.</li>
+            <li><strong>Ideal-gas shortcuts that always work:</strong> $du=c_vdT$ and $dh=c_pdT$ hold during ANY ideal-gas process, because u and h depend on temperature alone.</li>
+            <li><strong>Sensible vs latent heat:</strong> sensible heat changes temperature ($mc\Delta T$); latent heat changes phase at constant temperature ($mh_{fg}$ for boiling).</li>
           </ul>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2025 MID Q.5(b):</strong> Dry saturated steam 5 bar enters adiabatic nozzle at 2 m/s, leaves as dry saturated steam at 2 bar. Find exit velocity.</p>
-          <div class="formula-box">From steam tables: h₁(5 bar dry) = 2748 kJ/kg, h₂(2 bar dry) = 2707 kJ/kg
-V₂²/2 = (h₁ − h₂) + V₁²/2 = 41,000 + 2 J/kg (in J/kg: 41 kJ/kg = 41,000 J/kg)
-V₂ = √(2×41002) ≈ 286.4 m/s</div>
-          <p><strong>MO2022 END Q.2(c):</strong> steam 3 MPa/320 °C → 1.6 MPa at 550 m/s, ṁ = 0.5 kg/s → h₂ = h₁ − V₂²/2, then check superheated table to find condition at exit.</p>
+          <h4>📘 Worked Examples (quick drills)</h4>
+          <div class="formula-box">(a) Air: given R = 0.287, γ = 1.4:
+$c_v = \frac{0.287}{0.4}=0.7175$, $c_p = \frac{1.4\times0.287}{0.4}=1.0045$ kJ/kg·K
+
+(b) Heat to turn 2 kg water at 25 °C into steam at 5 bar, x = 0.9 (MID MO2023 Q.3(b)):
+$h_2 = 640.1+0.9\times2108.5 = 2537.8$; feedwater $h_1\approx104.9$
+$Q = 2(2537.8-104.9)=\mathbf{4866\ kJ}$
+
+(c) 1 kg air heated 300 → 500 K:
+$\Delta u=0.718\times200=143.6$, $\Delta h=1.005\times200=201$ kJ/kg</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive SFEE</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Energy analysis of nozzle, throttling, turbine, compressor</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Feed pump 10 kPa → 3 MPa, 1 kg/s → pump work</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.2(c)</td><td>5</td><td>Nozzle: 3 MPa/320 °C → 1.6 MPa, 550 m/s → condition</td></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.5</td><td>5</td><td>Nozzle inlet h=2850, V=50, A=0.1 → outlet data</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Dry steam 5 bar → 2 bar nozzle, V₁=2 m/s → V₂</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Dry steam 5 bar → 2 bar nozzle, V₁=2 m/s → V₂</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Steam formation heat requirement (worked above)</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy + specific heats</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.4(a)</td><td>2</td><td>Define internal energy + specific heats</td></tr>
           </table></div>
         </div>
       </div>
 
+
       <!-- ============ TOPIC 6 ============ -->
       <div class="topic" id="t6">
         <div class="topic-header">
-          <h3>6. Steam Properties, Tables &amp; Throttling</h3>
+          <h3>6. Control Volume — SFEE &amp; Applications</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 45 min</span>
-            <span class="meta-chip">🏆 3 marks</span>
-            <span class="meta-chip">🔗 Prereq: Topic 5</span>
+            <span class="meta-chip">⏱ 75 min</span>
+            <span class="meta-chip">🏆 3–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topics 4–5</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> the steady-flow energy equation is energy bookkeeping for machines: whatever flows in must flow out — as enthalpy, motion, height, heat or shaft work.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Pure substance (MO2024 P1 Q.3(a)):</strong> same chemical composition in all phases. Air is <strong>not</strong> a pure substance in the phase sense (mixture of gases with different condensation points) — although treated as one for most problems.</li>
-            <li><strong>Quality x:</strong> mass fraction of vapour in wet steam. h = h_f + x·h_fg; v = v_f + x·v_fg; s = s_f + x·s_fg.</li>
-            <li>Throttling is isenthalpic (h₁ = h₂) — used for measuring wetness fraction and for MO2025 MID Q.3(b) "show h_i = h_e".</li>
+            <li><strong>Steady-flow process:</strong> A flow process in which conditions at any point of the control volume do not vary with time, and the inlet mass flow rate equals the outlet mass flow rate.</li>
+            <li><strong>Flow work:</strong> The work associated with pushing a fluid element across a control surface; per unit mass it equals pv.</li>
+            <li><strong>Steady-flow energy equation (SFEE):</strong> For a steady-flow system, Q&#775; &#8722; W&#775; = m&#775;[(h&#8322;&#8722;h&#8321;) + (V&#8322;&#178;&#8722;V&#8321;&#178;)/2 + g(z&#8322;&#8722;z&#8321;)] — energy enters as enthalpy, motion and height, and leaves as enthalpy, motion, height and shaft work.</li>
+            <li><strong>Throttling:</strong> Flow through a partly opened valve or constriction with no heat exchange, no work, and negligible KE/PE change; enthalpy stays constant (h&#8321; = h&#8322;, isenthalpic).</li>
+          </ul>
+          <ul>
+            <li><strong>Flow work:</strong> to enter a machine, each kilogram must push the fluid ahead of it. That pushing costs $pv$ per kg — the "entry fee" carried by every stream. Add it to internal energy and you get enthalpy.</li>
+            <li><strong>Steady-flow assumptions:</strong> mass rate in = mass rate out and neither changes with time; conditions at any fixed point never change; heat and work rates are constant; properties are uniform across each inlet/outlet section.</li>
+            <li><strong>The equation</strong> <em>(derivation asked in MO2024 P1 Q.5(a))</em>: apply the first law to the control volume per unit time:</li>
+          </ul>
+          <div class="formula-box">$$\dot Q-\dot W=\dot m\Big[(h_2-h_1)+\frac{V_2^2-V_1^2}{2}+g(z_2-z_1)\Big]$$
+Left side: heat added minus shaft work delivered.
+Right side: rise in enthalpy + kinetic energy + potential energy of the stream.
+Per-kg form: divide everything by ṁ.
+Unsteady (general) version adds a storage term $dE_{cv}/dt$ on the left.</div>
+          <h4>Six devices — what drops out of SFEE for each <em>(MO2025 END Q.2(a))</em></h4>
+          <div class="table-wrap"><table>
+            <tr><th>Device</th><th>What is zero / negligible</th><th>Result</th></tr>
+            <tr><td><strong>Nozzle</strong></td><td>No work, adiabatic, Δz ≈ 0</td><td>$V_2=\sqrt{2(h_1-h_2)+V_1^2}$ — pressure converts to speed</td></tr>
+            <tr><td><strong>Turbine</strong></td><td>Adiabatic, ΔKE ≈ ΔPE ≈ 0</td><td>$\dot W=\dot m(h_1-h_2)$ — enthalpy drop becomes power</td></tr>
+            <tr><td><strong>Compressor</strong></td><td>Adiabatic, ΔKE ≈ ΔPE ≈ 0</td><td>$\dot W_{in}=\dot m(h_2-h_1)$</td></tr>
+            <tr><td><strong>Pump (liquid)</strong></td><td>Incompressible</td><td>$\dot W_{in}=\dot m\,v(p_2-p_1)$</td></tr>
+            <tr><td><strong>Boiler / condenser</strong></td><td>No work</td><td>$q=h_2-h_1$ (or $h_1-h_2$ out)</td></tr>
+            <tr><td><strong>Throttling valve</strong></td><td>All three: q, w, ΔKE/ΔPE</td><td>$h_1=h_2$ — isenthalpic</td></tr>
+          </table></div>
+          <div class="warning"><strong>Throttling proof in two lines</strong> <em>(MO2025 MID Q.3(b))</em>: put $\dot Q=0$, $\dot W=0$, ignore KE and PE in SFEE → $h_i=h_e$. Enthalpy before = enthalpy after. (For steam, throttling usually makes the vapour wetter and colder; only an ideal gas would also keep T constant.) Heat exchanger: no work, no external heat → hot stream's loss = cold stream's gain.</div>
+          <ul>
+            <li><strong>Filling an evacuated tank (unsteady taste):</strong> incoming enthalpy piles up entirely as stored internal energy, $m_2u_2=m_{in}h_{in}$ — which is why tank temperature can exceed line temperature.</li>
           </ul>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2023 Q.3(b):</strong> Heat to convert 2 kg water at 25 °C to steam at 5 bar, 0.9 dry.</p>
-          <div class="formula-box">At 5 bar: h_f = 640 kJ/kg, h_fg = 2108 kJ/kg
-h₂ = 640 + 0.9×2108 = 2537 kJ/kg
-Q = m(h₂ − h_f,25°C) = 2×(2537 − 104.9) = 4864 kJ</div>
-          <p><strong>MO2023 Q.3(a):</strong> water at P = 0.5 MPa, h = 2890 kJ/kg → at 0.5 MPa h_f = 640.2, h_g = 2748 → h &gt; h_g → superheated → look up superheated table at 0.5 MPa near 2890 → T ≈ 400 °C.</p>
-          <p><strong>MO2025 END Q.1(b):</strong> 0.8 kg steam at 300 °C, 1 MPa cooled at constant pressure until half the mass condenses → x = 0.5 at exit; final T = saturation temp at 1 MPa = 179.9 °C; show on T-v diagram.</p>
+          <h4>📘 Worked Examples</h4>
+          <p><strong>MID MO2025 Q.5(b) / END MO2024 Q.2(b):</strong> Dry saturated steam at 5 bar enters an adiabatic nozzle at 2 m/s, leaves dry-saturated at 2 bar. Exit velocity?</p>
+          <div class="formula-box">$h_1=h_g(5\ \text{bar})=2748.7$; $h_2=h_g(2\ \text{bar})=2706.7$
+$V_2=\sqrt{2000\times42+4}\approx\mathbf{290\ m/s}$</div>
+          <p><strong>MID MO2022 Q.5:</strong> Steam enters a turbine at 4 MPa, 400 °C, 15 m/s; exhausts at 0.1 bar, x = 0.91, 65 m/s, with exit pipe 2 m lower than inlet. Casing loses 60 kW. Flow = 50 000 kg/h. Find power output.</p>
+          <div class="formula-box">$\dot m=\frac{50000}{3600}=13.89$ kg/s
+$h_1=3213.6$ (superheat table); $h_2=191.8+0.91\times2392.8=2369.3$
+$\dot W=\dot m[(h_1-h_2)+\tfrac{V_1^2-V_2^2}{2000}+\tfrac{g(z_1-z_2)}{1000}]+\dot Q$
+$=13.89[844.3-2.0-0.02]-60\approx\mathbf{11.64\ MW}$
+(KE term is negative because exit is faster; casing loss subtracts.)</div>
+          <p><strong>END MO2025 Q.2(b):</strong> Feed pump raises saturated water from 10 kPa to 3 MPa; ṁ = 1 kg/s, adiabatic. Pump power?</p>
+          <div class="formula-box">$v_f(10\ \text{kPa})=0.00101$ m³/kg
+$\dot W=\dot m\,v_f(p_2-p_1)=1\times0.00101\times2990=\mathbf{3.02\ kW}$</div>
+          <p><strong>MID MO2023 Q.5:</strong> Nozzle data: inlet h₁ = 2850 kJ/kg, V₁ = 50 m/s, A₁ = 0.1 m², v₁ = 0.18 m³/kg; exit h₂ = 2650 kJ/kg, v₂ = 0.49 m³/kg. Find V₂, ṁ, A₂.</p>
+          <div class="formula-box">$V_2=\sqrt{2\times1000\times200+2500}=\mathbf{634\ m/s}$
+$\dot m=\dfrac{A_1V_1}{v_1}=\dfrac{0.1\times50}{0.18}=\mathbf{27.78\ kg/s}$
+$A_2=\dfrac{\dot m v_2}{V_2}=\dfrac{27.78\times0.49}{634}=\mathbf{0.0215\ m^2}$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.3(a)</td><td>3</td><td>Find temperature: 0.5 MPa, h = 2890</td></tr>
-            <tr><td>MO2023</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Heat to make 0.9-dry steam at 5 bar from 25 °C water</td></tr>
-            <tr><td>MO2024 P1</td><td>MID</td><td>Q.3(a)</td><td>2</td><td>Pure substance; is air one?</td></tr>
-            <tr><td>MO2025</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>Show h_i = h_e for throttling</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.1(b)</td><td>5</td><td>Steam cooled till half condenses — T-v diagram + T_f</td></tr>
+            <tr><td>MID MO2022</td><td>MID</td><td>Q.5</td><td>5</td><td>Turbine power with KE, PE, casing loss (worked above)</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.2(c)</td><td>5</td><td>Nozzle 3 MPa/320 °C → 550 m/s → exit condition + area</td></tr>
+            <tr><td>MID MO2023</td><td>MID</td><td>Q.5</td><td>5</td><td>Nozzle V₂, ṁ, A₂ (worked above)</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.5(a)</td><td>2</td><td>Derive SFEE</td></tr>
+            <tr><td>MID MO2024</td><td>MID</td><td>Q.2(b)</td><td>3</td><td>Sat steam 5 → 2 bar nozzle → V₂</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Same nozzle problem, 5 marks</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.3(b)</td><td>2</td><td>Show hᵢ = hₑ for throttling</td></tr>
+            <tr><td>MID MO2025</td><td>MID</td><td>Q.5(b)</td><td>3</td><td>Same nozzle problem again</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.2(a)</td><td>5</td><td>Energy analysis: nozzle, throttling, turbine, compressor</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.2(b)</td><td>5</td><td>Feed pump power (worked above)</td></tr>
           </table></div>
         </div>
       </div>
@@ -446,61 +697,74 @@ Q = m(h₂ − h_f,25°C) = 2×(2537 − 104.9) = 4864 kJ</div>
       <div class="module-block">
         <div class="module-head">
           <span class="mchip">M3</span>
-          <h3>Module 3 — Second Law</h3>
+          <h3>Module 3 — Second Law of Thermodynamics</h3>
         </div>
         <nav class="toc">
           <div class="toc-label">Module 3 · Topics</div>
-          <a href="#t7">7 · Second Law &amp; Carnot Cycle</a>
-          <a href="#t8">8 · Heat Pump vs Refrigerator</a>
+          <a href="#t7">7 · Limits of First Law · Engines &amp; Fridges · Statements</a>
+          <a href="#t8">8 · Carnot Cycle, Theorems &amp; Corollaries</a>
+          <a href="#t9">9 · Reversibility &amp; Absolute Temperature Scale</a>
         </nav>
 
       <!-- ============ TOPIC 7 ============ -->
       <div class="topic" id="t7">
         <div class="topic-header">
-          <h3>7. Second Law &amp; Carnot Cycle</h3>
+          <h3>7. Limits of First Law · Engines &amp; Fridges · Statements</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 45 min</span>
-            <span class="meta-chip">🏆 5 marks</span>
-            <span class="meta-chip">🔗 Prereq: None</span>
+            <span class="meta-chip">⏱ 60 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Module 2</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> the first law counts energy but knows no direction — a cooling cup and a self-warming cup both balance its books. The second law adds direction: heat flows downhill on its own, and no engine is perfect.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Kelvin–Planck:</strong> impossible for a heat engine to produce net work while exchanging heat with a single reservoir. (No perfect engine.)</li>
-            <li><strong>Clausius:</strong> impossible to transfer heat from a colder to a hotter body without external work. (No perfect refrigerator.)</li>
-            <li><strong>Equivalence (MO2025 END Q.3(a)):</strong> violation of one ⇒ violation of the other — prove by coupling the violator with a reversible machine to construct the forbidden device.</li>
+            <li><strong>Heat engine:</strong> A continuously operating device that receives heat from a source, converts part of it into net work, and rejects the remainder to a sink.</li>
+            <li><strong>Kelvin&#8211;Planck statement:</strong> It is impossible to construct an engine operating on a cycle whose sole effect is the extraction of heat from a single reservoir and the delivery of an equivalent amount of work.</li>
+            <li><strong>Clausius statement:</strong> It is impossible to construct a device operating on a cycle whose sole effect is the transfer of heat from a cooler body to a hotter body.</li>
+            <li><strong>Refrigerator:</strong> A cyclic device whose object is to extract heat Q_L from a low-temperature space; COP_R = Q_L/W.</li>
+            <li><strong>Heat pump:</strong> A cyclic device whose object is to supply heat Q_H to a high-temperature space; COP_HP = Q_H/W = COP_R + 1.</li>
+            <li><strong>PMM-2 (perpetual motion machine of the second kind):</strong> A hypothetical engine that exchanges heat with a single reservoir and converts it completely into work — forbidden by the second law.</li>
           </ul>
-          <div class="formula-box">Carnot efficiency: η = 1 − T_L/T_H   (T in kelvin)
-COP_ref = T_L/(T_H − T_L) ; COP_hp = T_H/(T_H − T_L) = COP_ref + 1</div>
-          <p><strong>Carnot theorem (MO2022 END Q.3(b)):</strong> no heat engine operating between two reservoirs can be more efficient than a reversible engine between the same reservoirs; all reversible engines have equal efficiency.</p>
-          <p><strong>Absolute temperature scale (MO2024 P2 Q.3(b)):</strong> Φ(t) = at + b; Q₁/Q₂ = Φ(T₁)/Φ(T₂). With 20 kJ at 100 °C and 14.6 kJ rejected at 0 °C: 20/14.6 = (a·373+b)/(a·273+b) → solve with Q→0 at absolute zero → locate 0 °C position on the Celsius scale → T_abs0 ≈ −273 °C.</p>
-          <h4>Irreversibility &amp; reversibility</h4>
           <ul>
-            <li><strong>Reversible process:</strong> can be reversed leaving no trace on the system or surroundings; in practice it proceeds infinitely slowly with no dissipative effects.</li>
-            <li><strong>Internal irreversibility:</strong> arises within the system — e.g. friction, unrestrained expansion, mixing, and internal temperature gradients.</li>
-            <li><strong>External irreversibility:</strong> occurs across the boundary — e.g. heat transfer across a finite temperature difference between system and surroundings.</li>
-            <li>Real processes contain both kinds; idealizing away both gives the reversible limit used in Carnot-type analysis.</li>
+            <li><strong>Three limitations of the first law:</strong> (1) it says nothing about <em>direction</em> — it cannot tell spontaneous from impossible; (2) no cap on conversion — by itself it allows 100 % heat→work in a cycle, which reality forbids; (3) no feasibility test — it cannot say whether a proposed machine will actually run. The second law answers all three.</li>
+            <li><strong>Reservoir language:</strong> a thermal reservoir keeps constant temperature however much heat it exchanges. Source = we take heat FROM it; sink = we dump heat INTO it.</li>
+          </ul>
+          <div class="formula-box">Heat engine: $\eta=\dfrac{W}{Q_H}=1-\dfrac{Q_L}{Q_H}$
+Refrigerator: $COP_R=\dfrac{Q_L}{W}$
+Heat pump: $COP_{HP}=\dfrac{Q_H}{W}=COP_R+1$
+Same hardware, different goal: fridge protects the cold box, HP heats the warm room.</div>
+          <ul>
+            <li><strong>Kelvin–Planck statement:</strong> no cyclic engine can take heat from ONE reservoir and turn ALL of it into work. Every engine must reject something to a sink.</li>
+            <li><strong>Clausius statement:</strong> no cyclic device can move heat from cold to hot as its only effect. A refrigerator is fine — because it also consumes work, that's not the "sole effect".</li>
+            <li><strong>PMM-2:</strong> the Kelvin–Planck violator — an engine beating one reservoir. Just as impossible as PMM-1.</li>
+            <li><strong>Why the statements are equivalent</strong> <em>(MO2025 END Q.3(a))</em>: prove each violates the other by coupling machines. Suppose Clausius is broken: a magic device lifts $Q_L$ from cold to hot free of cost. Now run a normal heat engine between the same reservoirs taking $Q_H$ and rejecting exactly $Q_L$ into the cold body. Composite effect: net work out, single reservoir, nothing else changed → Kelvin–Planck broken too. Reverse the roles for the other direction. Since each violation drags down the other, the statements stand or fall together — equivalent.</li>
           </ul>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2022 END Q.3(c):</strong> Ice plant on reversed Carnot: 20 tonnes ice/day from 0 °C water, rejected to atmosphere at 27 °C.</p>
-          <div class="formula-box">Q_L = 20,000 kg × 335 kJ/kg = 6.7 GJ/day (latent heat of fusion)
-COP = T_L/(T_H − T_L) = 273/(300 − 273) = 10.11
-W = Q_L/COP = 6.7×10⁹/(10.11×86400 s) = 7.67 kW
-Q_H = Q_L + W (heat rejected to atmosphere)</div>
+          <h4>📘 Worked Examples</h4>
+          <p><strong>END MO2024 Q.4(b):</strong> An engine receives 278 kJ/s at 283 °C and rejects at 5 °C. Three claims: reject (i) 208 kJ/s, (ii) 139 kJ/s, (iii) 70 kJ/s. Classify each.</p>
+          <div class="formula-box">$T_H=556$ K, $T_L=278$ K → $\eta_{max}=1-\tfrac12=50\%$
+(i) W = 70 → η = 25 % below limit → <strong>irreversible (fine)</strong>
+(ii) W = 139 → η = 50 % exactly → <strong>reversible</strong>
+(iii) W = 208 → η = 75 % above limit → <strong>impossible</strong></div>
+          <p><strong>END MO2022 Q.3(c):</strong> An ice plant on a reversed Carnot cycle freezes 20 tonnes/day of ice from water at 0 °C, rejecting heat to atmosphere at 27 °C. Its compressor is driven by a Carnot engine taking heat at 227 °C and rejecting at 27 °C. How much heat must that engine receive?</p>
+          <div class="formula-box">Fridge side: $Q_L=\dfrac{20000\times334.5}{86400}=77.4$ kW
+$COP_R=\dfrac{273}{300-273}=10.11 \Rightarrow W=\dfrac{77.4}{10.11}=7.66$ kW
+
+Engine side: $\eta=1-\dfrac{300}{500}=40\%$
+$Q_{in}=\dfrac{7.66}{0.40}=\mathbf{19.15\ kW}$ (≈1655 MJ of fuel heat per day)</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.3(b)</td><td>3</td><td>State and explain Carnot theorem</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.3(c)</td><td>5</td><td>Ice plant, 20 t/day reversed Carnot</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.3(b)</td><td>3</td><td>Carnot cycle Φ(t) → absolute zero location</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(b)</td><td>5</td><td>Heat engine claims: 208/139 kJ/s rejected — impossible?</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Establish equivalence of Kelvin–Planck &amp; Clausius</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Reversible power cycle driving reversible heat pump</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.3(a)</td><td>2</td><td>Difference between refrigerator and heat pump</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Define &amp; compare COP of HP vs fridge</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Classify the three claimed engines (worked above)</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Establish equivalence of the two statements</td></tr>
           </table></div>
         </div>
       </div>
@@ -508,41 +772,7 @@ Q_H = Q_L + W (heat rejected to atmosphere)</div>
       <!-- ============ TOPIC 8 ============ -->
       <div class="topic" id="t8">
         <div class="topic-header">
-          <h3>8. Heat Pump vs Refrigerator</h3>
-          <div class="meta-row">
-            <span class="meta-chip">⏱ 20 min</span>
-            <span class="meta-chip">🏆 2–3 marks</span>
-            <span class="meta-chip">🔗 Prereq: Topic 7</span>
-          </div>
-        </div>
-        <div class="subsection">
-          <h4>📝 Theory Notes</h4>
-          <ul>
-            <li>Both transfer heat from cold to hot using work input — same machine, different purpose.</li>
-            <li><strong>Refrigerator:</strong> purpose is to extract heat from the cold space (Q_L). COP_R = Q_L/W = T_L/(T_H − T_L).</li>
-            <li><strong>Heat pump:</strong> purpose is to supply heat to the warm space (Q_H). COP_HP = Q_H/W = T_H/(T_H − T_L) = COP_R + 1.</li>
-            <li>COP_HP is always &gt; 1 — heat pumps are attractive heating devices.</li>
-          </ul>
-          <div class="warning"><strong>MO2022 END Q.3(a) &amp; MO2024 P2 Q.3(a):</strong> "Define and compare COP of heat pump with that of refrigerator" — a 2–3 mark guaranteed question.</div>
-        </div>
-      </div>
-      </div>
-
-      <!-- ============ MODULE 4 ============ -->
-      <div class="module-block">
-        <div class="module-head">
-          <span class="mchip">M4</span>
-          <h3>Module 4 — Entropy &amp; Availability</h3>
-        </div>
-        <nav class="toc">
-          <div class="toc-label">Module 4 · Topics</div>
-          <a href="#t9">9 · Entropy, Clausius Inequality &amp; Availability</a>
-        </nav>
-
-      <!-- ============ TOPIC 9 ============ -->
-      <div class="topic" id="t9">
-        <div class="topic-header">
-          <h3>9. Entropy, Clausius Inequality &amp; Availability</h3>
+          <h3>8. Carnot Cycle, Theorems &amp; Corollaries</h3>
           <div class="meta-row">
             <span class="meta-chip">⏱ 60 min</span>
             <span class="meta-chip">🏆 5 marks</span>
@@ -551,171 +781,599 @@ Q_H = Q_L + W (heat rejected to atmosphere)</div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="formula-box">Clausius inequality:  ∮δQ/T ≤ 0   (= 0 reversible, &lt; 0 irreversible)
-
-Entropy change:  dS = δQ_rev/T   (property — independent of path)
-
-ΔS for constant-T reservoir:  ΔS = Q/T
-ΔS for constant-P heating:   ΔS = m·c_p·ln(T₂/T₁)
-ΔS for constant-V heating:   ΔS = m·c_v·ln(T₂/T₁)
-ΔS for ideal gas:  ΔS = m[c_v ln(T₂/T₁) + R ln(V₂/V₁)]</div>
+          <div class="callout"><strong>Big idea:</strong> the Carnot cycle is the best any engine can do between two temperatures — and its efficiency depends ONLY on those two temperatures, nothing else.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li><strong>Entropy as a property (MO2022 END Q.4(a)):</strong> ∮dS = 0 for any cycle → S is a point function → property.</li>
-            <li><strong>Entropy principle (MO2022 END Q.4(b)):</strong> entropy of the universe (isolated system) always increases: ΔS_univ ≥ 0.</li>
+            <li><strong>Carnot cycle:</strong> A completely reversible cycle made of two reversible isothermal processes and two reversible adiabatic processes.</li>
+            <li><strong>Carnot theorem:</strong> Of all heat engines working between the same two reservoirs, no engine can be more efficient than a reversible engine.</li>
+            <li><strong>Corollary:</strong> All reversible engines working between the same two reservoirs have equal efficiency, &#951; = 1 &#8722; T_L/T_H.</li>
           </ul>
-          <h4>Available / unavailable energy (MO2025 END Q.4(b))</h4>
-          <div class="formula-box">Available energy of heat Q at T with environment T₀:
-A = Q(1 − T₀/T)   (maximum useful work from a reversible engine)
-Unavailable energy:  Q·T₀/T</div>
-          <h4>Clausius–Clapeyron (MO2025 END Q.5(a))</h4>
-          <div class="formula-box">dp/dT = h_fg / (T·v_fg)   → slope of the liquid–vapour boundary
-dp/dT = s_fg/v_fg = h_fg/(T·v_fg)</div>
-          <h4>Joule–Thomson coefficient (MO2025 END Q.5(b))</h4>
-          <div class="formula-box">μ_JT = (∂T/∂P)_h   → &gt; 0 cooling on expansion, &lt; 0 heating, 0 at inversion temperature</div>
-          <h4>Entropy balance, exergy &amp; second-law efficiency</h4>
-          <div class="formula-box">Entropy balance (open system):  ds/dt = Σ(ṁs)_in − Σ(ṁs)_out + Σ(Q̇/T) + Ṡ_gen
-S_gen ≥ 0  (0 for reversible, &gt; 0 for irreversible processes)</div>
+          <ol>
+            <li><strong>1–2 Isothermal expansion at T_H:</strong> gas expands while pressed against the hot source, drawing $Q_H$ at constant temperature.</li>
+            <li><strong>2–3 Adiabatic expansion:</strong> insulated now — expansion cools the gas from $T_H$ down to $T_L$.</li>
+            <li><strong>3–4 Isothermal compression at T_L:</strong> compressed while touching the cold sink, dumping $Q_L$.</li>
+            <li><strong>4–1 Adiabatic compression:</strong> insulated again, temperature climbs back to $T_H$, closing the loop.</li>
+          </ol>
           <ul>
-            <li><strong>Lost work:</strong> W_lost = T₀·S_gen — the work potential destroyed by irreversibility.</li>
-            <li><strong>Second-law efficiency:</strong> η_II = W_actual/W_reversible.</li>
-            <li><strong>Exergy (availability) balance:</strong> exergy destroyed = T₀·S_gen.</li>
-            <li><strong>Flow exergy:</strong> ψ = (h − h₀) − T₀(s − s₀), plus KE/PE terms when present.</li>
+            <li>On p–V this traces a lens between two isotherms and two adiabats. On T–s it is a perfect rectangle: width Δs, so enclosed area = $(T_H-T_L)\Delta s$ = net work.</li>
+            <li><strong>Efficiency derivation:</strong> the two isotherms move equal entropy amounts, so $\frac{Q_H}{T_H}=\frac{Q_L}{T_L}$:</li>
+          </ul>
+          <div class="formula-box">$$\eta_C=1-\frac{T_L}{T_H}\qquad COP_{R,C}=\frac{T_L}{T_H-T_L},\quad COP_{HP,C}=\frac{T_H}{T_H-T_L}$$</div>
+          <ul>
+            <li><strong>Carnot theorem</strong> <em>(MO2022 END Q.3(b))</em>: no engine between two given reservoirs beats a reversible one.</li>
+            <li><strong>Proof in four moves:</strong> assume engine E beats reversible R → drive R backwards using E → size them so R-back cancels E's rejection at the sink → the pair then exchanges heat with only ONE reservoir yet delivers net work → that is PMM-2, forbidden → assumption false. ∎</li>
+            <li><strong>Corollary:</strong> run two reversible engines against each other; neither may win, so all reversible engines between the same reservoirs have identical efficiency.</li>
+            <li><strong>Use:</strong> Carnot efficiency is the yardstick — real engines are graded against it (exactly how Topic 7's classification numerical works).</li>
           </ul>
         </div>
         <div class="subsection">
           <h4>📘 Worked Example</h4>
-          <p><strong>MO2022 END Q.4(c):</strong> Copper block 600 g, C_p = 150 J/K at 100 °C placed in lake at 8 °C. Find ΔS_universe.</p>
-          <div class="formula-box">Block: ΔS_block = m·c·ln(T₂/T₁) = 150×ln(281/373) = 150×(−0.283) = −42.4 J/K
-Heat to lake: Q = 150×(373−281) = 13,800 J
-Lake: ΔS_lake = Q/T_lake = 13800/281 = +49.1 J/K
-ΔS_universe = −42.4 + 49.1 = +6.7 J/K &gt; 0 ✓ (irreversible)</div>
-          <p><strong>MO2025 END Q.4(b):</strong> 0.2 kg air at 300 °C heated reversibly at constant pressure to 2066 K, T₀ = 30 °C.</p>
-          <div class="formula-box">Q = m·c_p·(T₂−T₁) = 0.2×1.0047×(2066−573) = 299.9 kJ
-ΔS = m·c_p·ln(T₂/T₁) = 0.2×1.0047×ln(2066/573) = 0.2581 kJ/K
-Unavailable = T₀ΔS = 303×0.2581 = 78.2 kJ
-Available = Q − 78.2 = 221.7 kJ</div>
+          <p><strong>END MO2025 Q.3(b):</strong> A reversible power cycle takes $Q_1$ at $T_1$, rejects $Q_2$ at $T_2$; it drives a reversible heat pump that lifts $Q_2$ from $T_2$ and delivers $Q_3$ at $T_3$. Find $Q_3/Q_1$.</p>
+          <div class="formula-box">Power cycle: $W=Q_1\left(1-\dfrac{T_2}{T_1}\right)=\dfrac{Q_1(T_1-T_2)}{T_1}$
+Heat pump (Carnot): $Q_3=W\cdot\dfrac{T_3}{T_3-T_2}$
+Substituting W:
+$$\frac{Q_3}{Q_1}=\boxed{\dfrac{T_3(T_1-T_2)}{T_1(T_3-T_2)}}$$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.4(a)</td><td>3</td><td>Show entropy is a property</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.4(b)</td><td>2</td><td>Explain entropy principle</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.4(c)</td><td>5</td><td>ΔS universe: copper block in lake + two blocks</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Available/unavailable energy of heat addition</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Clausius–Clapeyron → phase boundary slope</td></tr>
-            <tr><td>MO2025</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Joule–Thomson coefficient, cooling vs heating</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.3(b)</td><td>3</td><td>State and explain Carnot theorem</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.3(c)</td><td>5</td><td>Ice plant driven by Carnot engine (Topic 7 worked example)</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Absolute-zero location via Φ(t) = at+b (Topic 9)</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Power cycle driving heat pump → Q₃/Q₁ (worked above)</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 9 ============ -->
+      <div class="topic" id="t9">
+        <div class="topic-header">
+          <h3>9. Reversibility &amp; the Absolute Temperature Scale</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 30 min</span>
+            <span class="meta-chip">🏆 2–5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 8</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> a reversible process is one whose movie can be played backwards without anyone noticing — system AND world return untouched. Real life always leaves footprints; thermodynamics calls them irreversibilities.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Reversible process:</strong> A process which, having occurred, can be reversed so that the system AND the surroundings return to their initial states, leaving no trace anywhere.</li>
+            <li><strong>Irreversible process:</strong> A process that cannot be reversed without leaving permanent changes in the surroundings.</li>
+            <li><strong>Internal irreversibility:</strong> Irreversibility arising within the system itself — fluid friction, eddies, unrestrained expansion.</li>
+            <li><strong>External irreversibility:</strong> Irreversibility occurring at the system boundary or beyond — chiefly heat transfer through a finite temperature difference.</li>
+            <li><strong>Absolute thermodynamic temperature scale:</strong> A temperature scale, independent of any working substance, defined by the heat-ratio equality Q_H/Q_L = T_H/T_L of reversible engines.</li>
+          </ul>
+          <ul>
+            <li><strong>Conditions for reversibility:</strong> infinitely slow motion (quasi-static), no friction anywhere, heat exchanged only across vanishingly small temperature differences, no mixing or free expansion.</li>
+            <li><strong>Usual suspects of irreversibility:</strong> friction, unresisted expansion, finite-ΔT heat transfer, fluid mixing, combustion and electrical resistance.</li>
+            <li><strong>Internal irreversibility</strong> happens inside the working fluid itself — eddies, fluid friction, rapid non-uniform heating.</li>
+            <li><strong>External irreversibility</strong> happens at the boundary with the surroundings — chiefly heat crossing a big temperature gap, or mechanical friction at bearings and seals.</li>
+            <li>Real engines carry both kinds; idealising both away gives the reversible benchmark used throughout Module 3.</li>
+          </ul>
+          <h4>Absolute thermodynamic temperature scale</h4>
+          <ul>
+            <li>Kelvin's trick: use reversible-engine heat ratios to DEFINE temperature — no thermometer substance needed. Any reversible engine obeys</li>
+          </ul>
+          <div class="formula-box">$$\frac{Q_H}{Q_L}=\frac{\Phi(\theta_H)}{\Phi(\theta_L)}\equiv\frac{T_H}{T_L}$$
+Pick the simple choice $\Phi(t)=at+b$: that IS the kelvin scale.
+Anchor: triple point of water = 273.16 K; then any unknown T follows from measured heat ratios alone. The scale is universal — independent of mercury, alcohol, hydrogen or anything else.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>END MO2024 Q.3(b):</strong> 20 kJ enters a Carnot cycle at 100 °C; 14.6 kJ leaves at 0 °C. Locate absolute zero on the Celsius scale, assuming $\Phi(t)=at+b$.</p>
+          <div class="formula-box">$20/14.6 = 1.370 = \dfrac{100a+b}{b}$
+$\Rightarrow 100a = 0.370\,b \Rightarrow \dfrac ba = 270.3$
+Absolute zero is where $\Phi=0$: $at+b=0 \Rightarrow t=-\dfrac ba=\mathbf{-270.3^{\circ}\text{C}}$
+(the small gap vs −273.15 comes from assuming linearity over this range)</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.3(b)</td><td>5</td><td>Absolute zero via Φ(t) = at+b (worked above)</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.3(a)</td><td>5</td><td>Equivalence of statements (uses irreversibility logic)</td></tr>
           </table></div>
         </div>
       </div>
       </div>
 
-      <!-- ============ MODULE 5 ============ -->
+
+
+      <!-- ============ MODULE 4 ============ -->
       <div class="module-block">
         <div class="module-head">
-          <span class="mchip">M5</span>
-          <h3>Module 5 — Gas Power Cycles</h3>
+          <span class="mchip">M4</span>
+          <h3>Module 4 — Entropy &amp; Exergy</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 5 · Topics</div>
-          <a href="#t10">10 · Otto &amp; Diesel Cycles</a>
+          <div class="toc-label">Module 4 · Topics</div>
+          <a href="#t10">10 · Entropy, Clausius Inequality &amp; the Entropy Principle</a>
+          <a href="#t11">11 · Availability &amp; Exergy</a>
         </nav>
 
       <!-- ============ TOPIC 10 ============ -->
       <div class="topic" id="t10">
         <div class="topic-header">
-          <h3>10. Otto &amp; Diesel Cycles</h3>
+          <h3>10. Entropy, Clausius Inequality &amp; the Entropy Principle</h3>
           <div class="meta-row">
-            <span class="meta-chip">⏱ 45 min</span>
+            <span class="meta-chip">⏱ 90 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Module 3</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> entropy keeps score of "spread-out" energy. The universe's entropy never decreases — that one line decides which processes are possible.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Entropy:</strong> A property of a system defined by dS = &#948;Q_rev/T; it quantifies the energy that cannot be converted into work.</li>
+            <li><strong>Clausius inequality:</strong> For any cycle, &#8730;&#948;Q/T &#8804; 0, equality holding only when every step of the cycle is reversible.</li>
+            <li><strong>Principle of increase of entropy:</strong> The entropy of the universe (system + surroundings, an isolated combination) always increases in real processes and remains constant only for reversible ones: &#916;S_universe &#8805; 0.</li>
+            <li><strong>Entropy generation:</strong> Entropy created by irreversibilities within a system; zero for reversible processes, strictly positive for real ones.</li>
+            <li><strong>Isentropic process:</strong> A process in which the entropy remains constant — the reversible adiabatic process.</li>
+          </ul>
+          <ul>
+            <li><strong>Clausius inequality</strong> — asked word-for-word in both MO2024 P2 and MO2025 END:
+            $$\oint\frac{\delta Q}{T}\le0 \qquad (=0\ \text{reversible},\ \lt0\ \text{irreversible})$$</li>
+          </ul>
+          <div class="callout"><strong>Proof outline you can write in the exam:</strong> run any engine between a reservoir at $T_0$ (the hottest thing around) and a boundary region at temperature T. Attach a small reversible Carnot refrigerator between them to shuffle the heat δQ at T. The combined plant now talks to a single reservoir $T_0$, so by Kelvin–Planck its net work cannot be positive. Turning that crank algebraically yields $\oint\delta Q/T\le0$, equality only when every step is reversible.</div>
+          <ul>
+            <li><strong>Entropy is born here:</strong> for reversible cycles $\oint\delta Q_{rev}/T=0$ exactly — an exact differential. Define
+            $$dS=\frac{\delta Q_{rev}}{T}$$
+            Same two-path argument as for u: any loop gives ∮dS = 0, so S depends only on state → property. <em>(MO2022 END Q.4(a))</em></li>
+            <li><strong>Working rule from the inequality:</strong> for any process $\Delta S\ge\int\delta Q/T$; equal only if reversible.</li>
+            <li><strong>Ready-made ΔS formulas:</strong></li>
+          </ul>
+          <div class="formula-box">Heat at constant T: $\Delta S=Q/T$
+Constant p heating: $\Delta S=mc_p\ln(T_2/T_1)$
+Constant v heating: $\Delta S=mc_v\ln(T_2/T_1)$
+Ideal gas (both forms):
+$$\Delta S=m\Big[c_v\ln\tfrac{T_2}{T_1}+R\ln\tfrac{V_2}{V_1}\Big]=m\Big[c_p\ln\tfrac{T_2}{T_1}-R\ln\tfrac{p_2}{p_1}\Big]$$
+Reversible adiabatic: $\Delta S=0$ (that's what "isentropic" means)
+Phase change: $\Delta S=h_{fg}/T_{sat}$ per kg</div>
+          <ul>
+            <li><strong>Tds equations</strong> (first law written reversibly): $Tds=du+p\,dv$ and $Tds=dh-v\,dp$. These bridge into Module 5.</li>
+            <li><strong>Entropy balance (accounting):</strong> closed system $S_2-S_1=\sum Q_j/T_j+S_{gen}$; control volume adds flow terms: $\frac{dS_{cv}}{dt}=\sum\dot m s_{in}-\sum\dot m s_{out}+\sum\dot Q_j/T_j+\dot S_{gen}$.</li>
+            <li><strong>$S_{gen}\ge0$, zero only when everything is reversible.</strong> Friction, finite-ΔT heat transfer, mixing — each generates.</li>
+            <li><strong>Principle of increase of entropy</strong> <em>(MO2022 END Q.4(b))</em>: system + surroundings together form an isolated universe, so $\Delta S_{universe}=\Delta S_{sys}+\Delta S_{surr}\ge0$ always. This is the final referee for any proposed process: if total entropy would fall, the process is impossible.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Examples</h4>
+          <p><strong>END MO2022 Q.4(c):</strong> A copper block (600 g, heat capacity 150 J/K) at 100 °C is dropped into a lake at 8 °C. Find ΔS of the universe. Then repeat the idea for two such blocks at 100 °C and 0 °C joined together.</p>
+          <div class="formula-box">Block cools 373 → 281 K:
+$\Delta S_b=150\ln(281/373)=-42.5$ J/K
+Lake gains $Q=150\times92=13.8$ kJ at 281 K:
+$\Delta S_l=+49.1$ J/K
+$\Delta S_{universe}=-42.5+49.1=\mathbf{+6.6\ J/K}$ ✓ positive → irreversible
+
+Two blocks share heat until both reach $(373+273)/2=323$ K:
+$\Delta S=150\ln\tfrac{323}{373}+150\ln\tfrac{323}{273}=-21.5+25.2=\mathbf{+3.7\ J/K}$ ✓</div>
+          <p><strong>Quick drill:</strong> 1 kg air heated 300→600 K: constant p gives $1.005\ln2=0.697$ kJ/K; constant v gives $0.718\ln2=0.498$ kJ/K. Constant-p always wins — the extra volume-change term.</p>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.4(a)</td><td>2</td><td>Show entropy is a property</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.4(b)</td><td>2</td><td>Explain the entropy principle</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.4(c)</td><td>5</td><td>ΔS universe: block-in-lake + two blocks (worked above)</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.4(a)</td><td>5</td><td>State and prove Clausius inequality</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 11 ============ -->
+      <div class="topic" id="t11">
+        <div class="topic-header">
+          <h3>11. Availability &amp; Exergy</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 75 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topic 10</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> energy is conserved, but useful work is not. Only the part of heat that could drive a reversible engine down to environment temperature is "available"; the rest is taxed away.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Available energy:</strong> The maximum portion of a heat supply that can be converted into work by a reversible engine rejecting to the environment: A = Q(1 &#8722; T&#8320;/T).</li>
+            <li><strong>Unavailable energy (anergy):</strong> The portion of heat that must be rejected to the environment: UA = T&#8320;&#183;&#916;S.</li>
+            <li><strong>Dead state:</strong> The state in which a system stands in complete thermal, mechanical and chemical equilibrium with its surroundings at p&#8320;, T&#8320;, with no kinetic or potential energy effects.</li>
+            <li><strong>Exergy (availability):</strong> The maximum useful work obtainable as a system proceeds reversibly from its given state to the dead state.</li>
+            <li><strong>Irreversibility (lost work):</strong> The difference between reversible work and actual work: I = W_rev &#8722; W_actual = T&#8320;S_gen (Gouy&#8211;Stodola theorem).</li>
+            <li><strong>Second-law efficiency:</strong> The ratio of a device&#8217;s actual performance to its reversible (ideal) performance for the same task.</li>
+          </ul>
+          <ul>
+            <li><strong>Available vs unavailable energy of heat:</strong> heat Q drawn from a source at T can yield at most Carnot-work against an environment at $T_0$:</li>
+          </ul>
+          <div class="formula-box">$$A=Q\Big(1-\frac{T_0}{T}\Big)\quad(\text{available}),\qquad UA=Q\,\frac{T_0}{T}\quad(\text{unavailable})$$
+Cooler source → smaller usable slice of the same heat.</div>
+          <ul>
+            <li><strong>Dead state:</strong> complete balance with the surroundings — same $p_0$, $T_0$, no velocity, no elevation. Nothing more can be squeezed out once a system reaches it; only departure FROM this state has value.</li>
+            <li><strong>Exergy of a system / stream:</strong></li>
+          </ul>
+          <div class="formula-box">Non-flow exergy: $\phi=(u-u_0)+p_0(v-v_0)-T_0(s-s_0)+\dfrac{V^2}{2}+gz$
+Flow exergy: $\psi=(h-h_0)-T_0(s-s_0)+\dfrac{V^2}{2}+gz$
+Exergy change between two states = difference of these.</div>
+          <ul>
+            <li><strong>Reversible (maximum) work vs useful work:</strong> $W_{rev}$ assumes every step reversible down to dead state; $W_{useful}$ additionally discounts the $p_0\Delta V$ push-back against the atmosphere.</li>
+            <li><strong>Gouy–Stodola — lost work:</strong>
+            $$I=W_{rev}-W_{actual}=T_0\,S_{gen}$$
+            Every unit of generated entropy destroys $T_0$ times itself worth of work potential. This single line converts Module 4's entropy accounting into money terms.</li>
+            <li><strong>Second-law efficiency:</strong> how close a device runs to its reversible twin: $\eta_{II}=\eta_{act}/\eta_{rev}$ for engines, $COP_{act}/COP_{rev}$ for refrigerators and pumps.</li>
+            <li><strong>Exergy balances</strong> mirror energy balances but carry a destruction term I ≥ 0 on the right.</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Example</h4>
+          <p><strong>END MO2025 Q.4(b):</strong> 0.2 kg air at 300 °C heated reversibly at constant pressure up to 2066 K. With $T_0=303$ K and $c_p=1.0047$ kJ/kg·K, find available and unavailable energy of the heat added.</p>
+          <div class="formula-box">$Q=mc_p(T_2-T_1)=0.2\times1.0047\times1493=300$ kJ
+$\Delta S=mc_p\ln(T_2/T_1)=0.20094\times1.2827=0.258$ kJ/K
+Unavailable $=T_0\Delta S=303\times0.258=\mathbf{78.1\ kJ}$
+Available $=Q-UA=\mathbf{221.9\ kJ}$
+Cross-check via mean source temperature $Q/\Delta S=1164$ K: $A=Q(1-303/1164)=225$ kJ ✓ (rounding)</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.4(b)</td><td>5</td><td>Available/unavailable energy (worked above)</td></tr>
+          </table></div>
+          <div class="callout">Exergy hasn't yet appeared as a standalone BIT numerical beyond 2025 — but the syllabus names reversible work, irreversibility, second-law efficiency and exergy balance explicitly. Learn the boxed relations and $I=T_0S_{gen}$.</div>
+        </div>
+      </div>
+      </div>
+
+
+
+      <!-- ============ MODULE 5 ============ -->
+      <div class="module-block">
+        <div class="module-head">
+          <span class="mchip">M5</span>
+          <h3>Module 5 — Thermodynamic Property Relations</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 5 · Topics</div>
+          <a href="#t12">12 · Maxwell Relations, Clapeyron, c_p−c_v, Joule–Thomson</a>
+          <a href="#t13">13 · Supplement — Otto &amp; Diesel Cycles</a>
+        </nav>
+
+      <!-- ============ TOPIC 12 ============ -->
+      <div class="topic" id="t12">
+        <div class="topic-header">
+          <h3>12. Property Relations — Maxwell, Clapeyron, c<sub>p</sub>−c<sub>v</sub>, Joule–Thomson</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 75 min</span>
+            <span class="meta-chip">🏆 5 marks</span>
+            <span class="meta-chip">🔗 Prereq: Topics 10–11</span>
+          </div>
+        </div>
+        <div class="subsection">
+          <h4>📝 Theory Notes</h4>
+          <div class="callout"><strong>Big idea:</strong> write four short energy equations ("potentials"), apply one calculus fact — mixed partials of a smooth function are equal — and every property shortcut in this module tumbles out.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <ul>
+            <li><strong>Maxwell relations:</strong> Four relations connecting partial derivatives of thermodynamic properties, obtained by applying the exact-differential condition (equality of mixed partials) to the potentials u, h, a and g.</li>
+            <li><strong>Clausius&#8211;Clapeyron equation:</strong> dp/dT |_sat = h_fg/(T&#183;v_fg); it gives the slope of the liquid&#8211;vapour saturation line entirely from measurable quantities.</li>
+            <li><strong>Joule&#8211;Thomson coefficient:</strong> &#956;_JT = (&#8706;T/&#8706;p)_h — the temperature change per unit pressure drop at constant enthalpy; positive below the inversion temperature (cooling), negative above it (heating).</li>
+            <li><strong>Inversion temperature:</strong> The temperature at which the Joule&#8211;Thomson coefficient becomes zero, separating the cooling and heating regions.</li>
+          </ul>
+          <h4>Step 1 — the four potentials</h4>
+          <div class="formula-box">First + second laws for a simple compressible substance:
+$$du=Tds-p\,dv \qquad\text{(internal energy)}$$
+$$dh=Tds+v\,dp \qquad\text{(enthalpy, } h=u+pv)$$
+$$da=-s\,dT-p\,dv \qquad\text{(Helmholtz, } a=u-Ts)$$
+$$dg=v\,dp-s\,dT \qquad\text{(Gibbs, } g=h-Ts)$$
+Each right side has the form $M\,dx+N\,dy$ — an exact differential.</div>
+          <ul>
+            <li><strong>The one calculus fact:</strong> if $dz=Mdx+Ndy$ is exact, then $\left(\frac{\partial M}{\partial y}\right)_x=\left(\frac{\partial N}{\partial x}\right)_y$. Order of differentiation doesn't matter for smooth functions — climb then walk equals walk then climb.</li>
+          </ul>
+          <h4>Step 2 — the four Maxwell relations</h4>
+          <div class="formula-box">from du: $\left(\dfrac{\partial T}{\partial v}\right)_s=-\left(\dfrac{\partial p}{\partial s}\right)_v$
+from dh: $\left(\dfrac{\partial T}{\partial p}\right)_s=\;\;\left(\dfrac{\partial v}{\partial s}\right)_p$
+from da: $\left(\dfrac{\partial s}{\partial v}\right)_T=\;\;\left(\dfrac{\partial p}{\partial T}\right)_v$
+from dg: $\left(\dfrac{\partial s}{\partial p}\right)_T=-\left(\dfrac{\partial v}{\partial T}\right)_p$
+Pattern check: s always pairs against v or p; T pairs against the other one; signs follow from the −p dv term.</div>
+          <h4>Step 3 — first payoffs: Tds equations &amp; Clapeyron</h4>
+          <div class="formula-box">Insert Maxwell #3 into $ds=\tfrac{1}{T}(du+p\,dv)$:
+$$Tds=c_vdT+T\Big(\tfrac{\partial p}{\partial T}\Big)_v dv \qquad Tds=c_pdT-T\Big(\tfrac{\partial v}{\partial T}\Big)_p dp$$
+
+Clausius–Clapeyron: on the boiling line $p=p_{sat}(T)$ both phases share g. Differentiate $g_f=g_g$ along the line →
+$$\boxed{\dfrac{dp}{dT}\bigg|_{sat}=\dfrac{s_{fg}}{v_{fg}}=\dfrac{h_{fg}}{T\,v_{fg}}}$$
+Meaning: the slope of the liquid–vapour boundary comes entirely from measurable quantities. Far from critical, $v_{fg}\approx v_g=RT/p$ gives the vapour-pressure form $dp/dT=h_{fg}p/(RT^2)$.</div>
+          <h4>Step 4 — difference &amp; ratio of heat capacities</h4>
+          <div class="formula-box">General result (using Maxwell #3 twice):
+$$c_p-c_v=-T\,\frac{\big(\partial p/\partial T\big)_v^2}{\big(\partial p/\partial v\big)_T}$$
+Ideal-gas check: $(\partial p/\partial T)_v=R/v$ and $(\partial p/\partial v)_T=-p/v$
+→ $c_p-c_v=-T\cdot\frac{R^2/v^2}{-p/v}=\frac{TR}{v}=R$ ✓ Mayer again.
+In material constants ($\alpha$ expansion coefficient, $\kappa_T$ isothermal compressibility):
+$$c_p-c_v=\frac{\alpha^2 v T}{\kappa_T}$$
+Ratio: $\gamma=c_p/c_v=\kappa_T/\kappa_s$, the same γ used in adiabatic relations; air γ = 1.4.</div>
+          <h4>Step 5 — Joule–Thomson coefficient</h4>
+          <div class="formula-box">Throttling keeps h constant: set $dh=0$ in $dh=c_pdT+\big[v-T(\partial v/\partial T)_p\big]dp$:
+$$\mu_{JT}=\Big(\frac{\partial T}{\partial p}\Big)_h=\frac{T\big(\partial v/\partial T\big)_p-v}{c_p}$$
+$\mu_{JT}>0$: gas cools when throttled (most gases at room temperature)
+$\mu_{JT}<0$: gas warms (hydrogen, helium at room T)
+$\mu_{JT}=0$: the inversion curve separates the two zones.
+Ideal gas: $(\partial v/\partial T)_p=v/T$ → numerator zero → $\mu_{JT}=0$. No free cooling from an ideal gas.</div>
+        </div>
+        <div class="subsection">
+          <h4>📘 Worked Examples (essay answers)</h4>
+          <p><strong>END MO2025 Q.5(a):</strong> How does Clausius–Clapeyron give the slope of the liquid–vapour boundary?</p>
+          <div class="formula-box">Along saturation, phases coexist: $g_f=g_g$.
+Differentiate with respect to T along the line:
+$v_f\,dp-s_f\,dT=v_g\,dp-s_g\,dT$
+$\Rightarrow\dfrac{dp}{dT}=\dfrac{s_{fg}}{v_{fg}}=\dfrac{h_{fg}}{Tv_{fg}}$
+So the slope needs only latent heat and volume change; as critical point nears, $v_{fg}\to0$ and the slope steepens — matching how the dome closes.</div>
+          <p><strong>END MO2025 Q.5(b):</strong> Describe μ_JT and how it tells cooling from heating.</p>
+          <div class="formula-box">Definition: $\mu_{JT}=(\partial T/\partial p)_h$ — temperature response to a pressure drop at fixed enthalpy.
+The sign lives in the numerator $N=T(\partial v/\partial T)_p-v$:
+N &gt; 0 below inversion temperature → throttling cools.
+N &lt; 0 above it → throttling warms.
+Ideal gas: N = 0 always — neither effect exists.</div>
+        </div>
+        <div class="subsection">
+          <h4>🎓 BIT Mesra PYQs</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Clausius–Clapeyron → phase-boundary slope (worked above)</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Joule–Thomson coefficient (worked above)</td></tr>
+            <tr><td>END MO2025</td><td>END</td><td>Q.1(a)</td><td>5</td><td>Which integrals count as properties? (exact-differential logic)</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPIC 13 (SUPPLEMENT) ============ -->
+      <div class="topic" id="t13">
+        <div class="topic-header">
+          <h3>13. Supplement — Air-Standard Cycles: Otto &amp; Diesel</h3>
+          <div class="meta-row">
+            <span class="meta-chip">⏱ 60 min</span>
             <span class="meta-chip">🏆 5 marks</span>
             <span class="meta-chip">🔗 Prereq: Topic 4</span>
           </div>
         </div>
         <div class="subsection">
           <h4>📝 Theory Notes</h4>
-          <div class="callout"><strong>Syllabus fit:</strong> Otto &amp; Diesel cycle efficiency derivations are M5 (END sem Q5) — study the derivation steps and P-V / T-s diagrams carefully.</div>
-          <h4>Maxwell relations &amp; c_p − c_v relation</h4>
-          <div class="formula-box">Derived from exact differentials of u, h, f and g:
-(∂T/∂V)_s = −(∂P/∂s)_v      (∂T/∂P)_s = (∂V/∂s)_p
-(∂P/∂T)_v = (∂s/∂V)_T      (∂V/∂T)_p = −(∂s/∂P)_T
-
-General relation:  c_p − c_v = −T(∂P/∂T)²_v / (∂P/∂V)_T
-For an ideal gas this reduces to  c_p − c_v = R.</div>
-          <div class="formula-box">Otto cycle (constant volume heat addition):
-η_Otto = 1 − 1/r^(γ−1)   where r = V₁/V₂ (compression ratio)
-
-Diesel cycle (constant pressure heat addition):
-η_Diesel = 1 − [1/(r^(γ−1))]·[(ρ^γ − 1)/(γ(ρ − 1))]   where ρ = V₃/V₂ (cut-off ratio)</div>
+          <div class="warning"><strong>Why this page exists:</strong> the printed syllabus puts property relations in Module 5, yet END-sem Q5 asked the Otto/Diesel derivations in 2022 AND 2024. Treat this as the guaranteed-marks appendix — learn both derivations regardless.</div>
+          <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
           <ul>
-            <li>Air-standard assumptions: air as ideal gas, c_p, c_v constant, all processes internally reversible, no intake/exhaust, fixed mass.</li>
-            <li>Otto derivation (MO2024 P2 Q.5(a)): Q_s = c_v(T₃−T₂), Q_r = c_v(T₄−T₁), η = 1 − Q_r/Q_s = 1 − (T₄−T₁)/(T₃−T₂); with T₄/T₁ = (V₁/V₂)^(γ−1) = r^(γ−1) = T₃/T₂ → η = 1 − 1/r^(γ−1).</li>
-            <li>Diesel derivation (MO2022 END Q.5(a)): heat added at constant pressure Q_s = c_p(T₃−T₂), rejected at constant volume → same algebra with the cut-off ratio.</li>
+            <li><strong>Compression ratio, r:</strong> r = V&#8321;/V&#8322; — ratio of total cylinder volume to clearance volume.</li>
+            <li><strong>Clearance volume:</strong> The cylinder volume remaining when the piston is at head-end dead centre.</li>
+            <li><strong>Cut-off ratio, &#961;:</strong> In the Diesel cycle, &#961; = V&#8323;/V&#8322; — the fraction of the stroke during which fuel continues to burn at constant pressure.</li>
+            <li><strong>Air-standard efficiency:</strong> The thermal efficiency of the idealised cycle using fixed air as the working fluid: &#951; = 1 &#8722; Q_rejected/Q_supplied.</li>
+            <li><strong>Mean effective pressure (MEP):</strong> The constant pressure that, acting over one stroke, would produce the same net work as the actual cycle: MEP = W_net/V_swept.</li>
           </ul>
+          <ul>
+            <li><strong>Air-standard rules:</strong> working fluid stays air (ideal gas, constant c's); combustion becomes heat-from-outside; exhaust becomes heat rejection; every process internally reversible.</li>
+            <li><strong>Otto cycle (petrol engine):</strong> 1–2 isentropic compression · 2–3 heat addition at constant volume · 3–4 isentropic expansion · 4–1 heat rejection at constant volume. Compression ratio r = V₁/V₂.</li>
+          </ul>
+          <div class="formula-box">$q_{in}=c_v(T_3-T_2)$, $q_{out}=c_v(T_4-T_1)$; isentropes give $T_4/T_1=T_3/T_2=r^{\gamma-1}$
+$$\eta_{Otto}=1-\frac{q_{out}}{q_{in}}=1-\frac{1}{r^{\gamma-1}}$$
+Mean effective pressure: $mep=\dfrac{w_{net}}{v_1-v_2}$ — net work per unit swept volume.</div>
+          <ul>
+            <li><strong>Diesel cycle (diesel engine):</strong> same shape except heat is added at constant PRESSURE while the piston moves — captured by cut-off ratio ρ = V₃/V₂ ≥ 1.</li>
+          </ul>
+          <div class="formula-box">$$\eta_{Diesel}=1-\frac{1}{r^{\gamma-1}}\cdot\frac{\rho^{\gamma}-1}{\gamma(\rho-1)}$$
+Same r: Otto beats Diesel (that fraction is &gt; 1).
+Same peak temperature &amp; pressure: Diesel wins — it may run much larger r without knocking.</div>
         </div>
         <div class="subsection">
-          <h4>📘 Worked Example</h4>
-          <p><strong>MO2024 P2 Q.5(b):</strong> Otto cycle, r = 7, start 35 °C, 0.1 MPa, max T = 1100 °C.</p>
-          <div class="formula-box">State 2: T₂ = T₁·r^(γ−1) = 308×7^0.4 = 308×2.178 = 670.9 K
-P₂ = P₁·r^γ = 0.1×7^1.4 = 0.1×15.25 = 1.525 MPa
-State 3: T₃ = 1373 K, V₃ = V₂ → P₃ = P₂·T₃/T₂ = 1.525×1373/670.9 = 3.12 MPa
-State 4: T₄ = T₃/r^(γ−1) = 1373/2.178 = 630.4 K
-P₄ = P₁·T₄/T₁ = 0.1×630.4/308 = 0.205 MPa
-η = 1 − 1/7^0.4 = 1 − 0.459 = 54.1%</div>
+          <h4>📘 Worked Examples</h4>
+          <p><strong>END MO2024 Q.5(b):</strong> Otto cycle, r = 7, intake 35 °C &amp; 0.1 MPa, peak temperature 1100 °C. Find all cardinal points, q_in, w_net, η and mep per kg.</p>
+          <div class="formula-box">$T_2=308\times7^{0.4}=670.8$ K; $p_2=100\times7^{1.4}=1525$ kPa
+$p_3=p_2(T_3/T_2)=1525\times\tfrac{1373}{670.8}=3121$ kPa
+$T_4=1373/7^{0.4}=630.5$ K; $p_4=100\times\tfrac{630.5}{308}=205$ kPa
+$q_{in}=0.718(1373-670.8)=504$; $q_{out}=232$ kJ/kg → $w_{net}=272$ kJ/kg
+$\eta=1-1/7^{0.4}=\mathbf{54.1\%}$
+$v_1=RT_1/p_1=0.884$ m³/kg → $mep=272/[0.884(1-\tfrac17)]=\mathbf{360\ kPa}$</div>
+          <p><strong>END MO2022 Q.5(b):</strong> Otto engine: before compression V₁ = 0.5 m³, 1 bar, 27 °C; after compression 10 bar; 200 kJ added at constant volume. Clearance %, efficiency, mep.</p>
+          <div class="formula-box">$r=(10)^{1/1.4}=5.18$
+Clearance/swept $=\dfrac{1/r}{1-1/r}=\dfrac{1}{r-1}=\mathbf{23.9\%}$
+$\eta=1-5.18^{-0.4}=\mathbf{48.2\%}$
+$m=\dfrac{100\times0.5}{0.287\times300}=0.581$ kg → $q_{in}/kg=344.3$
+$T_2=300\times5.18^{0.4}=579$ K → $T_3=579+344.3/0.718=1059$ K
+$W_{net}=\eta Q_{in}=96.5$ kJ over swept volume $0.5(1-\tfrac15.18^{-1})=0.4035$ m³
+$mep=\mathbf{239\ kPa}$</div>
         </div>
         <div class="subsection">
           <h4>🎓 BIT Mesra PYQs</h4>
           <div class="table-wrap"><table>
             <tr><th>Year</th><th>Paper</th><th>Q.No.</th><th>Marks</th><th>Question</th></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Derive ideal efficiency of air-standard Diesel cycle</td></tr>
-            <tr><td>MO2022</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Otto cycle engine with given volume ratio → η, P, T</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.5(a)</td><td>5</td><td>Derive thermal efficiency of Otto cycle</td></tr>
-            <tr><td>MO2024 P2</td><td>MID</td><td>Q.5(b)</td><td>5</td><td>Otto r=7, 35 °C, 0.1 MPa, T_max=1100 °C → cardinal points</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Derive Diesel-cycle efficiency</td></tr>
+            <tr><td>END MO2022</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Otto: clearance %, η, mep (worked above)</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.5(a)</td><td>5</td><td>Derive Otto thermal efficiency</td></tr>
+            <tr><td>END MO2024</td><td>END</td><td>Q.5(b)</td><td>5</td><td>Otto r = 7 full analysis (worked above)</td></tr>
           </table></div>
         </div>
       </div>
       </div>
 
+
+
       <!-- ============ CHEAT SHEET ============ -->
-      <div class="topic" id="cheat">
+      <div class="topic" id="cheat-sheet">
         <div class="topic-header">
           <h3>⚡ Quick Revision Cheat Sheet</h3>
         </div>
         <div class="subsection">
-          <h4>Must-Know Formulas</h4>
-          <div class="two-col">
-            <div>
-              <div class="formula-box">Q = ΔU + W (process) ; ∮δQ = ∮δW (cycle)</div>
-              <div class="formula-box">h = u + Pv ; c_p − c_v = R ; γ = c_p/c_v</div>
-              <div class="formula-box">W_poly = mR(T₁−T₂)/(n−1)</div>
-              <div class="formula-box">Q_poly = W·(γ−n)/(γ−1)</div>
+          <h4>Must-Know Formulas by Official Module</h4>
+          <details id="cheat-m1" open>
+            <summary><strong>M1 — Fundamental Concepts · Work &amp; Heat · Gases &amp; Steam</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box"><strong>Core vocabulary:</strong><br>
+System / Surroundings / Control Volume<br>
+State · Process · Cycle<br>
+Point function (property) vs Path function (δQ, δW)<br>
+Equilibrium = thermal + mechanical + chemical</div>
+                <div class="formula-box"><strong>Zeroth law &amp; ideal gas:</strong><br>
+A~C, B~C ⇒ A~B (defines T)<br>
+pV = mRT = nR̄T; R̄ = 8.314 kJ/kmol·K; R_air = 0.287<br>
+Van der Waals: (p + a/v²)(v − b) = RT</div>
+                <div class="formula-box"><strong>Work &amp; heat:</strong><br>
+W = ∫p dV (quasi-static only!)<br>
+Other modes: τ dθ · e dq · −σ dA<br>
+Free expansion: W = 0, Q = 0, ΔU = 0 (ideal gas)</div>
+              </div>
+              <div>
+                <div class="formula-box"><strong>Quality (wet steam):</strong><br>
+x = m_vapour/m_total<br>
+v = v_f + x·v_fg<br>
+h = h_f + x·h_fg<br>
+s = s_f + x·s_fg</div>
+                <div class="formula-box"><strong>Table-check order:</strong><br>
+h &lt; h_f → compressed liquid (≈ h_f@T)<br>
+h_f &lt; h &lt; h_g → wet → solve for x<br>
+h &gt; h_g → superheated → interpolate</div>
+                <div class="formula-box"><strong>Sensible vs latent:</strong><br>
+Sensible: mcΔT (temperature changes)<br>
+Latent: mh_fg (phase changes at constant T)</div>
+              </div>
             </div>
-            <div>
-              <div class="formula-box">SFEE: Q̇−Ẇ = ṁ[Δh + ΔV²/2 + gΔz]</div>
-              <div class="formula-box">V₂ = √[2(h₁−h₂) + V₁²] (nozzle)</div>
-              <div class="formula-box">η_carnot = 1 − T_L/T_H</div>
-              <div class="formula-box">COP_R = T_L/(T_H−T_L) ; COP_HP = COP_R + 1</div>
+          </details>
+          <details id="cheat-m2" open>
+            <summary><strong>M2 — First Law · Polytropic · SFEE Devices</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box"><strong>First law:</strong><br>
+Process: Q = ΔU + W<br>
+Cycle: ∮δQ = ∮δW<br>
+Enthalpy: h = u + pv<br>
+c_p − c_v = R, γ = c_p/c_v<br>
+c_v = R/(γ−1), c_p = γR/(γ−1)</div>
+                <div class="formula-box"><strong>Polytropic pVⁿ = C:</strong><br>
+W = mR(T₁−T₂)/(n−1)<br>
+Isothermal special: W = p₁V₁ ln(V₂/V₁)<br>
+Q = W·(γ−n)/(γ−1)<br>
+n: 0 iso-P · 1 iso-T · γ adia · ∞ iso-V</div>
+              </div>
+              <div>
+                <div class="formula-box"><strong>SFEE:</strong><br>
+Q̇ − Ẇ = ṁ[Δh + ΔV²/2 + gΔz]</div>
+                <div class="formula-box"><strong>Device results:</strong><br>
+Nozzle: V₂ = √[2(h₁−h₂)+V₁²]<br>
+Turbine: Ẇ = ṁ(h₁−h₂)<br>
+Compressor: Ẇ = ṁ(h₂−h₁)<br>
+Pump (liquid): Ẇ = ṁ v (p₂−p₁)<br>
+Boiler/HEX: q = Δh · Throttle: h₁ = h₂</div>
+              </div>
             </div>
-            <div>
-              <div class="formula-box">∮δQ/T ≤ 0 ; dS = δQ_rev/T</div>
-              <div class="formula-box">η_Otto = 1 − 1/r^(γ−1)</div>
-              <div class="formula-box">η_Diesel = 1 − [ρ^γ−1]/[r^(γ−1)·γ(ρ−1)]</div>
-              <div class="formula-box">Available = Q(1 − T₀/T)</div>
+          </details>
+          <details id="cheat-m3" open>
+            <summary><strong>M3 — Second Law · Statements · Carnot</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box"><strong>Statements:</strong><br>
+Kelvin–Planck: no engine ↔ single reservoir<br>
+Clausius: no self-acting fridge (cold→hot)<br>
+Equivalent (prove by coupling machines)<br>
+PMM-2 impossible</div>
+                <div class="formula-box"><strong>Performance ratios:</strong><br>
+η = W_net/Q_H = 1 − Q_L/Q_H<br>
+COP_R = Q_L/W = T_L/(T_H−T_L)<br>
+COP_HP = Q_H/W = COP_R + 1<br>
+Carnot: η = 1 − T_L/T_H (kelvin!)</div>
+              </div>
+              <div>
+                <div class="formula-box"><strong>Carnot cycle:</strong><br>
+iso-T expand (Q_H) → isentrope ↓ → iso-T reject (Q_L) → isentrope ↑<br>
+Theorems: nothing beats reversible; all reversible equal</div>
+                <div class="formula-box"><strong>Absolute scale:</strong><br>
+Q_H/Q_L = Φ(T_H)/Φ(T_L), Φ(t) = at + b<br>
+Absolute zero sits at t = −b/a</div>
+              </div>
             </div>
-          </div>
+          </details>
+          <details id="cheat-m4" open>
+            <summary><strong>M4 — Entropy · Exergy</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box"><strong>Entropy:</strong><br>
+∮δQ/T ≤ 0; dS = δQ_rev/T (property)<br>
+Δs = c_v ln(T₂/T₁) + R ln(v₂/v₁)<br>
+Δs = c_p ln(T₂/T₁) − R ln(p₂/p₁)<br>
+Isothermal: ΔS = Q/T · Phase: ΔS = h_fg/T_sat<br>
+S_gen ≥ 0; ΔS_universe ≥ 0</div>
+                <div class="formula-box"><strong>Isentropic relations:</strong><br>
+T₂/T₁ = (p₂/p₁)^((γ−1)/γ) = (v₁/v₂)^(γ−1)<br>
+pV^γ = C</div>
+              </div>
+              <div>
+                <div class="formula-box"><strong>Availability / exergy:</strong><br>
+A = Q(1 − T₀/T_source); UA = QT₀/T<br>
+φ (non-flow) = (u−u₀) + p₀(v−v₀) − T₀(s−s₀)<br>
+ψ (flow) = (h−h₀) − T₀(s−s₀)<br>
+Irreversibility: I = W_rev − W_act = T₀·S_gen<br>
+η_II = η_actual/η_reversible</div>
+              </div>
+            </div>
+          </details>
+          <details id="cheat-m5" open>
+            <summary><strong>M5 — Property Relations (+ Cycle Supplement)</strong></summary>
+            <div class="two-col">
+              <div>
+                <div class="formula-box"><strong>Potentials → Maxwell:</strong><br>
+du = Tds − p dv; dh = Tds + v dp<br>
+da = −s dT − p dv; dg = v dp − s dT<br>
+(∂T/∂v)s = −(∂p/∂s)v · (∂T/∂p)s = (∂v/∂s)p<br>
+(∂s/∂v)T = (∂p/∂T)v · (∂s/∂p)T = −(∂v/∂T)p</div>
+                <div class="formula-box"><strong>Clapeyron:</strong><br>
+dp/dT |_sat = h_fg/(T·v_fg)</div>
+                <div class="formula-box"><strong>c_p − c_v general:</strong><br>
+= −T(∂p/∂T)²_v / (∂p/∂v)_T = α²vT/κ_T<br>
+ideal gas → R · γ = κ_T/κ_s</div>
+                <div class="formula-box"><strong>Joule–Thomson:</strong><br>
+μ_JT = (∂T/∂p)_h = [T(∂v/∂T)_p − v]/c_p<br>
+&gt;0 cool · &lt;0 warm · ideal gas = 0</div>
+              </div>
+              <div>
+                <div class="formula-box"><strong>Otto:</strong><br>
+η = 1 − 1/r^(γ−1)<br>
+mep = w_net/[v₁(1−1/r)]</div>
+                <div class="formula-box"><strong>Diesel:</strong><br>
+η = 1 − [1/r^(γ−1)]·[(ρ^γ−1)/(γ(ρ−1))]</div>
+                <div class="formula-box"><strong>Rankings:</strong><br>
+Same r: Otto &gt; Dual &gt; Diesel<br>
+Same peak T&amp;p: Diesel wins (higher r allowed)</div>
+              </div>
+            </div>
+          </details>
+        </div>
+        <div class="subsection">
+          <h4>Process Summary Table</h4>
+          <div class="table-wrap"><table>
+            <tr><th>Process</th><th>Constant</th><th>Work</th><th>Heat</th></tr>
+            <tr><td>Isobaric</td><td>p</td><td>W = pΔV = mRΔT</td><td>Q = mc_pΔT</td></tr>
+            <tr><td>Isochoric</td><td>V</td><td>W = 0</td><td>Q = mc_vΔT</td></tr>
+            <tr><td>Isothermal</td><td>T</td><td>W = mRT ln(V₂/V₁)</td><td>Q = W</td></tr>
+            <tr><td>Adiabatic rev.</td><td>s, pV^γ</td><td>W = mR(T₁−T₂)/(γ−1)</td><td>Q = 0</td></tr>
+            <tr><td>Polytropic</td><td>pVⁿ</td><td>W = mR(T₁−T₂)/(n−1)</td><td>Q = W(γ−n)/(γ−1)</td></tr>
+            <tr><td>Throttling</td><td>h</td><td>W = 0</td><td>Q = 0</td></tr>
+          </table></div>
         </div>
         <div class="subsection">
           <h4>Common Traps</h4>
           <ul>
             <li>Enthalpy H is extensive; specific enthalpy h is intensive.</li>
-            <li>Free expansion: W = 0, Q = 0, ideal gas T unchanged.</li>
-            <li>Work and heat are path functions (δW, δQ); always in J not J/kg unless specified.</li>
-            <li>Use kelvin in all entropy, efficiency and Carnot calculations.</li>
-            <li>Throttling: h₁ = h₂ (isenthalpic) — not isothermal.</li>
-            <li>COP_HP = COP_R + 1 — always larger.</li>
-            <li>Entropy of universe ≥ 0 for all real processes.</li>
-            <li>Polytropic: n = γ → adiabatic; n = 1 → isothermal (use special formulas for isothermal W = P₁V₁ ln(V₂/V₁)).</li>
+            <li>Free expansion: W = 0, Q = 0, ideal-gas T unchanged — but the process IS irreversible.</li>
+            <li>Work and heat are path functions (δW, δQ) — never write W₂ − W₁ or Q₂ − Q₁.</li>
+            <li>Kelvin everywhere: Carnot, entropy, availability. 27 °C = 300 K, not 27 K.</li>
+            <li>W = ∫p dV only for quasi-static paths — say so when deriving.</li>
+            <li>Throttling is isenthalpic, not isothermal (only an ideal gas coincides).</li>
+            <li>COP_HP = COP_R + 1 — always larger; quote both when asked to compare.</li>
+            <li>Engine classification: compute η_Carnot first — below it irreversible, equal reversible, above impossible.</li>
+            <li>SFEE signs: casing loss is negative Q̇; faster exit makes ΔKE negative for turbines.</li>
+            <li>Steam states: test h against h_f / h_g BEFORE any interpolation.</li>
+            <li>Polytropic n = 1 needs the ln formula — never divide by n − 1 there.</li>
+            <li>Cycle sketches: net work = enclosed area on p–V (or T–s) diagram.</li>
           </ul>
         </div>
         <div class="subsection">
@@ -724,11 +1382,13 @@ P₄ = P₁·T₄/T₁ = 0.1×630.4/308 = 0.205 MPa
             <tr><th>Topic</th><th>Marks/Paper</th><th>Frequency</th></tr>
             <tr><td>Polytropic process (work/heat)</td><td>3–5</td><td>Every paper</td></tr>
             <tr><td>SFEE / nozzle numerical</td><td>3–5</td><td>Every paper</td></tr>
-            <tr><td>First law &amp; internal energy</td><td>2–5</td><td>90% papers</td></tr>
+            <tr><td>First law &amp; internal energy</td><td>2–5</td><td>90% of papers</td></tr>
             <tr><td>Second law / Carnot</td><td>5</td><td>Every END sem</td></tr>
-            <tr><td>Entropy / Clausius</td><td>5</td><td>Every END sem</td></tr>
-            <tr><td>Otto / Diesel cycle</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Entropy / Clausius inequality</td><td>5</td><td>Every END sem</td></tr>
+            <tr><td>Otto / Diesel supplement</td><td>5</td><td>END 22 &amp; 24</td></tr>
             <tr><td>Intensive vs extensive</td><td>2</td><td>High (MID + END)</td></tr>
+            <tr><td>Property relations (Maxwell/JT/Clapeyron)</td><td>5</td><td>END 25</td></tr>
+            <tr><td>Availability / exergy</td><td>3–5</td><td>END sem</td></tr>
           </table></div>
         </div>
       </div>
@@ -738,6 +1398,302 @@ P₄ = P₁·T₄/T₁ = 0.1×630.4/308 = 0.205 MPa
 </div>
 
 <!-- ===================== PYQs ===================== -->
+<section class="section section-alt" id="modpyq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">PYQs by Module</div>
+      <h2>Every past question, grouped by module</h2>
+      <p>All questions from MO 2022–2025, grouped under the module they came from — practice module by module.</p>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">1</span> <strong>Basic Concepts</strong> <span class="tag">CO-1</span> <span class="tag tag-high">17 PYQs</span></div>
+      <div class="paper-group">
+        <h4>MID MO2022 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="MID MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" alt="THERMO_MO2022_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Outline the importance of quasi-static process from thermodynamics point of view <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.1(a) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>A tank has two rooms separated by a membrane. Room A contains 2 kg of air with specific volume 0.5 m³/kg, while room B has 0.75 m³ of air with density 0.8 kg/m³. The membrane breaks and the two masses come to a uniform state. Find the final specific volume of air <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.1(b) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>2</td><td>How will you distinguish between point function and path function? Explain with suitable example <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.2(a) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>2</td><td>Under what condition is the work done equal to ∫p·dV ? <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.3(a) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" alt="THERMO_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Indicate which of the following properties are intensive and which are extensive: (i) Density (ii) Potential Energy (iii) Enthalpy (iv) Pressure <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.1(a) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>A 1 m³ rigid tank has air at 100 kPa, 300 K connected by a valve to another 0.5 m³ tank with air at 250 kPa, 400 K. The valve is opened and the tanks come to a uniform state at 315 K. Determine the final pressure <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.1(b) · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2023 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="MID MO2023 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" alt="THERMO_MO2023_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Explain work from thermodynamics point of view <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.1(a) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>Explain: (i) intensive and extensive properties, (ii) free expansion process <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.1(b) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2</strong></td><td>5</td><td>A 1 m³ rigid tank has air at 15 bar and ambient temperature 27 °C connected by a valve to a piston cylinder. The piston of area 0.1 m² requires 2.5 bar below it to float. The valve is opened and the piston moves slowly 2 m up, then the valve is closed. Temperature remains 27 °C throughout. Evaluate the final pressure in the tank <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.2 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2024 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="MID MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" alt="THERMO_MO2024_P1 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p2.png" data-caption="MID MO2024 · page 2"><img src="/api/file?path=images/papers/THERMO_MO2024_P1_p2.png" alt="THERMO_MO2024_P1 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish between the macroscopic and microscopic approach <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.1(a) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>2</td><td>What is meant by thermodynamic equilibrium? How does it differ from thermal equilibrium? <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.2(a) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>2</td><td>What is meant by a pure substance? Can we treat air as a pure substance? <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.3(a) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" alt="THERMO_MO2024_P2 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>5</td><td>What is a process? Explain the meaning of quasi-static process and also state its characteristic features <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.1(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2025 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="MID MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" alt="THERMO_MO2025_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>2</td><td>Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish both approaches with examples of properties involved <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.1(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>2</td><td>What is a process? Explain the meaning of quasi-static process and state its characteristic features <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.2(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>2</td><td>What are point and path functions? Illustrate that both work and heat are path functions and not point functions <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.3(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" alt="THERMO_MO2025_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(a)</strong></td><td>5</td><td>Comment whether the following can be called properties or not: (i) ∫p dV, (ii) ∫V dp, (iii) ∫p dV + ∫V dp, (iv) v·(dv/∂T)ₚ + v·(dv/∂v)ₚ for PV=RT, (v) (1/T)·dH − (v/T)·dV for PV=RT <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.1(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">2</span> <strong>First Law of Thermodynamics</strong> <span class="tag">CO-2</span> <span class="tag tag-high">34 PYQs</span></div>
+      <div class="paper-group">
+        <h4>MID MO2022 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="MID MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" alt="THERMO_MO2022_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>3</td><td>Dry steam at 10 bar is cooled at constant volume to 3 bar. Determine the dryness fraction after cooling <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.2(b) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>3</td><td>A gas is compressed from V₁ = 0.09 m³ to V₂ = 0.03 m³. The relation between pressure and volume during the process is p = 14V + 2.44, where p is in bar and V in m³. Find the work done in kJ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.3(b) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>2</td><td>Show that internal energy is a property of the system <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.4(a) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>3</td><td>Two insulated tanks A and B are connected by a valve. Tank A: 0.6 m³ of air at 200 kPa, 200 °C. Tank B: 0.3 m³ of air at 500 kPa, 130 °C. The valve is opened fully and the tanks come to a uniform state. Determine the final pressure <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.4(b) · MID MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5</strong></td><td>5</td><td>Steam at 4 MPa, 400 °C enters a turbine with velocity 15 m/s. Heat loss through the casing is 60 kW. Steam leaves at 0.1 bar, 0.91 dry with velocity 65 m/s. Elevation difference between inlet and outlet pipes is 2 m. Determine the power developed for a steam flow rate of 50000 kg/hr <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_MID_p1.png" data-caption="Q.5 · MID MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" alt="THERMO_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(c)</strong></td><td>5</td><td>A constant pressure piston/cylinder assembly contains 0.2 kg of steam at 400 kPa, 220 °C. It is cooled so that the volume reduces to half the original. Estimate the work done in the process <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.1(c) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>2</td><td>State the first law of thermodynamics applied to (i) a process and (ii) a cycle <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.2(a) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>3</td><td>One kg of air at 7 bar, 90 °C undergoes a polytropic process represented by pV^1.1 = constant till the pressure falls to 1.4 bar. Determine (i) final temperature, (ii) final volume, (iii) heat transferred <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.2(b) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(c)</strong></td><td>5</td><td>Steam enters a nozzle with negligible velocity at 3 MPa, 320 °C and leaves at 1.6 MPa with velocity 550 m/s. Rate of flow of steam is 0.5 kg/s. Determine the condition of steam at the nozzle exit and the nozzle exit area <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.2(c) · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2023 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="MID MO2023 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" alt="THERMO_MO2023_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>2</td><td>Determine the temperature of water at a state of P = 0.5 MPa and h = 2890 kJ/kg <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.3(a) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>3</td><td>Determine the amount of heat to be supplied to 2 kg of water at 25 °C to convert it to steam at 5 bar and 0.9 dry <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.3(b) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>2</td><td>Explain the First Law of Thermodynamics for the cycle and the non-cyclic process <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.4(a) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>3</td><td>For a polytropic process pV^n = constant, prove that ∫₁² δQ = ((γ − n)/(γ − 1)) × polytropic work done <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.4(b) · MID MO2023 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5</strong></td><td>5</td><td>Fluid parameters at the inlet of a steam nozzle: enthalpy 2850 kJ/kg, velocity 50 m/s, area 0.1 m², specific volume 0.18 m³/kg. At discharge: enthalpy 2650 kJ/kg, specific volume 0.49 m³/kg. Evaluate (i) velocity of steam, (ii) mass flow rate, (iii) exit area of the nozzle. Nozzle horizontal; heat loss negligible <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2023_MID_p1.png" data-caption="Q.5 · MID MO2023 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2024 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="MID MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" alt="THERMO_MO2024_P1 paper page 1"></div>
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p2.png" data-caption="MID MO2024 · page 2"><img src="/api/file?path=images/papers/THERMO_MO2024_P1_p2.png" alt="THERMO_MO2024_P1 paper page 2"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>A system of volume V contains mass m of gas at pressure P and temperature T obeying (p + a/V²)(v − b) = mRT, where a, b, R are constants. Obtain an expression for the displacement work during constant temperature expansion from V₁ to V₂. Calculate the work for 10 kg of this gas expanding from 1 m³ to 10 m³ at 293 K, with a = 15.7×10⁴ Nm⁴, b = 1.07×10⁻² m³ and R = 0.278 kJ/kg-K <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.1(b) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>3</td><td>The pressure-volume correlation for a non-flow reversible (quasi-static) process is P = (8 − 4V) bar, where V is in m³. If 150 kJ of work is supplied to the system, determine the final pressure and volume. Take initial volume = 0.6 m³ <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.2(b) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>3</td><td>Explain the first law of thermodynamics when it is applied to a closed system undergoing change of state <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.3(b) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>2</td><td>Define internal energy of a system and show that internal energy is a property of the system <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.4(a) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>3</td><td>A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; corresponding volumes 0.20 m³ / 1.2 m³. Specific internal energy is given by u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate the net heat transfer and the maximum internal energy attained during expansion <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.4(b) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>2</td><td>Derive the expression for steady flow energy equation <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p1.png" data-caption="Q.5(a) · MID MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>3</td><td>A gas undergoes a thermodynamic cycle: (i) 1-2 constant pressure = 1.4 bar, V₁ = 0.028 m³, W₁₂ = 10.5 kJ; (ii) 2-3 compression with PV = constant, U₃ = U₂; (iii) 3-1 constant volume, U₁ − U₃ = −26.4 kJ; neglect KE and PE changes. (a) Sketch the cycle on P-V diagram, (b) calculate net work for the cycle in kJ, (c) calculate heat transfer for process 1-2, (d) show that ∑Q = ∑W over the cycle <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P1_p2.png" data-caption="Q.5(b) · MID MO2024 · p2">📄 p2</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" alt="THERMO_MO2024_P2 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>5</td><td>An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.1(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>5</td><td>Derive an expression for heat transfer in a polytropic process <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.2(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>5</td><td>Dry saturated steam at 5 bar enters an adiabatic nozzle at velocity 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.2(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>MID MO2025 <span class="tag">MID</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="MID MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" alt="THERMO_MO2025_MID paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>3</td><td>A balloon filled with air (200 kPa / 300 K) becomes a sphere of diameter 1 m. It is gradually heated till its pressure rises to 500 kPa. Determine the work done, assuming pressure inside is proportional to diameter <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.1(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>3</td><td>An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.2(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>3</td><td>Show that the enthalpy of a fluid before throttling equals that after throttling (h₁ = h₂) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.3(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>2</td><td>Define internal energy and specific heats of a system <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.4(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>3</td><td>A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; volumes 0.20 m³ / 1.2 m³. Specific internal energy u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate net heat transfer and maximum internal energy attained during expansion <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.4(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>2</td><td>Derive an expression for work done in a polytropic process <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.5(a) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>3</td><td>Dry saturated steam at 5 bar enters an adiabatic nozzle at 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_MID_p1.png" data-caption="Q.5(b) · MID MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" alt="THERMO_MO2025_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.1(b)</strong></td><td>5</td><td>A piston cylinder device contains 0.8 kg of steam at 300 °C and 1 MPa. Steam is cooled at constant pressure until one-half of the mass condenses. (a) Show the process on a T-V diagram, (b) find the final temperature, (c) determine the volume change <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.1(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(a)</strong></td><td>5</td><td>Make an energy analysis of the: (i) Nozzle, (ii) Throttling device, (iii) Turbine and Compressor <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.2(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.2(b)</strong></td><td>5</td><td>In a steam power plant, saturated liquid water at 10 kPa enters a feed pump at 1 kg/s. The pump delivers water to the boiler at 3 MPa. Assuming the pump is adiabatic, estimate the power input to the pump <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.2(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">3</span> <strong>Second Law</strong> <span class="tag">CO-3</span> <span class="tag tag-high">7 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" alt="THERMO_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>2</td><td>State the difference between refrigerator and heat pump <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.3(a) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>3</td><td>State and explain Carnot theorem <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.3(b) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(c)</strong></td><td>5</td><td>An ice plant working on a reversed Carnot cycle produces 20 tonnes of ice per day from water at 0 °C, maintained at 0 °C; heat is rejected to atmosphere at 27 °C. The heat pump runs on a Carnot engine absorbing heat from a source at 227 °C and rejecting heat to atmosphere at 27 °C. Compute the heat supplied to the engine (enthalpy of fusion of ice = 334.5 kJ/kg) <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.3(c) · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" alt="THERMO_MO2024_P2 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>5</td><td>Define and compare C.O.P. of a heat pump with that of a refrigerator <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.3(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>5</td><td>If 20 kJ are added to a Carnot cycle at 100 °C and 14.6 kJ are rejected at 0 °C, determine the location of absolute zero on the Celsius scale. Assume Φ(t) = at + b <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.3(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" alt="THERMO_MO2025_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.3(a)</strong></td><td>5</td><td>Establish the equivalence of Kelvin-Planck and Clausius statements <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.3(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.3(b)</strong></td><td>5</td><td>A reversible power cycle drives a reversible heat pump. The power cycle takes in Q₁ at T₁ and rejects Q₂ at T₂; the heat pump abstracts Q₂ from the sink at T₂ and discharges Q₃ at T₃. Develop an expression for the ratio Q₃/Q₁ in terms of the four temperatures <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.3(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">4</span> <strong>Entropy & Availability</strong> <span class="tag">CO-4</span> <span class="tag tag-high">9 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" alt="THERMO_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>2</td><td>Show that entropy is a property of a system <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.4(a) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>3</td><td>Explain entropy principle <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.4(b) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(c)</strong></td><td>5</td><td>Estimate the change in entropy of the universe for: (i) a copper block of 600 gm mass, Cp = 150 J/K at 100 °C placed in a lake at 8 °C, (ii) two such blocks at 100 °C and 0 °C joined together <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.4(c) · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" alt="THERMO_MO2024_P2 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>5</td><td>State and prove the Clausius inequality <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.4(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>5</td><td>A heat engine is supplied 278 kJ/s of heat at fixed temperature 283 °C with heat rejection at 5 °C. Reported results: (i) 208 kJ/s rejected, (ii) 139 kJ/s rejected, (iii) 70 kJ/s rejected. Classify each as reversible, irreversible or impossible <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.4(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2025 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="END MO2025 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" alt="THERMO_MO2025_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.4(a)</strong></td><td>5</td><td>State and prove the Clausius inequality <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.4(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.4(b)</strong></td><td>5</td><td>0.2 kg of air at 300 °C is heated reversibly at constant pressure to 2066 K. Find the available and unavailable energies of the heat added. Take T₀ = 30 °C and Cp = 1.0047 kJ/kgK <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.4(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>5</td><td>Explain how the Clausius-Clapeyron equation helps in determining the slope of the phase boundary between liquid and vapor phases of a substance <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.5(a) · END MO2025 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>5</td><td>Describe the Joule-Thomson coefficient and explain how it indicates whether a gas will cool or heat upon expansion <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2025_END_p1.png" data-caption="Q.5(b) · END MO2025 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="modpyq-card">
+      <div class="modpyq-head"><span class="mchip">5</span> <strong>Gas Power Cycles</strong> <span class="tag">CO-5</span> <span class="tag tag-high">4 PYQs</span></div>
+      <div class="paper-group">
+        <h4>END MO2022 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="END MO2022 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" alt="THERMO_MO2022_END paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>5</td><td>Derive an expression for the ideal efficiency of an air standard diesel cycle <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.5(a) · END MO2022 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>5</td><td>An engine working on the Otto cycle has volume 0.5 m³, pressure 1 bar and temperature 27 °C at the beginning of compression. At the end of compression the pressure is 10 bar. Heat added during constant volume process is 200 kJ. Determine (a) percentage clearance volume, (b) air standard efficiency, (c) mean effective pressure <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2022_END_p1.png" data-caption="Q.5(b) · END MO2022 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+      <div class="paper-group">
+        <h4>END MO2024 <span class="tag">END</span></h4>
+        <div class="two-col">
+          <div class="paper-thumb" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="END MO2024 · page 1"><img src="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" alt="THERMO_MO2024_P2 paper page 1"></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Q.No</th><th>Marks</th><th>Question</th></tr>
+          <tr><td><strong>Q.5(a)</strong></td><td>5</td><td>Derive the expression for thermal efficiency of the Otto cycle <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.5(a) · END MO2024 · p1">📄 p1</a></span></td></tr>
+          <tr><td><strong>Q.5(b)</strong></td><td>5</td><td>In an air standard Otto cycle, compression ratio is 7 and compression begins at 35 °C, 0.1 MPa. Maximum temperature of the cycle is 1100 °C. Find (i) temperature and pressure at the cardinal points, (ii) heat supplied per kg of air, (iii) work done per kg of air, (iv) cycle efficiency, (v) m.e.p. <span class="qzoom"><a class="qlink" data-zoom="/api/file?path=images/papers/THERMO_MO2024_P2_p1.png" data-caption="Q.5(b) · END MO2024 · p1">📄 p1</a></span></td></tr>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section section-alt" id="pyqs">
   <div class="container">
     <div class="section-head">
