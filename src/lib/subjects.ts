@@ -376,7 +376,7 @@ export const SUBJECTS: Record<string, Subject> = {
       "Materials Engineering · Complete study kit from the official BIT Mesra syllabus: crystallography, phase diagrams, heat treatment, alloys and material testing — with exam definitions and formula plates.",
     content: splitSubject(materialsRaw),
     syllabus: MATERIALS_SYLLABUS,
-    paperCount: 0,
+    paperCount: 8,
     progress: 100,
   },
   manufacturing: {
@@ -389,20 +389,20 @@ export const SUBJECTS: Record<string, Subject> = {
       "Manufacturing Processes · Complete study kit from the official BIT Mesra syllabus: casting, metal cutting, machine tools, forming and welding — with exam definitions and formula plates.",
     content: splitSubject(manufacturingRaw),
     syllabus: MANUFACTURING_SYLLABUS,
-    paperCount: 0,
+    paperCount: 7,
     progress: 100,
   },
   numerical: {
     slug: "numerical",
     name: "Numerical Methods",
     short: "NUM",
-    code: "BIT Mesra",
+    code: "MA24201",
     navKey: "numerical",
     description:
       "Numerical Methods · Complete study kit from the official BIT Mesra syllabus: root-finding, linear systems, interpolation, integration and ODEs — with worked algorithms and formula plates.",
     content: splitSubject(numericalRaw),
     syllabus: NUMERICAL_SYLLABUS,
-    paperCount: 0,
+    paperCount: 7,
     progress: 100,
   },
 };
