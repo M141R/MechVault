@@ -114,14 +114,34 @@ const links = [
 
   <slot />
 
+  {/* AI-generated content disclaimer — non-intrusive, dismissible banner shown on open / after login */}
+  <div class="ai-disclaimer" id="ai-disclaimer" role="note" aria-label="AI-generated content disclaimer">
+    <span class="ai-disclaimer-badge">AI-generated</span>
+    <p class="ai-disclaimer-text">This website is completely made using AI. The notes and the PYQs generated are also done by AI, so anyone doesn't tell me that something is wrong.</p>
+    <button class="ai-disclaimer-close" id="ai-disclaimer-close" type="button" aria-label="Dismiss disclaimer">&times;</button>
+  </div>
+
   <footer class="footer">
-    <div class="footer-inner">
       <div class="footer-brand"><span class="logo">M</span> MechVault</div>
       <nav class="footer-links" id="site-subjects" aria-label="Subjects"></nav>
       <div class="footer-note"><span id="site-semester-label">3rd Semester</span> · BIT Mesra · MO 2022–2025</div>
+      <div class="footer-ai-note">This site, its notes and PYQs are AI-generated.</div>
     </div>
   </footer>
 
+  <script is:inline>
+    (function () {
+      var KEY = 'mv_ai_disclaimer_dismissed';
+      var el = document.getElementById('ai-disclaimer');
+      if (!el) return;
+      try { if (localStorage.getItem(KEY) === '1') { el.parentNode.removeChild(el); return; } } catch (e) {}
+      var btn = document.getElementById('ai-disclaimer-close');
+      if (btn) btn.addEventListener('click', function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      });
+    })();
+  </script>
   <script src="/assets/app.js" is:inline></script>
 </body>
 </html>

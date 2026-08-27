@@ -750,3 +750,71 @@ h4.defs-h { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+/* ===================== AI DISCLAIMER ===================== */
+/* Non-intrusive, dismissible banner shown on first open (persisted in
+   localStorage). Layers above content (z-index 400) but below modals. */
+.ai-disclaimer {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 400;
+  max-width: min(720px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-top: 3px solid var(--annotation);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.ai-disclaimer-badge {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--annotation-ink);
+  background: var(--annotation-soft);
+  border: 1px solid color-mix(in srgb, var(--annotation) 30%, transparent);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+.ai-disclaimer-text { margin: 0; flex: 1 1 auto; }
+.ai-disclaimer-text strong { color: var(--ink); font-weight: 600; }
+.ai-disclaimer-close {
+  flex: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ink-3);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ai-disclaimer-close:hover { background: var(--surface-2); color: var(--ink); }
+@media (max-width: 560px) {
+  .ai-disclaimer { bottom: 12px; flex-wrap: wrap; }
+  .ai-disclaimer-badge { order: -1; }
+}
+
+/* Permanent, ultra-subtle footer echo of the same notice. */
+.footer-ai-note {
+  width: 100%;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+}
