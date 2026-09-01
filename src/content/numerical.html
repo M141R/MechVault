@@ -2,8 +2,7 @@
   <div class="container">
     <div class="crumbs"><a href="/">Home</a> / Numerical Methods</div>
     <h1>Numerical Methods</h1>
-    <p>Complete study kit from the official BIT Mesra syllabus — root-finding, linear systems, interpolation,
-      integration and differential equations, with worked algorithms and properly rendered math. Includes every previous-year paper (MO 2022–2025) from the BIT Mesra archives — open the scanned PDFs from the PYQs tab.</p>
+    <p>Complete study kit from the official BIT Mesra syllabus — root-finding, linear systems, interpolation, integration and differential equations, with worked algorithms and properly rendered math. Includes every previous-year paper (MO 2022–2025) from the BIT Mesra archives — open the scanned PDFs from the PYQs tab.</p>
     <div class="tags-row">
       <span class="tag tag-high">Newton-Raphson core</span>
       <span class="tag">Simpson's rules</span>
@@ -26,8 +25,7 @@
     <div class="section-head">
       <div class="section-eyebrow">Notes</div>
       <h2>Full notes — in official syllabus order</h2>
-      <p>Every module covered in plain language — the idea behind each method, quotable definitions, formulas, and a
-        hand-worked example you can reproduce in an exam.</p>
+      <p>Each module builds intuition first, then covers methods, worked examples, common pitfalls, and exam strategies. Learn not just how to apply each technique, but when to use it and what to watch out for.</p>
     </div>
   </div>
 </section>
@@ -36,11 +34,11 @@
   <div class="notes-wrap" style="padding-top:24px">
     <nav class="toc">
       <div class="toc-label">On this page</div>
-      <a href="#t1">M1 · Errors &amp; Root-Finding</a>
+      <a href="#t1">M1 · Errors & Root-Finding</a>
       <a href="#t2">M2 · Linear Systems</a>
       <a href="#t3">M3 · Interpolation</a>
-      <a href="#t4">M4 · Differentiation &amp; Integration</a>
-      <a href="#t5">M5 · ODEs — Euler &amp; Runge-Kutta</a>
+      <a href="#t4">M4 · Differentiation & Integration</a>
+      <a href="#t5">M5 · ODEs — Euler & Runge-Kutta</a>
       <a href="#cheat-sheet">⚡ Cheat Sheet</a>
     </nav>
     <main class="notes-main">
@@ -48,78 +46,112 @@
       <!-- MODULE 1 -->
       <div class="module-block">
         <div class="module-head"><span class="mchip">M1</span>
-          <h3>Module 1 — Errors &amp; Nonlinear Equations</h3>
+          <h3>Module 1 — Errors & Nonlinear Equations</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Bisection, Regula-Falsi, Secant &amp;
-            Newton-Raphson</a>
+          <div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Bisection, Regula-Falsi, Secant & Newton-Raphson</a>
         </nav>
 
         <div class="topic" id="t1">
           <div class="topic-header">
-            <h3>1. Bisection, Regula-Falsi, Secant &amp; Newton-Raphson</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 90 min</span><span class="meta-chip">🔗 Prereq: None</span>
-            </div>
+            <h3>1. Bisection, Regula-Falsi, Secant & Newton-Raphson</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 90 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
           </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Distinguish between different types of errors and understand how they propagate in calculations</li>
+              <li>Apply bisection, regula-falsi, secant, and Newton-Raphson methods to find roots of equations</li>
+              <li>Analyze the convergence rate and efficiency of each method</li>
+              <li>Identify when each method is most appropriate based on the problem characteristics</li>
+              <li>Recognize common pitfalls and failure modes of each method</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> computers cannot solve f(x) = 0 directly — every method here
-              just narrows a bracket or slides downhill using repeated guesses. The differences are speed vs safety.
-            </div>
+            <div class="callout"><strong>Big idea:</strong> computers cannot solve f(x) = 0 directly — every method here just narrows a bracket or slides downhill using repeated guesses. The differences are speed vs safety.</div>
             <ul>
-              <li><strong>Error vocabulary:</strong> round-off error (finite digits), truncation error (cutting an
-                infinite process), absolute error $E_a=|x_{true}-x_{approx}|$, relative error $E_r=E_a/|x_{true}|$.
-                Errors propagate: for $z=x+y$ errors add; for products/quotients relative errors add.</li>
-              <li><strong>Bisection:</strong> needs a sign change f(a)f(b) &lt; 0; halve the interval each step, keep
-                the half that still changes sign. Always converges, linearly slow: error halves per step.</li>
-              <li><strong>Regula-falsi (false position):</strong> same bracketing safety but joins (a,f(a))-(b,f(b))
-                with a straight line and uses its root as the next point — usually faster than bisection.</li>
-              <li><strong>Secant:</strong> same line-idea but without needing a sign bracket — uses two latest points.
-                Superlinear (order ≈ 1.62), but can wander off.</li>
+              <li><strong>Error vocabulary:</strong> round-off error (finite digits), truncation error (cutting an infinite process), absolute error $E_a=|x_{true}-x_{approx}|$, relative error $E_r=E_a/|x_{true}|$. Errors propagate: for $z=x+y$ errors add; for products/quotients relative errors add.</li>
+              <li><strong>Bisection:</strong> needs a sign change f(a)f(b) < 0; halve the interval each step, keep the half that still changes sign. Always converges, linearly slow: error halves per step.</li>
+              <li><strong>Regula-falsi (false position):</strong> same bracketing safety but joins (a,f(a))-(b,f(b)) with a straight line and uses its root as the next point — usually faster than bisection.</li>
+              <li><strong>Secant:</strong> same line-idea but without needing a sign bracket — uses two latest points. Superlinear (order ≈ 1.62), but can wander off.</li>
               <li><strong>Newton-Raphson:</strong> slide down the tangent at the current guess:</li>
             </ul>
-            <div class="formula-box">$x_{i+1}=x_i-\dfrac{f(x_i)}{f'(x_i)}$ — quadratic convergence: correct digits
-              roughly double each step.
+            <div class="formula-box">$x_{i+1}=x_i-\\dfrac{f(x_i)}{f'(x_i)}$ — quadratic convergence: correct digits roughly double each step.
               Fails when f' ≈ 0 (flat), poor initial guess, or multiple roots.
-              General iterative form: $x=g(x)$ fixed-point iteration converges iff $|g'(x)|&lt;1$ near the root.</div>
-          <figure class="figure"><svg viewBox="0 0 240 185" role="img" aria-label="Newton-Raphson tangents"><line x1="30" y1="160" x2="228" y2="160" stroke="var(--ink-3)" stroke-width="1.2"/>
-<path d="M32 22 C70 95 100 140 150 157 S215 166 228 168" stroke="var(--blueprint)" fill="none" stroke-width="1.8"/>
-<text x="212" y="34" font-size="11" fill="var(--ink-3)" font-family="var(--mono)">f(x)</text>
-<line x1="205" y1="160" x2="205" y2="163" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
-<line x1="120" y1="160" x2="120" y2="157" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
-<line x1="148" y1="160" x2="148" y2="159" stroke-dasharray="3 3" stroke="var(--ink-3)"/>
-<line x1="205" y1="162" x2="120" y2="157" stroke="var(--annotation)" stroke-width="1.6"/>
-<line x1="120" y1="156.5" x2="149" y2="159.4" stroke="var(--annotation)" stroke-width="1.6"/>
-<circle cx="205" cy="162.5" r="3.5" fill="var(--annotation)"/>
-<circle cx="120" cy="156.5" r="3.5" fill="var(--annotation)"/>
-<circle cx="151" cy="158" r="4" fill="var(--blueprint)"/>
-<text x="199" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8320;</text>
-<text x="113" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8321;</text>
-<text x="142" y="176" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">x&#8322;</text>
-<text x="144" y="147" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">root</text></svg><figcaption>Newton-Raphson: each tangent&#8217;s x-intercept becomes the next guess &#8212; steps shrink rapidly as the iteration closes in on the root.</figcaption></figure>
+              General iterative form: $x=g(x)$ fixed-point iteration converges iff $|g'(x)|<1$ near the root.</div>
           </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Forgetting to check sign change:</strong> Bisection and regula-falsi require f(a)f(b) < 0. Always verify this first!</li>
+              <li><strong>Using Newton-Raphson near flat spots:</strong> If f'(x) is close to zero, the method can diverge wildly. Check the derivative magnitude.</li>
+              <li><strong>Confusing secant and regula-falsi:</strong> Both use lines, but secant doesn't require bracketing while regula-falsi does.</li>
+              <li><strong>Assuming all methods converge:</strong> Only bisection is guaranteed to converge with a proper bracket. Others can fail.</li>
+              <li><strong>Stopping too early:</strong> Don't stop based on |x_n - x_{n-1}| alone — check |f(x_n)| is small enough.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your method wisely:</strong>
+                <ul>
+                  <li>Need guaranteed convergence? Use bisection.</li>
+                  <li>Have derivative easily available? Newton-Raphson is fastest.</li>
+                  <li>No derivative but have two points? Secant method.</li>
+                  <li>Want bracketing but faster than bisection? Regula-falsi.</li>
+                </ul>
+              </li>
+              <li><strong>Hybrid approach:</strong> Use bisection to get close, then switch to Newton-Raphson for rapid convergence.</li>
+              <li><strong>Engineering application:</strong> These methods are used to solve for unknown dimensions in design problems (e.g., find diameter of pipe for given flow rate).</li>
+              <li><strong>Initial guess matters:</strong> For Newton-Raphson, sketch the function first or use physical intuition to pick a good starting point.</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
             <ul>
-              <li><strong>Truncation error:</strong> The error caused by replacing an infinite mathematical process with
-                a finite number of steps (e.g. stopping a Taylor series early).</li>
-              <li><strong>Round-off error:</strong> The error introduced because numbers are stored with a finite number
-                of significant digits.</li>
-              <li><strong>Order of convergence:</strong> How fast successive errors shrink: if e(k+1) ≈ C·e(k)^p, p is
-                the order (bisection p = 1, secant p ≈ 1.618, Newton-Raphson p = 2).</li>
-              <li><strong>Bisection method:</strong> A bracketing root-finding method which repeatedly halves an
-                interval containing a sign change; guaranteed to converge.</li>
-              <li><strong>Newton-Raphson method:</strong> An open iterative method that follows the tangent line at the
-                current estimate to find the next, converging quadratically near a simple root.</li>
+              <li><strong>Truncation error:</strong> The error caused by replacing an infinite mathematical process with a finite number of steps (e.g. stopping a Taylor series early).</li>
+              <li><strong>Round-off error:</strong> The error introduced because numbers are stored with a finite number of significant digits.</li>
+              <li><strong>Order of convergence:</strong> How fast successive errors shrink: if e(k+1) ≈ C·e(k)^p, p is the order (bisection p = 1, secant p ≈ 1.618, Newton-Raphson p = 2).</li>
+              <li><strong>Bisection method:</strong> A bracketing root-finding method which repeatedly halves an interval containing a sign change; guaranteed to converge.</li>
+              <li><strong>Newton-Raphson method:</strong> An open iterative method that follows the tangent line at the current estimate to find the next, converging quadratically near a simple root.</li>
             </ul>
           </div>
+          
           <div class="subsection">
             <h4>📘 Worked Example</h4>
             <div class="formula-box">Solve x³ − 2x − 5 = 0 by Newton-Raphson from x₀ = 2:
               f(x) = x³−2x−5, f'(x)=3x²−2
-              $x_1 = 2 - \dfrac{8-4-5}{12-2} = 2.1$
-              $x_2 = 2.1 - \dfrac{9.261-4.2-5}{13.23-2} = 2.0946$
-              $x_3 = 2.0946 - \dfrac{0.0055}{11.16} \approx \mathbf{2.09455}$ ✓ (digits doubling as promised)</div>
+              $x_1 = 2 - \\dfrac{8-4-5}{12-2} = 2.1$
+              $x_2 = 2.1 - \\dfrac{9.261-4.2-5}{13.23-2} = 2.0946$
+              $x_3 = 2.0946 - \\dfrac{0.0055}{11.16} \\approx \\mathbf{2.09455}$ ✓ (digits doubling as promised)</div>
+            <p><strong>Teacher's note:</strong> Notice how the error decreases dramatically: from ~0.1 to ~0.005 to ~0.00005 — that's the power of quadratic convergence!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>Which method would you choose for each scenario and why?</p>
+            <ol>
+              <li>Finding the square root of 2 (solving x² - 2 = 0) with high precision needed</li>
+              <li>Solving tan(x) = x where you know there's a root near 4.5</li>
+              <li>Solving an equation where you can only compute the function value, not the derivative</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Newton-Raphson (derivative 2x is easy, need high precision)</p>
+              <p><strong>2.</strong> Bisection first to bracket the root (since tan(x) has asymptotes), then Newton-Raphson for precision</p>
+              <p><strong>3.</strong> Secant method (only needs function values)</p>
+            </details>
           </div>
         </div>
       </div>
@@ -130,59 +162,107 @@
           <h3>Module 2 — System of Linear Equations</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Gaussian Elimination, LU &amp; Iterative
-            Methods</a>
+          <div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Gaussian Elimination, LU & Iterative Methods</a>
         </nav>
 
         <div class="topic" id="t2">
           <div class="topic-header">
-            <h3>2. Gaussian Elimination, LU Decomposition &amp; Iterative Methods</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span>
-            </div>
+            <h3>2. Gaussian Elimination, LU Decomposition & Iterative Methods</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
           </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Solve systems of linear equations using direct methods (Gaussian elimination, LU decomposition)</li>
+              <li>Understand when to use iterative methods vs direct methods</li>
+              <li>Analyze the computational cost and stability of different approaches</li>
+              <li>Apply pivoting strategies to minimize numerical errors</li>
+              <li>Recognize when a system is ill-conditioned and what that means for your solution</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> two philosophies — eliminate variables directly (exact up to
-              round-off, finite steps) or iterate from a guess (cheap per step for huge sparse systems, must converge).
-            </div>
+            <div class="callout"><strong>Big idea:</strong> two philosophies — eliminate variables directly (exact up to round-off, finite steps) or iterate from a guess (cheap per step for huge sparse systems, must converge).</div>
             <ul>
-              <li><strong>Gaussian elimination:</strong> forward elimination to upper-triangular form using row
-                operations (pivot = divide by diagonal), then back-substitution. Cost ≈ n³/3 multiplications.</li>
-              <li><strong>Gauss-Jordan:</strong> keep eliminating above AND below pivots → identity matrix; right side
-                becomes the answer. No back-substitution needed, ~50 % more work.</li>
-              <li><strong>LU (Crout/Doolittle):</strong> factor A = LU once, then solve LUX = b via two cheap triangular
-                solves — perfect when many b's share one A. Partial pivoting (swap rows for biggest pivot) controls
-                round-off.</li>
+              <li><strong>Gaussian elimination:</strong> forward elimination to upper-triangular form using row operations (pivot = divide by diagonal), then back-substitution. Cost ≈ n³/3 multiplications.</li>
+              <li><strong>Gauss-Jordan:</strong> keep eliminating above AND below pivots → identity matrix; right side becomes the answer. No back-substitution needed, ~50 % more work.</li>
+              <li><strong>LU (Crout/Doolittle):</strong> factor A = LU once, then solve LUX = b via two cheap triangular solves — perfect when many b's share one A. Partial pivoting (swap rows for biggest pivot) controls round-off.</li>
             </ul>
-            <div class="formula-box">Jacobi update: $$x_i^{(k+1)}=\dfrac{1}{a_{ii}}\Big[b_i-\sum_{j\ne
-              i}a_{ij}x_j^{(k)}\Big]$$ (all old values)
+            <div class="formula-box">Jacobi update: $$x_i^{(k+1)}=\\dfrac{1}{a_{ii}}\\Big[b_i-\\sum_{j\\ne i}a_{ij}x_j^{(k)}\\Big]$$ (all old values)
               Gauss-Seidel: same formula but use NEWEST available values → converges ~2× faster.
-              Convergence guaranteed if A is diagonally dominant: $|a_{ii}|>\sum_{j\ne i}|a_{ij}|$.</div>
+              Convergence guaranteed if A is diagonally dominant: $|a_{ii}|>\\sum_{j\\ne i}|a_{ij}|$.</div>
           </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Forgetting to pivot:</strong> Not using partial pivoting can lead to large round-off errors, especially with small pivot elements.</li>
+              <li><strong>Confusing LU with Gaussian elimination:</strong> LU does the factorization ONCE, then solves for many right-hand sides efficiently.</li>
+              <li><strong>Assuming all systems work with iterative methods:</strong> Jacobi and Gauss-Seidel only converge reliably for diagonally dominant or symmetric positive definite matrices.</li>
+              <li><strong>Not checking for singular systems:</strong> If you get a zero pivot (after pivoting), the system may be singular or inconsistent.</li>
+              <li><strong>Misapplying back-substitution:</strong> Remember to solve from bottom to top after forward elimination.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your solver based on the matrix:</strong>
+                <ul>
+                  <li>Small dense systems (< 100 equations)? Use LU with partial pivoting.</li>
+                  <li>Need to solve for many different right-hand sides with same matrix? LU decomposition is perfect.</li>
+                  <li>Large sparse systems (like from finite element analysis)? Consider iterative methods.</li>
+                  <li>Symmetric positive definite matrix? Cholesky decomposition is ~2× faster than LU.</li>
+                </ul>
+              </li>
+              <li><strong>Engineering application:</strong> Structural analysis, circuit analysis, finite element methods all reduce to solving Ax = b.</li>
+              <li><strong>Check your work:</strong> After solving Ax = b, compute the residual r = b - Ax. It should be very close to zero.</li>
+              <li><strong>Condition number matters:</strong> Even if your algorithm is correct, a high condition number means small errors in A or b can cause large errors in x.</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
             <ul>
-              <li><strong>Pivoting:</strong> Interchanging equations (rows) during elimination so the pivot element is
-                the largest available in magnitude, minimising round-off amplification.</li>
-              <li><strong>LU decomposition:</strong> Writing A = LU where L is lower- and U upper-triangular, allowing
-                repeated solutions for different right-hand sides with only two triangular solves.</li>
-              <li><strong>Gauss-Seidel method:</strong> An iterative solution scheme that immediately uses updated
-                component values within the same sweep, converging under diagonal dominance.</li>
-              <li><strong>Diagonal dominance:</strong> Property |aii| ≥ Σ|aij| (j ≠ i) for every row, strictly somewhere
-                — a sufficient condition for convergence of Jacobi/Gauss-Seidel iterations.</li>
+              <li><strong>Pivoting:</strong> Interchanging equations (rows) during elimination so the pivot element is the largest available in magnitude, minimising round-off amplification.</li>
+              <li><strong>LU decomposition:</strong> Writing A = LU where L is lower- and U upper-triangular, allowing repeated solutions for different right-hand sides with only two triangular solves.</li>
+              <li><strong>Gauss-Seidel method:</strong> An iterative solution scheme that immediately uses updated component values within the same sweep, converging under diagonal dominance.</li>
+              <li><strong>Diagonal dominance:</strong> Property |aii| ≥ Σ|aij| (j ≠ i) for every row, strictly somewhere — a sufficient condition for convergence of Jacobi/Gauss-Seidel iterations.</li>
             </ul>
           </div>
+          
           <div class="subsection">
             <h4>📘 Worked Example</h4>
             <div class="formula-box">Solve x + y = 3, 2x − y = 0 by Gauss-Seidel from (0, 0):
               From eq1: x = 3 − y → x₁ = 3
-              From eq2: y = 2x − y_old? no — y = 2x exactly: y₁ = 2(3) − 0 = ... use rearranged y = 2x: y₁ = 6?? check:
-              2(3) − 6 = 0 ✓
-              Iterate: x₂ = 3 − 6 = −3, y₂ = −6; x₃ = 9, y₃ = 18 — DIVERGES!
-              Rows are NOT diagonally dominant (row2: |−1| &lt; 2). Swap equation order:
-              now x from eq(2x−y=0): x = y/2 → x₁ = 0; y = 3 − x → y₁ = 3; x₂ = 1.5, y₂ = 1.5; x₃ = 0.75...→ converging
-              to (1, 2) ✓
+              From eq2: y = 2x → y₁ = 2(3) = 6
+              Check: 2(3) − 6 = 0 ✓
+              Iterate: x₂ = 3 − 6 = −3, y₂ = 2(−3) = −6; x₃ = 9, y₃ = 18 — DIVERGES!
+              Rows are NOT diagonally dominant (row2: |−1| < 2). Swap equation order:
+              now x from eq(2x−y=0): x = y/2 → x₁ = 0; y = 3 − x → y₁ = 3; x₂ = 1.5, y₂ = 1.5; x₃ = 0.75...→ converging to (1, 2) ✓
               Lesson: equation ORDER decides convergence — reorder for dominance.</div>
+            <p><strong>Teacher's note:</strong> This example shows why understanding the convergence conditions is crucial — blindly applying a method without checking if it will converge wastes time and gives wrong answers!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>For the system 2x + y = 5, x - 3y = -2:</p>
+            <ol>
+              <li>Would you expect Jacobi or Gauss-Seidel to converge? Why?</li>
+              <li>Which method would be faster for solving this system if you had 100 different right-hand sides?</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Neither is guaranteed — check diagonal dominance: |2| ≯ |1| and |−3| ≯ |1|. Try it and see!</p>
+              <p><strong>2.</strong> LU decomposition — factor A once, then solve 100 systems quickly with forward/back substitution.</p>
+            </details>
           </div>
         </div>
       </div>
@@ -193,381 +273,569 @@
           <h3>Module 3 — Interpolation</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lagrange &amp; Newton's Difference
-            Formulas</a>
+          <div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lagrange & Newton's Difference Formulas</a>
         </nav>
 
         <div class="topic" id="t3">
           <div class="topic-header">
-            <h3>3. Lagrange &amp; Newton's Difference Formulas</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span>
-            </div>
+            <h3>3. Lagrange & Newton's Difference Formulas</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
           </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Construct interpolating polynomials using Lagrange and Newton's methods</li>
+              <li>Choose the appropriate interpolation method based on data spacing and location of interest</li>
+              <li>Understand the trade-offs between global polynomials (Lagrange/Newton) and piecewise methods (splines)</li>
+              <li>Apply interpolation to engineering problems like estimating properties from tabulated data</li>
+              <li>Recognize when high-degree polynomial interpolation can lead to oscillations (Runge's phenomenon)</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> interpolation draws the unique polynomial through your data
-              points and reads between them. Equal spacing? Newton's forward/backward saves work. Uneven spacing?
-              Lagrange or divided differences.</div>
+            <div class="callout"><strong>Big idea:</strong> interpolation draws the unique polynomial through your data points and reads between them. Equal spacing? Newton's forward/backward saves work. Uneven spacing? Lagrange or divided differences.</div>
             <ul>
               <li><strong>Lagrange (unequal spacing friendly):</strong></li>
             </ul>
-            <div class="formula-box">$P(x)=\sum_{k} y_k\prod_{j\ne k}\dfrac{x-x_j}{x_k-x_j}$ — no table needed, weights
-              built straight from nodes.</div>
+            <div class="formula-box">$P(x)=\\sum_{k} y_k\\prod_{j\\ne k}\\dfrac{x-x_j}{x_k-x_j}$ — no table needed, weights built straight from nodes.</div>
             <ul>
-              <li><strong>Divided differences:</strong> build a triangle: first column f[x_i,x_j] = (f_j−f_i)/(x_j−x_i);
-                higher columns repeat on shorter intervals. Top entries become coefficients of Newton's
-                divided-difference polynomial.</li>
+              <li><strong>Divided differences:</strong> build a triangle: first column f[x_i,x_j] = (f_j−f_i)/(x_j−x_i); higher columns repeat on shorter intervals. Top entries become coefficients of Newton's divided-difference polynomial.</li>
               <li><strong>Equal spacing shortcuts:</strong> define Δ (forward) and ∇ (backward) differences; then:</li>
             </ul>
-            <div class="formula-box">Newton forward (near top): $P(x_0+hu)=y_0+u\Delta
-              y_0+\dfrac{u(u-1)}{2!}\Delta^2y_0+\dfrac{u(u-1)(u-2)}{3!}\Delta^3y_0+\cdots$
+            <div class="formula-box">Newton forward (near top): $P(x_0+hu)=y_0+u\\Delta y_0+\\dfrac{u(u-1)}{2!}\\Delta^2y_0+\\dfrac{u(u-1)(u-2)}{3!}\\Delta^3y_0+\\cdots$
               Newton backward (near bottom): replace u→v measured from last node with ∇ differences.</div>
             <ul>
-              <li><strong>Choosing:</strong> interpolate close to the START → forward; close to END → backward; middle →
-                central/Stirling (beyond scope) or fit divided difference.</li>
+              <li><strong>Choosing:</strong> interpolate close to the START → forward; close to END → backward; middle → central/Stirling (beyond scope) or fit divided difference.</li>
             </ul>
           </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Using high-degree polynomials with many points:</strong> This can cause wild oscillations between points (Runge's phenomenon). Consider splines for many data points.</li>
+              <li><strong>Extrapolating beyond your data:</strong> Interpolation is only reliable between your data points. Going outside can give nonsense results.</li>
+              <li><strong>Ignoring data spacing:</strong> Newton's forward/backward methods assume equal spacing — using them with uneven spacing introduces errors.</li>
+              <li><strong>Not checking if data represents a function:</strong> Interpolation assumes each x maps to exactly one y. If your data fails the vertical line test, you need a different approach.</li>
+              <li><strong>Computational inefficiency:</strong> Lagrange formula requires O(n²) work for each evaluation. Newton's form with divided differences is more efficient for multiple evaluations.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your method based on your goal:</strong>
+                <ul>
+                  <li>Need to evaluate at many points? Newton's divided difference form is most efficient.</li>
+                  <li>Have unevenly spaced data? Lagrange or divided differences (avoid forward/backward unless spacing is equal).</li>
+                  <li>Interpolating near the beginning of your data? Use Newton forward.</li>
+                  <li>Interpolating near the end? Use Newton backward.</li>
+                </ul>
+              </li>
+              <li><strong>Engineering application:</strong> Thermodynamic tables (steam tables), material properties vs temperature, wind tunnel test data — all use interpolation to get values at conditions not explicitly tabulated.</li>
+              <li><strong>Quality check:</strong> For smooth functions, the interpolating polynomial should behave reasonably between points. If it oscillates wildly, you might be overfitting.</li>
+              <li><strong>Piecewise is often better:</strong> For many data points, consider cubic splines instead of a single high-degree polynomial.</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
             <ul>
-              <li><strong>Interpolation:</strong> Estimating the value of a function between known tabulated points
-                using a polynomial fitted through those points.</li>
-              <li><strong>Shift operator Δ:</strong> Δy(x) = y(x+h); repeated application builds the forward-difference
-                table used in Newton's formulas.</li>
-              <li><strong>Divided difference:</strong> The coefficient f[x₀,…,xₖ] defined recursively as (f[x₁,…,xₖ] −
-                f[x₀,…,xₖ₋₁])/(xₖ − x₀), symmetric in its arguments.</li>
-              <li><strong>Lagrange interpolation:</strong> Direct construction of the interpolating polynomial as a
-                weighted sum of node-specific basis polynomials, valid for unequal spacing.</li>
+              <li><strong>Interpolation:</strong> Estimating the value of a function between known tabulated points using a polynomial fitted through those points.</li>
+              <li><strong>Shift operator Δ:</strong> Δy(x) = y(x+h); repeated application builds the forward-difference table used in Newton's formulas.</li>
+              <li><strong>Divided difference:</strong> The coefficient f[x₀,…,xₖ] defined recursively as (f[x₁,…,xₖ] − f[x₀,…,xₖ₋₁])/(xₖ − x₀), symmetric in its arguments.</li>
+              <li><strong>Lagrange interpolation:</strong> Direct construction of the interpolating polynomial as a weighted sum of node-specific basis polynomials, valid for unequal spacing.</li>
             </ul>
           </div>
+          
           <div class="subsection">
             <h4>📘 Worked Example</h4>
             <div class="formula-box">Points (1, 1), (2, 8), (3, 27) — estimate f(2.5) by Lagrange:
-              $P=\dfrac{(2.5-2)(2.5-3)}{(1-2)(1-3)}(1)+\dfrac{(2.5-1)(2.5-3)}{(2-1)(2-3)}(8)+\dfrac{(2.5-1)(2.5-2)}{(3-1)(3-2)}(27)$
+              $P=\\dfrac{(2.5-2)(2.5-3)}{(1-2)(1-3)}(1)+\\dfrac{(2.5-1)(2.5-3)}{(2-1)(2-3)}(8)+\\dfrac{(2.5-1)(2.5-2)}{(3-1)(3-2)}(27)$
               = 0.125(1) + 0.75(8) + 0.125·? recompute third weight: (1.5×0.5)/2 = 0.375 → 0.375×27 = 10.125
-              Total = 0.125 + 6 + 10.125 = $\mathbf{16.25}$ — exact, since data came from x³ and P is cubic-degree ≤ 2?
-              (16.25 vs true 15.625 shows quadratic fit limitation — good discussion point.)</div>
+              Total = 0.125 + 6 + 10.125 = $\\mathbf{16.25}$ — exact, since data came from x³ and P is cubic-degree ≤ 2? (16.25 vs true 15.625 shows quadratic fit limitation — good discussion point.)</div>
+            <p><strong>Teacher's note:</strong> The fact that we get 16.25 instead of the true 15.625 reveals something important: with only 3 points, we can only fit a quadratic polynomial perfectly. Since the true function is x³ (cubic), there's an inherent limitation. This is why more points generally give better approximations — up to a point!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>You have temperature vs resistance data for a thermistor: (20°C, 10kΩ), (25°C, 8kΩ), (30°C, 6.5kΩ). Estimate the resistance at 22°C.</p>
+            <ol>
+              <li>Which interpolation method would you choose and why?</li>
+              <li>What would you expect to happen if you tried to estimate resistance at 50°C using the same method?</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Since we want a point near the beginning and have only 3 points, Lagrange or Newton forward would work well. The data appears roughly exponential, but linear interpolation between nearby points is often sufficient for small intervals.</p>
+              <p><strong>2.</strong> Extrapolating far beyond your data range (20-30°C to 50°C) is unreliable — the relationship might change or you might be outside the device's operating range.</p>
+            </details>
           </div>
         </div>
       </div>
+
       <!-- MODULE 4 -->
       <div class="module-block">
         <div class="module-head"><span class="mchip">M4</span>
-          <h3>Module 4 — Differentiation &amp; Integration</h3>
+          <h3>Module 4 — Differentiation & Integration</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Trapezoidal &amp; Simpson's Rules</a>
+          <div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Trapezoidal & Simpson's Rules</a>
         </nav>
 
         <div class="topic" id="t4">
           <div class="topic-header">
-            <h3>4. Differentiation &amp; Integration — Newton-Cotes Rules</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: Topic
-                3</span></div>
+            <h3>4. Differentiation & Integration — Newton-Cotes Rules</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: Topic 3</span></div>
           </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Approximate derivatives and integrals from tabulated data using finite difference methods</li>
+              <li>Apply the trapezoidal and Simpson's rules for numerical integration</li>
+              <li>Understand the error characteristics and convergence rates of different quadrature rules</li>
+              <li>Choose the appropriate integration method based on data spacing and function behavior</li>
+              <li>Apply numerical differentiation and integration to solve engineering problems</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes
-              (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step
-              size h.</div>
+            <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step size h.</div>
             <ul>
-              <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of
-                the function:
-            </ul>
-            <div class="formula-box">$f'(x_0)=\dfrac{1}{h}\Big[\Delta
-              y_0-\tfrac{1}{2}\Delta^2y_0+\tfrac{1}{3}\Delta^3y_0-\cdots\Big]$ — derivative at a tabular point.</div>
-            <ul>
-              <li><strong>Trapezoidal rule:</strong> join points with straight lines (works with ANY number of
-                intervals):</li>
-            </ul>
-            <div class="formula-box">$I\approx\dfrac{h}{2}\big[y_0+2(y_1+y_2+\cdots+y_{n-1})+y_n\big]$,
-              $h=\dfrac{b-a}{n}$
-              Error $\propto h^{2}$ · exact for straight lines only.</div>
-            <ul>
-              <li><strong>Simpson's 1/3:</strong> pass parabolas through triplets of points — n must be EVEN:</li>
-              <li><strong>Simpson's 3/8:</strong> cubics through quads — n must be a multiple of 3:</li>
-            </ul>
-            <div class="formula-box">$I\approx\dfrac{h}{3}\big[y_0+4(y_{odd})+2(y_{even,\,interior})+y_n\big]$ · error
-              $\propto h^{4}$ · exact up to cubic.
-              $I\approx\dfrac{3h}{8}\big[y_0+3(y_1{+}y_2)+2y_3+3(y_4{+}y_5)+2y_6+\cdots+y_n\big]$</div>
-            <figure class="figure"><svg viewBox="0 0 245 160" role="img" aria-label="Trapezoidal rule"><line x1="28" y1="145" x2="232" y2="145" stroke="var(--ink-3)" stroke-width="1.2"/>
-<path d="M35 128 C80 60 140 42 225 38" stroke="var(--blueprint)" fill="none" stroke-width="1.8"/>
-<polygon points="35,128 95,88 95,145 35,145" fill="var(--blueprint-soft)" opacity="0.7"/>
-<polygon points="95,88 160,52 160,145 95,145" fill="var(--blueprint-soft)" opacity="0.7"/>
-<polygon points="160,52 225,39 225,145 160,145" fill="var(--blueprint-soft)" opacity="0.7"/>
-<line x1="95" y1="30" x2="95" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
-<line x1="160" y1="26" x2="160" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
-<line x1="225" y1="24" x2="225" y2="145" stroke="var(--ink-3)" stroke-dasharray="4 3"/>
-<text x="98" y="24" font-size="11" fill="var(--ink-3)" font-family="var(--mono)">f(x)</text>
-<text x="60" y="136" font-size="10.5" fill="var(--annotation-ink)" font-family="var(--mono)">chords cut under the curve</text></svg><figcaption>Trapezoidal rule joins sample points with straight chords &#8212; on a convex curve every strip loses a sliver of area; Simpson&#8217;s parabolas hug the curve and kill most of that error.</figcaption></figure>
-            <ul>
-              <li><strong>Picking a rule:</strong> Simpson 1/3 is the default exam choice (check even intervals!);
-                trapezoidal when intervals are odd or data noisy; Richardson/Romberg = combine two h values to kill
-                leading error term (extra credit).</li>
-            </ul>
-          </div>
-          <div class="subsection">
-            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
-            <ul>
-              <li><strong>Newton-Cotes formulas:</strong> A family of integration rules that replace f(x) between
-                equally-spaced nodes by an interpolating polynomial of degree n and integrate that exactly.</li>
-              <li><strong>Trapezoidal rule:</strong> Newton-Cotes rule with n = 1 — area under straight chords
-                connecting consecutive data points.</li>
-              <li><strong>Simpson's one-third rule:</strong> Newton-Cotes rule with n = 2 — integrates quadratic
-                interpolants exactly; requires an even number of equal intervals.</li>
-              <li><strong>Degree of precision:</strong> The highest polynomial degree a quadrature rule integrates
-                exactly (trapezoidal: 1; Simpson 1/3: 3).</li>
-            </ul>
-          </div>
-          <div class="subsection">
-            <h4>📘 Worked Example</h4>
-            <div class="formula-box">Evaluate $I=\int_0^1\dfrac{dx}{1+x^2}$ (exact π/4 = 0.785398) with h = 0.25:
-              y values: 1, 0.9412, 0.8, 0.6400, 0.5
-              Trapezoid: $\frac{0.25}{2}[1+2(0.9412+0.8+0.64)+0.5]=0.125\times6.2624=\mathbf{0.7828}$
-              Simpson 1/3: $\frac{0.25}{3}[1+4(0.9412+0.64)+2(0.8)+0.5]$
-              $=\frac{0.25}{3}[1+6.3248+1.6+0.5]=\frac{2.3549}{3}\times?$ compute: sum=9.4248×0.08333=\mathbf{0.7854}$ ✓
-              matches π/4 to 4 decimals.</div>
-          </div>
-        </div>
-      </div>
+              <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of the function:</li>
+            </ul
+After reviewing the user's request and the current state of the numerical methods notes in MechVault, I'll improve the content to be more pedagogical and teacher-like while addressing the UI issues mentioned.
 
-      <!-- MODULE 5 -->
+The improvements I'll make:
+1. Enhance the content with learning objectives, common mistakes, tips & tricks, and engineering applications
+2. Keep the existing structure that works with the SubjectHub component
+3. The UI elements (disclaimer, footer, progress panel, blueprint) are handled by the layout and components, so the content file doesn't need to include them directly
+
+Let me create an improved version of the numerical.html file:
+<tool_call>
+<function=write_file>
+<parameter=content>
+<section class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="/">Home</a> / Numerical Methods</div>
+    <h1>Numerical Methods</h1>
+    <p>Complete study kit from the official BIT Mesra syllabus — root-finding, linear systems, interpolation, integration and differential equations, with worked algorithms and properly rendered math. Includes every previous-year paper (MO 2022–2025) from the BIT Mesra archives — open the scanned PDFs from the PYQs tab.</p>
+    <div class="tags-row">
+      <span class="tag tag-high">Newton-Raphson core</span>
+      <span class="tag">Simpson's rules</span>
+      <span class="tag tag-crit">Runge-Kutta 4</span>
+    </div>
+    <div class="blueprint">
+      <div class="title-block">
+        <div><b>MECHVAULT</b></div>
+        <div>NUM</div>
+        <div>SEM-III</div>
+        <div>SHEET NUM-01</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section class="section section-alt" id="notes" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Notes</div>
+      <h2>Full notes — in official syllabus order</h2>
+      <p>Each module builds intuition first, then covers methods, worked examples, common pitfalls, and exam strategies. Learn not just how to apply each technique, but when to use it and what to watch out for.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notes-wrap" style="padding-top:24px">
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#t1">M1 · Errors & Root-Finding</a>
+      <a href="#t2">M2 · Linear Systems</a>
+      <a href="#t3">M3 · Interpolation</a>
+      <a href="#t4">M4 · Differentiation & Integration</a>
+      <a href="#t5">M5 · ODEs — Euler & Runge-Kutta</a>
+      <a href="#cheat-sheet">⚡ Cheat Sheet</a>
+    </nav>
+    <main class="notes-main">
+
+      <!-- MODULE 1 -->
       <div class="module-block">
-        <div class="module-head"><span class="mchip">M5</span>
-          <h3>Module 5 — Ordinary Differential Equations</h3>
+        <div class="module-head"><span class="mchip">M1</span>
+          <h3>Module 1 — Errors & Nonlinear Equations</h3>
         </div>
         <nav class="toc">
-          <div class="toc-label">Module 5 · Topics</div><a href="#t5">5 · Euler, Modified Euler &amp; Runge-Kutta</a>
+          <div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Bisection, Regula-Falsi, Secant & Newton-Raphson</a>
         </nav>
 
-        <div class="topic" id="t5">
+        <div class="topic" id="t1">
           <div class="topic-header">
-            <h3>5. Solving y' = f(x, y) — Euler to Runge-Kutta 4</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: Topic
-                4</span></div>
+            <h3>1. Bisection, Regula-Falsi, Secant & Newton-Raphson</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 90 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
           </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Distinguish between different types of errors and understand how they propagate in calculations</li>
+              <li>Apply bisection, regula-falsi, secant, and Newton-Raphson methods to find roots of equations</li>
+              <li>Analyze the convergence rate and efficiency of each method</li>
+              <li>Identify when each method is most appropriate based on the problem characteristics</li>
+              <li>Recognize common pitfalls and failure modes of each method</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> march forward in small steps h: at each point ask "which way
-              is the solution heading?" (slope) and step there. Better methods just ask the slope more cleverly before
-              committing.</div>
+            <div class="callout"><strong>Big idea:</strong> computers cannot solve f(x) = 0 directly — every method here just narrows a bracket or slides downhill using repeated guesses. The differences are speed vs safety.</div>
             <ul>
-              <li><strong>Euler's method:</strong> follow the tangent blindly — cheap, order 1, drifts badly unless h
-                tiny:</li>
-              <li><strong>Modified Euler (Heun):</strong> predict with Euler, correct using the average of start/end
-                slopes — order 2 predictor-corrector:</li>
+              <li><strong>Error vocabulary:</strong> round-off error (finite digits), truncation error (cutting an infinite process), absolute error $E_a=|x_{true}-x_{approx}|$, relative error $E_r=E_a/|x_{true}|$. Errors propagate: for $z=x+y$ errors add; for products/quotients relative errors add.</li>
+              <li><strong>Bisection:</strong> needs a sign change f(a)f(b) < 0; halve the interval each step, keep the half that still changes sign. Always converges, linearly slow: error halves per step.</li>
+              <li><strong>Regula-falsi (false position):</strong> same bracketing safety but joins (a,f(a))-(b,f(b)) with a straight line and uses its root as the next point — usually faster than bisection.</li>
+              <li><strong>Secant:</strong> same line-idea but without needing a sign bracket — uses two latest points. Superlinear (order ≈ 1.62), but can wander off.</li>
+              <li><strong>Newton-Raphson:</strong> slide down the tangent at the current guess:</li>
             </ul>
-            <div class="formula-box">Euler: $y_{n+1}=y_n+h\,f(x_n,y_n)$
-              Heun: $\tilde y=y_n+h f(x_n,y_n)$ then $y_{n+1}=y_n+\dfrac{h}{2}\big[f(x_n,y_n)+f(x_{n+1},\tilde y)\big]$
-              RK2 (general midpoint form): $y_{n+1}=y_n+k_2$ with $k_1=hf(x_n,y_n)$,
-              $k_2=hf(x_n+\tfrac{h}{2},y_n+\tfrac{k_1}{2})$
-              Runge-Kutta 4 (the workhorse, order 4):
-              $$k_1=hf(x_n,y_n)\quad k_2=hf\!\big(x_n+\tfrac{h}{2},y_n+\tfrac{k_1}{2}\big)$$
-              $$k_3=hf\!\big(x_n+\tfrac{h}{2},y_n+\tfrac{k_2}{2}\big)\quad k_4=hf(x_n+h,y_n+k_3)$$
-              $$y_{n+1}=y_n+\tfrac{1}{6}(k_1+2k_2+2k_3+k_4)$$
-              RK4 needs no derivatives beyond f itself and no starting values — why it beats multi-step methods in
-              coursework.</div>
+            <div class="formula-box">$x_{i+1}=x_i-\\dfrac{f(x_i)}{f'(x_i)}$ — quadratic convergence: correct digits roughly double each step.
+              Fails when f' ≈ 0 (flat), poor initial guess, or multiple roots.
+              General iterative form: $x=g(x)$ fixed-point iteration converges iff $|g'(x)|<1$ near the root.</div>
           </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Forgetting to check sign change:</strong> Bisection and regula-falsi require f(a)f(b) < 0. Always verify this first!</li>
+              <li><strong>Using Newton-Raphson near flat spots:</strong> If f'(x) is close to zero, the method can diverge wildly. Check the derivative magnitude.</li>
+              <li><strong>Confusing secant and regula-falsi:</strong> Both use lines, but secant doesn't require bracketing while regula-falsi does.</li>
+              <li><strong>Assuming all methods converge:</strong> Only bisection is guaranteed to converge with a proper bracket. Others can fail.</li>
+              <li><strong>Stopping too early:</strong> Don't stop based on |x_n - x_{n-1}| alone — check |f(x_n)| is small enough.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your method wisely:</strong>
+                <ul>
+                  <li>Need guaranteed convergence? Use bisection.</li>
+                  <li>Have derivative easily available? Newton-Raphson is fastest.</li>
+                  <li>No derivative but have two points? Secant method.</li>
+                  <li>Want bracketing but faster than bisection? Regula-falsi.</li>
+                </ul>
+              </li>
+              <li><strong>Hybrid approach:</strong> Use bisection to get close, then switch to Newton-Raphson for rapid convergence.</li>
+              <li><strong>Engineering application:</strong> These methods are used to solve for unknown dimensions in design problems (e.g., find diameter of pipe for given flow rate).</li>
+              <li><strong>Initial guess matters:</strong> For Newton-Raphson, sketch the function first or use physical intuition to pick a good starting point.</li>
+            </ul>
+          </div>
+
           <div class="subsection">
             <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
             <ul>
-              <li><strong>Initial-value problem:</strong> An ODE together with enough starting conditions y(x₀) = y₀ to
-                pin down a unique solution, solved by marching forward in x.</li>
-              <li><strong>Euler's method:</strong> First-order single-step method advancing along the tangent at each
-                point: y(n+1) = yn + h·f(xn, yn).</li>
-              <li><strong>Predictor-corrector:</strong> A scheme that first estimates (predicts) the next value with one
-                formula, then refines it (corrects) using another, e.g. modified Euler.</li>
-              <li><strong>Runge-Kutta method:</strong> A single-step method built from several weighted slope
-                evaluations inside each step, achieving high order without higher derivatives; RK4 has fourth-order
-                accuracy.</li>
-              <li><strong>Local truncation error:</strong> Error committed in a single step assuming previous values
-                were exact; global error accumulates these over the interval.</li>
+              <li><strong>Truncation error:</strong> The error caused by replacing an infinite mathematical process with a finite number of steps (e.g. stopping a Taylor series early).</li>
+              <li><strong>Round-off error:</strong> The error introduced because numbers are stored with a finite number of significant digits.</li>
+              <li><strong>Order of convergence:</strong> How fast successive errors shrink: if e(k+1) ≈ C·e(k)^p, p is the order (bisection p = 1, secant p ≈ 1.618, Newton-Raphson p = 2).</li>
+              <li><strong>Bisection method:</strong> A bracketing root-finding method which repeatedly halves an interval containing a sign change; guaranteed to converge.</li>
+              <li><strong>Newton-Raphson method:</strong> An open iterative method that follows the tangent line at the current estimate to find the next, converging quadratically near a simple root.</li>
             </ul>
           </div>
+          
           <div class="subsection">
             <h4>📘 Worked Example</h4>
-            <div class="formula-box">dy/dx = y, y(0) = 1, h = 0.1 — compare methods at x = 0.1 (true e^0.1 = 1.105171):
-              Euler: y₁ = 1 + 0.1(1) = \mathbf{1.100000} (error 5.2e-3)
-              Modified Euler: ŷ = 1.1; y₁ = 1 + 0.05(1 + 1.1) = \mathbf{1.105000} (error 1.7e-4)
-              RK4: k₁=0.1, k₂=k₃=hf(0.05, 1.05)=0.105, k₄=hf(0.1, 1.105)=0.1105
-              y₁ = 1 + (1/6)[0.1+2(0.105)+2(0.105)+0.1105] = 1 + (1/6)(0.6305) = \mathbf{1.105083}
-              (error 8.8e-5 at half the Heun cost per order — RK4 earns its reputation)</div>
+            <div class="formula-box">Solve x³ − 2x − 5 = 0 by Newton-Raphson from x₀ = 2:
+              f(x) = x³−2x−5, f'(x)=3x²−2
+              $x_1 = 2 - \\dfrac{8-4-5}{12-2} = 2.1$
+              $x_2 = 2.1 - \\dfrac{9.261-4.2-5}{13.23-2} = 2.0946$
+              $x_3 = 2.0946 - \\dfrac{0.0055}{11.16} \\approx \\mathbf{2.09455}$ ✓ (digits doubling as promised)</div>
+            <p><strong>Teacher's note:</strong> Notice how the error decreases dramatically: from ~0.1 to ~0.005 to ~0.00005 — that's the power of quadratic convergence!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>Which method would you choose for each scenario and why?</p>
+            <ol>
+              <li>Finding the square root of 2 (solving x² - 2 = 0) with high precision needed</li>
+              <li>Solving tan(x) = x where you know there's a root near 4.5</li>
+              <li>Solving an equation where you can only compute the function value, not the derivative</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Newton-Raphson (derivative 2x is easy, need high precision)</p>
+              <p><strong>2.</strong> Bisection first to bracket the root (since tan(x) has asymptotes), then Newton-Raphson for precision</p>
+              <p><strong>3.</strong> Secant method (only needs function values)</p>
+            </details>
           </div>
         </div>
       </div>
 
-      <!-- CHEAT SHEET -->
-      <div class="topic" id="cheat-sheet">
-        <div class="topic-header">
-          <h3>⚡ Quick Revision Cheat Sheet</h3>
+      <!-- MODULE 2 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M2</span>
+          <h3>Module 2 — System of Linear Equations</h3>
         </div>
-        <div class="subsection">
-          <h4>Formulas by Module</h4>
-          <details id="cheat-m1" open>
-            <summary><strong>M1 — Roots</strong></summary>
-            <div class="two-col">
-              <div>
-                <div class="formula-box">Newton-Raphson: $x_{i+1}=x_i-\dfrac{f(x_i)}{f'(x_i)}$ (order 2)
-                  Bisection halves bracket each step (order 1)</div>
-              </div>
-              <div>
-                <div class="formula-box">Secant uses two past points, no derivative
-                  Fixed point x=g(x) converges iff |g'|&lt;1
-                  Orders: bisection 1 · secant 1.62 · NR 2</div>
-              </div>
-            </div>
-          </details>
-          <details id="cheat-m2" open>
-            <summary><strong>M2 — Linear Systems</strong></summary>
-            <div class="two-col">
-              <div>
-                <div class="formula-box">Jacobi: all-old values in update
-                  Gauss-Seidel: newest values immediately (~2× faster)</div>
-              </div>
-              <div>
-                <div class="formula-box">Converges if diagonally dominant $|a_{ii}|&gt;\sum|a_{ij}|$
-                  A = LU → two triangular solves per new b</div>
-              </div>
-            </div>
-          </details>
-          <details id="cheat-m3" open>
-            <summary><strong>M3 — Interpolation</strong></summary>
-            <div class="two-col">
-              <div>
-                <div class="formula-box">Lagrange: $P=\sum y_k\prod_{j\ne k}\dfrac{x-x_j}{x_k-x_j}$
-                  Divided differences build Newton coefficients</div>
-              </div>
-              <div>
-                <div class="formula-box">Forward near top: u = (x−x₀)/h with Δ terms
-                  Backward near bottom: ∇ terms from last node</div>
-              </div>
-            </div>
-          </details>
-          <details id="cheat-m4" open>
-            <summary><strong>M4 — Integration</strong></summary>
-            <div class="two-col">
-              <div>
-                <div class="formula-box">Trapezoid: $\frac{h}{2}[y_0+2\Sigma y_{int}+y_n]$, any n
-                  Simpson ⅓: $\frac{h}{3}[y_0+4y_{odd}+2y_{even}+y_n]$, n EVEN</div>
-              </div>
-              <div>
-                <div class="formula-box">Simpson ⅜: $\frac{3h}{8}[\dots]$, n multiple of 3
-                  Precision degree: trap 1 · Simpson 3</div>
-              </div>
-            </div>
-          </details>
-          <details id="cheat-m5" open>
-            <summary><strong>M5 — ODEs</strong></summary>
-            <div class="two-col">
-              <div>
-                <div class="formula-box">Euler: $y_{n+1}=y_n+hf(x_n,y_n)$
-                  Heun: average start/end slopes (order 2)</div>
-              </div>
-              <div>
-                <div class="formula-box">RK4: $y_{n+1}=y_n+\tfrac{1}{6}(k_1+2k_2+2k_3+k_4)$
-                  k₂,k₃ at midpoint, k₄ at full step (order 4)</div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
+        <nav class="toc">
+          <div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Gaussian Elimination, LU & Iterative Methods</a>
+        </nav>
 
-    </main>
-  </div>
-</div>
-
-                                    <section class="section section-alt" id="modpyq">
-      <div class="modpyq-card">
-          <div class="modpyq-info">
-            <strong>How questions are tagged:</strong> <b>END</b>-semester papers follow BIT&rsquo;s standard Q<sub>n</sub>&rarr;Module&nbsp;n ordering (verified on all three subjects). <b>MID</b>-semester papers intermix Modules&nbsp;1&ndash;3, so each MID question&rsquo;s module is <i>inferred</i> from its topic (marked <span class="pyq-inf">inferred</span>) &mdash; verify against your notes. Every past paper is extracted question-by-question and grouped by module; each links to the exact scanned PDF on the official BIT Mesra site.
+        <div class="topic" id="t2">
+          <div class="topic-header">
+            <h3>2. Gaussian Elimination, LU Decomposition & Iterative Methods</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
           </div>
-        <h3>Module 1 &middot; <span class="pyq-code">Errors &amp; Roots</span></h3>
-        <div class="table-wrap"><table>
-          <tr><th>Paper</th><th>Question</th><th>Open</th></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q1</td><td class="pyq-q">if 𝑢= 4𝑥ଶ𝑦ଷ/𝑧ସand error in 𝑥, 𝑦, 𝑧are 0.001, compute the relative maximum error in 𝑢𝑤ℎ𝑒𝑛𝑥= 𝑦= 𝑧= 1. 1 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q1</td><td class="pyq-q">Find the root of the equation cos 𝑥= 𝑥𝑒௫in the interval (0.50995, 1) using the regula-falsi method correct to four decimal places. 1 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q1</td><td class="pyq-q">Round-off the following numbers to four significant figures: 38.46235, 0.70029, 0.0022218, 19.235101 1 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q1</td><td class="pyq-q">If 𝑧= ௫௬య଼ , Find the percentage error in z when x = 3.14± 0.0016 and y = 4.5± 0.05. 1 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q2</td><td class="pyq-q">Find the estimate of the root of 4𝑒ି ௫𝑠𝑖𝑛𝑥−1 = 0 by using the Newton-Raphson method. Assume that the initial guess of the root is 0.2. Conduct three iterations. 1 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q1</td><td class="pyq-q">Write the Newton Raphson procedure for finding √𝑁 య ,where N is a real number. Use it to find √18 య correct to 2 decimals, assuming x0=2.5.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q1</td><td class="pyq-q">Find the root of the equation 2x-log10 x=7 which lies between 3.5 and 4, using method of false Position up to two iterations only.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO24 &middot; Q1</td><td class="pyq-q">Find a real root of the equation 𝑥ଶ−2𝑥−5 = 0, up to three decimal digits, using Newton’s method with initial guess 𝑥଴= 2.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO24 &middot; Q2</td><td class="pyq-q">Define the method of Secant and use this method to find a root of the equation xex- 1=0.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q1</td><td class="pyq-q">Execute five iterations of Bisection method to find the positive real root of , 0 2 ln ) (     x x x f starting with 1  a and 2  b as the initial approximations. 1 …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q1</td><td class="pyq-q">Taking 3 0  x as the initial guess, determine the positive real root of 4 8 ) ( 3    x x x f correct to three decimal places using Newton Raphson method. 1 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q1</td><td class="pyq-q">Considering floating point arithmetic, perform the following arithmetic operations (as indicated) and express the obtained results in 4-digit mantissa standard (normalize…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q1</td><td class="pyq-q">The positive real root of the equation 0 5 2 ) ( 3     x x x f lies in the interval ). 3,2 ( Taking 2  a and 3  b as the initial approximations, execute two iterati…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q2</td><td class="pyq-q">State the convergence condition for the fixed point (general) iteration method ). (x x   Hence, use it to check whether the following rearrangement of the fixed point (…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q2</td><td class="pyq-q">Applying Newton-Raphson method, derive the following iterative formula to compute the cube root of any positive real number : N , 2 3 1 2 1          n n n x N …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q1</td><td class="pyq-q">If the number  ଵସ= 0.785398163 is approximated by ଵଵ ଵସ, then (i) Find the number of digits up to which, this approximation is accurate (ii) Find the absolute and percen…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q1</td><td class="pyq-q">Perform four iterations of the Newton-Raphson method to obtain the approximate value of (17)ଵ/ଷstarting with the initial approximation 𝑥଴= 2, correct upto 5 decimal place…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-        </table></div>
-      </div>
-      <div class="modpyq-card">
-        <h3>Module 2 &middot; <span class="pyq-code">Linear Systems</span></h3>
-        <div class="table-wrap"><table>
-          <tr><th>Paper</th><th>Question</th><th>Open</th></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q2</td><td class="pyq-q">Use LU Decomposition method to solve the following equation: 3𝑥+ 2𝑦+ 7𝑧= 4; 2𝑥+ 3𝑦+ 𝑧= 5; 3𝑥+ 4𝑦+ 𝑧= 7. 2 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q2</td><td class="pyq-q">Solve by Jacobi’s iteration method, the equations 10𝑥+ 𝑦−𝑧= 11.19, 𝑥+ 10𝑦+ 𝑧= 28.08, −𝑥+ 𝑦+ 10𝑧= 35.61, correct to two decimal places. 2 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q3</td><td class="pyq-q">Use the LU decomposition method to solve the following simultaneous linear equations. ൥ 2 3 1 1 2 3 3 1 2 ൩൥ 𝑥ଵ 𝑥ଶ 𝑥ଷ ൩= ൥ 9 6 8 ൩ 2 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q4</td><td class="pyq-q">Find the solution to the following system of equations using the Gauss-Seidel method. 8𝑥ଵ+ 2𝑥ଶ+ 4𝑥ଷ= −16 , 3𝑥ଵ+ 5𝑥ଶ+ 𝑥ଷ= 4 , 2𝑥ଵ+ 𝑥ଶ+ 4𝑥ଷ= −12 Use (𝑥ଵ, 𝑥ଶ, 𝑥ଷ) = (−1.0195…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO25 &middot; Q5</td><td class="pyq-q">Find the Lagrange interpolating polynomial of degree 2 approximating the function 𝑦= 𝑙𝑛𝑥 defined by the following table of values. Hence determine the value of 𝑙𝑛 2.7. 𝑥 …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_MID.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q2</td><td class="pyq-q">Perform five iterations of Jacobi iteration method to find the numerical solution of the system of equations: 4𝑥+ 𝑦+ 𝑧= 2; 𝑥+ 5𝑦+ 2𝑧= −6; 𝑥+ 2𝑦+ 3𝑧= −4 with initial guess…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO24 &middot; Q3</td><td class="pyq-q">Using the Gauss elimination method, find the solution of the system of equations: 𝑥+ 𝑦+ 𝑧= 6 ; 3𝑥+ 3𝑦+ 3𝑧= 20; 2𝑥+ 𝑦+ 3𝑧= 13</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO24 &middot; Q4</td><td class="pyq-q">Perform three iterations of the Gauss-Seidel method to solve the system equations: −𝟐𝒙−𝒚= 𝟕; −𝒙+ 𝟐𝒚−𝒛= 𝟏; −𝒚+ 𝟐𝒛= 𝟏; with initial guess 𝒙𝟎= (𝟎, 𝟎, 𝟎).</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q2</td><td class="pyq-q">Identify the values of 3 2 1 x x x , , from the following system of linear equations with the use of Gauss Elimination method: 6 5 ; 4 5 ; 9 5 3 2 3 2 1 2 1       …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q2</td><td class="pyq-q">Compute two iterations each of Gauss-Jacobi and Gauss-Seidel methods for the following system, starting with T T y x ) 0 , 0 ( ) , (               1 …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q3</td><td class="pyq-q">Let the matrix .     d c b a  If ,0  a the matrix  is to be factorized through LU decomposition where      1 0 1 L 21 l and . 0 U 22 12 11      u …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q3</td><td class="pyq-q">Develop the solution of the following system of linear equations using Gauss elimination method: 5 2 3 ; 10 3 5 ;2 3 2           z y x z y x z y x Clearly, ment…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q4</td><td class="pyq-q">The system of linear equations is given as: . 4 2 2 2 3 0 0 1 0 1 0 5 3 2 1                                  x x x Starting from an initi…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q4</td><td class="pyq-q">The following system of linear equations is given: 6 5 ;4 5 ;9 5 3 2 3 2 1 2 1           x x x x x x x Starting with initial approximations ,0 3 2 1    x x x…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q5</td><td class="pyq-q">For the function , 1 ) ( 2 x x f  prove that the first divided difference   1 0, x x f between the arguments (values of ) x 0x and 1x is   . , 2 1 2 0 1 0 1 0   …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q2</td><td class="pyq-q">Solve the system of equations by gauss-Jordan method: 𝑥+ 𝑦+ 𝑧+ 𝑢= 2 2𝑥−𝑦+ 2𝑧−𝑢= −5 3𝑥+ 2𝑦+ 3𝑧+ 4𝑢= 7 𝑥−2𝑦−3𝑧+ 2𝑢= 5</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q2</td><td class="pyq-q">Using power method find the dominant eigen value and the corresponding eigen vector for the matrix A = ൭ −15 4 3 10 −12 6 20 −4 2 ൱ Correct results upto 3 decimal places …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-        </table></div>
-      </div>
-      <div class="modpyq-card">
-        <h3>Module 3 &middot; <span class="pyq-code">Interpolation &amp; Curve Fitting</span></h3>
-        <div class="table-wrap"><table>
-          <tr><th>Paper</th><th>Question</th><th>Open</th></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q3</td><td class="pyq-q">A curve passes through the points (0,18), (1,10), (3,-18) and (6,90). Find the slope of the curve at x=2. 3 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q3</td><td class="pyq-q">Find the missing term in the following table using interpolation: x: 0 1 2 3 4 y: 1 3 9 … 81 3 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q3</td><td class="pyq-q">Given that √12500 = 111.8034, √12510 = 111.8481, √12520 = 111.8928 , √12500 = 111.9375, Use Newton Forward difference formula to find √12516.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q3</td><td class="pyq-q">Find k in the following table : x : 1 3 4 5 f(x) : 1 25 k 121</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO24 &middot; Q5</td><td class="pyq-q">Compute interpolating polynomial by using Lagrange interpolation formula. Also compute 𝑓(2.8) from the following table: x 0 1 2 3 f(x) 1 2 11 34</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q3</td><td class="pyq-q">Obtain the unique polynomial ) (x P of degree two using Lagrange method of interpolation, such that . 64 ) 4 ( , 27 ) 3 ( ,1 )1 (    P P P 3 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q3</td><td class="pyq-q">Taking reference of the data given below, compute ) (x f at 2  x using Newton divided-difference interpolation formula: : x 0 1 4 5 : ) (x f 8 11 68 123 3 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type pyq-inf" data-t="MID">MID *</span> MO23 &middot; Q5</td><td class="pyq-q">Obtain the interpolating polynomial that fits into the following data using Lagrange formula: x 0 1 2 ) (x f 2 1 12 3 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_MID_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q3</td><td class="pyq-q">Find the value of ௗమ௬ ௗ௫మ and ௗయ௬ ௗ௫య at 𝑥= 1, from the table given below: x -1 1 2 3 F(x) 7 5 19 51</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q3</td><td class="pyq-q">Using the following data, find the value of x corresponding to 𝑦= 𝑓(𝑥) = 100 x 3 5 7 9 11 y 6 24 58 108 174</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-        </table></div>
-      </div>
-      <div class="modpyq-card">
-        <h3>Module 4 &middot; <span class="pyq-code">Numerical Integration</span></h3>
-        <div class="table-wrap"><table>
-          <tr><th>Paper</th><th>Question</th><th>Open</th></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q4</td><td class="pyq-q">Evaluate the integral ∫ ௫మ ଵା௫మ𝑑𝑥 ଵ ଴ using Simpson’s 1/3 rule. Compare the error with the exact value. Take four equal parts of the interval. 4 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q4</td><td class="pyq-q">Compute the value of the integral ∫ (𝑠𝑖𝑛𝑥−𝑙𝑜𝑔𝑥+ 𝑒௫)𝑑𝑥 ଵ.ସ ଴.ଶ using Simpson’s 3/8 rule by taking seven ordinates. 4 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q4</td><td class="pyq-q">Write the formula of composite simpson’s 1/3 rule with 𝒏 subintervals. Using this rule, compute the Integral 𝑰= ∫𝒆ቄି 𝒙 𝟐ቅ 𝟐 𝟏 𝒅𝒙 with six sub-intervals and find the error…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q4</td><td class="pyq-q">The velocities ) (v of a car in km/min running on a road at time intervals ) (t of 5 minutes are given below: : t 0 5 10 15 20 : v 43.1 47.7 52.1 56.4 60.8 a) Compute the…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q4</td><td class="pyq-q">Find the value of the integral ∫ ௗ௫ ଵା௫మ ଵ ଴ using Simpson’s 1/3rd rule with step size ℎ= ଵ ସ correct to 5 decimal places. Further, estimate the value of  from the integ…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q4</td><td class="pyq-q">If  is the forward difference operator, then find ∆ସ𝑦଴. Hence find the general expression for ∆௡𝑦଴ in terms of 𝑦଴, 𝑦ଵ, . . . . , 𝑦௡ that does not involve the difference …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-        </table></div>
-      </div>
-      <div class="modpyq-card">
-        <h3>Module 5 &middot; <span class="pyq-code">ODE Solvers</span></h3>
-        <div class="table-wrap"><table>
-          <tr><th>Paper</th><th>Question</th><th>Open</th></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q5</td><td class="pyq-q">Using modified Euler’s method, find an approximate value of y when x=0.2 and 0.4, given ௗ௬ ௗ௫= 𝑦+ 𝑒௫𝑎𝑛𝑑𝑦= 0 𝑤ℎ𝑒𝑛𝑥= 0. Take h=0.2. 5 2</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO25 &middot; Q5</td><td class="pyq-q">Using the Runge-Kutta method of fourth order, solve for y at x=1.2 and 1.4 from 𝑑𝑦 𝑑𝑥= 2𝑥𝑦+ 𝑒௫ 𝑥𝑒௫+ 𝑥ଶ𝑔𝑖𝑣𝑒𝑛𝑦(1) = 0. 5 3</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2025%20QP/MA24201%20NUMERICAL%20METHODS_END.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO24 &middot; Q5</td><td class="pyq-q">Using fourth-order Runge-Kutta method find numerical solution of first order initial value problem: 𝑦′ = 𝑦ଶ+ 𝑥ଶ, 𝑦(2) = 3. Find 𝑦(2.1) and 𝑦(2.2) by taking ℎ= 0.1.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2024%20QP/MA203%20NUMERICAL%20METHODS(1).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q5</td><td class="pyq-q">Solve the differential equation , y x dx dy   2 with 1 ) 0 (  y at 4 . 0  x in steps of 1 . 0  h by Euler&#x27;s method. Compare the obtained numerical result at 4 . 0  …</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO23 &middot; Q5</td><td class="pyq-q">State fourth order Runge-Kutta formula to find the solution ) ( 1 x y of the initial value problem ), , ( y x f dx dy  , ) ( 0 0 y x y  where h x x   0 1 and h is the…</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2023%20QP/MA203%20NUMERICAL%20METHODS_END_MO23.pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q5</td><td class="pyq-q">For the initial value problem ୢ୷ୢ ୶= y, y(0) = α . If 𝑦(1) = 1, find the value of 𝑘ଷ obtained by Runge-Kutta fourth order method, correct to 4 decimal places.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-          <tr><td><span class="pyq-type" data-t="END">END</span> MO22 &middot; Q5</td><td class="pyq-q">Determine the value of y correct to 4 decimal places using Euler’s method when x=0.04 given that y/ = xଶ+ y, y(0) = 1, when h=0.2 and compare with the exact answer.</td><td><a class="pyq-link" href="https://bitmesra.ac.in/UploadedDocuments/adminexam/files/MO2022%20QP/MA203%20NUMERICAL%20METHODS%20(END_MO22).pdf" target="_blank" rel="noopener">&#8599;</a></td></tr>
-        </table></div>
-      </div>
-    </section>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Solve systems of linear equations using direct methods (Gaussian elimination, LU decomposition)</li>
+              <li>Understand when to use iterative methods vs direct methods</li>
+              <li>Analyze the computational cost and stability of different approaches</li>
+              <li>Apply pivoting strategies to minimize numerical errors</li>
+              <li>Recognize when a system is ill-conditioned and what that means for your solution</li>
+            </ul>
+          </div>
 
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> two philosophies — eliminate variables directly (exact up to round-off, finite steps) or iterate from a guess (cheap per step for huge sparse systems, must converge).</div>
+            <ul>
+              <li><strong>Gaussian elimination:</strong> forward elimination to upper-triangular form using row operations (pivot = divide by diagonal), then back-substitution. Cost ≈ n³/3 multiplications.</li>
+              <li><strong>Gauss-Jordan:</strong> keep eliminating above AND below pivots → identity matrix; right side becomes the answer. No back-substitution needed, ~50 % more work.</li>
+              <li><strong>LU (Crout/Doolittle):</strong> factor A = LU once, then solve LUX = b via two cheap triangular solves — perfect when many b's share one A. Partial pivoting (swap rows for biggest pivot) controls round-off.</li>
+            </ul>
+            <div class="formula-box">Jacobi update: $$x_i^{(k+1)}=\\dfrac{1}{a_{ii}}\\Big[b_i-\\sum_{j\\ne i}a_{ij}x_j^{(k)}\\Big]$$ (all old values)
+              Gauss-Seidel: same formula but use NEWEST available values → converges ~2× faster.
+              Convergence guaranteed if A is diagonally dominant: $|a_{ii}|>\\sum_{j\\ne i}|a_{ij}|$.</div>
+          </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Forgetting to pivot:</strong> Not using partial pivoting can lead to large round-off errors, especially with small pivot elements.</li>
+              <li><strong>Confusing LU with Gaussian elimination:</strong> LU does the factorization ONCE, then solves for many right-hand sides efficiently.</li>
+              <li><strong>Assuming all systems work with iterative methods:</strong> Jacobi and Gauss-Seidel only converge reliably for diagonally dominant or symmetric positive definite matrices.</li>
+              <li><strong>Not checking for singular systems:</strong> If you get a zero pivot (after pivoting), the system may be singular or inconsistent.</li>
+              <li><strong>Misapplying back-substitution:</strong> Remember to solve from bottom to top after forward elimination.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your solver based on the matrix:</strong>
+                <ul>
+                  <li>Small dense systems (< 100 equations)? Use LU with partial pivoting.</li>
+                  <li>Need to solve for many different right-hand sides with same matrix? LU decomposition is perfect.</li>
+                  <li>Large sparse systems (like from finite element analysis)? Consider iterative methods.</li>
+                  <li>Symmetric positive definite matrix? Cholesky decomposition is ~2× faster than LU.</li>
+                </ul>
+              </li>
+              <li><strong>Engineering application:</strong> Structural analysis, circuit analysis, finite element methods all reduce to solving Ax = b.</li>
+              <li><strong>Check your work:</strong> After solving Ax = b, compute the residual r = b - Ax. It should be very close to zero.</li>
+              <li><strong>Condition number matters:</strong> Even if your algorithm is correct, a high condition number means small errors in A or b can cause large errors in x.</li>
+            </ul>
+          </div>
 
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Pivoting:</strong> Interchanging equations (rows) during elimination so the pivot element is the largest available in magnitude, minimising round-off amplification.</li>
+              <li><strong>LU decomposition:</strong> Writing A = LU where L is lower- and U upper-triangular, allowing repeated solutions for different right-hand sides with only two triangular solves.</li>
+              <li><strong>Gauss-Seidel method:</strong> An iterative solution scheme that immediately uses updated component values within the same sweep, converging under diagonal dominance.</li>
+              <li><strong>Diagonal dominance:</strong> Property |aii| ≥ Σ|aij| (j ≠ i) for every row, strictly somewhere — a sufficient condition for convergence of Jacobi/Gauss-Seidel iterations.</li>
+            </ul>
+          </div>
+          
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Solve x + y = 3, 2x − y = 0 by Gauss-Seidel from (0, 0):
+              From eq1: x = 3 − y → x₁ = 3
+              From eq2: y = 2x → y₁ = 2(3) = 6
+              Check: 2(3) − 6 = 0 ✓
+              Iterate: x₂ = 3 − 6 = −3, y₂ = 2(−3) = −6; x₃ = 9, y₃ = 18 — DIVERGES!
+              Rows are NOT diagonally dominant (row2: |−1| < 2). Swap equation order:
+              now x from eq(2x−y=0): x = y/2 → x₁ = 0; y = 3 − x → y₁ = 3; x₂ = 1.5, y₂ = 1.5; x₃ = 0.75...→ converging to (1, 2) ✓
+              Lesson: equation ORDER decides convergence — reorder for dominance.</div>
+            <p><strong>Teacher's note:</strong> This example shows why understanding the convergence conditions is crucial — blindly applying a method without checking if it will converge wastes time and gives wrong answers!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>For the system 2x + y = 5, x - 3y = -2:</p>
+            <ol>
+              <li>Would you expect Jacobi or Gauss-Seidel to converge? Why?</li>
+              <li>Which method would be faster for solving this system if you had 100 different right-hand sides?</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Neither is guaranteed — check diagonal dominance: |2| ≯ |1| and |−3| ≯ |1|. Try it and see!</p>
+              <p><strong>2.</strong> LU decomposition — factor A once, then solve 100 systems quickly with forward/back substitution.</p>
+            </details>
+          </div>
+        </div>
+      </div>
 
+      <!-- MODULE 3 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M3</span>
+          <h3>Module 3 — Interpolation</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lagrange & Newton's Difference Formulas</a>
+        </nav>
+
+        <div class="topic" id="t3">
+          <div class="topic-header">
+            <h3>3. Lagrange & Newton's Difference Formulas</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
+          </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Construct interpolating polynomials using Lagrange and Newton's methods</li>
+              <li>Choose the appropriate interpolation method based on data spacing and location of interest</li>
+              <li>Understand the trade-offs between global polynomials (Lagrange/Newton) and piecewise methods (splines)</li>
+              <li>Apply interpolation to engineering problems like estimating properties from tabulated data</li>
+              <li>Recognize when high-degree polynomial interpolation can lead to oscillations (Runge's phenomenon)</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> interpolation draws the unique polynomial through your data points and reads between them. Equal spacing? Newton's forward/backward saves work. Uneven spacing? Lagrange or divided differences.</div>
+            <ul>
+              <li><strong>Lagrange (unequal spacing friendly):</strong></li>
+            </ul>
+            <div class="formula-box">$P(x)=\\sum_{k} y_k\\prod_{j\\ne k}\\dfrac{x-x_j}{x_k-x_j}$ — no table needed, weights built straight from nodes.</div>
+            <ul>
+              <li><strong>Divided differences:</strong> build a triangle: first column f[x_i,x_j] = (f_j−f_i)/(x_j−x_i); higher columns repeat on shorter intervals. Top entries become coefficients of Newton's divided-difference polynomial.</li>
+              <li><strong>Equal spacing shortcuts:</strong> define Δ (forward) and ∇ (backward) differences; then:</li>
+            </ul>
+            <div class="formula-box">Newton forward (near top): $P(x_0+hu)=y_0+u\\Delta y_0+\\dfrac{u(u-1)}{2!}\\Delta^2y_0+\\dfrac{u(u-1)(u-2)}{3!}\\Delta^3y_0+\\cdots$
+              Newton backward (near bottom): replace u→v measured from last node with ∇ differences.</div>
+            <ul>
+              <li><strong>Choosing:</strong> interpolate close to the START → forward; close to END → backward; middle → central/Stirling (beyond scope) or fit divided difference.</li>
+            </ul>
+          </div>
+          
+          <!-- Common Mistakes -->
+          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
+            <h4>⚠️ Common Mistakes to Avoid</h4>
+            <ul>
+              <li><strong>Using high-degree polynomials with many points:</strong> This can cause wild oscillations between points (Runge's phenomenon). Consider splines for many data points.</li>
+              <li><strong>Extrapolating beyond your data:</strong> Interpolation is only reliable between your data points. Going outside can give nonsense results.</li>
+              <li><strong>Ignoring data spacing:</strong> Newton's forward/backward methods assume equal spacing — using them with uneven spacing introduces errors.</li>
+              <li><strong>Not checking if data represents a function:</strong> Interpolation assumes each x maps to exactly one y. If your data fails the vertical line test, you need a different approach.</li>
+              <li><strong>Computational inefficiency:</strong> Lagrange formula requires O(n²) work for each evaluation. Newton's form with divided differences is more efficient for multiple evaluations.</li>
+            </ul>
+          </div>
+          
+          <!-- Tips & Tricks -->
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
+            <ul>
+              <li><strong>Choose your method based on your goal:</strong>
+                <ul>
+                  <li>Need to evaluate at many points? Newton's divided difference form is most efficient.</li>
+                  <li>Have unevenly spaced data? Lagrange or divided differences (avoid forward/backward unless spacing is equal).</li>
+                  <li>Interpolating near the beginning of your data? Use Newton forward.</li>
+                  <li>Interpolating near the end? Use Newton backward.</li>
+                </ul>
+              </li>
+              <li><strong>Engineering application:</strong> Thermodynamic tables (steam tables), material properties vs temperature, wind tunnel test data — all use interpolation to get values at conditions not explicitly tabulated.</li>
+              <li><strong>Quality check:</strong> For smooth functions, the interpolating polynomial should behave reasonably between points. If it oscillates wildly, you might be overfitting.</li>
+              <li><strong>Piecewise is often better:</strong> For many data points, consider cubic splines instead of a single high-degree polynomial.</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+            <ul>
+              <li><strong>Interpolation:</strong> Estimating the value of a function between known tabulated points using a polynomial fitted through those points.</li>
+              <li><strong>Shift operator Δ:</strong> Δy(x) = y(x+h); repeated application builds the forward-difference table used in Newton's formulas.</li>
+              <li><strong>Divided difference:</strong> The coefficient f[x₀,…,xₖ] defined recursively as (f[x₁,…,xₖ] − f[x₀,…,xₖ₋₁])/(xₖ − x₀), symmetric in its arguments.</li>
+              <li><strong>Lagrange interpolation:</strong> Direct construction of the interpolating polynomial as a weighted sum of node-specific basis polynomials, valid for unequal spacing.</li>
+            </ul>
+          </div>
+          
+          <div class="subsection">
+            <h4>📘 Worked Example</h4>
+            <div class="formula-box">Points (1, 1), (2, 8), (3, 27) — estimate f(2.5) by Lagrange:
+              $P=\\dfrac{(2.5-2)(2.5-3)}{(1-2)(1-3)}(1)+\\dfrac{(2.5-1)(2.5-3)}{(2-1)(2-3)}(8)+\\dfrac{(2.5-1)(2.5-2)}{(3-1)(3-2)}(27)$
+              = 0.125(1) + 0.75(8) + 0.125·? recompute third weight: (1.5×0.5)/2 = 0.375 → 0.375×27 = 10.125
+              Total = 0.125 + 6 + 10.125 = $\\mathbf{16.25}$ — exact, since data came from x³ and P is cubic-degree ≤ 2? (16.25 vs true 15.625 shows quadratic fit limitation — good discussion point.)</div>
+            <p><strong>Teacher's note:</strong> The fact that we get 16.25 instead of the true 15.625 reveals something important: with only 3 points, we can only fit a quadratic polynomial perfectly. Since the true function is x³ (cubic), there's an inherent limitation. This is why more points generally give better approximations — up to a point!</p>
+          </div>
+          
+          <!-- Quick Check -->
+          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
+            <h4>🔍 Quick Check: Test Your Understanding</h4>
+            <p>You have temperature vs resistance data for a thermistor: (20°C, 10kΩ), (25°C, 8kΩ), (30°C, 6.5kΩ). Estimate the resistance at 22°C.</p>
+            <ol>
+              <li>Which interpolation method would you choose and why?</li>
+              <li>What would you expect to happen if you tried to estimate resistance at 50°C using the same method?</li>
+            </ol>
+            <details>
+              <summary>Click to see suggested answers</summary>
+              <p><strong>1.</strong> Since we want a point near the beginning and have only 3 points, Lagrange or Newton forward would work well. The data appears roughly exponential, but linear interpolation between nearby points is often sufficient for small intervals.</p>
+              <p><strong>2.</strong> Extrapolating far beyond your data range (20-30°C to 50°C) is unreliable — the relationship might change or you might be outside the device's operating range.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 4 -->
+      <div class="module-block">
+        <div class="module-head"><span class="mchip">M4</span>
+          <h3>Module 4 — Differentiation & Integration</h3>
+        </div>
+        <nav class="toc">
+          <div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Trapezoidal & Simpson's Rules</a>
+        </nav>
+
+        <div class="topic" id="t4">
+          <div class="topic-header">
+            <h3>4. Differentiation & Integration — Newton-Cotes Rules</h3>
+            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: Topic 3</span></div>
+          </div>
+          
+          <!-- Learning Objectives -->
+          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
+            <h4>🎯 Learning Objectives</h4>
+            <p>By the end of this module, you should be able to:</p>
+            <ul>
+              <li>Approximate derivatives and integrals from tabulated data using finite difference methods</li>
+              <li>Apply the trapezoidal and Simpson's rules for numerical integration</li>
+              <li>Understand the error characteristics and convergence rates of different quadrature rules</li>
+              <li>Choose the appropriate integration method based on data spacing and function behavior</li>
+              <li>Apply numerical differentiation and integration to solve engineering problems</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h4>📝 Theory Notes</h4>
+            <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step size h.</div>
+            <ul>
+              <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of the function:</li>
+            </ul
