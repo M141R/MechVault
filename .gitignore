@@ -13,3 +13,4 @@ dist/
 # editor/temp backups
 *.backup
 *.orig
+src/content/*.backup
