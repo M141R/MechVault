@@ -42,6 +42,23 @@
   --shadow-md: 0 8px 26px rgba(20, 24, 30, 0.10);
   --maxw: 1120px;
   --nav-h: 64px;
+
+  /* Semantic aliases.
+     `track.astro` and `dashboard.astro` were written against this vocabulary
+     rather than the raw palette above, and nothing defined it -- so those two
+     pages silently fell back to inherited/initial values and rendered with
+     broken borders and text colours. Define them here, once, so both the raw
+     palette and this alias layer stay authoritative. Prefer the aliases in new
+     component styles; the raw tokens are the source they point at. */
+  --text: var(--ink);
+  --muted: var(--ink-2);
+  --faint: var(--ink-3);
+  --border: var(--hairline);
+  --accent: var(--blueprint-2);
+  --surface-1: var(--surface);
+  /* Page gutter, shared by the layout and every page-level section so content
+     lines up across pages instead of each section picking its own padding. */
+  --container-pad: 20px;
   --font: "Familjen Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -70,6 +87,8 @@
   --focus-ring: var(--annotation);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 8px 26px rgba(0, 0, 0, 0.5);
+  /* The alias layer resolves through the palette, so it inverts with the
+     palette rather than needing its own dark values. */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
