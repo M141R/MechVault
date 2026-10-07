@@ -3,4 +3,4 @@
 # match). The ${VAR:-default} form degrades instead of crashing if a platform
 # fails to inject one -- an unbound/failed start shows up as a Traefik 502 with
 # no obvious cause in the build log.
-web: HOST=0.0.0.0 PORT=${PORT:-4321} node dist/server/entry.mjs
+web: HOST=0.0.0.0 PORT=${PORT:-3000} node dist/server/entry.mjs

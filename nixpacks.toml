@@ -1,0 +1,22 @@
+# Nixpacks build plan.
+#
+# WHY THIS FILE EXISTS
+# Nixpacks defaults to Node 18 for a project with no declared engine, and
+# Astro 7 hard-refuses to run on it:
+#
+#   Node.js v18.20.5 is not supported by Astro!
+#   Please upgrade Node.js to a supported version: ">=22.12.0"
+#
+# That failed the container build while `npm run build` passed on a dev
+# machine, because the dev machine ran Node 22. A green local build says
+# nothing about the runtime the image is built with.
+#
+# `engines.node` in package.json records the requirement for humans and npm,
+# but Nixpacks does not reliably read it -- it looks at NIXPACKS_NODE_VERSION
+# and then falls back to its own default. So pin the toolchain explicitly
+# here as well. Both are deliberate; keep them in sync.
+#
+# openssl is kept because the AWS S3 client (R2 file streaming) needs it.
+
+[phases.setup]
+nixPkgs = ["nodejs_22", "openssl"]

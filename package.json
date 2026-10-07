@@ -1,6 +1,9 @@
 {
   "name": "mechvault",
   "version": "2.0.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "type": "module",
   "description": "MechVault — BIT Mesra ME 3rd sem study hub (Astro SSR + Better Auth + Postgres + R2)",
   "private": true,
