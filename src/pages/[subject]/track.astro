@@ -16,6 +16,7 @@ import {
   type TopicStateName,
   type ProblemStateName,
 } from "../../lib/tracker/engine";
+import { questionsForModule, coverageFor } from "../../lib/tracker/pyq-bank";
 
 const subject = getSubject(Astro.params.subject);
 const cfg = getTrackerConfig(Astro.params.subject);
@@ -23,6 +24,19 @@ const cfg = getTrackerConfig(Astro.params.subject);
 if (!subject || !cfg) {
   return new Response("Unknown subject", { status: 404 });
 }
+
+/**
+ * The real exam questions for this subject, from the notes' own PYQ tables.
+ *
+ * These are the questions the tracker could previously only *count*. Now each
+ * module board shows them, with the scanned page they came from, so "19 PYQs"
+ * becomes something you can open and attempt rather than a number to trust.
+ *
+ * A subject with no PYQ table (fm, numerical) renders an explicit empty state
+ * naming the gap — never a silent zero, which would read as "you have covered
+ * everything and there is nothing to do".
+ */
+const pyqCoverage = coverageFor(cfg.slug);
 
 const topicState = new Map<string, TopicStateName>();
 const problemState = new Map<string, ProblemStateName>();
@@ -73,6 +87,7 @@ const modules = [1, 2, 3, 4, 5].map((m) => ({
   topics: cfg.topics.filter((t) => t.module === m),
   problems: cfg.problems.filter((p) => p.module === m),
   decks: cfg.decks.filter((d) => d.module === m),
+  questions: questionsForModule(cfg.slug, m),
 }));
 
 const label: Record<string, string> = {
@@ -152,6 +167,62 @@ const label: Record<string, string> = {
     {modules.map((m) => (
       <section class="module" data-module={m.num}>
         <h2><span class="mod-num">M{m.num}</span> {m.name}</h2>
+
+        {m.questions.length > 0 ? (
+          <details class="pyq-panel">
+            <summary class="pyq-panel-head">
+              <span class="pyq-caret" aria-hidden="true">›</span>
+              <span class="pyq-panel-title">Exam questions asked in this module</span>
+              <span class="pyq-panel-count">
+                {m.questions.length} question{m.questions.length === 1 ? "" : "s"}
+              </span>
+            </summary>
+            <p class="pyq-panel-note">
+              Verbatim from {pyqCoverage.code || "the paper"} past papers. Attempt
+              these on blank paper before touching the state controls — the state
+              tracks what you can reproduce, not what you have read.
+            </p>
+            <ol class="pyq-list">
+              {m.questions.map((q) => (
+                <li class="pyq-item" data-qid={q.id}>
+                  <div class="pyq-item-head">
+                    <span class="pyq-qno">{q.paper} · {q.qno}</span>
+                    {q.marks != null && <span class="pyq-marks">{q.marks} marks</span>}
+                    <span class:list={["pyq-type", q.type.toLowerCase()]}>{q.type}</span>
+                    {q.moduleTagInferred && (
+                      <span
+                        class="pyq-inf"
+                        title="This MID question's module tag was matched by keyword, not by BIT's verified Qn → Module n ordering. Verify it against the scan."
+                      >
+                        module tag inferred
+                      </span>
+                    )}
+                    {q.scanPath && (
+                      <a
+                        class="pyq-scan"
+                        href={`/api/file?path=${q.scanPath}`}
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        Scanned page ↗
+                      </a>
+                    )}
+                  </div>
+                  <p class="pyq-text">{q.text}</p>
+                </li>
+              ))}
+            </ol>
+          </details>
+        ) : (
+          <div class="pyq-panel pyq-panel-empty">
+            <strong>No per-question PYQs indexed for this module.</strong>
+            <span>
+              {pyqCoverage.empty
+                ? `${cfg.name} has no per-question question table in the notes yet, so there is nothing to attempt here. That is a gap in the vault, not a sign that the module is unimportant.`
+                : "This module has no questions in the indexed papers."}
+            </span>
+          </div>
+        )}
 
         {m.decks.length > 0 && (
           <div class="decks">
@@ -453,6 +524,72 @@ const label: Record<string, string> = {
 </BaseLayout>
 
 <style>
+  /* PYQ panel — the real exam questions, inline in the module board. */
+  .pyq-panel {
+    margin: 0 0 16px; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface-1); overflow: hidden;
+  }
+  .pyq-panel-head {
+    display: flex; align-items: center; gap: 9px;
+    padding: 12px 14px; cursor: pointer; list-style: none;
+    background: var(--surface-2); border-bottom: 1px solid transparent;
+  }
+  .pyq-caret {
+    display: inline-block; font-size: 15px; color: var(--accent);
+    transition: transform 0.15s ease; transform-origin: 45% 50%;
+  }
+  .pyq-panel[open] .pyq-caret { transform: rotate(90deg); }
+  .pyq-panel-head:hover { background: color-mix(in srgb, var(--accent) 7%, var(--surface-2)); }
+  .pyq-panel-head::-webkit-details-marker { display: none; }
+  .pyq-panel[open] .pyq-panel-head { border-bottom-color: var(--border); }
+  .pyq-panel-title { font-weight: 600; font-size: 14px; }
+  .pyq-panel-count {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    border: 1px solid var(--border); border-radius: var(--radius-pill);
+    padding: 1px 8px; margin-left: auto;
+  }
+  .pyq-panel-note { margin: 0; padding: 10px 14px; font-size: 12.5px; color: var(--muted); line-height: 1.5; border-bottom: 1px solid var(--border); }
+  .pyq-list { list-style: none; margin: 0; padding: 0; counter-reset: q; }
+  .pyq-item { padding: 14px; border-bottom: 1px solid var(--border); }
+  .pyq-item:hover { background: color-mix(in srgb, var(--accent) 3.5%, transparent); }
+  .pyq-item:last-child { border-bottom: none; }
+  .pyq-item-head {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 7px;
+  }
+  .pyq-qno { font-family: var(--mono); font-size: 11.5px; font-weight: 600; color: var(--accent); }
+  .pyq-marks { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .pyq-type {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    padding: 1px 6px; border-radius: var(--radius-sm);
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--muted);
+  }
+  .pyq-type.mid { border-color: color-mix(in srgb, var(--warn) 45%, transparent); color: var(--warn); }
+  .pyq-type.end { border-color: color-mix(in srgb, var(--annotation) 45%, transparent); color: var(--annotation-ink); }
+  .pyq-inf {
+    font-family: var(--mono); font-size: 10px; padding: 1px 6px;
+    border-radius: var(--radius-sm); border: 1px dashed var(--warn); color: var(--warn);
+    cursor: help;
+  }
+  /* Comfortable hit target: a 11px text link is hard to hit and easy to miss. */
+  .pyq-scan {
+    font-size: 11.5px; color: var(--accent); text-decoration: none; white-space: nowrap;
+    margin-left: auto; padding: 4px 9px; border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+  }
+  .pyq-scan:hover { border-color: var(--accent); background: var(--blueprint-soft); }
+  .pyq-scan:hover { text-decoration: underline; }
+  /* The question is the point of this panel, so it gets the largest type on
+     the page after headings. Everything above it is metadata, kept small. */
+  .pyq-text {
+    margin: 0; font-size: 15px; line-height: 1.6; color: var(--text);
+    max-width: 78ch;
+  }
+  .pyq-panel-empty {
+    display: grid; gap: 4px; padding: 12px 14px; font-size: 13px;
+    border-style: dashed; background: transparent;
+  }
+  .pyq-panel-empty span { color: var(--muted); }
+
   .back { font-size: 13px; text-decoration: none; color: var(--muted); }
   .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
   .code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
