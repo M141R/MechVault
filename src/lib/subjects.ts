@@ -22,7 +22,6 @@ export interface Subject {
   content: SubjectContent;
   syllabus: SyllabusModule[];
   paperCount: number;
-  progress: number;
   /** R2 key of the accompanying textbook PDF, served via /api/file. */
   bookFile?: string;
 }
@@ -334,7 +333,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(fmRaw),
     syllabus: FM_SYLLABUS,
     paperCount: 8,
-    progress: 100,
     bookFile:
       "books/A Textbook of Fluid Mechanics and Hydraulic Machines -- R_ K_ Bansal -- 2015 -- 60f04ab2c51ecf7b3ece341cdc19c622 -- Anna\u2019s Archive.pdf",
   },
@@ -349,7 +347,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(somRaw),
     syllabus: SOM_SYLLABUS,
     paperCount: 8,
-    progress: 100,
     bookFile:
       "books/Strength of Materials -- Andrew Pytel, Ferdinand Leon Singer -- 4th ed_, New York, New York State, 1987 -- HarperCollins Publishers  - Copy.pdf",
   },
@@ -364,7 +361,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(thermoRaw),
     syllabus: THERMO_SYLLABUS,
     paperCount: 7,
-    progress: 100,
   },
   materials: {
     slug: "materials",
@@ -377,7 +373,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(materialsRaw),
     syllabus: MATERIALS_SYLLABUS,
     paperCount: 8,
-    progress: 100,
   },
   manufacturing: {
     slug: "manufacturing",
@@ -390,7 +385,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(manufacturingRaw),
     syllabus: MANUFACTURING_SYLLABUS,
     paperCount: 7,
-    progress: 100,
   },
   numerical: {
     slug: "numerical",
@@ -403,7 +397,6 @@ export const SUBJECTS: Record<string, Subject> = {
     content: splitSubject(numericalRaw),
     syllabus: NUMERICAL_SYLLABUS,
     paperCount: 7,
-    progress: 100,
   },
 };
 

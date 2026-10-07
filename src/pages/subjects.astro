@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSubjects } from '../lib/subjects';
+import { TRACKER } from '../lib/tracker/config';
 const subjects = getSubjects();
 ---
 <BaseLayout title="Subjects | MechVault" active="subjects">
@@ -10,7 +11,7 @@ const subjects = getSubjects();
         <a href="/">MechVault</a> · <span>Subjects</span>
       </nav>
       <h1>Subject sheets</h1>
-      <p class="lede">Three subjects. One semester. Pick a sheet to open its syllabus, module notes, cheat sheet, and PYQ bank.</p>
+      <p class="lede">Six subjects. One semester. Pick a sheet for notes and PYQs, or open the tracker to see what you can actually reproduce.</p>
     </div>
   </header>
 
@@ -32,9 +33,9 @@ const subjects = getSubjects();
                 <th scope="col">Papers</th>
                 <th scope="col">Modules</th>
                 <th scope="col">Topics</th>
-                <th scope="col">Notes</th>
-                <th scope="col">PYQs</th>
-                <th scope="col">Cheat sheet</th>
+                <th scope="col">Study mode</th>
+                <th scope="col">Tracked</th>
+                <th scope="col">Paper</th>
                 <th scope="col">Open</th>
               </tr>
             </thead>
@@ -52,25 +53,20 @@ const subjects = getSubjects();
                   <td><span class="num-badge">{subj.syllabus.length}</span></td>
                   <td><span class="num-badge">{subj.content.modules.reduce((sum, m) => sum + m.topics.length, 0)}</span></td>
                   <td>
-                    <progress class="progress-bar" value={subj.progress} max="100" aria-label={`Notes ${subj.progress}% complete`}>
-                      {subj.progress}%
-                    </progress>
+                    <span class="kind">{TRACKER[subj.slug]?.mode ?? subj.short}</span>
                   </td>
                   <td>
-                    <span class="status-badge" data-status={subj.progress === 100 ? 'ready' : 'partial'}>
-                      <svg class="status-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5">
-                        {subj.progress === 100 ? '<path d="M4 8l3 3 5-5"/>' : '<circle cx="8" cy="8" r="6" stroke-dasharray="28.27 18.85" stroke-dashoffset="0"/>'}
-                      </svg>
-                      <span class="status-text">{subj.progress === 100 ? 'Complete' : 'Partial'}</span>
+                    <span class="num-badge">
+                      {TRACKER[subj.slug]?.topics.length ?? 0}T / {TRACKER[subj.slug]?.problems.length ?? 0}P
                     </span>
                   </td>
                   <td>
-                    <span class="status-badge" data-status={subj.progress === 100 ? 'ready' : 'partial'}>
-                      <svg class="status-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5">
-                        {subj.progress === 100 ? '<path d="M4 8l3 3 5-5"/>' : '<circle cx="8" cy="8" r="6" stroke-dasharray="28.27 18.85" stroke-dashoffset="0"/>'}
-                      </svg>
-                      <span class="status-text">{subj.progress === 100 ? 'Ready' : 'In progress'}</span>
+                    <span class="status-badge" data-status="partial">
+                      <span class="status-text">{TRACKER[subj.slug]?.exam.minutes ?? "—"} min</span>
                     </span>
+                  </td>
+                  <td>
+                    <a class="btn btn-ghost" href={`/${subj.slug}/track`} aria-label={`Track ${subj.name} mastery`}>Track →</a>
                   </td>
                   <td>
                     <a class="btn btn-ghost" href={`/${subj.slug}`} aria-label={`Open ${subj.name} sheet`}>Open →</a>
@@ -118,12 +114,19 @@ const subjects = getSubjects();
                   <dd>{subj.content.modules.reduce((sum, m) => sum + m.topics.length, 0)}</dd>
                 </div>
                 <div class="spec-row">
-                  <dt>Notes progress</dt>
+                  <dt>Study mode</dt>
+                  <dd>{TRACKER[subj.slug]?.modeLabel ?? "—"}</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Tracked items</dt>
                   <dd>
-                    <progress class="progress-bar inline" value={subj.progress} max="100" aria-label={`Notes ${subj.progress}% complete`}>
-                      {subj.progress}%
-                    </progress>
+                    {TRACKER[subj.slug]?.topics.length ?? 0} topics · {TRACKER[subj.slug]?.problems.length ?? 0} problems
+                    {TRACKER[subj.slug]?.decks.length ? ` · ${TRACKER[subj.slug]!.decks.length} contrast decks` : ""}
                   </dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Mastery tracker</dt>
+                  <dd><a class="book-link" href={`/${subj.slug}/track`}>Open tracker →</a></dd>
                 </div>
                 {subj.bookFile && (
                   <div class="spec-row">

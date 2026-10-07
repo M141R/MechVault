@@ -1,0 +1,520 @@
+---
+/**
+ * Subject tracker board — the thing you actually work from.
+ *
+ * Renders the config for one subject and lets state be advanced in place.
+ * Server-rendered first so it is usable without JS for reading; the buttons
+ * progressively enhance into POSTs.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSubject } from "../../lib/subjects";
+import { trackerIsLocal } from "../../lib/auth-single";
+import { getTrackerConfig, studyAction } from "../../lib/tracker/config";
+import {
+  TOPIC_STATES,
+  PROBLEM_STATES,
+  type TopicStateName,
+  type ProblemStateName,
+} from "../../lib/tracker/engine";
+
+const subject = getSubject(Astro.params.subject);
+const cfg = getTrackerConfig(Astro.params.subject);
+
+if (!subject || !cfg) {
+  return new Response("Unknown subject", { status: 404 });
+}
+
+const topicState = new Map<string, TopicStateName>();
+const problemState = new Map<string, ProblemStateName>();
+const problemMeta = new Map<
+  string,
+  { hintLevel: number; errorReason: string | null; attempts: number }
+>();
+
+// In single-user mode there is no database. Import lib/auth only on the DB path,
+// since that import reaches Neon and is exactly what this mode avoids.
+const local = trackerIsLocal();
+let user: { id: string } | null = null;
+
+if (local) {
+  const { singleUserSession } = await import("../../lib/auth-single");
+  const s = await singleUserSession(Astro.request);
+  // singleUserSession wraps the user in `{ user }`; unwrap it.
+  user = s?.user ?? null;
+} else {
+  const { getSessionSafe } = await import("../../lib/auth");
+  const session = await getSessionSafe(Astro.request.headers).catch(() => null);
+  user = (session?.user as { id: string } | undefined) ?? null;
+}
+
+if (local) {
+  // Server has no state to read; the client script hydrates from localStorage.
+} else if (user) {
+  try {
+    const { readStates } = await import("../../lib/tracker/store");
+    const { topics, problems } = await readStates(user.id);
+    for (const t of topics) topicState.set(t.key, t.state as TopicStateName);
+    for (const p of problems) {
+      problemState.set(p.key, p.state as ProblemStateName);
+      problemMeta.set(p.key, {
+        hintLevel: p.hintLevel,
+        errorReason: p.errorReason,
+        attempts: p.attempts,
+      });
+    }
+  } catch {
+    // Read-only render; the alert below explains.
+  }
+}
+
+const modules = [1, 2, 3, 4, 5].map((m) => ({
+  num: m,
+  name: subject.syllabus.find((s) => s.num === m)?.name ?? `Module ${m}`,
+  topics: cfg.topics.filter((t) => t.module === m),
+  problems: cfg.problems.filter((p) => p.module === m),
+  decks: cfg.decks.filter((d) => d.module === m),
+}));
+
+const label: Record<string, string> = {
+  unseen: "Unseen",
+  read: "Read",
+  rederived: "Re-derived",
+  "self-tested": "Self-tested",
+  "exam-ready": "Exam-ready",
+  flaky: "Flaky",
+  "attempted-fail": "Attempted · failed",
+  understood: "Understood",
+  "solved-cold": "Solved cold",
+  "exam-speed": "Exam speed",
+};
+---
+
+<BaseLayout title={`${subject.short} tracker · MechVault`}>
+  <section
+    class="page"
+    data-subject={cfg.slug}
+    data-storage={local ? "local" : "db"}
+  >
+    <a href="/dashboard" class="back">← Dashboard</a>
+
+    <header class="page-head">
+      <div>
+        <h1>{cfg.name} <span class="code">{cfg.exam.code}</span></h1>
+        <p class="sub">
+          <strong>{cfg.modeLabel}</strong> · {cfg.exam.minutes} minutes ·
+          {cfg.exam.marksTotal} marks · roughly {cfg.exam.marksPerModule} from each of the
+          5 modules
+        </p>
+      </div>
+      <a href={`/${cfg.slug}`} class="btn btn-accent">Notes &amp; PYQs</a>
+    </header>
+
+    {local && (
+      <div class="alert alert-local" role="note">
+        <strong>Single-user mode — state is stored in this browser only.</strong>
+        <span>
+          No database is involved. Tracker state lives in this browser's
+          localStorage, so clearing site data or switching device resets it. Do
+          not read an empty tracker as a reset understanding.
+        </span>
+      </div>
+    )}
+
+    <div class="alert" role="note">
+      <strong>Why this subject works this way:</strong> {cfg.diagnosis}
+    </div>
+
+    <p class="note">
+      Exam format is inferred from {cfg.exam.basis} and is <em>not</em> yet confirmed
+      against the official notification. Marks: {cfg.exam.marksTotal} total,
+      {cfg.exam.marksPerQuestion} per question, {cfg.exam.questionsPerModule} question per module.
+    </p>
+
+    <div class="filters">
+      <label>Tier
+        <select id="tier-filter">
+          <option value="">All</option>
+          <option value="A">Tier A only</option>
+          <option value="B">Tier B only</option>
+          <option value="C">Tier C only</option>
+        </select>
+      </label>
+      <label>Show
+        <select id="state-filter">
+          <option value="">Everything</option>
+          <option value="unseen">Not started</option>
+          <option value="done">Covered (self-tested / exam-ready)</option>
+          <option value="flaky">Flaky only</option>
+        </select>
+      </label>
+    </div>
+
+    {modules.map((m) => (
+      <section class="module" data-module={m.num}>
+        <h2><span class="mod-num">M{m.num}</span> {m.name}</h2>
+
+        {m.decks.length > 0 && (
+          <div class="decks">
+            {m.decks.map((d) => (
+              <details class="deck">
+                <summary>
+                  <span class="deck-title">{d.title}</span>
+                  <span class="deck-count">{d.pairs.length} contrasts</span>
+                </summary>
+                <p class="deck-evidence">{d.evidence}</p>
+                {(d.answerPoints ?? []).length > 0 && (
+                  <p class="deck-points">
+                    <strong>Answer points an examiner expects:</strong>
+                    {(d.answerPoints ?? []).join(" · ")}
+                  </p>
+                )}
+                <ol class="pairs">
+                  {d.pairs.map((p) => (
+                    <li>
+                      <span class="pair-ab">{p.a}</span>
+                      {p.b && p.b !== "—" && <span class="pair-b">vs {p.b}</span>}
+                      <span class="pair-c">{p.contrast}</span>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            ))}
+          </div>
+        )}
+
+        {m.topics.length > 0 && (
+          <table class="grid-table">
+            <thead>
+              <tr><th>Topic</th><th>Tier</th><th>Kind</th><th>Why</th><th>State</th></tr>
+            </thead>
+            <tbody>
+              {m.topics.map((t) => {
+                const st = topicState.get(t.key) ?? "unseen";
+                const act = studyAction(t.kind, st);
+                return (
+                  <tr data-key={t.key} data-kind="topic" data-tier={t.tier} data-state={st}>
+                    <td>
+                      <span class="t-title">{t.title}</span>
+                      {t.cue && <span class="t-cue">Cue: {t.cue}</span>}
+                      <span class="t-action"><strong>{act.verb}</strong> — {act.detail}</span>
+                    </td>
+                    <td><span class="tier tier-{t.tier}">{t.tier}</span></td>
+                    <td><span class="kind">{t.kind}</span></td>
+                    <td class="ev">{t.evidence}</td>
+                    <td>
+                      <select class="state-select" data-key={t.key}>
+                        {TOPIC_STATES.map((s) => (
+                          <option value={s} selected={s === st}>{label[s]}</option>
+                        ))}
+                      </select>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+
+        {m.problems.length > 0 && (
+          <>
+            <h3 class="sub-head">Problems</h3>
+            <table class="grid-table">
+              <thead>
+                <tr><th>Problem</th><th>PYQs</th><th>Why</th><th>Hints</th><th>State</th></tr>
+              </thead>
+              <tbody>
+                {m.problems.map((p) => {
+                  const st = problemState.get(p.key) ?? "unseen";
+                  const meta = problemMeta.get(p.key);
+                  const act = studyAction(p.kind, st);
+                  return (
+                    <tr data-key={p.key} data-kind="problem" data-state={st}>
+                      <td>
+                        <span class="t-title">{p.title}</span>
+                        <span class="t-action"><strong>{act.verb}</strong> — {act.detail}</span>
+                        <label class="err">
+                          <span>Where it broke</span>
+                          <input
+                            type="text"
+                            class="error-input"
+                            data-key={p.key}
+                            placeholder="e.g. used the thin-wall limit in the thick-cylinder question"
+                            value={meta?.errorReason ?? ""}
+                          />
+                        </label>
+                      </td>
+                      <td class="pyqs">
+                        {(p.pyqs ?? []).map((q) => <span class="pyq">{q}</span>)}
+                      </td>
+                      <td class="ev">{p.evidence}</td>
+                      <td>
+                        <input
+                          type="number"
+                          class="hint-input"
+                          data-key={p.key}
+                          min="0"
+                          max="9"
+                          value={meta?.hintLevel ?? 0}
+                          title="AI hints consumed. Must be 0 to reach exam-speed."
+                        />
+                      </td>
+                      <td>
+                        <select class="state-select" data-key={p.key}>
+                          {PROBLEM_STATES.map((s) => (
+                            <option value={s} selected={s === st}>{label[s]}</option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </>
+        )}
+      </section>
+    ))}
+
+    <div class="toast" id="toast" hidden></div>
+  </section>
+
+  <script>
+    import { TOPIC_STATES, PROBLEM_STATES } from "../../lib/tracker/engine";
+
+    const single =
+      document.querySelector(".page")?.getAttribute("data-storage") === "local";
+
+    const toast = document.getElementById("toast") as HTMLElement;
+    let toastTimer: ReturnType<typeof setTimeout> | undefined;
+
+    // Hydrate from localStorage in single-user mode: the server rendered `unseen`
+    // for everything because it has no state to read.
+    if (single) {
+      const { readLocalStates } = await import("../../lib/tracker/local-store");
+      const { topics, problems } = readLocalStates();
+      const apply = (key: string, state: string) => {
+        for (const el of document.querySelectorAll<HTMLSelectElement>(
+          `.state-select[data-key="${key}"]`,
+        )) {
+          el.value = state;
+          const row = el.closest<HTMLElement>("tr");
+          if (row) row.dataset.state = state;
+        }
+      };
+      for (const t of topics) apply(t.key, t.state);
+      for (const p of problems) {
+        apply(p.key, p.state);
+        const row = document.querySelector<HTMLElement>(`tr[data-key="${p.key}"]`);
+        if (!row) continue;
+        const hint = row.querySelector<HTMLInputElement>(".hint-input");
+        const errIn = row.querySelector<HTMLInputElement>(".error-input");
+        if (hint) hint.value = String(p.hintLevel ?? 0);
+        if (errIn && p.errorReason) errIn.value = p.errorReason;
+      }
+      applyFilters();
+    }
+
+    function say(msg: string, bad = false) {
+      toast.textContent = msg;
+      toast.hidden = false;
+      toast.dataset.bad = bad ? "1" : "0";
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => (toast.hidden = true), 5200);
+    }
+
+    async function post(body: Record<string, unknown>) {
+      if (single) {
+        // Browser-local persistence, same gates, no network hop.
+        if (body.kind === "topic") {
+          const { updateLocalTopic } = await import(
+            "../../lib/tracker/local-store"
+          );
+          const res = updateLocalTopic({
+            key: String(body.key),
+            state: String(body.state),
+            errorReason: (body.errorReason as string | null) ?? null,
+          });
+          if (!res.ok) throw new Error(res.error ?? "save failed");
+        }
+        return;
+      }
+      const res = await fetch("/api/progress", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json().catch(() => ({ error: "bad response" }));
+      if (!res.ok) throw new Error(data.error ?? "save failed");
+    }
+
+    async function saveProblemMeta(key: string) {
+      const row = document.querySelector<HTMLElement>(`tr[data-key="${key}"]`);
+      if (!row) return;
+      const hint = Number(row.querySelector<HTMLInputElement>(".hint-input")?.value ?? 0);
+      const errText = row.querySelector<HTMLInputElement>(".error-input")?.value ?? "";
+      if (single) {
+        const { updateLocalProblem } = await import("../../lib/tracker/local-store");
+        const res = updateLocalProblem({
+          key,
+          state: row.dataset.state ?? "unseen",
+          hintLevel: hint,
+          errorReason: errText,
+        });
+        if (!res.ok) throw new Error(res.error ?? "save failed");
+        return;
+      }
+
+      await post({
+        kind: "problem",
+        key,
+        state: row.dataset.state ?? "unseen",
+        hintLevel: hint,
+        errorReason: errText,
+      });
+    }
+
+    for (const sel of document.querySelectorAll<HTMLSelectElement>(".state-select")) {
+      sel.addEventListener("change", async (e) => {
+        const el = e.target as HTMLSelectElement;
+        const row = el.closest<HTMLElement>("tr");
+        if (!row) return;
+        const kind = row.dataset.kind;
+        const key = row.dataset.key!;
+        const to = el.value;
+        const previous = row.dataset.state ?? "unseen";
+        const allowed = kind === "topic" ? TOPIC_STATES : PROBLEM_STATES;
+        if (!(allowed as readonly string[]).includes(to)) {
+          say(`Unknown state ${to}.`, true);
+          el.value = previous;
+          return;
+        }
+        row.dataset.state = to;
+        try {
+          if (kind === "problem") await saveProblemMeta(key);
+          else await post({ kind: "topic", key, state: to });
+          say(`${key} → ${to.replace(/-/g, " ")}`);
+        } catch (err) {
+          // The server is the authority on the gates. Revert on refusal so the
+          // UI never shows a state the rules did not actually allow.
+          row.dataset.state = previous;
+          el.value = previous;
+          say((err as Error).message, true);
+        }
+      });
+    }
+
+    for (const inp of document.querySelectorAll<HTMLInputElement>(
+      ".hint-input, .error-input",
+    )) {
+      inp.addEventListener("change", async () => {
+        const key = inp.dataset.key!;
+        try {
+          await saveProblemMeta(key);
+          say("Saved.");
+        } catch (err) {
+          say((err as Error).message, true);
+        }
+      });
+    }
+
+    const tier = document.getElementById("tier-filter") as HTMLSelectElement | null;
+    const state = document.getElementById("state-filter") as HTMLSelectElement | null;
+
+    function applyFilters() {
+      const t = tier?.value ?? "";
+      const s = state?.value ?? "";
+      const covered = new Set([
+        "self-tested",
+        "exam-ready",
+        "solved-cold",
+        "exam-speed",
+      ]);
+      for (const row of document.querySelectorAll<HTMLElement>("tr[data-key]")) {
+        const okTier = !t || row.dataset.tier === t;
+        const st = row.dataset.state ?? "";
+        const okState =
+          !s ||
+          (s === "done" && covered.has(st)) ||
+          (s === "unseen" && st === "unseen") ||
+          (s === "flaky" && st === "flaky");
+        row.hidden = !(okTier && okState);
+      }
+      for (const sec of document.querySelectorAll<HTMLElement>(".module")) {
+        const any =
+          sec.querySelectorAll("tr[data-key]:not([hidden])").length > 0 ||
+          sec.querySelectorAll(".deck").length > 0;
+        sec.hidden = !any;
+      }
+    }
+    tier?.addEventListener("change", applyFilters);
+    state?.addEventListener("change", applyFilters);
+    applyFilters();
+  </script>
+</BaseLayout>
+
+<style>
+  .back { font-size: 13px; text-decoration: none; color: var(--muted); }
+  .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .alert {
+    padding: 12px 14px; border-radius: 8px; font-size: 14px; line-height: 1.55;
+    background: color-mix(in srgb, var(--annotation) 10%, transparent);
+    border-left: 3px solid var(--annotation); margin: 14px 0;
+  }
+  .note { font-size: 13px; color: var(--muted); }
+
+  .filters { display: flex; gap: 16px; flex-wrap: wrap; margin: 18px 0 6px; font-size: 13px; }
+  .filters label { display: grid; gap: 4px; color: var(--muted); }
+  .filters select { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); }
+
+  .module { margin: 26px 0; }
+  .mod-num { font-family: var(--mono); color: var(--accent); }
+  .sub-head { font-size: 14px; margin: 18px 0 6px; }
+
+  .grid-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .grid-table th {
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 600;
+  }
+  .grid-table td { padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .t-title { display: block; font-weight: 550; line-height: 1.45; }
+  .t-cue { display: block; font-size: 12px; color: var(--muted); font-style: italic; margin-top: 3px; }
+  .t-action { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .ev { font-size: 12px; color: var(--muted); max-width: 30ch; }
+  .tier { font-family: var(--mono); font-weight: 650; }
+  .tier-A { color: #d1453b; }
+  .tier-B { color: #b8860b; }
+  .tier-C { color: var(--muted); }
+  .kind { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border); }
+  .pyqs { display: flex; flex-wrap: wrap; gap: 4px; max-width: 18ch; }
+  .pyq { font-family: var(--mono); font-size: 11px; padding: 1px 5px; border-radius: 3px; background: var(--surface-2); }
+  .state-select, .hint-input, .error-input {
+    padding: 4px 6px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--text); font-size: 12px;
+  }
+  .hint-input { width: 54px; }
+  .err { display: grid; gap: 2px; margin-top: 6px; font-size: 11px; color: var(--muted); }
+  .error-input { width: 100%; min-width: 22ch; }
+
+  tr[data-state="flaky"] { background: color-mix(in srgb, #d1453b 8%, transparent); }
+  tr[data-state="exam-ready"] { background: color-mix(in srgb, #1a7f5a 8%, transparent); }
+  tr[data-state="exam-speed"] { background: color-mix(in srgb, #1a7f5a 8%, transparent); }
+
+  .decks { display: grid; gap: 8px; margin: 10px 0 16px; }
+  .deck { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-1); }
+  .deck summary { cursor: pointer; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+  .deck-title { font-weight: 600; }
+  .deck-count { font-size: 12px; color: var(--muted); }
+  .deck-evidence, .deck-points { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  .pairs { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 13px; }
+  .pair-ab { font-weight: 600; }
+  .pair-b { color: var(--muted); font-weight: 500; }
+  .pair-c { display: block; color: var(--muted); line-height: 1.5; }
+
+  .toast {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    padding: 10px 16px; border-radius: 8px; font-size: 13px; z-index: 50;
+    background: var(--surface-2); border: 1px solid var(--border); max-width: 90vw;
+  }
+  .toast[data-bad="1"] { border-color: #d1453b; color: #d1453b; }
+</style>

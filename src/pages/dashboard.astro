@@ -1,0 +1,330 @@
+---
+/**
+ * Dashboard — the exam-countdown and real-coverage view.
+ *
+ * Replaces the old hardcoded `progress: 100` on every subject card. Coverage
+ * here is computed from the user's actual topic/problem state, so a blank
+ * tracker honestly reads 0%.
+ *
+ * If the database is unreachable the page says so instead of rendering 0%,
+ * because "0% covered" and "could not load" are very different statements.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { trackerIsLocal } from "../lib/auth-single";
+import { TRACKER, TRACKER_ORDER, studyAction } from "../lib/tracker/config";
+import {
+  TOPIC_COVERED,
+  TOPIC_MASTERED,
+  PROBLEM_COVERED,
+  PROBLEM_MASTERED,
+  tally,
+  pct,
+  countDaysUntil,
+  type TopicStateName,
+  type ProblemStateName,
+} from "../lib/tracker/engine";
+
+/** End-sem window for BIT Mesra, November 2026. Confirmed by the user. */
+const EXAM_START = "2026-11-17";
+const EXAM_END = "2026-11-25";
+/** Subject-wise order is NOT yet published — do not pretend otherwise. */
+const EXAM_ORDER_KNOWN = false;
+
+const local = trackerIsLocal();
+type Who = { id: string; username?: string; name?: string };
+let user: Who | null = null;
+
+if (local) {
+  const { singleUserSession } = await import("../lib/auth-single");
+  const s = await singleUserSession(Astro.request);
+  // singleUserSession wraps the user in `{ user }`; unwrap it.
+  user = (s?.user ?? null) as Who | null;
+} else {
+  const { getSessionSafe } = await import("../lib/auth");
+  const s = await getSessionSafe(Astro.request.headers).catch(() => null);
+  user = (s?.user ?? null) as Who | null;
+}
+
+const days = countDaysUntil(EXAM_START);
+const windowDays = countDaysUntil(EXAM_END);
+
+const topicState = new Map<string, TopicStateName>();
+const problemState = new Map<string, ProblemStateName>();
+let loadError: string | null = null;
+
+// In single-user mode the server has no state; the client hydrates the DOM from
+// localStorage after load, so the figures below legitimately start at zero.
+if (!local && user) {
+  try {
+    const { readStates } = await import("../lib/tracker/store");
+    const { topics, problems } = await readStates(user.id);
+    for (const t of topics) topicState.set(t.key, t.state as TopicStateName);
+    for (const p of problems) problemState.set(p.key, p.state as ProblemStateName);
+  } catch (e) {
+    loadError = (e as Error).message;
+  }
+}
+
+const subjects = TRACKER_ORDER.map((slug) => {
+  const c = TRACKER[slug];
+  const tStates = c.topics.map((t) => topicState.get(t.key) ?? "unseen");
+  const pStates = c.problems.map((p) => problemState.get(p.key) ?? "unseen");
+  const tc = tally(c.topics.length, tStates, TOPIC_COVERED, TOPIC_MASTERED);
+  const pc = tally(c.problems.length, pStates, PROBLEM_COVERED, PROBLEM_MASTERED);
+
+  // "Next action": the first Tier A item not yet covered. This is the whole
+  // point of the tracker — it answers "what do I do in the next hour".
+  const next =
+    c.topics.find((t, i) => t.tier === "A" && !TOPIC_COVERED.has(tStates[i])) ??
+    c.topics.find((t, i) => !TOPIC_COVERED.has(tStates[i]));
+
+  const flakyCount =
+    tStates.filter((s) => s === "flaky").length +
+    pStates.filter((s) => s === "exam-speed" && false).length;
+
+  const overall =
+    pct(tc.covered + pc.covered, tc.total + pc.total);
+
+  return {
+    cfg: c,
+    topics: tc,
+    problems: pc,
+    topicPct: pct(tc.covered, tc.total),
+    problemPct: pct(pc.covered, pc.total),
+    overall,
+    next,
+    nextAction: next ? studyAction(next.kind, topicState.get(next.key) ?? "unseen") : null,
+    flaky: flakyCount,
+  };
+});
+
+const totals = subjects.reduce(
+  (acc, s) => {
+    acc.topicTotal += s.topics.total;
+    acc.topicCovered += s.topics.covered;
+    acc.topicMastered += s.topics.mastered;
+    acc.problemTotal += s.problems.total;
+    acc.problemCovered += s.problems.covered;
+    acc.problemMastered += s.problems.mastered;
+    return acc;
+  },
+  { topicTotal: 0, topicCovered: 0, topicMastered: 0, problemTotal: 0, problemCovered: 0, problemMastered: 0 },
+);
+const grandPct = pct(totals.topicCovered + totals.problemCovered, totals.topicTotal + totals.problemTotal);
+---
+
+<BaseLayout title="Dashboard · MechVault">
+  <section class="page">
+    <header class="page-head">
+      <div>
+        <h1>Exam tracker</h1>
+        <p class="sub">
+          Signed in as <strong>{user?.username ?? user?.name ?? "—"}</strong>.
+          Coverage is computed from what you have actually reproduced and solved,
+          never from pages you have read.
+        </p>
+      </div>
+    </header>
+
+    {loadError && (
+      <div class="alert alert-error" role="alert">
+        <strong>Could not load your tracker state.</strong>
+        <span>{loadError}</span>
+        <span class="hint">Coverage figures below are unavailable, not zero — fix the connection before trusting them.</span>
+      </div>
+    )}
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num" class:list={{ urgent: days <= 14 }}>{days}</span>
+        <span class="stat-label">days to 17 Nov</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{windowDays - days}</span>
+        <span class="stat-label">day exam window</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{grandPct}%</span>
+        <span class="stat-label">covered overall</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{totals.topicMastered}/{totals.topicTotal}</span>
+        <span class="stat-label">topics exam-ready</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{totals.problemMastered}/{totals.problemTotal}</span>
+        <span class="stat-label">problems exam-speed</span>
+      </div>
+    </div>
+
+    {!EXAM_ORDER_KNOWN && (
+      <p class="note">
+        <strong>Subject-wise exam order is not published yet.</strong>
+        Timed full-paper simulations cannot be sequenced against the real order,
+        so until the timetable lands, rotate papers in the order the Vikunja
+        schedule gives you rather than assuming a sequence.
+      </p>
+    )}
+
+    <h2>What to do next</h2>
+    <ul class="next-list">
+      {subjects
+        .filter((s) => s.next)
+        .map((s) => (
+          <li class="next-item">
+            <a href={`/${s.cfg.slug}/track`} class="next-link">
+              <span class="next-subject">{s.cfg.short}</span>
+              <span class="next-verb">{s.nextAction?.verb}</span>
+              <span class="next-title">{s.next!.title}</span>
+            </a>
+            <span class="next-detail">{s.nextAction?.detail}</span>
+            {s.next?.cue && <span class="next-cue">Cue: {s.next.cue}</span>}
+          </li>
+        ))}
+    </ul>
+
+    <h2>Coverage by subject</h2>
+    <div class="grid">
+      {subjects.map((s) => (
+        <article class="card">
+          <header class="card-head">
+            <a href={`/${s.cfg.slug}/track`} class="card-title">{s.cfg.name}</a>
+            <span class="code">{s.cfg.exam.code}</span>
+          </header>
+
+          <p class="mode">
+            <span class="mode-verb">{s.cfg.modeLabel}</span>
+            <span class="mode-time">{s.cfg.exam.minutes} min paper</span>
+          </p>
+
+          <p class="diag">{s.cfg.diagnosis}</p>
+
+          <div class="bars">
+            <div class="bar-row">
+              <span class="bar-label">Topics self-tested / exam-ready</span>
+              <span class="bar-num">{s.topics.covered}/{s.topics.total}</span>
+              <progress class="progress-bar" value={s.topics.covered} max={s.topics.total || 1}></progress>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Problems cold-solved / exam-speed</span>
+              <span class="bar-num">{s.problems.covered}/{s.problems.total}</span>
+              <progress class="progress-bar" value={s.problems.covered} max={s.problems.total || 1}></progress>
+            </div>
+          </div>
+
+          <div class="card-foot">
+            <span class="pill">{s.overall}% overall</span>
+            {s.topics.mastered > 0 && <span class="pill good">{s.topics.mastered} exam-ready</span>}
+            {s.flaky > 0 && <span class="pill warn">{s.flaky} flaky</span>}
+            {s.cfg.decks.length > 0 && <span class="pill">{s.cfg.decks.length} contrast decks</span>}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <h2>How to read this</h2>
+    <div class="rules">
+      <div class="rule">
+        <h3>Covered ≠ read</h3>
+        <p>
+          A topic only counts once you have marked it <code>self-tested</code>, and the
+          tracker refuses that unless you first marked it <code>rederived</code>. The gate
+          exists because reading a derivation feels identical to knowing it and is not.
+        </p>
+      </div>
+      <div class="rule">
+        <h3>Hints break the chain</h3>
+        <p>
+          <code>exam-speed</code> requires zero AI hints. A solve that needed three hints is
+          evidence of understanding, not of exam readiness, so it will not count.
+        </p>
+      </div>
+      <div class="rule">
+        <h3>The subject sets the verb</h3>
+        <p>
+          Fluid and SOM need <em>derive</em>, Thermo needs <em>chain</em>, Materials and
+          Manufacturing need <em>contrast</em>, Numerical needs <em>execute</em>. One generic
+          "study" action cannot serve all six.
+        </p>
+      </div>
+      <div class="rule">
+        <h3>Evidence is labelled</h3>
+        <p>
+          Every item says why it is in its tier, and which papers support it. Where an item
+          rests on judgement rather than a paper, it says so — a tracker that looks more
+          certain than the evidence is worse than no tracker.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+  .stat {
+    flex: 1 1 120px; padding: 14px 16px; border-radius: 10px;
+    background: var(--surface-2); border: 1px solid var(--border);
+  }
+  .stat-num { display: block; font-size: 26px; font-weight: 650; letter-spacing: -0.02em; }
+  .stat-num.urgent { color: #d1453b; }
+  .stat-label { font-size: 12px; color: var(--muted); }
+
+  .note {
+    padding: 12px 14px; border-radius: 8px; font-size: 14px;
+    background: color-mix(in srgb, var(--annotation) 10%, transparent);
+    border-left: 3px solid var(--annotation);
+  }
+  .alert {
+    padding: 12px 14px; border-radius: 8px; margin: 16px 0; display: grid; gap: 4px;
+  }
+  .alert-error { background: color-mix(in srgb, #d1453b 12%, transparent); border-left: 3px solid #d1453b; }
+  .alert .hint { font-size: 13px; color: var(--muted); }
+
+  .next-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; }
+  .next-item {
+    padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border);
+    display: grid; gap: 4px;
+  }
+  .next-link { display: flex; gap: 10px; align-items: baseline; text-decoration: none; color: inherit; }
+  .next-subject { font-family: var(--mono); font-weight: 650; color: var(--accent); min-width: 44px; }
+  .next-verb {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 2px 6px; border-radius: 4px; background: var(--annotation);
+  }
+  .next-title { font-weight: 550; }
+  .next-detail, .next-cue { font-size: 13px; color: var(--muted); }
+  .next-cue { font-style: italic; }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .card {
+    padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--surface-1); display: grid; gap: 10px;
+  }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .card-title { font-weight: 650; font-size: 16px; color: var(--text); text-decoration: none; }
+  .card-title:hover { color: var(--accent); }
+  .code { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .mode { display: flex; gap: 8px; align-items: baseline; margin: 0; flex-wrap: wrap; }
+  .mode-verb { font-size: 12px; font-weight: 600; color: var(--accent); }
+  .mode-time { font-size: 12px; color: var(--muted); }
+  .diag { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .bars { display: grid; gap: 8px; }
+  .bar-row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 12px; }
+  .bar-label { color: var(--muted); }
+  .bar-num { font-family: var(--mono); color: var(--text); }
+  .bar-row .progress-bar { grid-column: 1 / -1; width: 100%; height: 6px; }
+
+  .card-foot { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--muted);
+  }
+  .pill.good { color: #1a7f5a; border-color: #1a7f5a55; }
+  .pill.warn { color: #b8860b; border-color: #b8860b55; }
+
+  .rules { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .rule h3 { font-size: 14px; margin: 0 0 4px; }
+  .rule p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .rule code { font-size: 12px; }
+</style>

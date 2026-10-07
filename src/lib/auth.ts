@@ -30,7 +30,9 @@ export const auth = betterAuth({
         type: "string",
         required: false,
         input: false,
-        defaultValue: "pending",
+        // Accounts are usable the moment they are created — the approval gate
+        // was removed. Existing rows keep whatever status they already had.
+        defaultValue: "approved",
       },
     },
     modelName: "user",

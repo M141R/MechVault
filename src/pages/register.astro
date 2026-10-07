@@ -10,15 +10,15 @@ try {
   // Neon still cold-starting — render the form; the client will handle retries.
 }
 if (loggedIn) {
-  return Astro.redirect(loggedIn.status === "approved" ? "/" : "/pending");
+  return Astro.redirect("/");
 }
 ---
 <BaseLayout title="Request access · MechVault" skipSession>
   <section class="auth-wrap">
     <div class="auth-card">
       <div class="auth-logo">M</div>
-      <h1>Request access</h1>
-      <p class="auth-sub">Create a username and password. An admin must approve your account before you can study.</p>
+      <h1>Create account</h1>
+      <p class="auth-sub">This vault is private. Make an account, sign in, and your tracker state follows your account — not your browser.</p>
       <form id="register-form" class="auth-form">
         <label>
           <span>Username</span>
@@ -39,7 +39,7 @@ if (loggedIn) {
         <div class="auth-error" hidden></div>
         <button type="submit" class="btn btn-accent auth-submit">Create account →</button>
       </form>
-      <p class="auth-alt">Already approved? <a href="/login">Sign in</a></p>
+      <p class="auth-alt">Already have an account? <a href="/login">Sign in</a></p>
     </div>
   </section>
 
@@ -75,7 +75,7 @@ if (loggedIn) {
         err.textContent = error.message || "Could not create account. Try a different username.";
         return;
       }
-      window.location.href = "/pending";
+      window.location.href = "/";
     });
   </script>
 </BaseLayout>
