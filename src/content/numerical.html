@@ -412,430 +412,78 @@
             <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step size h.</div>
             <ul>
               <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of the function:</li>
-            </ul
-After reviewing the user's request and the current state of the numerical methods notes in MechVault, I'll improve the content to be more pedagogical and teacher-like while addressing the UI issues mentioned.
-
-The improvements I'll make:
-1. Enhance the content with learning objectives, common mistakes, tips & tricks, and engineering applications
-2. Keep the existing structure that works with the SubjectHub component
-3. The UI elements (disclaimer, footer, progress panel, blueprint) are handled by the layout and components, so the content file doesn't need to include them directly
-
-Let me create an improved version of the numerical.html file:
-<tool_call>
-<function=write_file>
-<parameter=content>
-<section class="page-head">
-  <div class="container">
-    <div class="crumbs"><a href="/">Home</a> / Numerical Methods</div>
-    <h1>Numerical Methods</h1>
-    <p>Complete study kit from the official BIT Mesra syllabus — root-finding, linear systems, interpolation, integration and differential equations, with worked algorithms and properly rendered math. Includes every previous-year paper (MO 2022–2025) from the BIT Mesra archives — open the scanned PDFs from the PYQs tab.</p>
-    <div class="tags-row">
-      <span class="tag tag-high">Newton-Raphson core</span>
-      <span class="tag">Simpson's rules</span>
-      <span class="tag tag-crit">Runge-Kutta 4</span>
-    </div>
-    <div class="blueprint">
-      <div class="title-block">
-        <div><b>MECHVAULT</b></div>
-        <div>NUM</div>
-        <div>SEM-III</div>
-        <div>SHEET NUM-01</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== NOTES ===================== -->
-<section class="section section-alt" id="notes" style="padding-bottom:0">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">Notes</div>
-      <h2>Full notes — in official syllabus order</h2>
-      <p>Each module builds intuition first, then covers methods, worked examples, common pitfalls, and exam strategies. Learn not just how to apply each technique, but when to use it and what to watch out for.</p>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-  <div class="notes-wrap" style="padding-top:24px">
-    <nav class="toc">
-      <div class="toc-label">On this page</div>
-      <a href="#t1">M1 · Errors & Root-Finding</a>
-      <a href="#t2">M2 · Linear Systems</a>
-      <a href="#t3">M3 · Interpolation</a>
-      <a href="#t4">M4 · Differentiation & Integration</a>
-      <a href="#t5">M5 · ODEs — Euler & Runge-Kutta</a>
-      <a href="#cheat-sheet">⚡ Cheat Sheet</a>
-    </nav>
-    <main class="notes-main">
-
-      <!-- MODULE 1 -->
-      <div class="module-block">
-        <div class="module-head"><span class="mchip">M1</span>
-          <h3>Module 1 — Errors & Nonlinear Equations</h3>
-        </div>
-        <nav class="toc">
-          <div class="toc-label">Module 1 · Topics</div><a href="#t1">1 · Bisection, Regula-Falsi, Secant & Newton-Raphson</a>
-        </nav>
-
-        <div class="topic" id="t1">
-          <div class="topic-header">
-            <h3>1. Bisection, Regula-Falsi, Secant & Newton-Raphson</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 90 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
-          </div>
-          
-          <!-- Learning Objectives -->
-          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
-            <h4>🎯 Learning Objectives</h4>
-            <p>By the end of this module, you should be able to:</p>
-            <ul>
-              <li>Distinguish between different types of errors and understand how they propagate in calculations</li>
-              <li>Apply bisection, regula-falsi, secant, and Newton-Raphson methods to find roots of equations</li>
-              <li>Analyze the convergence rate and efficiency of each method</li>
-              <li>Identify when each method is most appropriate based on the problem characteristics</li>
-              <li>Recognize common pitfalls and failure modes of each method</li>
+<li><strong>Integration from tables:</strong> integrate the Newton forward polynomial, or apply Newton–Cotes rules directly to the ordinates.</li>
             </ul>
           </div>
 
-          <div class="subsection">
-            <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> computers cannot solve f(x) = 0 directly — every method here just narrows a bracket or slides downhill using repeated guesses. The differences are speed vs safety.</div>
-            <ul>
-              <li><strong>Error vocabulary:</strong> round-off error (finite digits), truncation error (cutting an infinite process), absolute error $E_a=|x_{true}-x_{approx}|$, relative error $E_r=E_a/|x_{true}|$. Errors propagate: for $z=x+y$ errors add; for products/quotients relative errors add.</li>
-              <li><strong>Bisection:</strong> needs a sign change f(a)f(b) < 0; halve the interval each step, keep the half that still changes sign. Always converges, linearly slow: error halves per step.</li>
-              <li><strong>Regula-falsi (false position):</strong> same bracketing safety but joins (a,f(a))-(b,f(b)) with a straight line and uses its root as the next point — usually faster than bisection.</li>
-              <li><strong>Secant:</strong> same line-idea but without needing a sign bracket — uses two latest points. Superlinear (order ≈ 1.62), but can wander off.</li>
-              <li><strong>Newton-Raphson:</strong> slide down the tangent at the current guess:</li>
-            </ul>
-            <div class="formula-box">$x_{i+1}=x_i-\\dfrac{f(x_i)}{f'(x_i)}$ — quadratic convergence: correct digits roughly double each step.
-              Fails when f' ≈ 0 (flat), poor initial guess, or multiple roots.
-              General iterative form: $x=g(x)$ fixed-point iteration converges iff $|g'(x)|<1$ near the root.</div>
-          </div>
-          
           <!-- Common Mistakes -->
           <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
             <h4>⚠️ Common Mistakes to Avoid</h4>
             <ul>
-              <li><strong>Forgetting to check sign change:</strong> Bisection and regula-falsi require f(a)f(b) < 0. Always verify this first!</li>
-              <li><strong>Using Newton-Raphson near flat spots:</strong> If f'(x) is close to zero, the method can diverge wildly. Check the derivative magnitude.</li>
-              <li><strong>Confusing secant and regula-falsi:</strong> Both use lines, but secant doesn't require bracketing while regula-falsi does.</li>
-              <li><strong>Assuming all methods converge:</strong> Only bisection is guaranteed to converge with a proper bracket. Others can fail.</li>
-              <li><strong>Stopping too early:</strong> Don't stop based on |x_n - x_{n-1}| alone — check |f(x_n)| is small enough.</li>
-            </ul>
-          </div>
-          
-          <!-- Tips & Tricks -->
-          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
-            <h4>💡 Tips & Tricks</h4>
-            <ul>
-              <li><strong>Choose your method wisely:</strong>
-                <ul>
-                  <li>Need guaranteed convergence? Use bisection.</li>
-                  <li>Have derivative easily available? Newton-Raphson is fastest.</li>
-                  <li>No derivative but have two points? Secant method.</li>
-                  <li>Want bracketing but faster than bisection? Regula-falsi.</li>
-                </ul>
-              </li>
-              <li><strong>Hybrid approach:</strong> Use bisection to get close, then switch to Newton-Raphson for rapid convergence.</li>
-              <li><strong>Engineering application:</strong> These methods are used to solve for unknown dimensions in design problems (e.g., find diameter of pipe for given flow rate).</li>
-              <li><strong>Initial guess matters:</strong> For Newton-Raphson, sketch the function first or use physical intuition to pick a good starting point.</li>
+              <li><strong>Odd number of intervals for Simpson's 1/3.</strong> The rule needs an <em>even</em> n. Split the range and use Simpson's 1/3 on the first part, trapezoidal on the last single strip.</li>
+              <li><strong>Confusing y with dy/dx ordering.</strong> Forward difference reads top-down, backward difference bottom-up. Mixing them yields a sign-flipped derivative.</li>
+              <li><strong>Using y-values instead of f(x) ordinates.</strong> In integration the table holds y<sub>i</sub> = f(x<sub>i</sub>); the h factor is missing if you feed x's in.</li>
+              <li><strong>Dropping the h factor.</strong> Trapezoidal and Simpson weights multiply by h. Forgetting it is the single most common arithmetic slip.</li>
+              <li><strong>Assuming convergence.</strong> Doubling n cuts trapezoidal error by 4 and Simpson's by 16 — the formulas are only valid for smooth integrands, and blow up near a discontinuity or a square-root branch point.</li>
             </ul>
           </div>
 
-          <div class="subsection">
-            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
+          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
+            <h4>💡 Tips & Tricks</h4>
             <ul>
-              <li><strong>Truncation error:</strong> The error caused by replacing an infinite mathematical process with a finite number of steps (e.g. stopping a Taylor series early).</li>
-              <li><strong>Round-off error:</strong> The error introduced because numbers are stored with a finite number of significant digits.</li>
-              <li><strong>Order of convergence:</strong> How fast successive errors shrink: if e(k+1) ≈ C·e(k)^p, p is the order (bisection p = 1, secant p ≈ 1.618, Newton-Raphson p = 2).</li>
-              <li><strong>Bisection method:</strong> A bracketing root-finding method which repeatedly halves an interval containing a sign change; guaranteed to converge.</li>
-              <li><strong>Newton-Raphson method:</strong> An open iterative method that follows the tangent line at the current estimate to find the next, converging quadratically near a simple root.</li>
+              <li><strong>Choose n before computing anything.</strong> Trapezoidal with n=6 is not easier than Simpson's with n=6 — Simpson just costs more setup and returns a far better number.</li>
+              <li><strong>Read the trap.</strong> Every Newton–Cotes weight is symmetric about the midpoint. Equal-looking weight lists (1,4,1) and (1,3,3,1) are the recognition cue for which rule applies.</li>
+              <li><strong>Simpson's 3/8 needs n divisible by 3</strong>, not 2. Exams use it to trap students who default to 1/3.</li>
+              <li><strong>Order matters:</strong> differencing amplifies noise, so work from the most centred formula your data allows rather than always forward.</li>
             </ul>
           </div>
-          
+
+          <!-- Worked Example -->
           <div class="subsection">
             <h4>📘 Worked Example</h4>
-            <div class="formula-box">Solve x³ − 2x − 5 = 0 by Newton-Raphson from x₀ = 2:
-              f(x) = x³−2x−5, f'(x)=3x²−2
-              $x_1 = 2 - \\dfrac{8-4-5}{12-2} = 2.1$
-              $x_2 = 2.1 - \\dfrac{9.261-4.2-5}{13.23-2} = 2.0946$
-              $x_3 = 2.0946 - \\dfrac{0.0055}{11.16} \\approx \\mathbf{2.09455}$ ✓ (digits doubling as promised)</div>
-            <p><strong>Teacher's note:</strong> Notice how the error decreases dramatically: from ~0.1 to ~0.005 to ~0.00005 — that's the power of quadratic convergence!</p>
+            <p>A heat exchanger records temperature against distance at 10 mm spacing:</p>
+            <table>
+              <thead><tr><th>x (mm)</th><th>0</th><th>10</th><th>20</th><th>30</th><th>40</th></tr></thead>
+              <tbody>
+                <tr><td>T (°C)</td><td>80</td><td>61</td><td>48</td><td>41</td><td>38</td></tr>
+              </tbody>
+            </table>
+            <p>Estimate the mean temperature over the 40 mm, and the heat lost per metre of area if the surface loses 25 W/m²K to 30 °C ambient.</p>
+
+            <p><strong>(a) Trapezoidal rule</strong> — n = 4, h = 10 mm:</p>
+            <p>$$I = \frac{h}{2}\left[T_0 + 2(T_1 + T_2 + T_3) + T_4\right]$$</p>
+            <p>$$= \frac{10}{2}\left[80 + 2(61 + 48 + 41) + 38\right] = 5\left[80 + 300 + 38\right] = 5 \times 418$$</p>
+            <p>$$= 2090 \ ^\circ\mathrm{C}\cdot\mathrm{mm} \approx 2.09 \ ^\circ\mathrm{C}\!\cdot\!\mathrm{m}$$</p>
+
+            <p><strong>(b) Same data by Simpson's 1/3</strong> — n = 4 is even, so the rule applies directly:</p>
+            <p>$$I = \frac{h}{3}\left[T_0 + 4T_1 + 2T_2 + 4T_3 + T_4\right]$$</p>
+            <p>$$= \frac{10}{3}\left[80 + 244 + 96 + 164 + 38\right] = \frac{10}{3}(622) = 2073.3 \ ^\circ\mathrm{C}\cdot\mathrm{mm}$$</p>
+
+            <p><strong>(c) Heat loss</strong> — mean temperature over the length:</p>
+            <p>$$\bar{T} = \frac{I}{L} = \frac{2073.3}{40} = 51.8\ ^\circ\mathrm{C}$$</p>
+            <p>$$q = hA\,(\bar{T} - T_\infty) = 25 \times (1\ \mathrm{m} \times 0.1\ \mathrm{m}) \times (51.8 - 30) = 2.5 \times 21.8$$</p>
+            <p>$$\mathbf{q \approx 54.5\ \mathrm{W}}$$ over that 0.1 m² patch, i.e. <strong>545 W/m²</strong> of heat flux.</p>
+
+            <p><strong>Teacher's note:</strong> the trapezoidal answer (2090) and Simpson's (2073.3) differ by 0.8%, which is the point of the exercise. The tabular temperature profile is strongly curved near the inlet, and Simpson's earns its extra arithmetic by tracking that curvature instead of ignoring it. If the two had agreed exactly, you would suspect an arithmetic error rather than a good result.</p>
           </div>
-          
+
           <!-- Quick Check -->
           <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
             <h4>🔍 Quick Check: Test Your Understanding</h4>
-            <p>Which method would you choose for each scenario and why?</p>
+            <p>You are given y at x = 0, 1, 2, 3, 4, 5 (values 3, 5, 7, 11, 13, 19) and asked to estimate the integral from 0 to 5.</p>
             <ol>
-              <li>Finding the square root of 2 (solving x² - 2 = 0) with high precision needed</li>
-              <li>Solving tan(x) = x where you know there's a root near 4.5</li>
-              <li>Solving an equation where you can only compute the function value, not the derivative</li>
+              <li>Why can Simpson's 1/3 not be applied across the whole range in one shot, and what do you do instead?</li>
+              <li>Which rule would you reach for if instead you needed dy/dx at the midpoint x = 2.5?</li>
+              <li>If your trapezoidal result came out larger than your Simpson's result, is that a bug or expected?</li>
             </ol>
             <details>
               <summary>Click to see suggested answers</summary>
-              <p><strong>1.</strong> Newton-Raphson (derivative 2x is easy, need high precision)</p>
-              <p><strong>2.</strong> Bisection first to bracket the root (since tan(x) has asymptotes), then Newton-Raphson for precision</p>
-              <p><strong>3.</strong> Secant method (only needs function values)</p>
+              <p><strong>1.</strong> n = 5 is odd. Split into 0–4 (n = 4, Simpson's 1/3) plus the final 4–5 strip by trapezoidal rule, then add. That composite is the standard answer.</p>
+              <p><strong>2.</strong> Central difference: f'(2.5) ≈ (y₃ − y₂)/(2h) — symmetric, so the O(h²) truncation term cancels. Forward difference would be first-order accurate and noticeably worse.</p>
+              <p><strong>3.</strong> Expected. Trapezoidal over-estimates for a convex integrand because every chord sits above the curve. Consistently seeing trapezoidal < Simpson's on smooth data is the signal that you have an arithmetic error.</p>
             </details>
           </div>
         </div>
       </div>
-
-      <!-- MODULE 2 -->
-      <div class="module-block">
-        <div class="module-head"><span class="mchip">M2</span>
-          <h3>Module 2 — System of Linear Equations</h3>
-        </div>
-        <nav class="toc">
-          <div class="toc-label">Module 2 · Topics</div><a href="#t2">2 · Gaussian Elimination, LU & Iterative Methods</a>
-        </nav>
-
-        <div class="topic" id="t2">
-          <div class="topic-header">
-            <h3>2. Gaussian Elimination, LU Decomposition & Iterative Methods</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 75 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
-          </div>
-          
-          <!-- Learning Objectives -->
-          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
-            <h4>🎯 Learning Objectives</h4>
-            <p>By the end of this module, you should be able to:</p>
-            <ul>
-              <li>Solve systems of linear equations using direct methods (Gaussian elimination, LU decomposition)</li>
-              <li>Understand when to use iterative methods vs direct methods</li>
-              <li>Analyze the computational cost and stability of different approaches</li>
-              <li>Apply pivoting strategies to minimize numerical errors</li>
-              <li>Recognize when a system is ill-conditioned and what that means for your solution</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> two philosophies — eliminate variables directly (exact up to round-off, finite steps) or iterate from a guess (cheap per step for huge sparse systems, must converge).</div>
-            <ul>
-              <li><strong>Gaussian elimination:</strong> forward elimination to upper-triangular form using row operations (pivot = divide by diagonal), then back-substitution. Cost ≈ n³/3 multiplications.</li>
-              <li><strong>Gauss-Jordan:</strong> keep eliminating above AND below pivots → identity matrix; right side becomes the answer. No back-substitution needed, ~50 % more work.</li>
-              <li><strong>LU (Crout/Doolittle):</strong> factor A = LU once, then solve LUX = b via two cheap triangular solves — perfect when many b's share one A. Partial pivoting (swap rows for biggest pivot) controls round-off.</li>
-            </ul>
-            <div class="formula-box">Jacobi update: $$x_i^{(k+1)}=\\dfrac{1}{a_{ii}}\\Big[b_i-\\sum_{j\\ne i}a_{ij}x_j^{(k)}\\Big]$$ (all old values)
-              Gauss-Seidel: same formula but use NEWEST available values → converges ~2× faster.
-              Convergence guaranteed if A is diagonally dominant: $|a_{ii}|>\\sum_{j\\ne i}|a_{ij}|$.</div>
-          </div>
-          
-          <!-- Common Mistakes -->
-          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
-            <h4>⚠️ Common Mistakes to Avoid</h4>
-            <ul>
-              <li><strong>Forgetting to pivot:</strong> Not using partial pivoting can lead to large round-off errors, especially with small pivot elements.</li>
-              <li><strong>Confusing LU with Gaussian elimination:</strong> LU does the factorization ONCE, then solves for many right-hand sides efficiently.</li>
-              <li><strong>Assuming all systems work with iterative methods:</strong> Jacobi and Gauss-Seidel only converge reliably for diagonally dominant or symmetric positive definite matrices.</li>
-              <li><strong>Not checking for singular systems:</strong> If you get a zero pivot (after pivoting), the system may be singular or inconsistent.</li>
-              <li><strong>Misapplying back-substitution:</strong> Remember to solve from bottom to top after forward elimination.</li>
-            </ul>
-          </div>
-          
-          <!-- Tips & Tricks -->
-          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
-            <h4>💡 Tips & Tricks</h4>
-            <ul>
-              <li><strong>Choose your solver based on the matrix:</strong>
-                <ul>
-                  <li>Small dense systems (< 100 equations)? Use LU with partial pivoting.</li>
-                  <li>Need to solve for many different right-hand sides with same matrix? LU decomposition is perfect.</li>
-                  <li>Large sparse systems (like from finite element analysis)? Consider iterative methods.</li>
-                  <li>Symmetric positive definite matrix? Cholesky decomposition is ~2× faster than LU.</li>
-                </ul>
-              </li>
-              <li><strong>Engineering application:</strong> Structural analysis, circuit analysis, finite element methods all reduce to solving Ax = b.</li>
-              <li><strong>Check your work:</strong> After solving Ax = b, compute the residual r = b - Ax. It should be very close to zero.</li>
-              <li><strong>Condition number matters:</strong> Even if your algorithm is correct, a high condition number means small errors in A or b can cause large errors in x.</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
-            <ul>
-              <li><strong>Pivoting:</strong> Interchanging equations (rows) during elimination so the pivot element is the largest available in magnitude, minimising round-off amplification.</li>
-              <li><strong>LU decomposition:</strong> Writing A = LU where L is lower- and U upper-triangular, allowing repeated solutions for different right-hand sides with only two triangular solves.</li>
-              <li><strong>Gauss-Seidel method:</strong> An iterative solution scheme that immediately uses updated component values within the same sweep, converging under diagonal dominance.</li>
-              <li><strong>Diagonal dominance:</strong> Property |aii| ≥ Σ|aij| (j ≠ i) for every row, strictly somewhere — a sufficient condition for convergence of Jacobi/Gauss-Seidel iterations.</li>
-            </ul>
-          </div>
-          
-          <div class="subsection">
-            <h4>📘 Worked Example</h4>
-            <div class="formula-box">Solve x + y = 3, 2x − y = 0 by Gauss-Seidel from (0, 0):
-              From eq1: x = 3 − y → x₁ = 3
-              From eq2: y = 2x → y₁ = 2(3) = 6
-              Check: 2(3) − 6 = 0 ✓
-              Iterate: x₂ = 3 − 6 = −3, y₂ = 2(−3) = −6; x₃ = 9, y₃ = 18 — DIVERGES!
-              Rows are NOT diagonally dominant (row2: |−1| < 2). Swap equation order:
-              now x from eq(2x−y=0): x = y/2 → x₁ = 0; y = 3 − x → y₁ = 3; x₂ = 1.5, y₂ = 1.5; x₃ = 0.75...→ converging to (1, 2) ✓
-              Lesson: equation ORDER decides convergence — reorder for dominance.</div>
-            <p><strong>Teacher's note:</strong> This example shows why understanding the convergence conditions is crucial — blindly applying a method without checking if it will converge wastes time and gives wrong answers!</p>
-          </div>
-          
-          <!-- Quick Check -->
-          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
-            <h4>🔍 Quick Check: Test Your Understanding</h4>
-            <p>For the system 2x + y = 5, x - 3y = -2:</p>
-            <ol>
-              <li>Would you expect Jacobi or Gauss-Seidel to converge? Why?</li>
-              <li>Which method would be faster for solving this system if you had 100 different right-hand sides?</li>
-            </ol>
-            <details>
-              <summary>Click to see suggested answers</summary>
-              <p><strong>1.</strong> Neither is guaranteed — check diagonal dominance: |2| ≯ |1| and |−3| ≯ |1|. Try it and see!</p>
-              <p><strong>2.</strong> LU decomposition — factor A once, then solve 100 systems quickly with forward/back substitution.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-
-      <!-- MODULE 3 -->
-      <div class="module-block">
-        <div class="module-head"><span class="mchip">M3</span>
-          <h3>Module 3 — Interpolation</h3>
-        </div>
-        <nav class="toc">
-          <div class="toc-label">Module 3 · Topics</div><a href="#t3">3 · Lagrange & Newton's Difference Formulas</a>
-        </nav>
-
-        <div class="topic" id="t3">
-          <div class="topic-header">
-            <h3>3. Lagrange & Newton's Difference Formulas</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: None</span></div>
-          </div>
-          
-          <!-- Learning Objectives -->
-          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
-            <h4>🎯 Learning Objectives</h4>
-            <p>By the end of this module, you should be able to:</p>
-            <ul>
-              <li>Construct interpolating polynomials using Lagrange and Newton's methods</li>
-              <li>Choose the appropriate interpolation method based on data spacing and location of interest</li>
-              <li>Understand the trade-offs between global polynomials (Lagrange/Newton) and piecewise methods (splines)</li>
-              <li>Apply interpolation to engineering problems like estimating properties from tabulated data</li>
-              <li>Recognize when high-degree polynomial interpolation can lead to oscillations (Runge's phenomenon)</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> interpolation draws the unique polynomial through your data points and reads between them. Equal spacing? Newton's forward/backward saves work. Uneven spacing? Lagrange or divided differences.</div>
-            <ul>
-              <li><strong>Lagrange (unequal spacing friendly):</strong></li>
-            </ul>
-            <div class="formula-box">$P(x)=\\sum_{k} y_k\\prod_{j\\ne k}\\dfrac{x-x_j}{x_k-x_j}$ — no table needed, weights built straight from nodes.</div>
-            <ul>
-              <li><strong>Divided differences:</strong> build a triangle: first column f[x_i,x_j] = (f_j−f_i)/(x_j−x_i); higher columns repeat on shorter intervals. Top entries become coefficients of Newton's divided-difference polynomial.</li>
-              <li><strong>Equal spacing shortcuts:</strong> define Δ (forward) and ∇ (backward) differences; then:</li>
-            </ul>
-            <div class="formula-box">Newton forward (near top): $P(x_0+hu)=y_0+u\\Delta y_0+\\dfrac{u(u-1)}{2!}\\Delta^2y_0+\\dfrac{u(u-1)(u-2)}{3!}\\Delta^3y_0+\\cdots$
-              Newton backward (near bottom): replace u→v measured from last node with ∇ differences.</div>
-            <ul>
-              <li><strong>Choosing:</strong> interpolate close to the START → forward; close to END → backward; middle → central/Stirling (beyond scope) or fit divided difference.</li>
-            </ul>
-          </div>
-          
-          <!-- Common Mistakes -->
-          <div class="callout" style="background: #fff8f8; border-left: 3px solid #ff6b6b; margin: 18px 0;">
-            <h4>⚠️ Common Mistakes to Avoid</h4>
-            <ul>
-              <li><strong>Using high-degree polynomials with many points:</strong> This can cause wild oscillations between points (Runge's phenomenon). Consider splines for many data points.</li>
-              <li><strong>Extrapolating beyond your data:</strong> Interpolation is only reliable between your data points. Going outside can give nonsense results.</li>
-              <li><strong>Ignoring data spacing:</strong> Newton's forward/backward methods assume equal spacing — using them with uneven spacing introduces errors.</li>
-              <li><strong>Not checking if data represents a function:</strong> Interpolation assumes each x maps to exactly one y. If your data fails the vertical line test, you need a different approach.</li>
-              <li><strong>Computational inefficiency:</strong> Lagrange formula requires O(n²) work for each evaluation. Newton's form with divided differences is more efficient for multiple evaluations.</li>
-            </ul>
-          </div>
-          
-          <!-- Tips & Tricks -->
-          <div class="callout" style="background: #f8fff8; border-left: 3px solid #6bcf7f; margin: 18px 0;">
-            <h4>💡 Tips & Tricks</h4>
-            <ul>
-              <li><strong>Choose your method based on your goal:</strong>
-                <ul>
-                  <li>Need to evaluate at many points? Newton's divided difference form is most efficient.</li>
-                  <li>Have unevenly spaced data? Lagrange or divided differences (avoid forward/backward unless spacing is equal).</li>
-                  <li>Interpolating near the beginning of your data? Use Newton forward.</li>
-                  <li>Interpolating near the end? Use Newton backward.</li>
-                </ul>
-              </li>
-              <li><strong>Engineering application:</strong> Thermodynamic tables (steam tables), material properties vs temperature, wind tunnel test data — all use interpolation to get values at conditions not explicitly tabulated.</li>
-              <li><strong>Quality check:</strong> For smooth functions, the interpolating polynomial should behave reasonably between points. If it oscillates wildly, you might be overfitting.</li>
-              <li><strong>Piecewise is often better:</strong> For many data points, consider cubic splines instead of a single high-degree polynomial.</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h4 class="defs-h">&#128214; Exam Definitions — quote these in your answers</h4>
-            <ul>
-              <li><strong>Interpolation:</strong> Estimating the value of a function between known tabulated points using a polynomial fitted through those points.</li>
-              <li><strong>Shift operator Δ:</strong> Δy(x) = y(x+h); repeated application builds the forward-difference table used in Newton's formulas.</li>
-              <li><strong>Divided difference:</strong> The coefficient f[x₀,…,xₖ] defined recursively as (f[x₁,…,xₖ] − f[x₀,…,xₖ₋₁])/(xₖ − x₀), symmetric in its arguments.</li>
-              <li><strong>Lagrange interpolation:</strong> Direct construction of the interpolating polynomial as a weighted sum of node-specific basis polynomials, valid for unequal spacing.</li>
-            </ul>
-          </div>
-          
-          <div class="subsection">
-            <h4>📘 Worked Example</h4>
-            <div class="formula-box">Points (1, 1), (2, 8), (3, 27) — estimate f(2.5) by Lagrange:
-              $P=\\dfrac{(2.5-2)(2.5-3)}{(1-2)(1-3)}(1)+\\dfrac{(2.5-1)(2.5-3)}{(2-1)(2-3)}(8)+\\dfrac{(2.5-1)(2.5-2)}{(3-1)(3-2)}(27)$
-              = 0.125(1) + 0.75(8) + 0.125·? recompute third weight: (1.5×0.5)/2 = 0.375 → 0.375×27 = 10.125
-              Total = 0.125 + 6 + 10.125 = $\\mathbf{16.25}$ — exact, since data came from x³ and P is cubic-degree ≤ 2? (16.25 vs true 15.625 shows quadratic fit limitation — good discussion point.)</div>
-            <p><strong>Teacher's note:</strong> The fact that we get 16.25 instead of the true 15.625 reveals something important: with only 3 points, we can only fit a quadratic polynomial perfectly. Since the true function is x³ (cubic), there's an inherent limitation. This is why more points generally give better approximations — up to a point!</p>
-          </div>
-          
-          <!-- Quick Check -->
-          <div class="callout" style="background: #f8f8ff; border-left: 3px solid #4a90e2; margin: 18px 0;">
-            <h4>🔍 Quick Check: Test Your Understanding</h4>
-            <p>You have temperature vs resistance data for a thermistor: (20°C, 10kΩ), (25°C, 8kΩ), (30°C, 6.5kΩ). Estimate the resistance at 22°C.</p>
-            <ol>
-              <li>Which interpolation method would you choose and why?</li>
-              <li>What would you expect to happen if you tried to estimate resistance at 50°C using the same method?</li>
-            </ol>
-            <details>
-              <summary>Click to see suggested answers</summary>
-              <p><strong>1.</strong> Since we want a point near the beginning and have only 3 points, Lagrange or Newton forward would work well. The data appears roughly exponential, but linear interpolation between nearby points is often sufficient for small intervals.</p>
-              <p><strong>2.</strong> Extrapolating far beyond your data range (20-30°C to 50°C) is unreliable — the relationship might change or you might be outside the device's operating range.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-
-      <!-- MODULE 4 -->
-      <div class="module-block">
-        <div class="module-head"><span class="mchip">M4</span>
-          <h3>Module 4 — Differentiation & Integration</h3>
-        </div>
-        <nav class="toc">
-          <div class="toc-label">Module 4 · Topics</div><a href="#t4">4 · Trapezoidal & Simpson's Rules</a>
-        </nav>
-
-        <div class="topic" id="t4">
-          <div class="topic-header">
-            <h3>4. Differentiation & Integration — Newton-Cotes Rules</h3>
-            <div class="meta-row"><span class="meta-chip">⏱ 60 min</span><span class="meta-chip">🔗 Prereq: Topic 3</span></div>
-          </div>
-          
-          <!-- Learning Objectives -->
-          <div class="callout" style="background: var(--blueprint-soft); border-left: 3px solid var(--blueprint);">
-            <h4>🎯 Learning Objectives</h4>
-            <p>By the end of this module, you should be able to:</p>
-            <ul>
-              <li>Approximate derivatives and integrals from tabulated data using finite difference methods</li>
-              <li>Apply the trapezoidal and Simpson's rules for numerical integration</li>
-              <li>Understand the error characteristics and convergence rates of different quadrature rules</li>
-              <li>Choose the appropriate integration method based on data spacing and function behavior</li>
-              <li>Apply numerical differentiation and integration to solve engineering problems</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h4>📝 Theory Notes</h4>
-            <div class="callout"><strong>Big idea:</strong> integration numerically = replace the curve with easy shapes (straight lines or parabolas) and add their areas. Fewer assumptions than calculus, controlled by step size h.</div>
-            <ul>
-              <li><strong>Differentiation from tables:</strong> differentiate the Newton forward polynomial instead of the function:</li>
-            </ul
+    </div>
+</div>

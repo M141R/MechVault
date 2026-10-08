@@ -106,11 +106,10 @@ state change for material with no notes behind it). Both are reported.
 ## numerical (MA24201)
 
 - Notes modules found: **4** — M1 Errors & Nonlinear Equations, M2 System of Linear Equations, M3 Interpolation, M4 Differentiation & Integration
-- Topic links in note TOCs: **20**
+- Topic links in note TOCs: **10**
 - Tracker topics: **25**
 - Indexed PYQ questions: **0**
 - `#syllabus` scoping section in notes: **NO**
-- **DUPLICATED module blocks: [1, 2, 3, 4]** — these modules render twice in the notes. Content bug, not coverage.
 
 | Syllabus unit | Notes | Tracker | Matched tokens | Verdict |
 |---|---|---|---|---|
