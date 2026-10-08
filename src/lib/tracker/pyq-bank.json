@@ -1,8 +1,687 @@
 {
   "fm": {
     "code": "ME24203",
-    "modules": [],
-    "note": "no #modpyq section - the notes carry no per-question PYQ table"
+    "modules": [
+      {
+        "module": 1,
+        "name": "Fluid Statics",
+        "papers": [
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Explain the importance of viscosity in fluid motion 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "A square plate of size 1 m x 1 m and weighting 350 N slides down an incline plane with a uniform velocity of 1.5 m/s as shown in Figure below. The incline plane is laid on a slope of 5 vertical to 12 horizontal and has an oil film of 1 mm thickness. Determine the dynamic viscosity of oil in SI Unit 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.2(a)",
+                "text": "What is a manometer? How are they classified? 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "A U-Tube manometer is used to measure the pressure of water in a pipeline, which is in excess of atmospheric pressure. The right limb contains mercury and is open to atmosphere, the contact between water and mercury being in the left limb. If the difference in level of mercury in the limbs is 10 cm and the free surface of mercury is in level with the center of the pipeline as shown in Figure, determine the pressure of water in the main line 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2022_MID_p1.png"
+          },
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Define the following terms: (i) Density, (ii) weight density, (iii) specific gravity, (iv) specific volume 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "A plate 0.025 mm distant from a fixed plate moves at 60 cm/s and requires a force of 2 N/sq.m to maintain this speed. Determine the dynamic viscosity of the fluid between the plates 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.1(c)",
+                "text": "An inverted differential manometer as shown in Fig. 1 connects two pipes A and B containing water; the manometric fluid is oil of sp. gr. 0.8. For the manometer readings shown, determine the difference of pressure head between A and B 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2022_END_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Define the term continuum for fluids. What is its importance in fluid domain 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "Determine the dynamic viscosity of an oil used for lubrication between a square plate 0.8 m x 0.8 m and an inclined plane at 30 degrees as shown in Figure. Weight of the plate is 300 N and it slides down with uniform velocity 0.3 m/s. Thickness of oil film is 1.5 mm 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.2(a)",
+                "text": "What is the difference between U-tube differential manometer and inverted U-tube differential manometer? Where are they used? 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "An inverted U-tube differential manometer is connected to two pipes A and B conveying water as shown in Figure. Manometric fluid is oil of specific gravity 0.8. For the manometer readings, determine the gauge pressure difference between A and B 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2023_MID_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "State and prove Pascal's law of static pressure 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "A vertical gap 2.2 cm wide of infinite extent contains a fluid of viscosity 2.0 N-s/m² and specific gravity 0.9. A metallic plate 1.2 m x 1.2 m x 0.2 cm is lifted at constant velocity 0.15 m/s through the middle of the gap. Determine the force required. Weight of the plate is 40 N 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2023_END_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "What does the term continuum signify in fluid dynamics? Justify your answer with suitable explanation 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "Determine the specific weight, density and specific gravity of one litre of liquid which weighs 7 N 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.2(a)",
+                "text": "Define Newton's Law of dynamic viscosity. How does the dynamic viscosity change with temperature for liquids 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "Evaluate the capillary rise in a glass tube of 2.5 mm diameter when immersed vertically in (a) water and (b) Mercury. Surface tension σ = 0.0725 N/m for water and σ = 0.52 N/m for Mercury in contact with air; specific gravity of Mercury 13.6, angle of contact 130 degrees 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2024_P1_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Velocity profile of a fluid over a plate is parabolic with vertex 20 cm from the plate where velocity is 120 cm/sec (Fig.). Determine velocity gradients and shear stresses at distances 0, 10 and 20 cm from the plate. Dynamic viscosity 0.85 N-s/m² 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "Determine the differential reading (h) of an inverted tube manometer containing oil of specific gravity 0.7 connected across pipes A and B conveying liquids of specific gravities 1.2 and 1.0 (Fig.). Pipes are at the same level; pressures at A and B are equal 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2024_P2_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Discuss the concept of continuum in fluid flow practices 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "A plate 0.025 mm distant from a fixed plate moves at 0.6 m/s requiring a shear force per unit area of 2 N/m². Determine the dynamic viscosity of the flowing fluid between the plates 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.2(a)",
+                "text": "With suitable sketch discuss: (i) Piezometer, (ii) Differential U Tube manometer 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "A rectangular plane surface 2 m wide and 3 m deep lies in a vertical plane in water. Determine total pressure and position of center of pressure when its upper edge is horizontal (Figure). Given h* = Iᴄ/(Ah̄) + h̄, where Iᴄ is moment of inertia about the axis through C.G. parallel to base 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2025_MID_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "text": "Define center of pressure and determine the total pressure on a circular plate of diameter 1.5 m placed vertically in water with its center 3.0 m below the free surface. Also determine the position of center of pressure 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.1(b)",
+                "text": "A single column manometer is connected to a pipe containing liquid of specific gravity 0.9. Determine the pressure in the pipe if the reservoir area is 100 times the tube area for the manometer reading shown (Figure). Manometric fluid is mercury with specific gravity 13.6 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2025_END_p1.png"
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "Kinematics & Dynamics",
+        "papers": [
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "Derive the continuity equation in differential form for a 2D flow in Cartesian coordinate system 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "u = x³ + y² + z² ; v = xy² − yz² + xy. Determine the third component of velocity such that they satisfy the continuity equation 📄 p2",
+                "marks": 3
+              },
+              {
+                "qno": "Q.4(a)",
+                "text": "Distinguish between (i) steady and un-steady flow, (ii) uniform and non-uniform flow, (iii) rotational and irrotational flow, (iv) laminar and turbulent flow 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine the shear strain rate and state whether the flow is rotational or irrotational 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2022_MID_p1.png"
+          },
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "text": "Distinguish between stream line, streak line and path line in a fluid flow 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "Prove Bernoulli's theorem for fluid flow. Also state the assumptions being made 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.2(c)",
+                "text": "A tapered horizontal pipe with inlet diameter 25 cm carries oil of sp. gr. 0.9 at a velocity of 3 m/s. The outlet diameter is 20 cm. Determine the velocity of oil at the outlet section and also the flow rate of oil through this tapered pipe 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2022_END_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "With a suitable sketch explain the term stream line in a fluid flow 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "A fluid flow is given by V = (x²y)i + (y²z)j − (2xyz + yz²)k. Analyze this flow for its continuity and rotationality at point (2, 1, 3) 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.4(a)",
+                "text": "Distinguish between laminar flow and turbulent flow 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "The diameter of a pipe gradually reduces from 1 m to 0.7 m as shown in Figure. Pressure intensity at the centerline of the 1 m section is 7.848 kN/sq.m and rate of flow of water is 600 liters/second. Determine (i) pressure intensity at the centerline of the 0.7 m section, (ii) force exerted by the flowing fluid on the tapered portion (reducer) of the pipe 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2023_MID_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "text": "Explain the following terms: (i) linear translation, (ii) angular deformation, (iii) rotation, and (v) vorticity of a fluid element 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "A lawn sprinkler as shown in figure has 0.8 cm diameter nozzles at the ends of a rotating arm and discharges water at 10 m/s. Determine the torque required to hold the arm stationary. Also determine the constant speed of rotation if free to rotate 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2023_END_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "Explain with suitable sketch the Eulerian and Lagrangian description of fluid flow. How can they be related with each other 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "Wind blows North to South from 11.00 AM to 11.30 AM and East to West from 11.30 AM to 12.00 Noon. Construct the STREAK LINE and visualize the flow using a time interval of 10 minutes 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.4(a)",
+                "text": "Derive Euler's Equation of motion for fluid flow. Mention the assumptions made 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine (i) shear strain rate, (ii) rotation or vorticity 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2024_P1_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "text": "Derive the expression for the continuity equation in the differential form ∂u/∂x + ∂v/∂y = 0 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "A 30 cm x 15 cm Venturimeter is inserted in a vertical pipe carrying water, flow upwards; throat diameter 15 cm, pipe diameter 30 cm. Differential mercury manometer connected to inlet and throat reads 20 cm of mercury. Determine the discharge. Coefficient of discharge 0.98 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2024_P2_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "Distinguish between: (i) steady and unsteady flow, (ii) one, two and three dimensional flow 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "Pipe diameters at sections 1 and 2 are D₁ = 10 cm and D₂ = 15 cm respectively. Determine the discharge if the velocity of water at section 1 is 5 m/s (Figure). Also determine the velocity at section 2 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.4(a)",
+                "text": "Discuss the various forces present in a fluid flow when the fluid is a real one 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "Using Navier-Stokes equation for inviscid, incompressible, irrotational and steady flow, develop (derive) Bernoulli's equation for total energy along a streamline 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2025_MID_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "text": "Derive Euler's equation of motion along a stream line. State the basic assumptions made to derive it 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.2(b)",
+                "text": "The velocity components in a two-dimensional flow are u = y³/3 + 2x − x²y and v = xy² − 2y − x³/3. Determine whether the flow is rotational or irrotational 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2025_END_p1.png"
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Closed Conduit Flow",
+        "papers": [
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "What do you understand by the term losses of energy of the flowing fluids in pipes 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "A crude oil of kinematic viscosity 0.4 × 10⁻⁴ m²/s flows through a pipe of diameter 300 mm at a rate of 0.3 m³/s. Using Darcy-Weisbach equation, determine the head lost due to friction for a length of 50 m of the pipe. Given friction factor f = 0.079/(R e )^¼, where R e is Reynolds Number 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2022_MID_p1.png"
+          },
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "Distinguish between major and minor losses in pipes 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "What is a boundary layer? How does a boundary layer get separated from the boundary, and what are the standard ways to control the separation 📄 p1",
+                "marks": 3
+              },
+              {
+                "qno": "Q.3(c)",
+                "text": "A horizontal pipe line 40 m long is connected to a tank at one end and discharges freely into the atmosphere at the other end (d₁ = 0.15 m, d₂ = 0.3 m, lengths per Fig. 2). The water level in the tank is 8 m above the pipe centerline. Take friction factor f = 0.01. Considering all losses of head, determine the rate of flow. Also draw the hydraulic gradient line and total energy line for this circuit 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2022_END_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "Distinguish between major and minor losses in pipes 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "Crude oil of kinematic viscosity 0.4 × 10⁻⁴ sq.m./sec flows through a 300 mm diameter pipe at 0.3 m³/sec. Determine (i) head loss due to friction for a 50 m length, (ii) Reynolds number of the flow. Take coefficient of friction as 0.006 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2023_MID_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "What is an orifice meter? Prove that the discharge through an orifice meter is given by Q = C d · (a₀·a₁/√(a₁² − a₀²)) · √(2gh), where a₁ = area of the pipe and a₀ = area of the orifice 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "Determine the rate of flow of water through a pipe of diameter 20 cm and length 50 m, one end connected to a tank and other end open to atmosphere. Pipe is horizontal, water level in the tank is 4 m above the pipe centerline. Consider all minor losses and take f = 0.009 in Darcy-Weisbach equation. Also draw the Total Energy Line and Hydraulic Gradient Line 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2023_END_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "Distinguish between major and minor losses of energy in fluid flow through pipes 📄 p1",
+                "marks": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "An oil of specific gravity 0.7 flows through a 300 mm diameter pipe at 500 Liter/second. Evaluate head loss due to friction and power required to maintain the flow for a length of 1000 m. Kinematic viscosity 0.29 × 10⁻⁴ m²/s, friction factor f = 0.079/(R e )^0.25 📄 p1",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2024_P1_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "Using basic principles of fluid flow, derive the discharge expression for an Orifice-meter in the form Q = C d · ((a₀a₁)/√(a₁² − a₀²)) · √(2gH), where a₁ = pipe area and a₀ = orifice area 📄 p2",
+                "marks": 5
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "With suitable sketch explain the concept of boundary layer separation over a convex surface. How can the separation be controlled? 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2024_P2_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "Using Bernoulli's equation, develop a relation for theoretical discharge through a horizontal Venturi meter 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "A horizontal Venturimeter with inlet and throat diameters 30 cm and 15 cm measures water flow. The differential U-tube manometer (mercury) connected to inlet and throat shows 20 cm mercury. Coefficient of discharge 0.98. Determine the rate of flow 📄 p2",
+                "marks": 3
+              }
+            ],
+            "type": "MID",
+            "scanPath": "images/papers/FM_MO2025_MID_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "text": "What is Boundary Layer? Explain with a neat sketch the phenomenon of boundary layer separation. How can separation of boundary layer be controlled 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.3(b)",
+                "text": "An orifice meter with orifice diameter 10 cm is inserted in a 20 cm diameter pipe. Pressure gauges upstream and downstream read 19.62 N/cm² and 9.81 N/cm² respectively. Coefficient of discharge of the orifice plate is 0.6. Determine the discharge through the pipe 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2025_END_p1.png"
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Hydraulic Turbines",
+        "papers": [
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "text": "Classify various types of hydro-turbines 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "With a neat sketch explain the working of an inward flow reaction turbine 📄 p2",
+                "marks": 3
+              },
+              {
+                "qno": "Q.4(c)",
+                "text": "Determine the power given by the jet of water to the runner of a Pelton wheel having tangential velocity 20 m/s. Net head on the turbine is 50 m and discharge through the jet is 0.03 m³/s. Blade angle at outlet with tangential direction φ = 15°. Take coefficient of velocity as 0.975 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2022_END_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "text": "A Francis turbine of overall efficiency 75% produces 148.25 kW under a head of 7.62 m. Peripheral velocity = 0.26(2gH)^0.5 and radial velocity of flow at inlet = 0.96(2gH)^0.5. Wheel runs at 150 rpm; hydraulic losses are 22% of available energy. Assuming radial discharge, determine (i) guide blade angle, (ii) wheel vane angle 📄 p2",
+                "marks": 5
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "What is governing of a hydraulic turbine? Briefly explain the governing of an impulse turbine 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2023_END_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "text": "What is governing? With a neat sketch explain the governing of a Pelton turbine 📄 p2",
+                "marks": 5
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "A 137 mm diameter jet of water issuing from a nozzle impinges on a series of Pelton wheel buckets; relative velocity is deflected through 165°. Head at nozzle 400 m, coefficient of velocity 0.97, speed ratio 0.46, reduction in relative velocity through the bucket 15%. Evaluate (i) force exerted by the jet on buckets in the tangential direction, (ii) power developed 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2024_P2_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "text": "What is governing of a turbine? With a neat sketch explain the mechanism of governing of an impulse turbine 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.4(b)",
+                "text": "Data for an inward flow reaction turbine: net head 60 m, speed 700 rpm, shaft power 294.3 kW, overall efficiency 84%, hydraulic efficiency 93%, flow ratio 0.2, breadth ratio 0.1, outer diameter = 2 × inner diameter of runner. Vane thickness occupies 5% of circumferential area; velocity of flow constant at inlet and outlet; discharge radial at outlet. Draw velocity triangles and determine (i) guide blade angle, (ii) runner vane angles at inlet and outlet, (iii) runner diameter at inlet and outlet 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2025_END_p1.png"
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Pumps",
+        "papers": [
+          {
+            "paper": "MO2022",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "Define the following terms for a centrifugal pump: (i) suction head, (ii) delivery head, (iii) static head, (iv) manometric head 📄 p2",
+                "marks": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "With a neat sketch describe the principle of working of a reciprocating pump 📄 p2",
+                "marks": 3
+              },
+              {
+                "qno": "Q.5(c)",
+                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Velocity of flow through the impeller is constant at 2.5 m/s. Vanes are set backwards at 40° at outlet. Outer diameter 500 mm, width 50 mm. Determine (i) vane angle at inlet, (ii) work done by the impeller on water per second, (iii) manometric efficiency 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2022_END_p1.png"
+          },
+          {
+            "paper": "MO2023",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Flow velocity through the impeller is constant at 2.5 m/s. Vanes set backward at 40° at outlet. Outer diameter 500 mm, width at outlet 50 mm. Determine work done by the impeller on water per second 📄 p2",
+                "marks": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "Briefly explain the working of a reciprocating pump 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2023_END_p1.png"
+          },
+          {
+            "paper": "MO2024",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "With neat sketch explain the working of a single acting reciprocating pump fitted with air vessels. What happens if the air vessels are removed from the pump unit? 📄 p2",
+                "marks": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "A centrifugal pump discharges 0.15 m³/s against a head of 12.5 m at 600 rpm. Impeller outer/inner diameters 500 mm / 250 mm; vanes bent backwards at 35° to the tangent at exit; flow area remains 0.07 sq.m from inlet to outlet. Evaluate (i) manometric efficiency, (ii) vane angle at inlet 📄 p2",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2024_P2_p1.png"
+          },
+          {
+            "paper": "MO2025",
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "text": "Explain with a neat sketch the working of a double acting reciprocating pump fitted with air vessels. Also draw its ideal indicator diagram 📄 p1",
+                "marks": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "text": "What is cavitation? How is it different from priming? Clearly mention the effects of cavitation and precautions against cavitation of centrifugal pumps and turbines 📄 p1",
+                "marks": 5
+              }
+            ],
+            "type": "END",
+            "scanPath": "images/papers/FM_MO2025_END_p1.png"
+          }
+        ]
+      }
+    ]
   },
   "som": {
     "code": "ME24205",

@@ -93,7 +93,15 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 18px); }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 18px);
+  /* .ai-disclaimer is position:fixed, so it overlays content instead of taking
+     up space. Anchor links land with their target under the banner; measured
+     `scroll-padding-bottom` as the mechanism that actually works, since padding
+     on an ancestor does not move a fixed overlay (see .auth-wrap note). */
+  scroll-padding-bottom: 128px;
+}
 
 body {
   font-family: var(--serif);
@@ -210,8 +218,13 @@ strong { color: var(--ink); }
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M21 21l-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z'/%3E%3C/svg%3E") center/contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M21 21l-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
+/* `right: 0` anchors the panel to the input, so a fixed 340px width overflows
+   any viewport narrower than ~372px once the header padding is counted. Cap it
+   against the viewport and let it fall back to the input's own width. */
 .search-results {
-  position: absolute; top: 46px; right: 0; width: 340px; max-height: 60vh; overflow-y: auto;
+  position: absolute; top: 46px; right: 0;
+  width: 340px; max-width: calc(100vw - 24px);
+  max-height: 60vh; overflow-y: auto;
   background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius);
   box-shadow: var(--shadow-md); padding: 6px; display: none; z-index: 200;
 }
@@ -653,7 +666,9 @@ h4.defs-h { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-
 /* ===================== FOOTER INTERNALS ===================== */
 .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
 .footer-brand { font-family: var(--font); font-weight: 700; color: var(--ink); }
-.footer-links { display: flex; gap: 16px; font-family: var(--mono); font-size: 13px; }
+/* Six subject links in a single flex row: without wrap they force the page
+   wider than a phone instead of stacking. */
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 13px; }
 .footer-links a { color: var(--ink-2); }
 .footer-links a:hover { color: var(--annotation); }
 .footer-note { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
@@ -683,6 +698,13 @@ h4.defs-h { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-
 /* ============================================================
    Auth pages (login / register / pending) + admin chip
    ============================================================ */
+/* No padding-bottom reservation here. `.ai-disclaimer` is position:fixed and
+   therefore unaffected by ancestor padding: measured on the live site,
+   padding-bottom of 48px, 172px and a raised min-height all left the auth card
+   bottom at exactly 605px. An earlier revision reserved 96/152px on the
+   assumption it would work. It does not. The banner is suppressed on auth pages
+   instead (see BaseLayout.astro), which is the only mechanism that actually
+   keeps it off the form. */
 .auth-wrap{min-height:70vh;display:grid;place-items:center;padding:48px 20px;}
 .auth-card{
   width:100%;max-width:420px;background:var(--surface,#fff);

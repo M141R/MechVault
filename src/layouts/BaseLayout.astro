@@ -79,7 +79,14 @@ const links = [
           <a class:list={["nav-link", { active: computedActive === l.key }]} href={l.href}>{l.label}</a>
         ))}
         <form class="search-wrap" role="search">
-          <input class="search-input" type="search" placeholder="Search notes, formulas…" aria-label="Search the site">
+          <!--
+            Placeholder must fit the field. At 190px with 34px left + 14px right
+            padding, only 142px is available; at 13px JetBrains Mono that holds
+            ~14 characters. "Search notes, formulas…" renders 184px and clipped
+            mid-word to "Search notes, formu…". Shortened to 104px (38px slack).
+            The full hint moves to title/aria-label, which have no width budget.
+          -->
+          <input class="search-input" type="search" placeholder="Search notes…" aria-label="Search notes, formulas, topics and previous year questions" title="Search notes, formulas, topics and previous year questions">
           <div class="search-results" role="status" aria-live="polite"></div>
         </form>
         <button class="search-trigger" type="button" aria-label="Open search" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></button>
@@ -115,12 +122,25 @@ const links = [
 
   <slot />
 
-  {/* AI-generated content disclaimer — non-intrusive, dismissible banner shown on open / after login */}
-  <div class="ai-disclaimer" id="ai-disclaimer" role="note" aria-label="AI-generated content disclaimer">
-    <span class="ai-disclaimer-badge">AI-generated</span>
-    <p class="ai-disclaimer-text">This site and its study notes are AI-generated. The PYQs are real BIT Mesra question papers — only their subject/module mapping is AI-assisted.</p>
-    <button class="ai-disclaimer-close" id="ai-disclaimer-close" type="button" aria-label="Dismiss disclaimer">&times;</button>
-  </div>
+  {/*
+    AI-generated content disclaimer — non-intrusive, dismissible banner shown on
+    open / after login.
+
+    Suppressed on the auth pages (`skipSession`). The banner is position:fixed, so
+    it cannot be cleared by padding an ancestor: measured on the live site,
+    padding-bottom of 48px, 172px and a raised min-height all left the card
+    bottom at exactly 605px. On a short viewport the wrapped banner grows to
+    ~140px and lands on top of the sign-in card and its "Create one" link.
+    The auth pages already carry the same notice permanently in the footer
+    (`.footer-ai-note`), so nothing is lost by not overlaying the form.
+  */}
+  {!skipSession && (
+    <div class="ai-disclaimer" id="ai-disclaimer" role="note" aria-label="AI-generated content disclaimer">
+      <span class="ai-disclaimer-badge">AI-generated</span>
+      <p class="ai-disclaimer-text">This site and its study notes are AI-generated. The PYQs are real BIT Mesra question papers — only their subject/module mapping is AI-assisted.</p>
+      <button class="ai-disclaimer-close" id="ai-disclaimer-close" type="button" aria-label="Dismiss disclaimer">&times;</button>
+    </div>
+  )}
 
   <footer class="footer">
       <div class="footer-brand"><span class="logo">M</span> MechVault</div>
