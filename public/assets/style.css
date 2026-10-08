@@ -1,47 +1,69 @@
 ﻿/* ============================================================
-   MechVault — Engineering-Drawing design system
-   Concept: a structural-drawing / drafting sheet.
-   Display + UI  : Familjen Grotesk (industrial grotesque)
-   Reading body  : Source Serif 4 (comfortable serif)
-   Data/equations: JetBrains Mono
-   Palette: cool paper, blueprint navy (structure), single
-   annotation-orange accent. Hairlines = dimension lines.
-   Signature: the Exam Blueprint rendered as a drawing sheet
-   with a corner title-block.
+   MechVault — the J-Card design system
+   Concept: a hand-inked audio cassette's folded insert card.
+   Display + UI  : Familjen Grotesk (the writing hand)
+   Reading body  : Source Serif 4 (the textbook's voice)
+   Data/equations: JetBrains Mono (the running times)
+   Palette: ruled stock, ballpoint blue (every ink stroke),
+   ONE printed spot red. Ruled ground = printed inlay lines.
+   Signature: coverage as tape arithmetic -- side a covered,
+   side b remaining, marks and page refs right-aligned in
+   the margin the way a tracklist runs.
+
+   REPLACES the Engineering-Drawing/blueprint world (2026-10).
+   See DESIGN.md for the committed system. This token block is
+   the only place the world is defined: ~40 semantic aliases
+   mean every component rule below inherits the new world
+   without being rewritten.
    ============================================================ */
 
 :root {
-  --paper: #f6f7f9;
+  /* Ruled stock. Never #ffffff -- card stock is not paper white. */
+  --paper: #fbfaf7;
   --surface: #ffffff;
-  --surface-2: #eef1f5;
-  --ink: #1c2127;
-  --ink-2: #545c66;
-  --ink-3: #8a929c;
-  --hairline: #d7dce2;
-  --border-strong: #b6bfca;
-  --blueprint: #1e3a5f;
+  --surface-2: #f3f1ec;
+  --ink: #1a1d21;
+  --ink-2: #5b6169;
+  --ink-3: #8b9099;          /* pencil grey: tentative, not disabled */
+  --hairline: #dfe4ec;       /* the printed inlay rule */
+  --border-strong: #b9c2d4;  /* hatch colour */
+  /* Ballpoint blue: the voice of the handwriting. Every ink stroke. */
+  --blueprint: #1c3f7a;
   --blueprint-2: #2c5282;
-  --blueprint-soft: rgba(30, 58, 95, 0.06);
-  --blueprint-line: rgba(30, 58, 95, 0.28);
-  --annotation: #e2603a;
-  --annotation-soft: rgba(226, 96, 58, 0.10);
-  --annotation-ink: #b8431f;
+  --blueprint-soft: rgba(28, 63, 122, 0.05);
+  --blueprint-line: rgba(28, 63, 122, 0.22);
+  /* Spot red. THREE jobs only: side heads, active spine, covered stamp. */
+  --annotation: #c8102e;
+  --annotation-soft: rgba(200, 16, 46, 0.10);
+  --annotation-ink: #a30d25;
   --warn: #b7791f;
   --warn-soft: rgba(183, 121, 31, 0.12);
   --crit: #c0392b;
   --crit-soft: rgba(192, 57, 43, 0.09);
   --info: #2563eb;
   --info-soft: rgba(37, 99, 235, 0.09);
-  --grid: rgba(30, 58, 95, 0.045);
+  --grid: rgba(28, 63, 122, 0.035);
+  /* Focus is spot-red-outlined so it stays distinguishable from the
+     covered state, which is also red. */
   --focus-ring: var(--annotation);
   --focus-ring-offset: 2px;
-  --radius: 4px;
-  --radius-sm: 3px;
-  --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(20, 24, 30, 0.06);
-  --shadow-md: 0 8px 26px rgba(20, 24, 30, 0.10);
+  /* Square corners, universally. A J-card is die-cut flat stock.
+     Pill radius is the language of a web app, not a card. */
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-pill: 0px;
+  /* THE FLAT RULE: no drop shadows anywhere. Depth comes from
+     hairlines, filled tabs, and hatching. */
+  --shadow-sm: none;
+  --shadow-md: none;
   --maxw: 1120px;
-  --nav-h: 64px;
+  --nav-h: 44px;             /* the spine, not a web navbar */
+  /* Hatch fill: partial coverage survives greyscale. */
+  --hatch: repeating-linear-gradient(
+    45deg,
+    transparent 0 5px,
+    rgba(185, 194, 212, 0.34) 5px 6px
+  );
 
   /* Semantic aliases.
      `track.astro` and `dashboard.astro` were written against this vocabulary
@@ -65,28 +87,35 @@
 }
 
 [data-theme="dark"] {
-  --paper: #11151b;
-  --surface: #171c24;
-  --surface-2: #1d232d;
-  --ink: #e8ecf1;
-  --ink-2: #aab2bc;
-  --ink-3: #6f7884;
-  --hairline: #2a323d;
-  --border-strong: color-mix(in srgb, var(--blueprint) 40%, var(--ink));
-  --blueprint: #7aa7d4;
-  --blueprint-2: #8fb6dd;
-  --blueprint-soft: color-mix(in srgb, var(--blueprint) 12%, var(--surface));
-  --blueprint-line: color-mix(in srgb, var(--blueprint) 34%, transparent);
-  --annotation: #f0825b;
+  /* A J-card under a desk lamp: stock goes to a warm dark, ballpoint
+     goes to a lighter ink so it still reads as ink on the card. */
+  --paper: #16161a;
+  --surface: #1c1c21;
+  --surface-2: #24242a;
+  --ink: #eceae5;
+  --ink-2: #a8a59e;
+  --ink-3: #75726c;
+  --hairline: #2e2e35;
+  --border-strong: color-mix(in srgb, var(--blueprint) 34%, var(--ink));
+  --blueprint: #8fb0dc;
+  --blueprint-2: #a3bee4;
+  --blueprint-soft: color-mix(in srgb, var(--blueprint) 10%, var(--surface));
+  --blueprint-line: color-mix(in srgb, var(--blueprint) 28%, transparent);
+  --annotation: #ff4d6a;
   --annotation-soft: color-mix(in srgb, var(--annotation) 15%, var(--surface));
-  --annotation-ink: #f6a585;
+  --annotation-ink: #ff8095;
   --warn-soft: color-mix(in srgb, var(--warn) 18%, var(--surface));
   --crit-soft: color-mix(in srgb, var(--crit) 18%, var(--surface));
   --info-soft: color-mix(in srgb, var(--info) 18%, var(--surface));
-  --grid: color-mix(in srgb, var(--blueprint) 5%, transparent);
+  --grid: color-mix(in srgb, var(--blueprint) 4%, transparent);
   --focus-ring: var(--annotation);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 26px rgba(0, 0, 0, 0.5);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --hatch: repeating-linear-gradient(
+    45deg,
+    transparent 0 5px,
+    rgba(143, 176, 220, 0.20) 5px 6px
+  );
   /* The alias layer resolves through the palette, so it inverts with the
      palette rather than needing its own dark values. */
 }
@@ -106,10 +135,14 @@ html {
 body {
   font-family: var(--serif);
   background-color: var(--paper);
+  /* THE RULED GROUND. A J-card's inlay carries horizontal rules only --
+     no vertical grid, because a J-card is not graph paper. The rule pitch
+     (34px) matches the ruled-body line-height in DESIGN.md so note prose
+     lands ON the rules instead of straddling them. */
   background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 28px 28px;
+    linear-gradient(var(--grid) 1px, transparent 1px);
+  background-size: 100% 34px;
+  background-position: 0 12px;
   color: var(--ink);
   font-size: 16.5px;
   line-height: 1.7;
@@ -858,4 +891,284 @@ h4.defs-h { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-
   font-size: 11px;
   color: var(--ink-3);
 }
+
+/* ============================================================
+   THE J-CARD — component layer
+   Everything above is the incumbent stylesheet, left intact so its
+   markup keeps working. These rules rebind it to the card world.
+   ============================================================ */
+
+/* --- The spine: navigation as a shelf of card tabs -------- */
+/* A wrapped spine reads as broken, so it scrolls instead. */
+.nav-list {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-list::-webkit-scrollbar { display: none; }
+.nav-link {
+  flex: none;
+  white-space: nowrap;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.nav-link:hover {
+  background: var(--surface-2);
+  color: var(--blueprint);
+  border-radius: 0;
+}
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  background: var(--annotation);
+  color: #fff;
+  border-radius: 0;
+  border-bottom-color: var(--annotation);
+}
+
+/* --- Buttons: ink on stock. Ink does not move. --------------- */
+.btn {
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.btn:hover { transform: none; box-shadow: none; }
+.btn-primary {
+  background: var(--blueprint);
+  color: #fff;
+  border: 1px solid var(--blueprint);
+}
+.btn-primary:hover {
+  background: var(--blueprint-deep, #122b54);
+  border-color: var(--blueprint-deep, #122b54);
+}
+.btn-accent {
+  background: var(--annotation);
+  color: #fff;
+  border: 1px solid var(--annotation);
+}
+.btn-accent:hover { background: var(--annotation-ink); border-color: var(--annotation-ink); }
+.btn-ghost {
+  background: var(--paper);
+  color: var(--blueprint);
+  border: 1px solid var(--hairline);
+}
+.btn-ghost:hover { background: var(--surface-2); }
+
+/* --- Focus: a ring, drawn, not a glow. ----------------------- */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/* --- Labels: tracklist spine labels, always uppercase mono -- */
+.section-eyebrow,
+.bp-kicker {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--annotation);
+}
+/* EYEBROW RESTRAINT: the ruled card does not need a label above every
+   heading. Strip the dot-separator rhythm: one label, not a pattern. */
+.bp-kicker::after { content: none; }
+
+/* --- Tags: printed chips, 2px tab-stop radius --------------- */
+.tag {
+  border-radius: 2px;
+  box-shadow: none;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* --- Cards: flat stock, hairline edge. No shadow. ------------ */
+.subject-card,
+.stat,
+.card,
+.module,
+.deck {
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+/* Cards sit ON the ruled ground, so they are opaque stock. */
+.subject-card { background: var(--surface); }
+.stat .num {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--blueprint);
+  letter-spacing: -0.02em;
+}
+.stat .label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+/* --- Headings: the writing hand ------------------------------ */
+h1, h2, h3, h4 {
+  font-family: var(--font);
+  color: var(--blueprint);
+  letter-spacing: -0.02em;
+}
+
+/* --- Tables: hairline rules, mono numerals ------------------- */
+.grid-table,
+table {
+  border-collapse: collapse;
+  border-radius: 0;
+  box-shadow: none;
+}
+.grid-table th,
+table th {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--blueprint);
+}
+/* THE MARGIN RULE: numerals are tabular mono so they compare
+   down the column. Counts, marks, and pages never use the sans. */
+.grid-table td,
+table td { border-bottom: 1px solid var(--hairline); }
+.grid-table td.num,
+table td.num,
+.pyq-marks,
+.deck-count { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* --- Inputs: stock, hairline, ink on focus ------------------- */
+input[type="text"], input[type="search"], input[type="password"],
+input[type="email"], input[type="number"], select, textarea {
+  border-radius: 0;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font);
+}
+input::placeholder, textarea::placeholder { color: var(--ink-3); opacity: 1; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--blueprint);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+/* THE PLACEHOLDER RULE: a hint must fit the field it sits in.
+   `text-overflow: ellipsis` is the safety net; the real fix is a
+   short placeholder with the full hint in aria-label/title. */
+.search-results {
+  /* Viewport-safe, never a fixed 340px. */
+  width: min(100%, var(--maxw));
+  max-width: 100%;
+}
+input[type="search"], input[type="text"]::placeholder { text-overflow: ellipsis; }
+
+/* --- Search results: ruled list entries ----------------------- */
+.sr-title { font-family: var(--font); font-weight: 600; color: var(--blueprint); }
+.sr-crumb {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* --- Coverage states. FILL carries the state, not colour. ---- */
+/* Solid = covered. Hatched = partial. Open = not yet. Each one
+   survives greyscale, so the tracker is not colour-dependent. */
+.state-covered { background: var(--surface); color: var(--ink); }
+.state-partial { background-image: var(--hatch); }
+.state-open    { background: var(--surface); color: var(--ink-3); }
+/* The covered stamp: spot red, and only for covered. */
+.covered-stamp {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--annotation);
+  border: 1px solid var(--annotation);
+  border-radius: 2px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* --- Side heads: the two hard halves of one tape ------------- */
+.side-head {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--annotation);
+  border-bottom: 3px double var(--hairline);
+  padding: 6px 0 4px;
+}
+
+/* --- Footer: hairline, no shadow ----------------------------- */
+.footer { border-top: 1px solid var(--hairline); box-shadow: none; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+/* --- The horizontal overflow guard ---------------------------- */
+html, body { max-width: 100%; overflow-x: clip; }
+
+/* --- Page shell: stock card on ruled ground ------------------- */
+.page, .page-head, .container, main { max-width: 100%; }
+.page > *, .page-head > * { max-width: 100%; }
+
+/* ============================================================
+   RESPONSIVE
+   860 / 560 retained from the incumbent so markup keeps working.
+   Asymmetric layouts above 860 MUST collapse to single column.
+   ============================================================ */
+@media (max-width: 860px) {
+  /* No flex-math anywhere: the two-column split collapses to one. */
+  .layout-split,
+  .grid-2,
+  .page-grid { grid-template-columns: 1fr !important; }
+  /* Long unbreakable strings (formulae, paper filenames) must not
+     push the card wider than the viewport. */
+  table, .grid-table { display: block; overflow-x: auto; max-width: 100%; }
+  pre, code { overflow-wrap: anywhere; }
+  img, svg, video { max-width: 100%; height: auto; }
+}
+@media (max-width: 560px) {
+  /* The ruled ground is texture, not content. Drop it on phones
+     where vertical rhythm matters more than the inlay. */
+  body { background-image: none; }
+  .section-eyebrow, .bp-kicker { font-size: 9.5px; letter-spacing: 0.14em; }
+  .btn { font-size: 10.5px; padding: 10px 16px; }
+  .stat .num { font-size: 22px; }
+}
+
+/* Reduced motion is mandatory. Collapse the side flip to a swap. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
