@@ -1,13 +1,52 @@
 import { betterAuth } from "better-auth";
+import type { BetterAuthOptions } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { username, admin } from "better-auth/plugins";
 import { and, eq, ne } from "drizzle-orm";
-import { db, withRetry } from "./db";
+import { requireDb, withRetry } from "./db";
 import { env } from "./env";
 import * as schema from "../schema";
 
-export const auth = betterAuth({
-  database: drizzleAdapter(db, {
+/**
+ * The Better Auth instance, built lazily.
+ *
+ * It used to be a module-scope `const`, which meant merely importing this file
+ * constructed a drizzle adapter and demanded DATABASE_URL -- even in
+ * AUTH_MODE=***, where the whole point is that there is no database.
+ * `getSessionSafe` is imported by middleware, the base layout, and most API
+ * routes, so that eager construction took down every route in the app.
+ *
+ * A Proxy defers the real construction to first property access, so importing
+ * is free and only genuine auth-database use pays the cost.
+ */
+let cached: ReturnType<typeof betterAuth> | null = null;
+
+function buildAuth() {
+  if (!cached) cached = betterAuth(makeConfig());
+  return cached;
+}
+
+export const auth: ReturnType<typeof betterAuth> = new Proxy(
+  {} as ReturnType<typeof betterAuth>,
+  {
+    get(_t, prop, receiver) {
+      const real = buildAuth() as unknown as Record<string | symbol, unknown>;
+      const value = real[prop];
+      return typeof value === "function" ? value : value;
+    },
+    has(_t, prop) {
+      return prop in (buildAuth() as unknown as object);
+    },
+  },
+);
+
+function makeConfig(): BetterAuthOptions {
+  return {
+  // `requireDb()` rather than `db`: the database-mode auth object is built at
+  // module scope, and in AUTH_MODE=*** there is no database to bind.
+  // Single-user deployments never reach this branch (see auth-single.ts), so
+  // failing here names the real problem instead of a null deref.
+  database: drizzleAdapter(requireDb(), {
     provider: "pg",
     schema: {
       user: schema.user,
@@ -46,7 +85,7 @@ export const auth = betterAuth({
           // impersonation, which must not kick the impersonated user.
           if (newSession.impersonatedBy) return;
           await withRetry(() =>
-            db
+            requireDb()
               .delete(schema.session)
               .where(
                 and(
@@ -70,7 +109,8 @@ export const auth = betterAuth({
         .filter(Boolean),
     }),
   ],
-});
+  };
+}
 
 export type Auth = typeof auth;
 

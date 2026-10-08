@@ -1,5 +1,5 @@
 import { getSessionSafe, type AuthUser } from "../../../lib/auth";
-import { db } from "../../../lib/db";
+import { requireDb } from "../../../lib/db";
 import { user } from "../../../schema";
 import { eq } from "drizzle-orm";
 import type { APIRoute } from "astro";
@@ -19,6 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response("bad status", { status: 400 });
   }
 
+  const db = requireDb();
   await db.update(user).set({ status }).where(eq(user.id, body.userId));
   return new Response("ok", { status: 200 });
 };

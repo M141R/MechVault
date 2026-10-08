@@ -14,7 +14,7 @@
  */
 
 import { sql } from "drizzle-orm";
-import { db, withRetry } from "../db";
+import { requireDb, withRetry } from "../db";
 import { topicState, problemState } from "../../schema";
 import {
   canTransitionTopic,
@@ -73,6 +73,7 @@ let ready = false;
 /** Create the tracker tables if they are missing. Safe to call every time. */
 export async function ensureSchema(): Promise<void> {
   if (ready) return;
+  const db = requireDb();
   await withRetry(async () => {
     for (const statement of DDL_STATEMENTS) {
       await db.execute(sql.raw(statement));
@@ -107,6 +108,7 @@ export async function readStates(userId: string): Promise<{
   problems: ProblemStateRow[];
 }> {
   await ensureSchema();
+  const db = requireDb();
   const [t, p] = await withRetry(() =>
     Promise.all([
       db
@@ -177,6 +179,7 @@ export async function updateTopic(
     return { ok: false, error: `Unknown topic state: ${update.state}` };
   }
 
+  const db = requireDb();
   const existing = await withRetry(() =>
     db
       .select()
@@ -229,6 +232,7 @@ export async function updateProblem(
     return { ok: false, error: `Unknown problem state: ${update.state}` };
   }
 
+  const db = requireDb();
   const existing = await withRetry(() =>
     db
       .select()

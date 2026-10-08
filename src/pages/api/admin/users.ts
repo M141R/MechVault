@@ -1,5 +1,5 @@
 import { getSessionSafe, type AuthUser } from "../../../lib/auth";
-import { db } from "../../../lib/db";
+import { requireDb } from "../../../lib/db";
 import { user } from "../../../schema";
 import { desc, eq } from "drizzle-orm";
 import type { APIRoute } from "astro";
@@ -15,6 +15,7 @@ export const GET: APIRoute = async ({ request }) => {
   if (!(await requireAdmin(request))) {
     return new Response("forbidden", { status: 403 });
   }
+  const db = requireDb();
   const users = await db
     .select({
       id: user.id,
@@ -48,6 +49,7 @@ export const DELETE: APIRoute = async ({ request }) => {
     return new Response("cannot delete your own admin account", { status: 400 });
   }
 
+  const db = requireDb();
   await db.delete(user).where(eq(user.id, id));
   return new Response(JSON.stringify({ ok: true, deleted: id }), {
     headers: { "content-type": "application/json" },
@@ -68,6 +70,7 @@ export const PATCH: APIRoute = async ({ request }) => {
   if (!id || (role !== "admin" && role !== "user")) {
     return new Response("missing id or invalid role", { status: 400 });
   }
+  const db = requireDb();
   await db.update(user).set({ role }).where(eq(user.id, id));
   return new Response(JSON.stringify({ ok: true }), {
     headers: { "content-type": "application/json" },
