@@ -197,18 +197,18 @@
   /* ---------------- Search ---------------- */
   var searchInput = document.querySelector(".search-input");
   var resultsBox = document.querySelector(".search-results");
-  var searchWrap = document.querySelector(".search-wrap");
   var searchDrawer = null;
   var INDEX = null;
-  var INDEX_LOADED = false;
+  var INDEX_REQUESTED = false;
 
-  // Preload search index once (absolute path: relative fetch 404s on /fm/module/1)
+  // Fetched on demand (focus, "/" shortcut, drawer open, first query) rather
+  // than at startup: 28 KB + a JSON parse on every pageview was pure waste for
+  // users who never search.
   function loadIndex() {
-    if (INDEX_LOADED) return Promise.resolve();
-    INDEX_LOADED = true;
-    return fetch("/search-index.json").then(function (r) { return r.json(); }).then(function (d) { INDEX = d; }).catch(function () { INDEX = []; });
+    if (INDEX_REQUESTED) return;
+    INDEX_REQUESTED = true;
+    fetch("/search-index.json").then(function (r) { return r.json(); }).then(function (d) { INDEX = d; }).catch(function () { INDEX = []; });
   }
-  loadIndex();
 
   // Mobile search drawer
   function ensureSearchDrawer() {
@@ -234,6 +234,7 @@
     return searchDrawer;
   }
   function openSearchDrawer() {
+    loadIndex(); // pre-warm while the user reaches for the keyboard
     var d = ensureSearchDrawer();
     d.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -267,6 +268,7 @@
     });
   }
   function runSearch(q, box) {
+    loadIndex(); // guard: no-op if already requested
     if (!INDEX || !q.trim()) { box.classList.remove("open"); return; }
     var hits = INDEX.map(function (it) { return { it: it, s: score(it, q) }; })
       .filter(function (x) { return x.s > 0; })
@@ -292,18 +294,56 @@
     resultsBox.setAttribute("role", "status");
     resultsBox.setAttribute("aria-live", "polite");
     searchInput.addEventListener("input", function () { runSearch(this.value, resultsBox); });
-    searchInput.addEventListener("focus", function () { if (this.value) runSearch(this.value, resultsBox); });
+    searchInput.addEventListener("focus", function () {
+      loadIndex(); // pre-warm on engagement, not at page load
+      if (this.value) runSearch(this.value, resultsBox);
+    });
     document.addEventListener("click", function (e) {
       if (!e.target.closest(".search-wrap")) resultsBox.classList.remove("open");
     });
   }
 
   /* ---------------- KaTeX ---------------- */
+  /* Loaded on demand: the ~300 KB CDN bundle ships only when a page actually
+     carries math. The decision looks at content containers only (not
+     .page-head — every page has one, which would defeat the point) and only
+     when their text contains a $ delimiter. */
+  var KATEX_VER = "0.16.9";
+  function injectKaTeX(ready) {
+    if (window.renderMathInElement) { ready(); return; }
+    var css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "https://cdn.jsdelivr.net/npm/katex@" + KATEX_VER + "/dist/katex.min.css";
+    document.head.appendChild(css);
+    var core = document.createElement("script");
+    core.defer = true;
+    core.src = "https://cdn.jsdelivr.net/npm/katex@" + KATEX_VER + "/dist/katex.min.js";
+    core.onload = function () {
+      var ar = document.createElement("script");
+      ar.defer = true;
+      ar.src = "https://cdn.jsdelivr.net/npm/katex@" + KATEX_VER + "/dist/contrib/auto-render.min.js";
+      ar.onload = ready;
+      document.head.appendChild(ar);
+    };
+    document.head.appendChild(core);
+  }
+  function mathHosts() {
+    return document.querySelectorAll('.topic, .cheat, .modpyq-card, .formula-box, .subsection');
+  }
+  function pageHasMath() {
+    var hosts = mathHosts();
+    for (var i = 0; i < hosts.length; i++) {
+      if ((hosts[i].textContent || "").indexOf("$") !== -1) return true;
+    }
+    return false;
+  }
   function renderMath() {
-    if (window.renderMathInElement) {
+    if (!pageHasMath()) return;
+    injectKaTeX(function () {
+      if (!window.renderMathInElement) return;
       // Scope to math-containing containers only
-      var mathContainers = document.querySelectorAll('.topic, .cheat, .modpyq-card, .formula-box, .subsection, .page-head');
-      mathContainers.forEach(function (el) {
+      var containers = document.querySelectorAll('.topic, .cheat, .modpyq-card, .formula-box, .subsection, .page-head');
+      containers.forEach(function (el) {
         window.renderMathInElement(el, {
           delimiters: [
             { left: "$$", right: "$$", display: true },
@@ -312,7 +352,7 @@
           throwOnError: false
         });
       });
-    }
+    });
   }
   if (document.readyState === "complete") renderMath();
   else window.addEventListener("load", renderMath);

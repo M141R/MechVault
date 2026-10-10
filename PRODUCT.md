@@ -28,7 +28,7 @@ Content is authored by the owner in raw HTML (`src/content/*.html`) and served t
 
 - Six subject content files under `src/content/`, each split into numbered modules (`t1`-`t4`) plus a PYQ section per subject.
 - Numerical Methods is served through per-module pages (`/numerical/module/4`), not through the `/numerical` index, which intentionally carries no module blocks.
-- Previous-year question papers are page-scanned PNGs under `public/images/papers/`, named `SUBJECT_TYPE_YEAR_PART_pN.png`.
+- Previous-year question papers are page-scanned PNGs under `images/papers/` (repo root, outside `public/` so the static handler cannot serve them; the only path to them is the auth-gated `/api/file`), named `SUBJECT_TYPE_YEAR_PART_pN.png`.
 - The syllabus scope is authoritative in the department PDF, not in the textbook's full table of contents; the Fluid Mechanics midsem scope is Ch. 4/10/13.
 - Study content is used in short, repeated bursts across a term rather than read once.
 - All book, syllabus, and paper images sit behind the auth check and stream from Cloudflare R2 through `/api/file`.

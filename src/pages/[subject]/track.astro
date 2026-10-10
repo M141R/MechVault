@@ -6,17 +6,14 @@
  * Server-rendered first so it is usable without JS for reading; the buttons
  * progressively enhance into POSTs.
  */
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getSubject } from "../../lib/subjects";
 import { trackerIsLocal } from "../../lib/auth-single";
-import { getTrackerConfig, studyAction } from "../../lib/tracker/config";
-import {
-  TOPIC_STATES,
-  PROBLEM_STATES,
-  type TopicStateName,
-  type ProblemStateName,
-} from "../../lib/tracker/engine";
+import { getTrackerConfig , studyAction } from "../../lib/tracker/config";
+import { TOPIC_STATES, PROBLEM_STATES, TOPIC_COVERED, PROBLEM_COVERED, isTopicState,isProblemState,type TopicStateName,type ProblemStateName} from "../../lib/tracker/engine";
 import { questionsForModule, coverageFor } from "../../lib/tracker/pyq-bank";
+import { bookQuestionsForModule, bookCoverageFor, bookQuestionLabel, bookPageLabel, bookProblemKey } from "../../lib/tracker/book-bank";
 
 const subject = getSubject(Astro.params.subject);
 const cfg = getTrackerConfig(Astro.params.subject);
@@ -32,14 +29,21 @@ if (!subject || !cfg) {
  * module board shows them, with the scanned page they came from, so "19 PYQs"
  * becomes something you can open and attempt rather than a number to trust.
  *
- * A subject with no PYQ table (fm, numerical) renders an explicit empty state
+ * A subject with no PYQ table (numerical) renders an explicit empty state
  * naming the gap — never a silent zero, which would read as "you have covered
  * everything and there is nothing to do".
  */
 const pyqCoverage = coverageFor(cfg.slug);
+const bookCoverage = bookCoverageFor(cfg.slug);
 
+/**
+ * Book questions share the PROBLEM state machine with ordinary problems, so a
+ * tick on a book row and a tick on a config problem row are the same thing to
+ * the store. The key is namespaced by `bq.` so the two never collide.
+ */
 const topicState = new Map<string, TopicStateName>();
 const problemState = new Map<string, ProblemStateName>();
+const topicMeta = new Map<string, { errorReason: string | null }>();
 const problemMeta = new Map<
   string,
   { hintLevel: number; errorReason: string | null; attempts: number }
@@ -67,9 +71,12 @@ if (local) {
   try {
     const { readStates } = await import("../../lib/tracker/store");
     const { topics, problems } = await readStates(user.id);
-    for (const t of topics) topicState.set(t.key, t.state as TopicStateName);
+    for (const t of topics) {
+      topicState.set(t.key, (isTopicState(t.state) ? t.state : "unseen") as TopicStateName);
+      if (t.errorReason) topicMeta.set(t.key, { errorReason: t.errorReason });
+    }
     for (const p of problems) {
-      problemState.set(p.key, p.state as ProblemStateName);
+      problemState.set(p.key, (isProblemState(p.state) ? p.state : "unseen") as ProblemStateName);
       problemMeta.set(p.key, {
         hintLevel: p.hintLevel,
         errorReason: p.errorReason,
@@ -80,16 +87,11 @@ if (local) {
     // Read-only render; the alert below explains.
   }
 }
-
-const modules = [1, 2, 3, 4, 5].map((m) => ({
-  num: m,
-  name: subject.syllabus.find((s) => s.num === m)?.name ?? `Module ${m}`,
-  topics: cfg.topics.filter((t) => t.module === m),
-  problems: cfg.problems.filter((p) => p.module === m),
-  decks: cfg.decks.filter((d) => d.module === m),
-  questions: questionsForModule(cfg.slug, m),
-}));
-
+// ---------------------------------------------------------------------------
+// Tallies. Every count shown on this page is recomputed from state at render
+// time rather than carried in config, so a row that changes state in the
+// browser and reloads still reports the truth.
+// ---------------------------------------------------------------------------
 const label: Record<string, string> = {
   unseen: "Unseen",
   read: "Read",
@@ -102,14 +104,64 @@ const label: Record<string, string> = {
   "solved-cold": "Solved cold",
   "exam-speed": "Exam speed",
 };
+
+function tally(keys: string[], done: (k: string) => boolean) {
+  return {
+    done: keys.filter(done).length,
+    total: keys.length,
+  };
+}
+
+const modules = [1, 2, 3, 4, 5].map((m) => {
+  const topics = cfg.topics.filter((t) => t.module === m);
+  const problems = cfg.problems.filter((p) => p.module === m);
+  const bookQuestions = bookQuestionsForModule(cfg.slug, m);
+
+  const topicKeys = topics.map((t) => t.key);
+  const problemKeys = problems.map((p) => p.key);
+  const bookKeys = bookQuestions.map((q) => bookProblemKey(cfg.slug, q));
+
+  const topicTally = tally(topicKeys, (k) =>
+    TOPIC_COVERED.has((topicState.get(k) ?? "unseen") as TopicStateName),
+  );
+  const problemTally = tally(problemKeys, (k) =>
+    PROBLEM_COVERED.has((problemState.get(k) ?? "unseen") as ProblemStateName),
+  );
+  const bookTally = tally(bookKeys, (k) =>
+    PROBLEM_COVERED.has((problemState.get(k) ?? "unseen") as ProblemStateName),
+  );
+
+  return {
+    num: m,
+    name: subject.syllabus.find((s) => s.num === m)?.name ?? `Module ${m}`,
+    topics,
+    problems,
+    bookQuestions,
+    questions: questionsForModule(cfg.slug, m),
+    decks: cfg.decks.filter((d) => d.module === m),
+    topicTally,
+    problemTally,
+    bookTally,
+    get trackable() {
+      return this.topicTally.total + this.problemTally.total + this.bookTally.total;
+    },
+    get covered() {
+      return this.topicTally.done + this.problemTally.done + this.bookTally.done;
+    },
+  };
+});
+
+/** Only the first module with work starts open; the rest stay folded. */
+const firstOpen = modules.findIndex((m) => m.trackable > 0);
 ---
 
 <BaseLayout title={`${subject.short} tracker · MechVault`}>
   <section
-    class="page"
-    data-subject={cfg.slug}
-    data-storage={local ? "local" : "db"}
-  >
+      class="page"
+      data-subject={cfg.slug}
+      data-storage={local ? "local" : "db"}
+      data-label={JSON.stringify(label)}
+    >
     <a href="/dashboard" class="back">← Dashboard</a>
 
     <header class="page-head">
@@ -121,29 +173,40 @@ const label: Record<string, string> = {
           5 modules
         </p>
       </div>
+      <a href={`/${cfg.slug}/book-questions`} class="btn btn-ghost">Book questions</a>
       <a href={`/${cfg.slug}`} class="btn btn-accent">Notes &amp; PYQs</a>
     </header>
 
-    {local && (
-      <div class="alert alert-local" role="note">
-        <strong>Single-user mode — state is stored in this browser only.</strong>
-        <span>
-          No database is involved. Tracker state lives in this browser's
-          localStorage, so clearing site data or switching device resets it. Do
-          not read an empty tracker as a reset understanding.
-        </span>
+    {/*
+      One folded disclosure instead of three open prose blocks. On a subject
+      like SOM that was ~180 words of framing before the first question, which
+      pushed the actual work below the fold. The summary line carries the exam
+      caveat, so folding the prose never folds away the fact that the format is
+      inferred.
+    */}
+    <details class="about">
+      <summary class="about-head">
+        <span class="about-title">How this subject is tracked</span>
+        <span class="about-flag">exam format inferred, not official</span>
+      </summary>
+      <div class="about-body">
+        <p><strong>Why this subject works this way.</strong> {cfg.diagnosis}</p>
+        <p>
+          Exam format is inferred from {cfg.exam.basis} and is <em>not</em> yet
+          confirmed against the official notification. Marks:
+          {cfg.exam.marksTotal} total, {cfg.exam.marksPerQuestion} per question,
+          {cfg.exam.questionsPerModule} question per module.
+        </p>
+        {local && (
+          <p>
+            <strong>Single-user mode.</strong> No database is involved — state
+            lives in this browser&apos;s localStorage, so clearing site data or
+            switching device resets it. An empty tracker is not a reset
+            understanding.
+          </p>
+        )}
       </div>
-    )}
-
-    <div class="alert" role="note">
-      <strong>Why this subject works this way:</strong> {cfg.diagnosis}
-    </div>
-
-    <p class="note">
-      Exam format is inferred from {cfg.exam.basis} and is <em>not</em> yet confirmed
-      against the official notification. Marks: {cfg.exam.marksTotal} total,
-      {cfg.exam.marksPerQuestion} per question, {cfg.exam.questionsPerModule} question per module.
-    </p>
+    </details>
 
     <div class="filters">
       <label>Tier
@@ -164,193 +227,315 @@ const label: Record<string, string> = {
       </label>
     </div>
 
-    {modules.map((m) => (
-      <section class="module" data-module={m.num}>
-        <h2><span class="mod-num">M{m.num}</span> {m.name}</h2>
+    {modules.map((m, idx) => (
+          <section class="module" data-module={m.num} data-open={idx === firstOpen}>
+            <details class="module-card" open={idx === firstOpen}>
+              <summary class="module-head">
+                <span class="mod-num">M{m.num}</span>
+                <span class="module-name">{m.name}</span>
+                <span class="module-tally">
+                  {m.covered} of {m.trackable} covered
+                </span>
+                <span class="mod-caret" aria-hidden="true">›</span>
+              </summary>
 
-        {m.questions.length > 0 ? (
-          <details class="pyq-panel">
-            <summary class="pyq-panel-head">
-              <span class="pyq-caret" aria-hidden="true">›</span>
-              <span class="pyq-panel-title">Exam questions asked in this module</span>
-              <span class="pyq-panel-count">
-                {m.questions.length} question{m.questions.length === 1 ? "" : "s"}
-              </span>
-            </summary>
-            <p class="pyq-panel-note">
-              Verbatim from {pyqCoverage.code || "the paper"} past papers. Attempt
-              these on blank paper before touching the state controls — the state
-              tracks what you can reproduce, not what you have read.
-            </p>
-            <ol class="pyq-list">
-              {m.questions.map((q) => (
-                <li class="pyq-item" data-qid={q.id}>
-                  <div class="pyq-item-head">
-                    <span class="pyq-qno">{q.paper} · {q.qno}</span>
-                    {q.marks != null && <span class="pyq-marks">{q.marks} marks</span>}
-                    <span class:list={["pyq-type", q.type.toLowerCase()]}>{q.type}</span>
-                    {q.moduleTagInferred && (
-                      <span
-                        class="pyq-inf"
-                        title="This MID question's module tag was matched by keyword, not by BIT's verified Qn → Module n ordering. Verify it against the scan."
-                      >
-                        module tag inferred
+              <div class="module-body">
+                {/* PYQ panel */}
+                {m.questions.length > 0 ? (
+                  <details class="panel pyq-panel">
+                    <summary class="panel-head">
+                      <span class="panel-title">Exam questions</span>
+                      <span class="panel-count">{m.questions.length} question{m.questions.length === 1 ? "" : "s"}</span>
+                    </summary>
+                    <p class="panel-note">
+                      Verbatim from {pyqCoverage.code || "the paper"} past papers. Attempt
+                      these on blank paper before touching the state controls — the state
+                      tracks what you can reproduce, not what you have read.
+                    </p>
+                    <ol class="pyq-list">
+                      {m.questions.map((q) => (
+                        <li class="pyq-item" data-qid={q.id}>
+                          {/*
+                            Provenance collapses to one margin tab. Paper,
+                            question number and marks were three separate chips
+                            per row; a question number without its paper is
+                            unfindable, so they read as one citation. MID/END
+                            stays a word rather than a box because the two are
+                            not competing kinds of thing - they are positions
+                            in one paper.
+                          */}
+                          <span class="pyq-tab">
+                            <span class="pyq-tab-pos">{q.type}</span>
+                            <span class="pyq-tab-marks">{q.marks}m</span>
+                          </span>
+                          <div class="pyq-main">
+                            <div class="pyq-item-head">
+                              <span class="pyq-qno">{q.paper} · Q.{q.qno}</span>
+                              {q.moduleTagInferred && (
+                                <span
+                                  class="pyq-inf"
+                                  title="This MID question's module tag was matched by keyword, not by BIT's verified Qn → Module n ordering. Verify it against the scan."
+                                >
+                                  module tag inferred
+                                </span>
+                              )}
+                              {q.scanPath && (
+                                <a
+                                  class="pyq-scan"
+                                  href={`/api/file?path=${q.scanPath}`}
+                                  target="_blank"
+                                  rel="noopener"
+                                >
+                                  Scanned page ↗
+                                </a>
+                              )}
+                            </div>
+                            <p class="pyq-text">{q.text}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
+                ) : (
+                  <div class="panel pyq-panel pyq-panel-empty">
+                    <div class="panel-empty">
+                      <strong>No per-question PYQs indexed for this module.</strong>
+                      <span>
+                        {pyqCoverage.empty
+                          ? `${cfg.name} has no per-question question table in the notes yet, so there is nothing to attempt here. That is a gap in the vault, not a sign that the module is unimportant.`
+                          : "This module has no questions in the indexed papers."}
                       </span>
-                    )}
-                    {q.scanPath && (
-                      <a
-                        class="pyq-scan"
-                        href={`/api/file?path=${q.scanPath}`}
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Scanned page ↗
-                      </a>
-                    )}
+                    </div>
                   </div>
-                  <p class="pyq-text">{q.text}</p>
-                </li>
-              ))}
-            </ol>
-          </details>
-        ) : (
-          <div class="pyq-panel pyq-panel-empty">
-            <strong>No per-question PYQs indexed for this module.</strong>
-            <span>
-              {pyqCoverage.empty
-                ? `${cfg.name} has no per-question question table in the notes yet, so there is nothing to attempt here. That is a gap in the vault, not a sign that the module is unimportant.`
-                : "This module has no questions in the indexed papers."}
-            </span>
-          </div>
-        )}
-
-        {m.decks.length > 0 && (
-          <div class="decks">
-            {m.decks.map((d) => (
-              <details class="deck">
-                <summary>
-                  <span class="deck-title">{d.title}</span>
-                  <span class="deck-count">{d.pairs.length} contrasts</span>
-                </summary>
-                <p class="deck-evidence">{d.evidence}</p>
-                {(d.answerPoints ?? []).length > 0 && (
-                  <p class="deck-points">
-                    <strong>Answer points an examiner expects:</strong>
-                    {(d.answerPoints ?? []).join(" · ")}
-                  </p>
                 )}
-                <ol class="pairs">
-                  {d.pairs.map((p) => (
-                    <li>
-                      <span class="pair-ab">{p.a}</span>
-                      {p.b && p.b !== "—" && <span class="pair-b">vs {p.b}</span>}
-                      <span class="pair-c">{p.contrast}</span>
-                    </li>
-                  ))}
-                </ol>
-              </details>
-            ))}
-          </div>
-        )}
 
-        {m.topics.length > 0 && (
-          <table class="grid-table">
-            <thead>
-              <tr><th>Topic</th><th>Tier</th><th>Kind</th><th>Why</th><th>State</th></tr>
-            </thead>
-            <tbody>
-              {m.topics.map((t) => {
-                const st = topicState.get(t.key) ?? "unseen";
-                const act = studyAction(t.kind, st);
-                return (
-                  <tr data-key={t.key} data-kind="topic" data-tier={t.tier} data-state={st}>
-                    <td>
-                      <span class="t-title">{t.title}</span>
-                      {t.cue && <span class="t-cue">Cue: {t.cue}</span>}
-                      <span class="t-action"><strong>{act.verb}</strong> — {act.detail}</span>
-                    </td>
-                    <td><span class="tier tier-{t.tier}">{t.tier}</span></td>
-                    <td><span class="kind">{t.kind}</span></td>
-                    <td class="ev">{t.evidence}</td>
-                    <td>
-                      <select class="state-select" data-key={t.key}>
-                        {TOPIC_STATES.map((s) => (
-                          <option value={s} selected={s === st}>{label[s]}</option>
-                        ))}
-                      </select>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+                {/* Book-question tape */}
+                {m.bookQuestions.length > 0 && (
+                  <details class="panel tape" open>
+                    <summary class="panel-head">
+                      <span class="panel-title">Textbook problems</span>
+                      <span class="panel-count">{m.bookQuestions.length} problem{m.bookQuestions.length === 1 ? "" : "s"}</span>
+                    </summary>
+                    <p class="panel-note">
+                      Chapter and printed page straight from the book&apos;s own
+                      contents list. Set the state when you finish one — a
+                      cold solve needs a recorded failed attempt first, so use
+                      <strong>Attempted · failed</strong> and log what went
+                      wrong rather than reaching straight for Solved cold.
+                    </p>
+                    <ol class="bq-rows">
+                      {m.bookQuestions.map((q) => {
+                        const st = problemState.get(bookProblemKey(cfg.slug, q)) ?? "unseen";
+                        const covered = PROBLEM_COVERED.has(st as ProblemStateName);
+                        return (
+                          <li
+                            class="bq-row"
+                            data-bqkey={bookProblemKey(cfg.slug, q)}
+                            data-bqstate={st}
+                            data-bqcovered={covered ? "1" : "0"}
+                          >
+                            <label class="bq-tick">
+                              <input
+                                type="checkbox"
+                                class="bq-box"
+                                checked={covered}
+                                aria-label={`Mark ${bookQuestionLabel(q)} complete`}
+                              />
+                              <span class="bq-stamp" aria-hidden="true">done</span>
+                            </label>
+                            <span class="bq-label">{bookQuestionLabel(q)}</span>
+                            <span class="bq-display">{q.display}</span>
+                            <span class="bq-page">{bookPageLabel(q.page)}</span>
+                            {q.marks != null && <span class="bq-marks">{q.marks}m</span>}
+                            {q.excluded && (
+                              <span
+                                class="bq-excluded"
+                                title="Your professor's handout lists this problem under EXCLUDE, but the notes cite it as practice. Check the handout before spending time here."
+                              >
+                                on the exclude list
+                              </span>
+                            )}
+                            {/*
+                              This panel used to carry the state as read-only
+                              text with only a tick to change it, so the gate
+                              message ("open the state menu and choose
+                              Attempted · failed") named a control that did
+                              not exist here. Same menu and same note box as
+                              /book-questions, so a problem behaves the same
+                              whichever page you work on.
+                            */}
+                            <select class="bq-state-select" data-bqkey={bookProblemKey(cfg.slug, q)} aria-label={`State for ${bookQuestionLabel(q)}`}>
+                              {PROBLEM_STATES.map((s) => (
+                                <option value={s} selected={s === st}>{label[s]}</option>
+                              ))}
+                            </select>
+                            <details class="bq-log">
+                              <summary class="bq-log-summary">log what went wrong</summary>
+                              <input
+                                type="text"
+                                class="bq-error"
+                                data-bqkey={bookProblemKey(cfg.slug, q)}
+                                aria-label={`What went wrong on ${bookQuestionLabel(q)}`}
+                                placeholder="e.g. sign error in the Bernoulli step"
+                                value={problemMeta.get(bookProblemKey(cfg.slug, q))?.errorReason ?? ""}
+                              />
+                            </details>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </details>
+                )}
 
-        {m.problems.length > 0 && (
-          <>
-            <h3 class="sub-head">Problems</h3>
-            <table class="grid-table">
-              <thead>
-                <tr><th>Problem</th><th>PYQs</th><th>Why</th><th>Hints</th><th>State</th></tr>
-              </thead>
-              <tbody>
-                {m.problems.map((p) => {
-                  const st = problemState.get(p.key) ?? "unseen";
-                  const meta = problemMeta.get(p.key);
-                  const act = studyAction(p.kind, st);
-                  return (
-                    <tr data-key={p.key} data-kind="problem" data-state={st}>
-                      <td>
-                        <span class="t-title">{p.title}</span>
-                        <span class="t-action"><strong>{act.verb}</strong> — {act.detail}</span>
-                        <label class="err">
-                          <span>Where it broke</span>
-                          <input
-                            type="text"
-                            class="error-input"
-                            data-key={p.key}
-                            placeholder="e.g. used the thin-wall limit in the thick-cylinder question"
-                            value={meta?.errorReason ?? ""}
-                          />
-                        </label>
-                      </td>
-                      <td class="pyqs">
-                        {(p.pyqs ?? []).map((q) => <span class="pyq">{q}</span>)}
-                      </td>
-                      <td class="ev">{p.evidence}</td>
-                      <td>
-                        <input
-                          type="number"
-                          class="hint-input"
-                          data-key={p.key}
-                          min="0"
-                          max="9"
-                          value={meta?.hintLevel ?? 0}
-                          title="AI hints consumed. Must be 0 to reach exam-speed."
-                        />
-                      </td>
-                      <td>
-                        <select class="state-select" data-key={p.key}>
-                          {PROBLEM_STATES.map((s) => (
-                            <option value={s} selected={s === st}>{label[s]}</option>
-                          ))}
-                        </select>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </>
-        )}
-      </section>
-    ))}
+                {/* Tracked topics */}
+                <details class="panel">
+                  <summary class="panel-head">
+                    <span class="panel-title">Topics to cover</span>
+                    <span class="panel-count">{m.topics.length}</span>
+                  </summary>
+                  <ul class="ledger">
+                    {m.topics.map((t) => {
+                      const st = topicState.get(t.key) ?? "unseen";
+                      const meta = topicMeta.get(t.key);
+                      const act = studyAction(t.kind, st);
+                      return (
+                        <li class="ledger-row" data-key={t.key} data-kind="topic" data-tier={t.tier} data-state={st}>
+                          <span class="ledger-tier tier-{t.tier}">{t.tier}</span>
+                          <span class="ledger-title">
+                            {t.title}
+                            {t.cue && <span class="t-cue">{t.cue}</span>}
+                          </span>
+                          <span class="ledger-kind">{t.kind}</span>
+                          <span class="ledger-evidence">{t.evidence}</span>
+                          <span class="ledger-action"><strong>{act.verb}</strong> — {act.detail}</span>
+                          <details class="ledger-gap">
+                            <summary class="ledger-gap-summary">log a gap</summary>
+                            <label class="err">
+                              <span>Where it broke</span>
+                              <input
+                                type="text"
+                                class="error-input topic-error-input"
+                                data-key={t.key}
+                                placeholder="e.g. sign error in the Bernoulli step"
+                                value={meta?.errorReason ?? ""}
+                              />
+                            </label>
+                          </details>
+                          <select class="state-select" data-key={t.key}>
+                            {TOPIC_STATES.map((s) => (
+                              <option value={s} selected={s === st}>{label[s]}</option>
+                            ))}
+                          </select>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </details>
 
+                {/* Tracked problems */}
+                {m.problems.length > 0 && (
+                  <details class="panel">
+                    <summary class="panel-head">
+                      <span class="panel-title">Problems to solve</span>
+                      <span class="panel-count">{m.problems.length}</span>
+                    </summary>
+                    <ul class="ledger">
+                    {m.problems.map((p) => {
+                      const st = problemState.get(p.key) ?? "unseen";
+                      const meta = problemMeta.get(p.key);
+                      const act = studyAction(p.kind, st);
+                      return (
+                        <li class="ledger-row" data-key={p.key} data-kind="problem" data-state={st}>
+                          <span class="ledger-title">{p.title}</span>
+                          <span class="ledger-kind">{p.kind}</span>
+                          <span class="ledger-evidence">{p.evidence}</span>
+                          <span class="ledger-action"><strong>{act.verb}</strong> — {act.detail}</span>
+                          <details class="ledger-hints">
+                            <summary class="ledger-hints-summary">hints</summary>
+                            <label class="hint-label">
+                              <span>AI hints</span>
+                              <input
+                                type="number"
+                                class="hint-input"
+                                data-key={p.key}
+                                min="0"
+                                max="9"
+                                value={meta?.hintLevel ?? 0}
+                                title="AI hints consumed. Must be 0 to reach exam-speed."
+                              />
+                            </label>
+                          </details>
+                          {/* A problem row previously had no way to record WHERE it
+                              went wrong, so "Attempted · failed" was a state with
+                              no note attached to it. The gate asks for a failed
+                              attempt; this is where the attempt gets written down. */}
+                          <details class="ledger-gap">
+                            <summary class="ledger-gap-summary">log what went wrong</summary>
+                            <label class="err">
+                              <span>Where it broke</span>
+                              <input
+                                type="text"
+                                class="error-input"
+                                data-key={p.key}
+                                placeholder="e.g. sign error in the Bernoulli step"
+                                value={meta?.errorReason ?? ""}
+                              />
+                            </label>
+                          </details>
+                          <span class="ledger-pyqs">
+                            {(p.pyqs ?? []).map((q) => <span class="pyq">{q}</span>)}
+                          </span>
+                          <select class="state-select" data-key={p.key}>
+                            {PROBLEM_STATES.map((s) => (
+                              <option value={s} selected={s === st}>{label[s]}</option>
+                            ))}
+                          </select>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  </details>
+                )}
+
+                {/* Recall decks */}
+                {m.decks.length > 0 && (
+                  <details class="panel decks">
+                    <summary class="panel-head">
+                      <span class="panel-title">Recall decks</span>
+                      <span class="panel-count">{m.decks.reduce((n, d) => n + d.pairs.length, 0)} contrasts</span>
+                    </summary>
+                    <div class="decks-body">
+                      {m.decks.map((d) => (
+                        <details class="deck">
+                          <summary>
+                            <span class="deck-title">{d.title}</span>
+                            <span class="deck-count">{d.pairs.length} pairs</span>
+                          </summary>
+                          <p class="deck-points">{d.evidence}</p>
+                          <ul class="pairs">
+                            {d.pairs.map((pr) => (
+                              <li>
+                                <span class="pair-ab">{pr.a}</span>
+                                <span class="pair-b">{pr.b}</span>
+                                <span class="pair-c">{pr.contrast}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      ))}
+                    </div>
+                  </details>
+                )}
+              </div>
+            </details>
+          </section>
+        ))}
     <div class="toast" id="toast" hidden></div>
   </section>
 
   <script>
     import { TOPIC_STATES, PROBLEM_STATES } from "../../lib/tracker/engine";
+    import type { TopicStateName, ProblemStateName } from "../../lib/tracker/engine";
 
     const single =
       document.querySelector(".page")?.getAttribute("data-storage") === "local";
@@ -358,32 +543,10 @@ const label: Record<string, string> = {
     const toast = document.getElementById("toast") as HTMLElement;
     let toastTimer: ReturnType<typeof setTimeout> | undefined;
 
-    // Hydrate from localStorage in single-user mode: the server rendered `unseen`
-    // for everything because it has no state to read.
-    if (single) {
-      const { readLocalStates } = await import("../../lib/tracker/local-store");
-      const { topics, problems } = readLocalStates();
-      const apply = (key: string, state: string) => {
-        for (const el of document.querySelectorAll<HTMLSelectElement>(
-          `.state-select[data-key="${key}"]`,
-        )) {
-          el.value = state;
-          const row = el.closest<HTMLElement>("tr");
-          if (row) row.dataset.state = state;
-        }
-      };
-      for (const t of topics) apply(t.key, t.state);
-      for (const p of problems) {
-        apply(p.key, p.state);
-        const row = document.querySelector<HTMLElement>(`tr[data-key="${p.key}"]`);
-        if (!row) continue;
-        const hint = row.querySelector<HTMLInputElement>(".hint-input");
-        const errIn = row.querySelector<HTMLInputElement>(".error-input");
-        if (hint) hint.value = String(p.hintLevel ?? 0);
-        if (errIn && p.errorReason) errIn.value = p.errorReason;
-      }
-      applyFilters();
-    }
+    // Human-readable state names, serialized by the server onto .page@data-label.
+    const label: Record<string, string> = JSON.parse(
+      document.querySelector(".page")?.getAttribute("data-label") ?? "{}",
+    );
 
     function say(msg: string, bad = false) {
       toast.textContent = msg;
@@ -418,8 +581,25 @@ const label: Record<string, string> = {
       if (!res.ok) throw new Error(data.error ?? "save failed");
     }
 
+    async function saveTopicMeta(key: string) {
+      const row = document.querySelector<HTMLElement>(`.ledger-row[data-key="${key}"]`);
+      if (!row) return;
+      const errText = row.querySelector<HTMLInputElement>(".topic-error-input")?.value ?? "";
+      if (single) {
+        const { updateLocalTopic } = await import("../../lib/tracker/local-store");
+        const res = updateLocalTopic({
+          key,
+          state: row.dataset.state ?? "unseen",
+          errorReason: errText,
+        });
+        if (!res.ok) throw new Error(res.error ?? "save failed");
+        return;
+      }
+      await post({ kind: "topic", key, state: row.dataset.state ?? "unseen", errorReason: errText });
+    }
+
     async function saveProblemMeta(key: string) {
-      const row = document.querySelector<HTMLElement>(`tr[data-key="${key}"]`);
+      const row = document.querySelector<HTMLElement>(`.ledger-row[data-key="${key}"]`);
       if (!row) return;
       const hint = Number(row.querySelector<HTMLInputElement>(".hint-input")?.value ?? 0);
       const errText = row.querySelector<HTMLInputElement>(".error-input")?.value ?? "";
@@ -445,42 +625,158 @@ const label: Record<string, string> = {
     }
 
     for (const sel of document.querySelectorAll<HTMLSelectElement>(".state-select")) {
-      sel.addEventListener("change", async (e) => {
-        const el = e.target as HTMLSelectElement;
-        const row = el.closest<HTMLElement>("tr");
-        if (!row) return;
-        const kind = row.dataset.kind;
-        const key = row.dataset.key!;
-        const to = el.value;
-        const previous = row.dataset.state ?? "unseen";
-        const allowed = kind === "topic" ? TOPIC_STATES : PROBLEM_STATES;
-        if (!(allowed as readonly string[]).includes(to)) {
-          say(`Unknown state ${to}.`, true);
-          el.value = previous;
-          return;
+          sel.addEventListener("change", async (e) => {
+            const el = e.target as HTMLSelectElement;
+            const row = el.closest<HTMLElement>(".ledger-row");
+            if (!row) return;
+            const kind = row.dataset.kind;
+            const key = row.dataset.key!;
+            const to = el.value;
+            const previous = row.dataset.state ?? "unseen";
+            const allowed = kind === "topic" ? TOPIC_STATES : PROBLEM_STATES;
+            if (!(allowed as readonly string[]).includes(to)) {
+              say(`Unknown state ${to}.`, true);
+              el.value = previous;
+              return;
+            }
+            row.dataset.state = to;
+            try {
+              if (kind === "problem") await saveProblemMeta(key);
+              else await saveTopicMeta(key);
+              say(`${key} → ${to.replace(/-/g, " ")}`);
+            } catch (err) {
+              // The server is the authority on the gates. Revert on refusal so the
+              // UI never shows a state the rules did not actually allow.
+              row.dataset.state = previous;
+              el.value = previous;
+              say((err as Error).message, true);
+            }
+          });
         }
-        row.dataset.state = to;
-        try {
-          if (kind === "problem") await saveProblemMeta(key);
-          else await post({ kind: "topic", key, state: to });
-          say(`${key} → ${to.replace(/-/g, " ")}`);
-        } catch (err) {
-          // The server is the authority on the gates. Revert on refusal so the
-          // UI never shows a state the rules did not actually allow.
-          row.dataset.state = previous;
-          el.value = previous;
-          say((err as Error).message, true);
+
+        /* Book-question ticks. A tick is a shortcut for `solved-cold`; un-ticking
+           returns the row to `unseen`. It goes through the same problem store and
+           the same gates as the state selects, so a tick can never record a state
+           the rules would refuse. */
+        /*
+         * Book-question state. `note` rides along with every write so the log
+         * and the state can never disagree; omitting it clears the note, which
+         * is what a bare tick does.
+         */
+        const setProblemState = async (key: string, to: string, note?: string) => {
+          const errorReason = note === undefined || note === "" ? null : note;
+          if (single) {
+            const { updateLocalProblem } = await import("../../lib/tracker/local-store");
+            const res = updateLocalProblem({ key, state: to, hintLevel: 0, errorReason });
+            if (!res.ok) throw new Error(res.error ?? "save failed");
+            return;
+          }
+          const res = await fetch("/api/progress", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ kind: "problem", key, state: to, hintLevel: 0, errorReason }),
+          });
+          const data = await res.json().catch(() => ({ error: "bad response" }));
+          if (!res.ok) throw new Error(data.error ?? "save failed");
+        };
+
+        for (const box of document.querySelectorAll<HTMLInputElement>(".bq-box")) {
+          const row = box.closest<HTMLElement>(".bq-row");
+          if (!row) continue;
+          box.addEventListener("change", async () => {
+            const key = row.dataset.bqkey!;
+            const to = box.checked ? "solved-cold" : "unseen";
+            try {
+              await setProblemState(key, to);
+              row.dataset.bqstate = to;
+              row.dataset.bqcovered = box.checked ? "1" : "0";
+              const sel = row.querySelector<HTMLSelectElement>(".bq-state-select");
+              if (sel) sel.value = to;
+              say(box.checked ? `${key} → solved cold` : `${key} → unseen`);
+            } catch (err) {
+              box.checked = !box.checked;      // the store is the authority
+              say((err as Error).message, true);
+            }
+          });
         }
-      });
-    }
+
+        /* Textbook-row state menu. This is the control the gate names when it
+           refuses a cold solve, so it must offer Attempted · failed too — the
+           same menu exists on /book-questions and both write the same row. */
+        for (const sel of document.querySelectorAll<HTMLSelectElement>(".bq-state-select")) {
+          sel.addEventListener("change", async () => {
+            const row = sel.closest<HTMLElement>(".bq-row");
+            if (!row) return;
+            const key = sel.dataset.bqkey!;
+            const to = sel.value;
+            const previous = row.dataset.bqstate ?? "unseen";
+            if (!(PROBLEM_STATES as readonly string[]).includes(to)) {
+              sel.value = previous;
+              say(`Unknown state ${to}.`, true);
+              return;
+            }
+            const note = row.querySelector<HTMLInputElement>(".bq-error")?.value ?? "";
+            try {
+              await setProblemState(key, to, note);
+              row.dataset.bqstate = to;
+              const covered = to === "solved-cold" || to === "exam-speed";
+              row.dataset.bqcovered = covered ? "1" : "0";
+              const box = row.querySelector<HTMLInputElement>(".bq-box");
+              if (box) box.checked = covered;
+              say(`${key} → ${label[to] ?? to}`);
+            } catch (err) {
+              sel.value = previous;            // revert; the store refused it
+              say((err as Error).message, true);
+            }
+          });
+        }
+
+        /* The failure note on a textbook row. Saves with the current state so a
+           note written after choosing Attempted · failed survives a reload. */
+        for (const inp of document.querySelectorAll<HTMLInputElement>(".bq-error")) {
+          inp.addEventListener("change", async () => {
+            const row = inp.closest<HTMLElement>(".bq-row");
+            if (!row) return;
+            try {
+              await setProblemState(
+                inp.dataset.bqkey!,
+                row.dataset.bqstate ?? "unseen",
+                inp.value,
+              );
+              say("Saved what went wrong.");
+            } catch (err) {
+              say((err as Error).message, true);
+            }
+          });
+        }
+
+                for (const inp of document.querySelectorAll<HTMLInputElement>(".bq-error")) {
+                  inp.addEventListener("change", async () => {
+                    const row = inp.closest<HTMLElement>(".bq-row");
+                    if (!row) return;
+                    try {
+                      await setProblemState(
+                        inp.dataset.bqkey!,
+                        row.dataset.bqstate ?? "unseen",
+                        inp.value,
+                      );
+                      say("Saved what went wrong.");
+                    } catch (err) {
+                      say((err as Error).message, true);
+                    }
+                  });
+                }
 
     for (const inp of document.querySelectorAll<HTMLInputElement>(
-      ".hint-input, .error-input",
+      ".hint-input, .error-input, .topic-error-input",
     )) {
       inp.addEventListener("change", async () => {
         const key = inp.dataset.key!;
+        const row = inp.closest<HTMLElement>(".ledger-row");
+        const kind = row?.dataset.kind;
         try {
-          await saveProblemMeta(key);
+          if (kind === "topic") await saveTopicMeta(key);
+          else await saveProblemMeta(key);
           say("Saved.");
         } catch (err) {
           say((err as Error).message, true);
@@ -500,158 +796,648 @@ const label: Record<string, string> = {
         "solved-cold",
         "exam-speed",
       ]);
-      for (const row of document.querySelectorAll<HTMLElement>("tr[data-key]")) {
-        const okTier = !t || row.dataset.tier === t;
-        const st = row.dataset.state ?? "";
-        const okState =
-          !s ||
-          (s === "done" && covered.has(st)) ||
-          (s === "unseen" && st === "unseen") ||
-          (s === "flaky" && st === "flaky");
-        row.hidden = !(okTier && okState);
-      }
-      for (const sec of document.querySelectorAll<HTMLElement>(".module")) {
-        const any =
-          sec.querySelectorAll("tr[data-key]:not([hidden])").length > 0 ||
-          sec.querySelectorAll(".deck").length > 0;
-        sec.hidden = !any;
-      }
+      // Rows are <li class="ledger-row">, not <tr>. The old selector matched
+            // nothing, which made `any` false and hid every module on load.
+            for (const row of document.querySelectorAll<HTMLElement>(".ledger-row[data-key]")) {
+              const okTier = !t || row.dataset.tier === t;
+              const st = row.dataset.state ?? "";
+              const okState =
+                !s ||
+                (s === "done" && covered.has(st)) ||
+                (s === "unseen" && st === "unseen") ||
+                (s === "flaky" && st === "flaky");
+              row.hidden = !(okTier && okState);
+            }
+            // A module stays visible when it still has PYQs, decks or book rows to
+            // read even if every tracked row is filtered out.
+            for (const sec of document.querySelectorAll<HTMLElement>(".module")) {
+              const any =
+                sec.querySelectorAll(".ledger-row[data-key]:not([hidden])").length > 0 ||
+                sec.querySelectorAll(".deck").length > 0 ||
+                sec.querySelectorAll(".bq-row").length > 0 ||
+                sec.querySelectorAll(".pyq-panel").length > 0;
+              sec.hidden = !any;
+            }
     }
     tier?.addEventListener("change", applyFilters);
     state?.addEventListener("change", applyFilters);
     applyFilters();
   </script>
-</BaseLayout>
 
 <style>
-  /* PYQ panel — the real exam questions, inline in the module board. */
-  .pyq-panel {
-    margin: 0 0 16px; border: 1px solid var(--border); border-radius: var(--radius);
-    background: var(--surface-1); overflow: hidden;
+/* ==================================================================
+     TRACKER — one folded j-card per module, ledger rows with a margin.
+
+     Every value here comes from a token in public/assets/style.css. The
+     type scale is four steps (label / running / small / base) and the
+     spacing scale is five. A fifth font step or an ad-hoc gap is how a
+     page starts to feel accidental, so neither exists.
+
+     Hierarchy is carried by fill and ink weight before colour: covered is
+     inked, in-progress is hatched, untouched is pencil grey. Spot red is
+     reserved for the active tab, the side heads, and a covered stamp.
+     ================================================================== */
+
+  /* ---- page frame ----
+     The measure is capped so question text stops around 78 characters. The
+     old `max-width: 100%` let the ledger stretch the full width of a laptop,
+     which is where the page read as a data dump rather than a document. The
+     clamp keeps side margins on a phone and on a 27" display alike. */
+  .page {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
   }
-  .pyq-panel-head {
-    display: flex; align-items: center; gap: 9px;
-    padding: 12px 14px; cursor: pointer; list-style: none;
-    background: var(--surface-2); border-bottom: 1px solid transparent;
+  .back { font-size: var(--font-size-sm); text-decoration: none; color: var(--muted); }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-lg) var(--space-xl);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
   }
-  .pyq-caret {
-    display: inline-block; font-size: 15px; color: var(--accent);
-    transition: transform 0.15s ease; transform-origin: 45% 50%;
+  .code { font-family: var(--mono); font-size: var(--font-size-label); color: var(--muted); }
+
+  /* About: closed by default. Framing is reference material, not the task. */
+  .about {
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-1);
   }
-  .pyq-panel[open] .pyq-caret { transform: rotate(90deg); }
-  .pyq-panel-head:hover { background: color-mix(in srgb, var(--accent) 7%, var(--surface-2)); }
-  .pyq-panel-head::-webkit-details-marker { display: none; }
-  .pyq-panel[open] .pyq-panel-head { border-bottom-color: var(--border); }
-  .pyq-panel-title { font-weight: 600; font-size: 14px; }
-  .pyq-panel-count {
-    font-family: var(--mono); font-size: 11px; color: var(--accent);
-    border: 1px solid var(--border); border-radius: var(--radius-pill);
-    padding: 1px 8px; margin-left: auto;
+  .about-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    list-style: none;
   }
-  .pyq-panel-note { margin: 0; padding: 10px 14px; font-size: 12.5px; color: var(--muted); line-height: 1.5; border-bottom: 1px solid var(--border); }
-  .pyq-list { list-style: none; margin: 0; padding: 0; counter-reset: q; }
-  .pyq-item { padding: 14px; border-bottom: 1px solid var(--border); }
-  .pyq-item:hover { background: color-mix(in srgb, var(--accent) 3.5%, transparent); }
+  .about-head::-webkit-details-marker { display: none; }
+  .about-title { font-weight: 600; font-size: var(--font-size-base); }
+  /* The caveat stays on the summary line so folding never hides the fact that
+     the exam format is inferred. */
+  .about-flag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+    color: var(--warn);
+  }
+  .about-body {
+    padding: 0 var(--space-lg) var(--space-lg);
+    max-width: 74ch;
+    color: var(--muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+  }
+  .about-body p { margin: 0 0 var(--space-md); }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--text); }
+
+  .filters {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    align-items: end;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-1);
+    font-size: var(--font-size-sm);
+  }
+  .filters label {
+    display: grid;
+    gap: var(--space-xs);
+    color: var(--muted);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+  }
+  .filters select {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .filters select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- module card ---- */
+  .module { margin: 0; }
+  .module-card {
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .module-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    background: var(--surface-2);
+    border-bottom: 1px solid transparent;
+  }
+  .module-head::-webkit-details-marker { display: none; }
+  .module-card[open] > .module-head { border-bottom-color: var(--border); }
+  .mod-num {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+  }
+  .module-name {
+    flex: 1 1 auto;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .module-tally {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .mod-caret {
+    display: inline-block;
+    font-size: var(--font-size-running);
+    color: var(--accent);
+    transition: transform 0.15s ease;
+    transform-origin: 45% 50%;
+  }
+  .module-card[open] > .module-head .mod-caret { transform: rotate(90deg); }
+  .module-body {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  /* ---- panel: a section inside a module ---- */
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-1);
+    overflow: hidden;
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    background: var(--surface-2);
+    border-bottom: 1px solid transparent;
+  }
+  .panel-head::-webkit-details-marker { display: none; }
+  .panel[open] > .panel-head { border-bottom-color: var(--border); }
+  .panel-title { font-weight: 600; font-size: var(--font-size-sm); }
+  .panel-count {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  /* Panel notes explain how to use the panel. Kept to a readable width and
+     one step quieter than the questions sitting below them. */
+  .panel-note {
+    margin: 0;
+    padding: var(--space-md) var(--space-lg);
+    max-width: 70ch;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .panel-empty { padding: var(--space-md); color: var(--muted); font-size: var(--font-size-sm); line-height: 1.6; }
+  .panel-empty strong { display: block; margin-bottom: var(--space-xs); color: var(--text); }
+
+  /* ---- PYQ list ---- */
+  /* ---- exam questions: citation in the margin, question in the column ----
+     The row is a two-column grid so every question starts at the same x, no
+     matter how long its citation is. That fixed alignment is the readability
+     win: the eye runs down one edge instead of restarting per question. */
+  .pyq-list { list-style: none; margin: 0; padding: 0; }
+  .pyq-item {
+    display: grid;
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    gap: 0 var(--space-lg);
+    padding: var(--space-lg) var(--space-lg);
+    border-bottom: 1px solid var(--border);
+  }
   .pyq-item:last-child { border-bottom: none; }
+  .pyq-item:hover { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+
+  /* MID and END are positions in one paper, not competing categories, so they
+     read as one stacked mark rather than two bordered chips. */
+  .pyq-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding-top: 0.1rem;
+  }
+  .pyq-tab-pos {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .pyq-tab-marks {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pyq-main { min-width: 0; }
   .pyq-item-head {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 7px;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
   }
-  .pyq-qno { font-family: var(--mono); font-size: 11.5px; font-weight: 600; color: var(--accent); }
-  .pyq-marks { font-family: var(--mono); font-size: 11px; color: var(--muted); }
-  .pyq-type {
-    font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
-    padding: 1px 6px; border-radius: var(--radius-sm);
-    background: var(--surface-2); border: 1px solid var(--border); color: var(--muted);
+  .pyq-qno {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
   }
-  .pyq-type.mid { border-color: color-mix(in srgb, var(--warn) 45%, transparent); color: var(--warn); }
-  .pyq-type.end { border-color: color-mix(in srgb, var(--annotation) 45%, transparent); color: var(--annotation-ink); }
   .pyq-inf {
-    font-family: var(--mono); font-size: 10px; padding: 1px 6px;
-    border-radius: var(--radius-sm); border: 1px dashed var(--warn); color: var(--warn);
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    color: var(--warn);
+    border-bottom: 1px dotted color-mix(in srgb, var(--warn) 60%, transparent);
+    padding-bottom: 1px;
     cursor: help;
   }
-  /* Comfortable hit target: a 11px text link is hard to hit and easy to miss. */
   .pyq-scan {
-    font-size: 11.5px; color: var(--accent); text-decoration: none; white-space: nowrap;
-    margin-left: auto; padding: 4px 9px; border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
+    margin-left: auto;
+    font-size: var(--font-size-running);
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    white-space: nowrap;
   }
-  .pyq-scan:hover { border-color: var(--accent); background: var(--blueprint-soft); }
-  .pyq-scan:hover { text-decoration: underline; }
-  /* The question is the point of this panel, so it gets the largest type on
-     the page after headings. Everything above it is metadata, kept small. */
+  .pyq-scan:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .pyq-scan:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .pyq-text {
-    margin: 0; font-size: 15px; line-height: 1.6; color: var(--text);
-    max-width: 78ch;
+    margin: 0;
+    /* 68ch of the 1rem sans is the readable ceiling for continuous prose.
+       Serif is reserved for note prose per DESIGN.md, and a past-paper
+       question is working text, not a reading passage. */
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 68ch;
+    text-wrap: pretty;
+    hanging-punctuation: first;
   }
-  .pyq-panel-empty {
-    display: grid; gap: 4px; padding: 12px 14px; font-size: 13px;
-    border-style: dashed; background: transparent;
+
+  /* ---- textbook problem tape: ticks in the margin ---- */
+  .bq-rows { list-style: none; margin: 0; padding: 0; }
+  .bq-row {
+    display: grid;
+    grid-template-columns: 1.75rem minmax(6rem, 8rem) 1fr 5rem 3rem auto;
+    align-items: center;
+    gap: 0 var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--border);
   }
-  .pyq-panel-empty span { color: var(--muted); }
+  .bq-row:last-child { border-bottom: none; }
 
-  .back { font-size: 13px; text-decoration: none; color: var(--muted); }
-  .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-  .code { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .alert {
-    padding: 12px 14px; border-radius: 8px; font-size: 14px; line-height: 1.55;
-    background: color-mix(in srgb, var(--annotation) 10%, transparent);
-    border-left: 3px solid var(--annotation); margin: 14px 0;
+  .bq-tick { position: relative; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; }
+  .bq-box { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .bq-stamp {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
   }
-  .note { font-size: 13px; color: var(--muted); }
-
-  .filters { display: flex; gap: 16px; flex-wrap: wrap; margin: 18px 0 6px; font-size: 13px; }
-  .filters label { display: grid; gap: 4px; color: var(--muted); }
-  .filters select { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); }
-
-  .module { margin: 26px 0; }
-  .mod-num { font-family: var(--mono); color: var(--accent); }
-  .sub-head { font-size: 14px; margin: 18px 0 6px; }
-
-  .grid-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .grid-table th {
-    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 600;
+  .bq-box:focus-visible + .bq-stamp { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .bq-row[data-bqcovered="1"] .bq-stamp { color: var(--accent); border-color: var(--accent); }
+  /* Worked but not finished: hatching survives greyscale, colour does not. */
+  .bq-row[data-bqstate="understood"],
+  .bq-row[data-bqstate="attempted-fail"] {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--muted) 12%, transparent) 6px 7px
+    );
   }
-  .grid-table td { padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .t-title { display: block; font-weight: 550; line-height: 1.45; }
-  .t-cue { display: block; font-size: 12px; color: var(--muted); font-style: italic; margin-top: 3px; }
-  .t-action { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
-  .ev { font-size: 12px; color: var(--muted); max-width: 30ch; }
-  .tier { font-family: var(--mono); font-weight: 650; }
-  .tier-A { color: #d1453b; }
-  .tier-B { color: #b8860b; }
-  .tier-C { color: var(--muted); }
-  .kind { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border); }
-  .pyqs { display: flex; flex-wrap: wrap; gap: 4px; max-width: 18ch; }
-  .pyq { font-family: var(--mono); font-size: 11px; padding: 1px 5px; border-radius: 3px; background: var(--surface-2); }
-  .state-select, .hint-input, .error-input {
-    padding: 4px 6px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--surface-2); color: var(--text); font-size: 12px;
+  .bq-label {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
-  .hint-input { width: 54px; }
-  .err { display: grid; gap: 2px; margin-top: 6px; font-size: 11px; color: var(--muted); }
-  .error-input { width: 100%; min-width: 22ch; }
+  .bq-display {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bq-page,
+  .bq-marks {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .bq-excluded {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    padding: 0 5px;
+    white-space: nowrap;
+  }
+  .bq-state {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    color: var(--muted);
+    white-space: nowrap;
+  }
 
-  tr[data-state="flaky"] { background: color-mix(in srgb, #d1453b 8%, transparent); }
-  tr[data-state="exam-ready"] { background: color-mix(in srgb, #1a7f5a 8%, transparent); }
-  tr[data-state="exam-speed"] { background: color-mix(in srgb, #1a7f5a 8%, transparent); }
+  /* ---- recall decks ---- */
+  .decks-body { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .deck { border: 1px solid var(--border); border-radius: 0; background: var(--surface-1); }
+  .deck summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    list-style: none;
+    background: var(--surface-2);
+  }
+  .deck summary::-webkit-details-marker { display: none; }
+  .deck-title { font-weight: 600; font-size: var(--font-size-sm); }
+  .deck-count { font-family: var(--mono); font-size: var(--font-size-running); color: var(--muted); }
+  .deck-evidence, .deck-points {
+    margin: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .pairs { list-style: none; margin: 0 0 var(--space-md); padding: 0 var(--space-md); }
+  .pairs li {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pairs li:last-child { border-bottom: none; }
+  .pair-ab { font-weight: 550; }
+  .pair-b { color: var(--muted); font-size: var(--font-size-sm); }
+  .pair-c { color: var(--muted); font-size: var(--font-size-sm); justify-self: end; }
 
-  .decks { display: grid; gap: 8px; margin: 10px 0 16px; }
-  .deck { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-1); }
-  .deck summary { cursor: pointer; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
-  .deck-title { font-weight: 600; }
-  .deck-count { font-size: 12px; color: var(--muted); }
-  .deck-evidence, .deck-points { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
-  .pairs { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 13px; }
-  .pair-ab { font-weight: 600; }
-  .pair-b { color: var(--muted); font-weight: 500; }
-  .pair-c { display: block; color: var(--muted); line-height: 1.5; }
+  /* ---- ledger: topics and problems as running rows ---- */
+  .ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: minmax(0, 24rem) auto auto;
+    align-items: start;
+    gap: var(--space-sm) var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  /* Tier carries weight before colour: A is inked, B is pencil, C is faint. */
+  .ledger-tier {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    align-self: start;
+    padding-top: 0.15rem;
+  }
+  .ledger-tier.tier-A { color: var(--accent); }
+  .ledger-tier.tier-B { color: var(--annotation); }
+  .ledger-tier.tier-C { color: var(--faint); }
+  .ledger-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .ledger-title .t-cue { display: block; font-size: var(--font-size-sm); color: var(--muted); font-style: italic; margin-top: var(--space-xs); }
+  .ledger-kind {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .ledger-evidence {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+  .ledger-action {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .ledger-action strong { color: var(--text); }
 
+  /* log-a-gap and hints fold away; they are audit tools, not the main path */
+  .ledger-gap,
+  .ledger-hints {
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-2);
+    align-self: start;
+    justify-self: start;
+  }
+  .ledger-gap > summary,
+  .ledger-hints > summary {
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .ledger-gap > summary::-webkit-details-marker,
+  .ledger-hints > summary::-webkit-details-marker { display: none; }
+  .ledger-gap > summary:hover,
+  .ledger-hints > summary:hover { color: var(--annotation); }
+  .ledger-gap[open] > summary,
+  .ledger-hints[open] > summary { border-bottom: 1px solid var(--border); }
+  .ledger-gap .err,
+  .ledger-hints .hint-label {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    font-size: var(--font-size-running);
+    color: var(--muted);
+  }
+  .hint-label { grid-template-columns: auto auto; align-items: center; }
+  .hint-input {
+    width: 3rem;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  .error-input {
+    width: 100%;
+    min-width: 0;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+  .error-input:focus-visible,
+  .hint-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .ledger-pyqs { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+  .ledger-pyqs .pyq {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    padding: 0 5px;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-2);
+    white-space: nowrap;
+  }
+
+  /* covered / in-progress read by fill, not by hue */
+  .ledger-row[data-state="flaky"] { background: color-mix(in srgb, var(--annotation) 6%, transparent); }
+  .ledger-row[data-state="self-tested"],
+  .ledger-row[data-state="exam-ready"],
+  .ledger-row[data-state="solved-cold"],
+  .ledger-row[data-state="exam-speed"] { background: color-mix(in srgb, var(--accent) 4%, transparent); }
+
+  .state-select {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    cursor: pointer;
+  }
+  .state-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- toast ---- */
   .toast {
-    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
-    padding: 10px 16px; border-radius: 8px; font-size: 13px; z-index: 50;
-    background: var(--surface-2); border: 1px solid var(--border); max-width: 90vw;
+    position: fixed;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-2);
+    font-size: var(--font-size-sm);
+    z-index: 50;
+    max-width: 90vw;
   }
-  .toast[data-bad="1"] { border-color: #d1453b; color: #d1453b; }
+  .toast[data-bad="1"] { border-color: var(--accent); color: var(--accent); }
+
+  /* ---- phone: one column, thumb-reachable ticks, no sideways scroll ---- */
+  @media (max-width: 860px) {
+    .page {
+      padding: var(--space-lg) var(--space-md) var(--space-xl);
+      gap: var(--space-lg);
+    }
+    /* The 68ch measure has to give; side air is the first thing to go. */
+    .pyq-text, .ledger-title { font-size: var(--font-size-base); }
+  }
+  @media (max-width: 720px) {
+    .module-body { padding: var(--space-lg); gap: var(--space-lg); }
+    .module-head { padding: var(--space-md) var(--space-lg); gap: var(--space-sm); flex-wrap: wrap; }
+    .module-tally { order: 3; width: 100%; }
+    /* The margin tab folds up above the question rather than holding a
+       4.25rem gutter beside text that is already 320px wide. */
+    .pyq-item {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-sm);
+      padding: var(--space-lg) var(--space-md);
+    }
+    .pyq-tab {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+    .pyq-item-head { margin-bottom: var(--space-xs); }
+    .ledger-row { grid-template-columns: auto 1fr; padding: var(--space-md) 0; }
+    .ledger-kind { grid-column: 2; }
+    .bq-row {
+      grid-template-columns: 1.75rem 1fr auto;
+      grid-template-areas:
+        "tick label marks"
+        "tick display page";
+      row-gap: var(--space-xs);
+      padding: var(--space-md);
+    }
+    .bq-tick { grid-area: tick; }
+    .bq-label { grid-area: label; }
+    .bq-display { grid-area: display; white-space: normal; }
+    .bq-page { grid-area: page; }
+    .bq-marks { grid-area: marks; }
+    .bq-excluded, .bq-state { grid-column: 2 / -1; justify-self: start; }
+    .bq-tick { width: 2.75rem; height: 2.75rem; }  /* 44px minimum target */
+    .pairs li { grid-template-columns: 1fr; }
+    .pair-c { justify-self: start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mod-caret, .bq-stamp { transition: none; }
+  }
 </style>
+
+</BaseLayout>

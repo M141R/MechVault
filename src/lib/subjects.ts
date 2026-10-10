@@ -330,7 +330,9 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "fm",
     description:
       "ME24203 (earlier ME203) · Complete study kit: syllabus from the official PDF, derivation-first notes with Bansal book questions, and every previous year paper from MO 2022 to MO 2025.",
-    content: splitSubject(fmRaw),
+    get content() {
+      return contentFor("fm", fmRaw);
+    },
     syllabus: FM_SYLLABUS,
     paperCount: 8,
     bookFile:
@@ -344,7 +346,9 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "som",
     description:
       "ME24205 (earlier ME205) · Complete study kit written from the actual BIT Mesra papers: every module, the derivations that keep appearing, worked numericals, and all previous year papers from MO 2022 to MO 2025.",
-    content: splitSubject(somRaw),
+    get content() {
+      return contentFor("som", somRaw);
+    },
     syllabus: SOM_SYLLABUS,
     paperCount: 8,
     bookFile:
@@ -358,7 +362,9 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "thermo",
     description:
       "ME24201 (earlier ME201) · Complete study kit: official syllabus, derivation-first notes, and every previous year paper from MO 2022 to MO 2025.",
-    content: splitSubject(thermoRaw),
+    get content() {
+      return contentFor("thermo", thermoRaw);
+    },
     syllabus: THERMO_SYLLABUS,
     paperCount: 7,
   },
@@ -370,7 +376,9 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "materials",
     description:
       "Materials Engineering · Complete study kit from the official BIT Mesra syllabus: crystallography, phase diagrams, heat treatment, alloys and material testing — with exam definitions and formula plates.",
-    content: splitSubject(materialsRaw),
+    get content() {
+      return contentFor("materials", materialsRaw);
+    },
     syllabus: MATERIALS_SYLLABUS,
     paperCount: 8,
   },
@@ -382,7 +390,9 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "manufacturing",
     description:
       "Manufacturing Processes · Complete study kit from the official BIT Mesra syllabus: casting, metal cutting, machine tools, forming and welding — with exam definitions and formula plates.",
-    content: splitSubject(manufacturingRaw),
+    get content() {
+      return contentFor("manufacturing", manufacturingRaw);
+    },
     syllabus: MANUFACTURING_SYLLABUS,
     paperCount: 7,
   },
@@ -394,11 +404,34 @@ export const SUBJECTS: Record<string, Subject> = {
     navKey: "numerical",
     description:
       "Numerical Methods · Complete study kit from the official BIT Mesra syllabus: root-finding, linear systems, interpolation, integration and ODEs — with worked algorithms and formula plates.",
-    content: splitSubject(numericalRaw),
+    get content() {
+      return contentFor("numerical", numericalRaw);
+    },
     syllabus: NUMERICAL_SYLLABUS,
     paperCount: 7,
   },
 };
+
+/**
+ * Content parsing is lazy per subject, memoized once.
+ *
+ * splitSubject() costs ~96 ms across all six subjects, and it used to run at
+ * module scope — meaning every cold start paid for all six even when the
+ * incoming request needed zero or one (the tracker, dashboard and auth pages
+ * import this module and never touch content). With a memoized getter, cold
+ * start pays nothing and the first request per subject parses only its own
+ * file once.
+ */
+const contentCache = new Map<string, SubjectContent>();
+
+function contentFor(slug: string, raw: string): SubjectContent {
+  let c = contentCache.get(slug);
+  if (!c) {
+    c = splitSubject(raw);
+    contentCache.set(slug, c);
+  }
+  return c;
+}
 
 export function getSubject(slug: string | undefined): Subject | null {
   if (!slug) return null;
