@@ -421,45 +421,30 @@
     order: ["sem3"]
   };
 
-  function renderSiteNav() {
+  /* Home subject cards: the footer and nav are server-rendered now (one
+     source of truth in src/lib/subjects.ts), so this config only feeds the
+     home page's card grid. */
+  function renderHomeCards() {
     var cur = SITE.semesters[SITE.order[0]];
-    document.querySelectorAll("#site-subjects").forEach(function (nav) {
-      nav.innerHTML = cur.subjects.map(function (s) {
-        return '<a href="' + s.file + '">' + s.name + "</a>";
-      }).join("");
-    });
-    document.querySelectorAll("#site-semester-label").forEach(function (el) {
-      el.textContent = cur.label;
-    });
-    document.querySelectorAll("#site-semesters").forEach(function (nav) {
-      nav.innerHTML = SITE.order.length > 1
-        ? SITE.order.map(function (id) {
-            var s = SITE.semesters[id];
-            var active = id === SITE.order[0] ? ' class="active"' : "";
-            return '<a href="#" data-sem="' + id + '"' + active + ">" + s.label + "</a>";
-          }).join("")
-        : "";
-    });
     var grid = document.getElementById("subject-cards");
-    if (grid) {
-      grid.innerHTML = cur.subjects.map(function (s) {
-        var tags = (s.tags || []).map(function (t) {
-          return '<span class="tag ' + (t.c || "") + '">' + t.t + "</span>";
-        }).join("");
-        var meta = (s.meta || []).map(function (m) { return "<span>" + m + "</span>"; }).join("");
-        return '<a class="card subject-card" href="' + s.file + '">' +
-          '<span class="sheet-no">' + s.sheet + "</span>" +
-          '<span class="go">&rarr;</span>' +
-          "<h3>" + s.name + "</h3>" +
-          '<div class="subject-meta">' + meta + "</div>" +
-          "<p>" + s.blurb + "</p>" +
-          '<div class="subject-bar"><div class="fill" style="width:' + (s.progress || 0) + '%"></div></div>' +
-          '<div class="card-tags">' + tags + "</div>" +
-        "</a>";
+    if (!grid) return;
+    grid.innerHTML = cur.subjects.map(function (s) {
+      var tags = (s.tags || []).map(function (t) {
+        return '<span class="tag ' + (t.c || "") + '">' + t.t + "</span>";
       }).join("");
-    }
+      var meta = (s.meta || []).map(function (m) { return "<span>" + m + "</span>"; }).join("");
+      return '<a class="card subject-card" href="' + s.file + '">' +
+        '<span class="sheet-no">' + s.sheet + "</span>" +
+        '<span class="go">&rarr;</span>' +
+        "<h3>" + s.name + "</h3>" +
+        '<div class="subject-meta">' + meta + "</div>" +
+        "<p>" + s.blurb + "</p>" +
+        '<div class="subject-bar"><div class="fill" style="width:' + (s.progress || 0) + '%"></div></div>' +
+        '<div class="card-tags">' + tags + "</div>" +
+      "</a>";
+    }).join("");
   }
-  renderSiteNav();
+  renderHomeCards();
 
   /* ============================================================
      Access is enforced server-side by Better Auth middleware —

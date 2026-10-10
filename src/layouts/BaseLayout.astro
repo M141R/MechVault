@@ -1,6 +1,7 @@
 ---
 import { getSessionSafe, type AuthUser } from "../lib/auth";
 import { isSingleUser, singleUserSession } from "../lib/auth-single";
+import { getSubjects } from "../lib/subjects";
 
 interface Props {
   title?: string;
@@ -21,16 +22,22 @@ const {
   main = true,
 } = Astro.props;
 
-// Determine active state: if not explicitly set, check if we're on a subject page or the subjects page
-const onSubjects =
-  Astro.url.pathname.startsWith('/fm/') ||
-  Astro.url.pathname.startsWith('/som/') ||
-  Astro.url.pathname.startsWith('/thermo/') ||
-  Astro.url.pathname === '/fm' ||
-  Astro.url.pathname === '/som' ||
-  Astro.url.pathname === '/thermo' ||
-  Astro.url.pathname === '/subjects';
-const computedActive = active ? active : onSubjects ? 'subjects' : active;
+// Determine active state. Pages pass either a nav key (home/dashboard/
+// subjects) or a subject slug (fm, materials, …); both must light the same
+// nav item. The subject slugs all belong to the Subjects entry, and the
+// dashboard/tracker routes were previously left with no active link at all.
+const SUBJECT_SLUGS = new Set(["fm", "som", "thermo", "materials", "manufacturing", "numerical"]);
+const path = Astro.url.pathname;
+const inferred = (() => {
+  if (path === "/dashboard" || path.startsWith("/dashboard/")) return "dashboard";
+  const seg = path.split("/")[1] ?? "";
+  if (SUBJECT_SLUGS.has(seg) || path === "/subjects") return "subjects";
+  if (path === "/") return "home";
+  return "";
+})();
+const computedActive = active ? (SUBJECT_SLUGS.has(active) ? "subjects" : active) : inferred;
+
+const subjects = getSubjects();
 
 let user: AuthUser | null = null;
 if (!skipSession) {
@@ -129,10 +136,7 @@ const links = [
   <nav class="nav">
     <div class="nav-inner">
       <a class="nav-brand" href="/"><span class="logo">M</span> MechVault</a>
-      <div class="nav-links">
-        {links.map((l) => (
-          <a class:list={["nav-link", { active: computedActive === l.key }]} href={l.href}>{l.label}</a>
-        ))}
+      <div class="nav-actions">
         <form class="search-wrap" role="search">
           <!--
             Placeholder must fit the field. At 190px with 34px left + 14px right
@@ -166,6 +170,11 @@ const links = [
           )
         }
       </div>
+      <nav class="nav-links nav-list" aria-label="Pages">
+        {links.map((l) => (
+          <a class:list={["nav-link", { active: computedActive === l.key }]} href={l.href} aria-current={computedActive === l.key ? "page" : undefined}>{l.label}</a>
+        ))}
+      </nav>
     </div>
   </nav>
 
@@ -204,10 +213,29 @@ const links = [
   )}
 
   <footer class="footer">
-      <div class="footer-brand"><span class="logo">M</span> MechVault</div>
-      <nav class="footer-links" id="site-subjects" aria-label="Subjects"></nav>
-      <div class="footer-note"><span id="site-semester-label">3rd Semester</span> · BIT Mesra · MO 2022–2025</div>
-      <div class="footer-ai-note">Site and notes AI-generated · PYQs are real BIT Mesra papers · mapping AI-assisted</div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="footer-brand"><span class="logo">M</span> MechVault</div>
+          <p class="footer-desc">3rd-semester study hub · BIT Mesra ME</p>
+        </div>
+        <nav class="footer-pages" aria-label="Pages">
+          {links.map((l) => <a href={l.href}>{l.label}</a>)}
+        </nav>
+      </div>
+      <nav class="footer-spine" aria-label="Subjects">
+        {subjects.map((s) => (
+          <a class="footer-spine-tab" href={`/${s.slug}`} title={s.name}>
+            <span class="footer-spine-code">{s.short}</span>
+            <span class="footer-spine-name">{s.name}</span>
+          </a>
+        ))}
+      </nav>
+      <div class="footer-meta">
+        <span class="footer-note">3rd Semester · BIT Mesra · MO 2022–2025</span>
+        <span class="footer-ai-note">Notes are AI-generated · PYQs are real BIT Mesra papers · mapping AI-assisted</span>
+      </div>
+    </div>
   </footer>
 
   <script is:inline>

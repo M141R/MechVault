@@ -10,8 +10,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getSubject } from "../../lib/subjects";
 import { trackerIsLocal } from "../../lib/auth-single";
-import { getTrackerConfig , studyAction } from "../../lib/tracker/config";
-import { TOPIC_STATES, PROBLEM_STATES, TOPIC_COVERED, PROBLEM_COVERED, isTopicState,isProblemState,type TopicStateName,type ProblemStateName} from "../../lib/tracker/engine";
+import { getTrackerConfig, studyAction } from "../../lib/tracker/config";
+import { TOPIC_STATES, PROBLEM_STATES, TOPIC_COVERED, PROBLEM_COVERED, isTopicState, isProblemState } from "../../lib/tracker/engine";
+import type { TopicStateName, ProblemStateName } from "../../lib/tracker/engine";
 import { questionsForModule, coverageFor } from "../../lib/tracker/pyq-bank";
 import { bookQuestionsForModule, bookCoverageFor, bookQuestionLabel, bookPageLabel, bookProblemKey } from "../../lib/tracker/book-bank";
 
@@ -1091,12 +1092,18 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
     margin-left: auto;
     font-size: var(--font-size-running);
     color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
+    /* Underline rides on the glyphs (text-decoration) instead of the box edge,
+       so the link can grow to a 44px hit height without dragging the rule
+       away from the words. */
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 2px;
     white-space: nowrap;
   }
-  .pyq-scan:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .pyq-scan:hover { color: var(--accent); }
   .pyq-scan:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .pyq-text {
     margin: 0;
@@ -1115,7 +1122,7 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
   .bq-rows { list-style: none; margin: 0; padding: 0; }
   .bq-row {
     display: grid;
-    grid-template-columns: 1.75rem minmax(6rem, 8rem) 1fr 5rem 3rem auto;
+    grid-template-columns: 2.75rem minmax(6rem, 8rem) 1fr 5rem 3rem auto;
     align-items: center;
     gap: 0 var(--space-lg);
     padding: var(--space-md) var(--space-lg);
@@ -1123,7 +1130,8 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
   }
   .bq-row:last-child { border-bottom: none; }
 
-  .bq-tick { position: relative; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; }
+  /* 44px minimum hit target at every width, not just on phones. */
+  .bq-tick { position: relative; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; }
   .bq-box { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
   .bq-stamp {
     display: grid;
@@ -1190,6 +1198,24 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
     color: var(--muted);
     white-space: nowrap;
   }
+  /* The state menu and the failure log are full-width controls, not margin
+     entries: without an explicit track they auto-place into the 2.75rem/3rem
+     tick and label columns and overflow those fixed tracks. */
+  .bq-state-select,
+  .bq-log { grid-column: 3 / -1; }
+  .bq-state-select {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    cursor: pointer;
+    min-height: 44px;
+    justify-self: start;
+  }
+  .bq-state-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* ---- recall decks ---- */
   .decks-body { display: flex; flex-direction: column; gap: var(--space-sm); }
@@ -1319,6 +1345,7 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
   .hint-label { grid-template-columns: auto auto; align-items: center; }
   .hint-input {
     width: 3rem;
+    min-height: 44px;
     padding: var(--space-xs) var(--space-sm);
     border: 1px solid var(--border);
     border-radius: 0;
@@ -1332,6 +1359,20 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
   .error-input {
     width: 100%;
     min-width: 0;
+    min-height: 44px;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-size: var(--font-size-sm);
+  }
+  /* The textbook row's failure note gets the same treatment as the ledger's
+     error input: full width of its cell, 44px hit height, square. */
+  .bq-error {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
     padding: var(--space-xs) var(--space-sm);
     border: 1px solid var(--border);
     border-radius: 0;
@@ -1369,6 +1410,7 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
     font-family: var(--mono);
     font-size: var(--font-size-running);
     cursor: pointer;
+    min-height: 44px;
   }
   .state-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -1417,7 +1459,7 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
     .ledger-row { grid-template-columns: auto 1fr; padding: var(--space-md) 0; }
     .ledger-kind { grid-column: 2; }
     .bq-row {
-      grid-template-columns: 1.75rem 1fr auto;
+      grid-template-columns: 2.75rem 1fr auto;
       grid-template-areas:
         "tick label marks"
         "tick display page";
@@ -1430,7 +1472,9 @@ const firstOpen = modules.findIndex((m) => m.trackable > 0);
     .bq-page { grid-area: page; }
     .bq-marks { grid-area: marks; }
     .bq-excluded, .bq-state { grid-column: 2 / -1; justify-self: start; }
-    .bq-tick { width: 2.75rem; height: 2.75rem; }  /* 44px minimum target */
+    /* Three-column grid here: the state menu and the failure log ride the
+       1fr column instead of the auto margin column. */
+    .bq-state-select, .bq-log { grid-column: 2 / -1; }
     .pairs li { grid-template-columns: 1fr; }
     .pair-c { justify-self: start; }
   }

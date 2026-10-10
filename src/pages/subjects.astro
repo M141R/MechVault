@@ -405,14 +405,12 @@ const subjects = getSubjects();
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
     padding: 22px;
-    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    transition: border-color 0.18s ease;
     display: flex;
     flex-direction: column;
   }
   .subject-sheet:hover {
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
   }
   .sheet-header {
     display: flex;
@@ -525,7 +523,6 @@ const subjects = getSubjects();
   .sheet-cta:hover {
     background: var(--annotation-ink);
     border-color: var(--annotation-ink);
-    transform: translateX(2px);
   }
 
   /* Anatomy grid */
@@ -541,11 +538,10 @@ const subjects = getSubjects();
     border-radius: var(--radius);
     padding: 24px;
     text-align: center;
-    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    transition: border-color 0.18s ease;
   }
   .anatomy-card:hover {
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
   }
   .anatomy-icon {
     display: inline-flex;
