@@ -78,9 +78,30 @@
   --border: var(--hairline);
   --accent: var(--blueprint-2);
   --surface-1: var(--surface);
-  /* Page gutter, shared by the layout and every page-level section so content
-     lines up across pages instead of each section picking its own padding. */
-  --container-pad: 20px;
+    /* Page gutter, shared by the layout and every page-level section so content
+       lines up across pages instead of each section picking its own padding. */
+    --container-pad: 20px;
+
+    /* Spacing scale. One scale, no arbitrary gaps. The tracker page writes
+       against these so its margins come from the same rhythm as the rest of the
+       vault rather than a private set of magic numbers. */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 14px;
+    --space-lg: 20px;
+    --space-xl: 32px;
+  /* One step past xl. Used where a block needs to read as its own band of
+     page rather than as a child of the block above it. */
+  --space-2xl: 44px;
+
+    /* Type scale. Only four steps: the label for chips and margins, the running
+       size for counts, marks and page refs, the reading size for prose, and the
+       body default. A fifth step is how a page starts to feel accidental. */
+    --font-size-label: 0.6875rem;   /* 11px  — uppercase, tracked out */
+    --font-size-running: 0.8125rem;  /* 13px  — mono, tabular figures */
+    --font-size-sm: 0.875rem;        /* 14px  — dense supporting prose */
+    --font-size-base: 1rem;          /* 16px  — questions and body */
+  --font-size-hero: 1.75rem;      /* 28px  — one count per band (see DESIGN.md display) */
   --font: "Familjen Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

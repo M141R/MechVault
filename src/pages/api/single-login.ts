@@ -51,7 +51,16 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const token = await createSessionToken(username);
+  let token: string;
+  try {
+    token = await createSessionToken(username);
+  } catch (e) {
+    console.error("[single-login]", (e as Error).message);
+    return new Response(JSON.stringify({ error: "server misconfigured" }), {
+      status: 500,
+      headers: { "content-type": "application/json" },
+    });
+  }
   return new Response(JSON.stringify({ ok: true, next }), {
     status: 200,
     headers: {

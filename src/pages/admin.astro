@@ -6,8 +6,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="container">
       <div class="section-head">
         <div class="section-eyebrow">Admin</div>
-        <h2>Approve user accounts</h2>
-        <p>Accounts stay <strong>pending</strong> until approved. Only approved users can access the study material.</p>
+        <h2>Manage user accounts</h2>
+        <p>Access control is the login itself. Use this table to disable accounts or grant the admin role; content is served to every signed-in, non-banned user.</p>
       </div>
       <div class="table-wrap">
         <table id="admin-table">
@@ -32,27 +32,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       createdAt: string;
     };
     async function refresh() {
-      const res = await fetch("/api/admin/users");
-      const users: AdminUser[] = await res.json();
       const tbody = document.querySelector("#admin-table tbody") as HTMLTableSectionElement;
-      if (!users.length) {
-        tbody.innerHTML = '<tr><td colspan="4">No users yet.</td></tr>';
+      let res: Response;
+      try {
+        res = await fetch("/api/admin/users");
+      } catch {
+        tbody.innerHTML = '<tr><td colspan="4">Could not reach the server. Is the database up?</td></tr>';
         return;
       }
-      tbody.innerHTML = users.map((u) => `
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        tbody.innerHTML = `<tr><td colspan="4">Could not load users (${res.status}). ${text ? esc(text) : ""}</td></tr>`;
+        return;
+      }
+      const users: AdminUser[] = await res.json().catch(() => []);
+      const tbody2 = tbody;
+      if (!users.length) {
+        tbody2.innerHTML = '<tr><td colspan="4">No users yet.</td></tr>';
+        return;
+      }
+      // Escape every server-supplied string: usernames are user input and land
+      // in innerHTML. Without this a malicious username is stored XSS.
+      tbody2.innerHTML = users.map((u) => `
         <tr>
-          <td><strong>${u.username ?? u.name}</strong><br><span class="muted">${u.name}</span></td>
-          <td><span class="tag ${u.status === "approved" ? "tag-high" : u.status === "pending" ? "tag-crit" : ""}">${u.status}</span></td>
-          <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+          <td><strong>${esc(u.username ?? u.name ?? "")}</strong><br><span class="muted">${esc(u.name ?? "")}</span></td>
+          <td><span class="tag ${u.status === "approved" ? "tag-high" : u.status === "pending" ? "tag-crit" : ""}">${esc(u.status)}</span></td>
+          <td>${esc(fmtDate(u.createdAt))}</td>
           <td>
             ${u.status === "pending" ? `
-              <button class="btn btn-accent" data-action="approved" data-id="${u.id}">Approve</button>
-              <button class="btn btn-secondary" data-action="rejected" data-id="${u.id}">Reject</button>
+              <button class="btn btn-accent" data-action="approved" data-id="${esc(u.id)}">Approve</button>
+              <button class="btn btn-secondary" data-action="rejected" data-id="${esc(u.id)}">Reject</button>
             ` : u.status === "rejected" ? `
-              <button class="btn btn-accent" data-action="approved" data-id="${u.id}">Approve</button>
+              <button class="btn btn-accent" data-action="approved" data-id="${esc(u.id)}">Approve</button>
             ` : `<span class="muted">OK</span>`}
           </td>
         </tr>`).join("");
+    }
+    function esc(s: string): string {
+      return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+      })[c] as string);
+    }
+    function fmtDate(s: string): string {
+      const d = new Date(s);
+      return isNaN(d.getTime()) ? "" : d.toLocaleDateString();
     }
     document.addEventListener("click", async (e) => {
       const btn = (e.target as HTMLElement).closest("[data-action]") as HTMLButtonElement | null;

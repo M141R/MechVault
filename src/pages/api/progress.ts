@@ -10,10 +10,34 @@ function json(status: number, body: unknown) {
 }
 
 async function currentUser(request: Request): Promise<string | null> {
+  const { isSingleUser } = await import("../../lib/auth-single");
+  if (isSingleUser()) return null;
   const session = await getSessionSafe(request.headers);
   if (!session) return null;
   const user = session.user as AuthUser;
+  if ((user as unknown as { banned?: boolean }).banned === true) return null;
   return user?.id ?? null;
+}
+
+function sameOrigin(request: Request): boolean {
+  // Cookie-only POST without a CSRF token: require a same-origin initiator.
+  // Top-level cross-site POSTs carry Lax cookies, so check Origin/Referer.
+  const origin = request.headers.get("origin");
+  const referer = request.headers.get("referer");
+  const host = new URL(request.url).host;
+  const check = (v: string | null) => {
+    if (!v) return false;
+    try {
+      return new URL(v).host === host;
+    } catch {
+      return false;
+    }
+  };
+  if (origin) return check(origin);
+  if (referer) return check(referer);
+  // Same-origin fetch() from the tracker always sends Origin or Referer.
+  // Missing both = non-browser client; allow it (no cookie to steal there).
+  return true;
 }
 
 export const GET: APIRoute = async ({ request }) => {
@@ -29,6 +53,11 @@ export const GET: APIRoute = async ({ request }) => {
 };
 
 export const POST: APIRoute = async ({ request }) => {
+  const { isSingleUser } = await import("../../lib/auth-single");
+  if (isSingleUser()) {
+    return json(400, { error: "tracker is browser-local in single-user mode" });
+  }
+  if (!sameOrigin(request)) return json(403, { error: "cross-origin write blocked" });
   const userId = await currentUser(request);
   if (!userId) return json(401, { error: "unauthorized" });
 

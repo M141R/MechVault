@@ -1,8 +1,8 @@
-import { readFile, stat } from "node:fs/promises";
+import { stat } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { S3Client, GetObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { env } from "./env";
 
 export const ALLOWED_PREFIXES = ["images", "books", "syllabus"];
@@ -43,13 +43,12 @@ export async function getFileStream(path: string): Promise<FileResult | null> {
 
   if (client && BUCKET) {
     try {
-      const head = await client.send(
-        new HeadObjectCommand({ Bucket: BUCKET, Key: path })
-      );
+      // Single GetObject round-trip (no separate Head): ContentLength rides
+      // along on the GET response.
       const get = await client.send(
         new GetObjectCommand({ Bucket: BUCKET, Key: path })
       );
-      const size = Number(get.ContentLength ?? head.ContentLength ?? 0);
+      const size = Number(get.ContentLength ?? 0);
       const body = get.Body;
       if (!body) return null;
       // S3 returns a Node Readable on Node runtime; convert to web stream.
@@ -83,11 +82,18 @@ export async function getFileStream(path: string): Promise<FileResult | null> {
   for (const local of candidates) {
     try {
       const info = await stat(local);
-      const buf = await readFile(local);
+      if (!info.isFile()) continue;
+      // Stream from disk instead of buffering: textbook PDFs are tens of MB
+      // and readFile() would hold the whole thing in memory per request.
+      const nodeStream = createReadStream(local);
       const web = new ReadableStream({
         start(controller) {
-          controller.enqueue(new Uint8Array(buf));
-          controller.close();
+          nodeStream.on("data", (chunk) => controller.enqueue(new Uint8Array(chunk as Buffer)));
+          nodeStream.on("end", () => controller.close());
+          nodeStream.on("error", (err) => controller.error(err));
+        },
+        cancel() {
+          nodeStream.destroy();
         },
       });
       return { stream: web, size: info.size };

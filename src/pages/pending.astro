@@ -10,7 +10,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="pending-note">
         <span class="pending-dot"></span> Status: <strong>Pending review</strong>
       </div>
-      <p class="auth-alt"><a href="/">Back to home</a> · <a href="/logout">Sign out</a></p>
+      <p class="auth-alt"><a href="/">Back to home</a> · <a href="/login">Sign in</a></p>
+      <form method="post" action="/api/auth/sign-out">
+        <button class="btn btn-ghost" type="submit">Sign out</button>
+      </form>
     </div>
   </section>
 </BaseLayout>

@@ -34,13 +34,17 @@
  *   Recall/contrast decks for the non-derivation subjects. A deck is a set of
  *   pairwise contrasts — NOT a keyword list. `pairs` is what a 5-mark
  *   "differentiate" answer is actually made of.
- *
- * ## Exam format
- * `exam.marksPerModule` etc. are ASSUMED from past papers and are labelled
- * `confirmed: false`. Set to true once you have seen the official notification.
- */
+  *
+  * ## Exam format
+  * `exam.marksPerModule` etc. are ASSUMED from past papers and are labelled
+  * `confirmed: false`. Set to true once you have seen the official notification.
+  */
 
-export type StudyKind = "derive" | "recall" | "connect" | "procedural";
+ // Textbook questions share the same `problem_state` rows and the same state
+ // machine, so this file has to know their keys to validate them.
+ import { allBookProblemKeys } from "./book-bank";
+
+ export type StudyKind = "derive" | "recall" | "connect" | "procedural";
 export type Tier = "A" | "B" | "C";
 
 export interface TrackerTopic {
@@ -388,18 +392,18 @@ const FM: SubjectTrackerConfig = {
       evidence: "Repeated pump numerical.",
       marks: 10,
     },
-    {
-      key: "fm.p.recip",
-      module: 5,
-      title: "Reciprocating pump with slip and indicator diagram",
-      kind: "procedural",
-      pyqs: ["MO2023 MID"],
-      evidence: "Fallback module-5 numerical.",
-      marks: 10,
-    },
-  ],
-  decks: [],
-};
+        {
+          key: "fm.p.recip",
+                    module: 5,
+                    title: "Reciprocating pump with slip and indicator diagram",
+                    kind: "procedural",
+                    pyqs: ["MO2023 MID"],
+                    evidence: "Fallback module-5 numerical.",
+                    marks: 10,
+                  },
+                ],
+                decks: [],
+              };
 
 /* -------------------------------------------------------------------------- */
 /* STRENGTH OF MATERIALS — ME24205                                             */
@@ -1644,9 +1648,18 @@ export function allTopicKeys(): Set<string> {
   return s;
 }
 
+/**
+ * Every problem key the store will accept: the hand-written `problems` in each
+ * subject config, plus the textbook questions generated into the book bank.
+ *
+ * The book keys are part of the same state machine, so they must be validated
+ * by the same gate. Before this, ticking a textbook row was rejected with
+ * `Unknown problem key` because only the config array was enumerated.
+ */
 export function allProblemKeys(): Set<string> {
   const s = new Set<string>();
   for (const c of Object.values(TRACKER)) for (const p of c.problems) s.add(p.key);
+  for (const k of allBookProblemKeys()) s.add(k);
   return s;
 }
 

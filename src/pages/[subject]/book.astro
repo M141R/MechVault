@@ -13,7 +13,7 @@ const bookSrc = `/api/file?path=${encodeURIComponent(subject.bookFile)}`;
 const pageTitle = `${subject.name} textbook — reader | MechVault`;
 ---
 
-<BaseLayout title={pageTitle} active={subject.navKey}>
+<BaseLayout title={pageTitle} active={subject.navKey} main={false}>
   <div class="container book-head">
     <div class="crumbs"><a href="/">Home</a> / <a href={`/${subject.slug}`}>{subject.name}</a> / Textbook</div>
     <div class="book-head-row">
@@ -25,7 +25,7 @@ const pageTitle = `${subject.name} textbook — reader | MechVault`;
     </div>
   </div>
 
-  <main class="book-frame-wrap">
+  <main class="book-frame-wrap" id="content">
     <iframe
       class="book-frame"
       src={bookSrc}

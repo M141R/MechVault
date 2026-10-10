@@ -5,7 +5,7 @@
     "node": ">=22.12.0"
   },
   "type": "module",
-  "description": "MechVault — BIT Mesra ME 3rd sem study hub (Astro SSR + Better Auth + Postgres + R2)",
+  "description": "MechVault \u2014 BIT Mesra ME 3rd sem study hub (Astro SSR + Better Auth + Postgres + R2)",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -17,7 +17,9 @@
     "db:migrate": "drizzle-kit migrate",
     "seed:admin": "tsx scripts/seed-admin.ts",
     "upload:r2": "node scripts/upload-r2.mjs",
-    "port:content": "node scripts/port-content.mjs"
+    "port:content": "node scripts/port-content.mjs",
+    "check:book-keys": "tsx scripts/check-book-keys.mts",
+    "check:gates": "tsx scripts/check-gates.mts"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.4",

@@ -17,12 +17,15 @@ import {
   TOPIC_MASTERED,
   PROBLEM_COVERED,
   PROBLEM_MASTERED,
+  isTopicState,
+  isProblemState,
   tally,
   pct,
   countDaysUntil,
   type TopicStateName,
   type ProblemStateName,
 } from "../lib/tracker/engine";
+import { subjectMark } from "../lib/tracker/subject-marks";
 
 /** End-sem window for BIT Mesra, November 2026. Confirmed by the user. */
 const EXAM_START = "2026-11-17";
@@ -58,8 +61,8 @@ if (!local && user) {
   try {
     const { readStates } = await import("../lib/tracker/store");
     const { topics, problems } = await readStates(user.id);
-    for (const t of topics) topicState.set(t.key, t.state as TopicStateName);
-    for (const p of problems) problemState.set(p.key, p.state as ProblemStateName);
+    for (const t of topics) topicState.set(t.key, (isTopicState(t.state) ? t.state : "unseen") as TopicStateName);
+    for (const p of problems) problemState.set(p.key, (isProblemState(p.state) ? p.state : "unseen") as ProblemStateName);
   } catch (e) {
     loadError = (e as Error).message;
   }
@@ -79,8 +82,7 @@ const subjects = TRACKER_ORDER.map((slug) => {
     c.topics.find((t, i) => !TOPIC_COVERED.has(tStates[i]));
 
   const flakyCount =
-    tStates.filter((s) => s === "flaky").length +
-    pStates.filter((s) => s === "exam-speed" && false).length;
+    tStates.filter((s) => s === "flaky").length;
 
   const overall =
     pct(tc.covered + pc.covered, tc.total + pc.total);
@@ -187,9 +189,23 @@ const grandPct = pct(totals.topicCovered + totals.problemCovered, totals.topicTo
     <div class="grid">
       {subjects.map((s) => (
         <article class="card">
+          {/*
+            The whole card is one link, not just the title. A card whose only
+            live element is its heading is what made these read as decorative
+            panels with no next step — the affordance was there but it was only
+            16px of underlined text in the corner. The action is also spelled
+            out in words, because "it is clickable" is not the same as "this is
+            what happens when I click it".
+          */}
+          <a href={`/${s.cfg.slug}/track`} class="card-hit" aria-label={`Open the ${s.cfg.name} tracker`}></a>
+
           <header class="card-head">
-            <a href={`/${s.cfg.slug}/track`} class="card-title">{s.cfg.name}</a>
-            <span class="code">{s.cfg.exam.code}</span>
+            <span class="card-mark" aria-hidden="true">{subjectMark(s.cfg.short)}</span>
+            <span class="card-titles">
+              <span class="card-title">{s.cfg.name}</span>
+              <span class="code">{s.cfg.exam.code}</span>
+            </span>
+            <span class="card-go">Open tracker</span>
           </header>
 
           <p class="mode">
@@ -260,71 +276,344 @@ const grandPct = pct(totals.topicCovered + totals.problemCovered, totals.topicTo
 </BaseLayout>
 
 <style>
-  .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
-  .stat {
-    flex: 1 1 120px; padding: 14px 16px; border-radius: 10px;
-    background: var(--surface-2); border: 1px solid var(--border);
-  }
-  .stat-num { display: block; font-size: 26px; font-weight: 650; letter-spacing: -0.02em; }
-  .stat-num.urgent { color: #d1453b; }
-  .stat-label { font-size: 12px; color: var(--muted); }
+  /* ==================================================================
+     DASHBOARD — the same sheet-metal language as the tracker: square
+     corners, hairline rules, ink before colour, spot red only where
+     something is actually urgent.
 
-  .note {
-    padding: 12px 14px; border-radius: 8px; font-size: 14px;
-    background: color-mix(in srgb, var(--annotation) 10%, transparent);
-    border-left: 3px solid var(--annotation);
+     The old version was a different product entirely: 10px-radius cards,
+     a soft grey fill on every stat, pill badges, and three off-token hex
+     colours (#d1453b, #1a7f5a, #b8860b) that appeared nowhere else in the
+     app. Same content, one visual language.
+     ================================================================== */
+
+  .page {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
   }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-lg) var(--space-xl);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
+  }
+  .page-head .sub {
+    max-width: 68ch;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* ---- errors and notes: a full hairline plus a tint, no left bar ---- */
   .alert {
-    padding: 12px 14px; border-radius: 8px; margin: 16px 0; display: grid; gap: 4px;
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    display: grid;
+    gap: var(--space-xs);
+    background: color-mix(in srgb, var(--annotation) 6%, transparent);
   }
-  .alert-error { background: color-mix(in srgb, #d1453b 12%, transparent); border-left: 3px solid #d1453b; }
-  .alert .hint { font-size: 13px; color: var(--muted); }
+  .alert-error { background: color-mix(in srgb, var(--annotation) 10%, transparent); }
+  .alert .hint { font-size: var(--font-size-sm); color: var(--muted); }
+  .note {
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    max-width: 74ch;
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+    background: color-mix(in srgb, var(--annotation) 5%, transparent);
+  }
 
-  .next-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; }
+  /* ---- the countdown is the one number that matters, so it leads ---- */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .stat {
+    padding: var(--space-lg);
+    background: var(--surface-1);
+    display: grid;
+    gap: 2px;
+  }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: var(--font-size-hero);
+    font-weight: 600;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Under two weeks the countdown turns to the annotation colour. Nothing
+     else on this page is allowed to use it. */
+  .stat-num.urgent { color: var(--annotation); }
+  .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* ---- what to do next: a ledger, not a card pile ---- */
+  .next-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    max-width: 74ch;
+  }
   .next-item {
-    padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border);
-    display: grid; gap: 4px;
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    gap: var(--space-sm);
   }
-  .next-link { display: flex; gap: 10px; align-items: baseline; text-decoration: none; color: inherit; }
-  .next-subject { font-family: var(--mono); font-weight: 650; color: var(--accent); min-width: 44px; }
+  .next-link {
+    display: flex;
+    gap: var(--space-md);
+    align-items: baseline;
+    text-decoration: none;
+    color: inherit;
+    flex-wrap: wrap;
+  }
+  .next-subject {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    min-width: 3rem;
+  }
+  /* The verb is the whole point of the row: it says what kind of work this
+     is (derive / contrast / execute), so it is inked and everything beside
+     it is not. */
   .next-verb {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
-    padding: 2px 6px; border-radius: 4px; background: var(--annotation);
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--annotation);
   }
-  .next-title { font-weight: 550; }
-  .next-detail, .next-cue { font-size: 13px; color: var(--muted); }
+  .next-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .next-detail, .next-cue {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 68ch;
+  }
   .next-cue { font-style: italic; }
 
-  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  /* ---- subject cards: a two-column band, not a grid of tiles ---- */
+  .grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 0;
+  }
   .card {
-    padding: 16px; border-radius: 10px; border: 1px solid var(--border);
-    background: var(--surface-1); display: grid; gap: 10px;
+    padding: var(--space-lg);
+    background: var(--surface-1);
+    display: grid;
+    gap: var(--space-md);
+    align-content: start;
+    /* The card IS the link, so it needs somewhere to put focus and hover. */
+    position: relative;
+    transition: background 0.15s ease;
   }
-  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .card-title { font-weight: 650; font-size: 16px; color: var(--text); text-decoration: none; }
-  .card-title:hover { color: var(--accent); }
-  .code { font-family: var(--mono); font-size: 11px; color: var(--muted); }
-  .mode { display: flex; gap: 8px; align-items: baseline; margin: 0; flex-wrap: wrap; }
-  .mode-verb { font-size: 12px; font-weight: 600; color: var(--accent); }
-  .mode-time { font-size: 12px; color: var(--muted); }
-  .diag { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+  /* One hit area covering the card. Sits under the text so every part is
+     clickable without nesting interactive elements. */
+  .card-hit {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .card:hover { background: color-mix(in srgb, var(--accent) 4%, var(--surface-1)); }
+  .card:has(.card-hit:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  .card > *:not(.card-hit) { position: relative; z-index: 1; }
 
-  .bars { display: grid; gap: 8px; }
-  .bar-row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 12px; }
-  .bar-label { color: var(--muted); }
-  .bar-num { font-family: var(--mono); color: var(--text); }
-  .bar-row .progress-bar { grid-column: 1 / -1; width: 100%; height: 6px; }
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  /* The mark is set in the app's mono face so it lands on the same grid as
+     the numbers below it, and held at low contrast so it reads as a stamp in
+     the corner rather than a headline competing with the subject name. */
+  .card-mark {
+    flex: 0 0 auto;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    line-height: 1.05;
+    color: var(--faint);
+    white-space: pre;
+    user-select: none;
+    align-self: flex-start;
+  }
+  .card-titles {
+    flex: 1 1 auto;
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .card-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .card:hover .card-title { color: var(--accent); }
+  .code {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    color: var(--muted);
+  }
+  /* Spelled out, because a link that only looks clickable is the thing this
+     change is fixing. Goes to ink on hover, matching the title. */
+  .card-go {
+    flex: 0 0 auto;
+    align-self: center;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    padding-bottom: 1px;
+  }
+  .card:hover .card-go { border-bottom-color: var(--accent); }
+  .mode {
+    display: flex;
+    gap: var(--space-md);
+    align-items: baseline;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .mode-verb {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+  .mode-time { font-size: var(--font-size-sm); color: var(--muted); }
+  .diag {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 46ch;
+  }
 
-  .card-foot { display: flex; flex-wrap: wrap; gap: 6px; }
+  /* Progress reads as a filled rule under its own label. Flat, no radius,
+     because a rounded bar on a square sheet is a leftover from elsewhere. */
+  .bars { display: grid; gap: var(--space-md); }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+  .bar-label { color: var(--muted); line-height: 1.4; }
+  .bar-num {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  .bar-row .progress-bar {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 4px;
+    border-radius: 0;
+  }
+
+  /* Foot badges are words with a leading rule, not pills. */
+  .card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+  }
   .pill {
-    font-size: 11px; padding: 2px 8px; border-radius: 10px;
-    background: var(--surface-2); border: 1px solid var(--border); color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-left: 2px solid var(--border-strong);
+    padding-left: var(--space-sm);
   }
-  .pill.good { color: #1a7f5a; border-color: #1a7f5a55; }
-  .pill.warn { color: #b8860b; border-color: #b8860b55; }
+  .pill.good { color: var(--accent); border-left-color: var(--accent); }
+  .pill.warn { color: var(--warn); border-left-color: var(--warn); }
 
-  .rules { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-  .rule h3 { font-size: 14px; margin: 0 0 4px; }
-  .rule p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
-  .rule code { font-size: 12px; }
+  /* ---- the rules are the product's own logic, so they fold ---- */
+  .rules {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .rule {
+    padding: var(--space-lg);
+    background: var(--surface-1);
+  }
+  .rule h3 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    margin: 0 0 var(--space-xs);
+  }
+  .rule p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 44ch;
+  }
+  .rule code { font-size: var(--font-size-running); }
+
+  /* ---- phone: the countdown keeps two columns, the rest stacks ---- */
+  @media (max-width: 860px) {
+    .page {
+      padding: var(--space-lg) var(--space-md) var(--space-xl);
+      gap: var(--space-lg);
+    }
+  }
+  @media (max-width: 560px) {
+    .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid, .rules { grid-template-columns: minmax(0, 1fr); }
+    /* The action drops under the title so the mark never squeezes it. */
+    .card-head { flex-wrap: wrap; }
+    .card-titles { flex: 1 1 12rem; }
+    .card-go { flex: 1 1 100%; border-bottom: none; padding-bottom: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-bar, .card { transition: none; }
+  }
 </style>

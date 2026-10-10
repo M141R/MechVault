@@ -1,5 +1,6 @@
 ---
 import { getSessionSafe, type AuthUser } from "../lib/auth";
+import { isSingleUser, singleUserSession } from "../lib/auth-single";
 
 interface Props {
   title?: string;
@@ -7,6 +8,8 @@ interface Props {
   active?: string;
   /** Public pages (login/register/pending) pass this to skip the DB call. */
   skipSession?: boolean;
+  /** Pages that render their own <main> (subjects, book) pass main={false}. */
+  main?: boolean;
 }
 
 const {
@@ -15,26 +18,42 @@ const {
   active = "",
   /** Public pages (login/register/pending) pass this to skip the DB call. */
   skipSession = false,
+  main = true,
 } = Astro.props;
 
 // Determine active state: if not explicitly set, check if we're on a subject page or the subjects page
-const computedActive = active || (Astro.url.pathname.startsWith('/fm/') || 
-                                 Astro.url.pathname.startsWith('/som/') || 
-                                 Astro.url.pathname.startsWith('/thermo/') || 
-                                 Astro.url.pathname === '/fm' || 
-                                 Astro.url.pathname === '/som' || 
-                                 Astro.url.pathname === '/thermo' ||
-                                 Astro.url.pathname === '/subjects')
-  ? 'subjects' 
-  : active;
+const onSubjects =
+  Astro.url.pathname.startsWith('/fm/') ||
+  Astro.url.pathname.startsWith('/som/') ||
+  Astro.url.pathname.startsWith('/thermo/') ||
+  Astro.url.pathname === '/fm' ||
+  Astro.url.pathname === '/som' ||
+  Astro.url.pathname === '/thermo' ||
+  Astro.url.pathname === '/subjects';
+const computedActive = active ? active : onSubjects ? 'subjects' : active;
 
 let user: AuthUser | null = null;
 if (!skipSession) {
-  try {
-    const session = await getSessionSafe(Astro.request.headers);
-    user = (session?.user ?? null) as AuthUser | null;
-  } catch {
-    // DB not ready yet — render with an unauthenticated nav.
+  // Prefer the session the middleware already resolved (locals.user). It is
+  // mode-aware and costs no extra DB round-trip. Fall back to a direct lookup
+  // only when the layout is rendered without middleware (e.g. prerender/tests).
+  const localUser = (Astro.locals as unknown as { user?: AuthUser | null }).user;
+  if (localUser !== undefined && localUser !== null) {
+    user = localUser;
+  } else if (localUser === null && (Astro.locals as object) && "user" in Astro.locals) {
+    user = null;
+  } else {
+    try {
+      if (isSingleUser()) {
+        const s = await singleUserSession(Astro.request);
+        user = (s?.user ?? null) as unknown as AuthUser | null;
+      } else {
+        const session = await getSessionSafe(Astro.request.headers);
+        user = (session?.user ?? null) as AuthUser | null;
+      }
+    } catch {
+      // DB not ready yet — render with an unauthenticated nav.
+    }
   }
 }
 
@@ -71,6 +90,42 @@ const links = [
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%231e3a5f'/><text x='50' y='70' font-size='56' font-weight='700' font-family='monospace' text-anchor='middle' fill='%23fff'>M</text></svg>">
 </head>
 <body>
+  <a href="#content" class="skip-link">Skip to content</a>
+  <style>
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      z-index: 600;
+      background: var(--blueprint);
+      color: #fff;
+      padding: 9px 18px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 0;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus-visible {
+      top: 12px;
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+    button.acc-head {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      text-align: left;
+      font: inherit;
+    }
+    button.acc-head:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: -2px;
+    }
+  </style>
   <nav class="nav">
     <div class="nav-inner">
       <a class="nav-brand" href="/"><span class="logo">M</span> MechVault</a>
@@ -96,9 +151,15 @@ const links = [
             <span class="auth-chip">
               <span class="auth-user" title={user.name ?? ""}>{user.username ?? user.name ?? "user"}</span>
               {user.role === "admin" && <a class="auth-admin" href="/admin">Admin</a>}
-              <form method="post" action="/api/auth/sign-out">
-                <button class="auth-logout" type="submit">Sign out</button>
-              </form>
+              {isSingleUser() ? (
+                <form id="single-signout" method="post" action="/api/single-login">
+                  <button class="auth-logout" type="submit">Sign out</button>
+                </form>
+              ) : (
+                <form method="post" action="/api/auth/sign-out">
+                  <button class="auth-logout" type="submit">Sign out</button>
+                </form>
+              )}
             </span>
           ) : (
             <a class="auth-login" href="/login">Sign in</a>
@@ -120,7 +181,7 @@ const links = [
     </>
   )}
 
-  <slot />
+  {main ? (<main id="content"><slot /></main>) : (<slot />)}
 
   {/*
     AI-generated content disclaimer — non-intrusive, dismissible banner shown on
@@ -159,6 +220,20 @@ const links = [
       if (btn) btn.addEventListener('click', function () {
         if (el.parentNode) el.parentNode.removeChild(el);
         try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      });
+    })();
+  </script>
+  <script is:inline>
+    (function () {
+      var f = document.getElementById('single-signout');
+      if (!f) return;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('/api/single-login', { method: 'DELETE' }).then(function () {
+          window.location.href = '/login';
+        }).catch(function () {
+          window.location.href = '/login';
+        });
       });
     })();
   </script>

@@ -1,0 +1,800 @@
+---
+/**
+ * BOOK QUESTION TRACKER — the textbook problems for one subject, on their own
+ * page.
+ *
+ * WHY A SEPARATE PAGE
+ * Past papers and textbook problems are different work with different
+ * provenance. A PYQ is a real exam question with a paper label and a scan you
+ * can open. A book problem is a numbered exercise in Bansal/Pytel/Nag with a
+ * printed page you flip to. Mixing them in one list made the tracker read as
+ * 85 undifferentiated questions, so the book problems now live here, grouped
+ * by chapter, in the order the book numbers them.
+ *
+ * THE TRUTHFUL PART
+ * A subject with no 📖 markers in its notes has no book questions, and this
+ * page says so and names the gap. It does not fall back to the textbook's own
+ * end-of-chapter exercise list, because those are not the problems the notes
+ * point at, and inventing a plausible-looking count would be a lie the tracker
+ * could not detect later.
+ *
+ * STATE
+ * Book problems ride the same PROBLEM state machine as everything else, keyed
+ * `bq.<slug>.m<module>.<qno>`. A tick here and a tick on the tracker page are
+ * the same row in the database, so coverage never double-counts.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSubject } from "../../lib/subjects";
+import { trackerIsLocal } from "../../lib/auth-single";
+import {
+  BOOK_BANK,
+  bookProblemKey,
+  bookQuestionsFor,
+  bookQuestionLabel,
+  bookPageLabel,
+} from "../../lib/tracker/book-bank";
+import {
+  // PROBLEM_STATES is needed in the TEMPLATE as well as the client script: the
+  // row now renders a <select> of every legal state, and omitting it here made
+  // /fm/book-questions 500 with `PROBLEM_STATES is not defined` while the
+  // client-side copy of the same import made the build pass.
+  PROBLEM_STATES,
+  PROBLEM_COVERED,
+  isProblemState,
+  type ProblemStateName,
+} from "../../lib/tracker/engine";
+
+const slug = Astro.params.subject ?? "";
+const subject = getSubject(slug);
+
+if (!subject) {
+  return new Response("Unknown subject", { status: 404 });
+}
+
+const all = bookQuestionsFor(subject.slug);
+
+const live = all.filter((q) => q.excluded !== true);
+const excluded = all.filter((q) => q.excluded === true);
+
+// Group by chapter, preserving the book's own order within a chapter.
+// Excluded problems are kept out of the list; the tally reports how many the
+// professor's handout removes, so the book never looks shorter than it is.
+const byChapter = new Map<string, { qs: typeof live; title: string | null }>();
+for (const q of live) {
+  const ch = q.chapter ?? "?";
+  if (!byChapter.has(ch)) byChapter.set(ch, { qs: [], title: q.chapterTitle ?? null });
+  byChapter.get(ch)!.qs.push(q);
+}
+const chapters = [...byChapter.entries()]
+  .sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }))
+  .map(([ch, v]) => ({ ch, qs: v.qs, title: v.title }));
+
+// ---- state ----------------------------------------------------------------
+const local = trackerIsLocal();
+let user: { id: string } | null = null;
+
+if (local) {
+  const { singleUserSession } = await import("../../lib/auth-single");
+  const s = await singleUserSession(Astro.request);
+  user = s?.user ?? null;
+} else {
+  const { getSessionSafe } = await import("../../lib/auth");
+  const session = await getSessionSafe(Astro.request.headers).catch(() => null);
+  user = (session?.user as { id: string } | undefined) ?? null;
+}
+
+const state = new Map<string, ProblemStateName>();
+// The failure note lives on the same row as the state, so both have to be read
+// together; keeping only the state would silently drop what you logged.
+const errorReason = new Map<string, string>();
+if (!local && user) {
+  try {
+    const { readStates } = await import("../../lib/tracker/store");
+    const { problems } = await readStates(user.id);
+    for (const p of problems) {
+      if (p.key.startsWith(`bq.${subject.slug}.`)) {
+        state.set(p.key, (isProblemState(p.state) ? p.state : "unseen") as ProblemStateName);
+        if (p.errorReason) errorReason.set(p.key, p.errorReason);
+      }
+    }
+  } catch {
+    // Read-only render; the client hydrates from localStorage when local.
+  }
+}
+
+const rows = live.map((q) => {
+  const key = bookProblemKey(subject.slug, q);
+  const st = state.get(key) ?? "unseen";
+  return {
+    key,
+    chapter: q.chapter ?? "?",
+    qno: q.qno,
+    label: bookQuestionLabel(q),
+    page: q.page ?? null,
+    pageLabel: bookPageLabel(q.page),
+    marks: q.marks ?? null,
+    excluded: q.excluded === true,
+    display: q.display,
+    module: q.module,
+    state: st,
+    covered: PROBLEM_COVERED.has(st),
+    errorReason: errorReason.get(key) ?? "",
+    partial: st === "understood" || st === "attempted-fail",
+  };
+});
+
+const bankMeta = BOOK_BANK[subject.slug];
+const partialChapters = bankMeta?.partialChapters ?? [];
+
+const doneCount = rows.filter((r) => r.covered).length;
+const skippedCount = excluded.length;
+const pct = rows.length ? Math.round((doneCount / rows.length) * 100) : 0;
+
+/*
+ * Wording has to match the tracker's menu and the gate messages exactly. The
+ * tracker says "Attempted · failed" and the refusal messages quote that
+ * label back; a comma here meant the book page showed a name the user could
+ * not find anywhere else, including in the instruction they were following.
+ */
+const labelMap: Record<string, string> = {
+  unseen: "Not started",
+  "attempted-fail": "Attempted · failed",
+  understood: "Understood",
+  "solved-cold": "Solved cold",
+  "exam-speed": "Exam speed",
+};
+---
+
+<BaseLayout title={`${subject.short} book questions · MechVault`} active={subject.navKey}>
+  <section
+    class="page"
+    data-subject={subject.slug}
+    data-storage={local ? "local" : "db"}
+    data-labels={JSON.stringify(labelMap)}
+  >
+    <a href={`/${subject.slug}/track`} class="back">← {subject.short} tracker</a>
+
+    <header class="page-head">
+      <div>
+        <h1>Book questions <span class="code">{subject.code}</span></h1>
+        <p class="sub">
+          Numbered exercises from the {subject.name} textbook, in the book's own
+          numbering, with the printed page you flip to.
+        </p>
+      </div>
+      <a href={`/${subject.slug}/book`} class="btn btn-ghost">Open the book</a>
+    </header>
+
+    {live.length === 0 ? (
+      /* The honest empty state. No fallback list, no invented count. */
+      <div class="empty">
+        <h2>No book questions indexed for {subject.short}</h2>
+        <p>
+          The notes for this subject carry no textbook problem markers, so there
+          is nothing here to attempt. That is a gap in the vault, not a sign
+          that the chapter is unimportant — the past papers are still worth
+          working, and they live on the
+          <a href={`/${subject.slug}/track`}>tracker page</a>.
+        </p>
+        {subject.bookFile ? (
+          <p class="empty-note">
+            The textbook itself is available: <a href={`/${subject.slug}/book`}>open {subject.short}</a>.
+          </p>
+        ) : (
+          <p class="empty-note">No textbook scan is attached to this subject yet.</p>
+        )}
+      </div>
+    ) : (
+      <>
+        <div class="tally-box">
+                  <div class="tally-figures">
+                    <span class="tally-done">{doneCount}</span>
+                    <span class="tally-total">of {rows.length} solved</span>
+                  </div>
+                  <p class="tally-words">
+                    {doneCount === rows.length
+                      ? "Every listed problem has been solved cold."
+                      : `${rows.length - doneCount} still to work through.`}
+                  </p>
+                  <div class="tally-bar" role="img" aria-label={`${pct}% of book questions solved`}>
+                    <span class="tally-fill" style={`width: ${pct}%`}></span>
+                  </div>
+                  {skippedCount > 0 && (
+                    <p class="tally-note">
+                      {skippedCount} of the {all.length} problems in this book {skippedCount === 1 ? "is" : "are"} on your
+                      professor&apos;s exclude list and {skippedCount === 1 ? "is" : "are"} not listed above.
+                    </p>
+                  )}
+                  {partialChapters.length > 0 && (
+                    <p class="tally-note tally-caution">
+                      The scan of this book&apos;s contents pages is unclear for chapters{" "}
+                      {partialChapters.map((c) => `Ch.${c}`).join(", ")}, so those chapter totals
+                      are a lower bound rather than an exact count.
+                    </p>
+                  )}
+                </div>
+
+        {chapters.map(({ ch, qs, title }) => {
+          const cDone = qs.filter((q) =>
+            PROBLEM_COVERED.has(
+              (state.get(bookProblemKey(subject.slug, q)) ?? "unseen") as ProblemStateName,
+            ),
+          ).length;
+          return (
+            <details class="chapter" open>
+              <summary class="chapter-head">
+                <span class="chapter-name">
+                  Chapter {ch}
+                  {title && <span class="chapter-sub">{title}</span>}
+                </span>
+                <span class="chapter-tally">
+                  {cDone} of {qs.length}
+                </span>
+                <span class="caret" aria-hidden="true">›</span>
+              </summary>
+
+              <ol class="rows">
+                {qs.map((q) => {
+                  const row = rows.find((r) => r.key === bookProblemKey(subject.slug, q))!;
+                  return (
+                    <li
+                      class="row"
+                      data-key={row.key}
+                      data-state={row.state}
+                      data-covered={row.covered ? "1" : "0"}
+                    >
+                      <label class="tick">
+                        <input
+                          type="checkbox"
+                          class="box"
+                          checked={row.covered}
+                          aria-label={`Mark ${row.label} solved`}
+                        />
+                        <span class="stamp" aria-hidden="true">done</span>
+                      </label>
+
+                      <span class="qno">{row.label}</span>
+
+                      <span class="display">{row.display}</span>
+
+                      <span class="page">{row.pageLabel}</span>
+
+                      {row.marks != null && <span class="marks">{row.marks}m</span>}
+
+                      {row.excluded && (
+                        <span
+                          class="excluded"
+                          title="Your professor's handout lists this problem under EXCLUDE, but the notes cite it as practice. Check the handout before spending time here."
+                        >
+                          on the exclude list
+                        </span>
+                      )}
+
+                      {/*
+                        The row used to carry the state as plain text and gave
+                        you a tick, so the only way to record a failed attempt
+                        was to open the separate tracker page. A tick still jumps
+                        to Solved cold — but the menu is right here, and it is
+                        what the gate asks for when it refuses a cold solve.
+                      */}
+                      <select class="row-state" data-key={row.key} aria-label={`State for ${row.label}`}>
+                        {PROBLEM_STATES.map((st) => (
+                          <option value={st} selected={st === row.state}>
+                            {labelMap[st] ?? st}
+                          </option>
+                        ))}
+                      </select>
+
+                      <details class="row-log">
+                        <summary>log what went wrong</summary>
+                        <input
+                          type="text"
+                          class="row-error"
+                          data-key={row.key}
+                          placeholder="e.g. sign error in the Bernoulli step"
+                          value={row.errorReason ?? ""}
+                        />
+                      </details>
+                    </li>
+                  );
+                })}
+              </ol>
+            </details>
+          );
+        })}
+      </>
+    )}
+
+    <div class="toast" id="toast" hidden></div>
+  </section>
+
+  <script>
+    import { PROBLEM_STATES } from "../../lib/tracker/engine";
+
+    const root = document.querySelector(".page");
+    const single = root?.getAttribute("data-storage") === "local";
+    const labels: Record<string, string> = JSON.parse(
+      root?.getAttribute("data-labels") ?? "{}",
+    );
+
+    const toast = document.getElementById("toast") as HTMLElement;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    function say(msg: string, bad = false) {
+      toast.textContent = msg;
+      toast.hidden = false;
+      toast.dataset.bad = bad ? "1" : "0";
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => (toast.hidden = true), 5200);
+    }
+
+    /**
+    /**
+     * Advance one problem through a legal state, or back to unseen.
+     *
+     * `note` is the failure the row logged. It rides along with every save
+     * rather than being a separate call, so the note and the state can never
+     * disagree: one write, one row. Passing null clears the note, which is
+     * what a plain tick does.
+     */
+    async function persist(key: string, to: string, note?: string) {
+      const errorReason = note === undefined || note === "" ? null : note;
+      if (single) {
+        const { updateLocalProblem } = await import("../../lib/tracker/local-store");
+        const res = updateLocalProblem({
+          key,
+          state: to,
+          hintLevel: 0,
+          errorReason,
+        });
+        if (!res.ok) throw new Error(res.error ?? "save failed");
+        return;
+      }
+      const res = await fetch("/api/progress", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          kind: "problem",
+          key,
+          state: to,
+          hintLevel: 0,
+          errorReason,
+        }),
+      });
+      const data = await res.json().catch(() => ({ error: "bad response" }));
+      if (!res.ok) throw new Error(data.error ?? "save failed");
+    }
+
+    /** Recompute the running tally from the DOM, so it can never drift. */
+    function retally() {
+      const rowsEls = [...document.querySelectorAll<HTMLElement>(".row")];
+      const done = rowsEls.filter((r) => r.dataset.covered === "1").length;
+      const total = rowsEls.length;
+      const doneEl = document.querySelector<HTMLElement>(".tally-done");
+      const words = document.querySelector<HTMLElement>(".tally-words");
+      const fill = document.querySelector<HTMLElement>(".tally-fill");
+      const bar = document.querySelector<HTMLElement>(".tally-bar");
+      if (doneEl) doneEl.textContent = String(done);
+      if (words) {
+        words.textContent =
+          done === total
+            ? "Every listed problem has been solved cold."
+            : `${total - done} still to work through.`;
+      }
+      const p = total ? Math.round((done / total) * 100) : 0;
+      if (fill) fill.style.width = `${p}%`;
+      if (bar) bar.setAttribute("aria-label", `${p}% of book questions solved`);
+
+      // Per-chapter counts too, so a folded chapter still shows its progress.
+      for (const ch of document.querySelectorAll<HTMLElement>(".chapter")) {
+        const rs = [...ch.querySelectorAll<HTMLElement>(".row")];
+        const d = rs.filter((r) => r.dataset.covered === "1").length;
+        const t = ch.querySelector<HTMLElement>(".chapter-tally");
+        if (t) t.textContent = `${d} of ${rs.length}`;
+      }
+    }
+
+    // Hydrate from localStorage when there is no database.
+    if (single) {
+      const { readLocalStates } = await import("../../lib/tracker/local-store");
+      const { problems } = readLocalStates();
+      for (const p of problems) {
+        const row = document.querySelector<HTMLElement>(
+          `.row[data-key="${CSS.escape(p.key)}"]`,
+        );
+        if (!row) continue;
+        row.dataset.state = p.state;
+        const covered = p.state === "solved-cold" || p.state === "exam-speed";
+        row.dataset.covered = covered ? "1" : "0";
+        const box = row.querySelector<HTMLInputElement>(".box");
+        if (box) box.checked = covered;
+        // The state is a <select> now, so hydration has to set its value and
+        // restore the logged note rather than write into a text span.
+        const sel = row.querySelector<HTMLSelectElement>(".row-state");
+        if (sel) sel.value = p.state;
+        const note = row.querySelector<HTMLInputElement>(".row-error");
+        if (note && p.errorReason) note.value = p.errorReason;
+      }
+      retally();
+    }
+
+    for (const box of document.querySelectorAll<HTMLInputElement>(".box")) {
+      box.addEventListener("change", async () => {
+        const row = box.closest<HTMLElement>(".row");
+        if (!row) return;
+        const key = row.dataset.key!;
+        // A tick means "solved cold". Un-ticking returns the row to unseen.
+        // Both are legal moves in the problem state machine.
+        const to = box.checked ? "solved-cold" : "unseen";
+        if (!(PROBLEM_STATES as readonly string[]).includes(to)) {
+          box.checked = !box.checked;
+          say(`Unknown state ${to}.`, true);
+          return;
+        }
+        try {
+          await persist(key, to);
+          row.dataset.state = to;
+          row.dataset.covered = box.checked ? "1" : "0";
+          const sel = row.querySelector<HTMLSelectElement>(".row-state");
+          if (sel) sel.value = to;
+          retally();
+          say(box.checked ? `${key} → solved cold` : `${key} → not started`);
+        } catch (err) {
+          box.checked = !box.checked; // the store is the authority
+          say((err as Error).message, true);
+        }
+      });
+    }
+
+    /* The state menu. This is the control the gate names when it refuses a
+       cold solve, so it has to offer every state the problem machine allows —
+       including Attempted · failed, the state the gate asks for first. */
+    for (const sel of document.querySelectorAll<HTMLSelectElement>(".row-state")) {
+      sel.addEventListener("change", async () => {
+        const row = sel.closest<HTMLElement>(".row");
+        if (!row) return;
+        const key = sel.dataset.key!;
+        const to = sel.value;
+        const previous = row.dataset.state ?? "unseen";
+        if (!(PROBLEM_STATES as readonly string[]).includes(to)) {
+          sel.value = previous;
+          say(`Unknown state ${to}.`, true);
+          return;
+        }
+        const errText = row.querySelector<HTMLInputElement>(".row-error")?.value ?? "";
+        try {
+          await persist(key, to, errText);
+          row.dataset.state = to;
+          const covered = to === "solved-cold" || to === "exam-speed";
+          row.dataset.covered = covered ? "1" : "0";
+          const box = row.querySelector<HTMLInputElement>(".box");
+          if (box) box.checked = covered;
+          retally();
+          say(`${key} → ${labels[to] ?? to}`);
+        } catch (err) {
+          sel.value = previous; // revert; the store refused the move
+          say((err as Error).message, true);
+        }
+      });
+    }
+
+    /* The failure note saves with the state, so a note written after choosing
+       Attempted · failed survives a reload. */
+    for (const input of document.querySelectorAll<HTMLInputElement>(".row-error")) {
+      input.addEventListener("change", async () => {
+        const row = input.closest<HTMLElement>(".row");
+        if (!row) return;
+        try {
+          await persist(input.dataset.key!, row.dataset.state ?? "unseen", input.value);
+          say("Saved what went wrong.");
+        } catch (err) {
+          say((err as Error).message, true);
+        }
+      });
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 100%;
+    padding: var(--space-lg) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .back { font-size: var(--font-size-sm); text-decoration: none; color: var(--muted); }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+  }
+  .code { font-family: var(--mono); font-size: var(--font-size-label); color: var(--muted); }
+  .sub {
+    margin: var(--space-xs) 0 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  /* ---- empty state: names the gap, offers the next move ---- */
+  .empty {
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--annotation) 5%, transparent);
+    padding: var(--space-lg);
+    max-width: 68ch;
+  }
+  .empty h2 {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+  }
+  .empty p {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .empty a { color: var(--accent); }
+  .empty-note { margin: 0; }
+
+  /* ---- tally: figure in mono, proportion also in words ---- */
+  .tally-box {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: var(--space-lg);
+    background: var(--surface-1);
+  }
+  .tally-figures {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+  .tally-done {
+    font-family: var(--mono);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .tally-total {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .tally-words {
+    margin: var(--space-xs) 0 var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+  }
+  .tally-bar {
+    height: 6px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .tally-fill {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.15s ease;
+  }
+  .tally-note {
+    margin: var(--space-sm) 0 0;
+    font-size: var(--font-size-sm);
+    color: var(--annotation);
+  }
+
+  /* ---- chapters ---- */
+  .chapter {
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .chapter-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    background: var(--surface-2);
+    border-bottom: 1px solid transparent;
+  }
+  .chapter-head::-webkit-details-marker { display: none; }
+  .chapter[open] > .chapter-head { border-bottom-color: var(--border); }
+  .chapter-name { flex: 1 1 auto; font-weight: 600; font-size: var(--font-size-base); }
+  .chapter-sub {
+    display: block;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .chapter-tally {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .caret {
+    display: inline-block;
+    font-size: var(--font-size-running);
+    color: var(--accent);
+    transition: transform 0.15s ease;
+    transform-origin: 45% 50%;
+  }
+  .chapter[open] > .chapter-head .caret { transform: rotate(90deg); }
+
+  /* ---- problem rows ---- */
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(7rem, 9rem) 1fr 6rem 3rem auto auto auto;
+    align-items: center;
+    gap: 0 var(--space-md);
+    padding: var(--space-sm) var(--space-lg);
+    border-bottom: 1px solid var(--border);
+  }
+  .row:last-child { border-bottom: none; }
+
+  .tick { position: relative; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; }
+  .box { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .stamp {
+    display: grid;
+    place-items: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
+  }
+  .box:focus-visible + .stamp { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .row[data-covered="1"] .stamp { color: var(--accent); border-color: var(--accent); }
+  /* Worked but not finished survives greyscale, which colour alone does not. */
+  .row[data-state="understood"],
+  .row[data-state="attempted-fail"] {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--muted) 12%, transparent) 6px 7px
+    );
+  }
+
+  .qno {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .display {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .page,
+  .marks {
+    font-family: var(--mono);
+    font-size: var(--font-size-running);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .excluded {
+    font-family: var(--mono);
+    font-size: var(--font-size-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    padding: 0 5px;
+    white-space: nowrap;
+    justify-self: end;
+  }
+  /* State menu. Replaces a read-only label so a failed attempt can be
+       recorded from this page — which is what the gate asks for. */
+    .row-state {
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: var(--font-size-running);
+      white-space: nowrap;
+      cursor: pointer;
+      max-width: 100%;
+    }
+    .row-state:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* The failure note folds away, so 393 rows of it do not bury the list. */
+    .row-log { justify-self: end; align-self: center; }
+    .row-log > summary {
+      padding: 0;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: var(--font-size-label);
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .row-log > summary::-webkit-details-marker { display: none; }
+    .row-log > summary:hover { color: var(--annotation); }
+    .row-log[open] > summary { color: var(--annotation); }
+    .row-log .row-error {
+      margin-top: var(--space-xs);
+      width: 16rem;
+      max-width: 70vw;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--text);
+      font-size: var(--font-size-sm);
+    }
+    .row-log .row-error:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .toast {
+    position: fixed;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface-2);
+    font-size: var(--font-size-sm);
+    z-index: 50;
+    max-width: 90vw;
+  }
+  .toast[data-bad="1"] { border-color: var(--accent); color: var(--accent); }
+
+  /* ---- phone: one column, thumb-reachable ticks, no sideways scroll ---- */
+  @media (max-width: 860px) {
+    .page { padding: var(--space-md) var(--space-lg); }
+  }
+  @media (max-width: 720px) {
+    .chapter-head { padding: var(--space-md); }
+    .row {
+      grid-template-columns: 2.75rem 1fr auto;
+      grid-template-areas:
+        "tick qno marks"
+        "tick page excluded"
+        ".    display state";
+      row-gap: var(--space-xs);
+    }
+    .tick { grid-area: tick; width: 2.75rem; height: 2.75rem; } /* 44px */
+    .qno { grid-area: qno; }
+    .display { grid-area: display; white-space: normal; }
+    .page { grid-area: page; text-align: left; }
+    .marks { grid-area: marks; }
+    .excluded { grid-area: excluded; justify-self: start; }
+    .row-state { justify-self: start; max-width: 100%; }
+    .row-log { grid-column: 2 / -1; justify-self: start; }
+    .tally-done { font-size: 1.75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret, .stamp, .tally-fill { transition: none; }
+  }
+</style>

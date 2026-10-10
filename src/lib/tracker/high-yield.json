@@ -1,0 +1,4349 @@
+{
+  "fm": {
+    "code": "ME24203",
+    "modules": [
+      {
+        "module": 1,
+        "name": "Fluid Statics",
+        "questionCount": 25,
+        "paperCount": 8,
+        "topics": [
+          {
+            "key": "fm.m1.t1",
+            "module": 1,
+            "appearances": 15,
+            "papers": 7,
+            "marks": 44,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m1.t4",
+            "module": 1,
+            "appearances": 10,
+            "papers": 6,
+            "marks": 35,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m1.t2",
+            "module": 1,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 8,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              }
+            ]
+          },
+          {
+            "key": "fm.m1.t3",
+            "module": 1,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "Kinematics & Dynamics",
+        "questionCount": 25,
+        "paperCount": 8,
+        "topics": [
+          {
+            "key": "fm.m2.t4",
+            "module": 2,
+            "appearances": 6,
+            "papers": 4,
+            "marks": 25,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m2.t3",
+            "module": 2,
+            "appearances": 5,
+            "papers": 4,
+            "marks": 15,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m2.t2",
+            "module": 2,
+            "appearances": 4,
+            "papers": 3,
+            "marks": 13,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "fm.m2.t1",
+            "module": 2,
+            "appearances": 4,
+            "papers": 3,
+            "marks": 10,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Closed Conduit Flow",
+        "questionCount": 17,
+        "paperCount": 8,
+        "topics": [
+          {
+            "key": "fm.m3.t3",
+            "module": 3,
+            "appearances": 13,
+            "papers": 5,
+            "marks": 58,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "fm.m3.t2",
+            "module": 3,
+            "appearances": 5,
+            "papers": 4,
+            "marks": 16,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m3.t4",
+            "module": 3,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 13,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "fm.m3.t1",
+            "module": 3,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 11,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Hydraulic Turbines",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "fm.m4.t1",
+            "module": 4,
+            "appearances": 8,
+            "papers": 4,
+            "marks": 40,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "fm.m4.t3",
+            "module": 4,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 15,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "fm.m4.t2",
+            "module": 4,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 8,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Pumps",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "fm.m5.t1",
+            "module": 5,
+            "appearances": 7,
+            "papers": 4,
+            "marks": 32,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "fm.m5.t2",
+            "module": 5,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 18,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unmatchedQuestions": [
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 1,
+        "text": "Define the following terms: (i) Density, (ii) weight density, (iii) specific gravity, (iv) specific volume"
+      },
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2023",
+        "type": "END",
+        "module": 1,
+        "text": "State and prove Pascal's law of static pressure"
+      },
+      {
+        "qno": "Q.1(b)",
+        "paper": "MO2024",
+        "type": "MID",
+        "module": 1,
+        "text": "Determine the specific weight, density and specific gravity of one litre of liquid which weighs 7 N"
+      },
+      {
+        "qno": "Q.4(a)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 2,
+        "text": "Distinguish between (i) steady and un-steady flow, (ii) uniform and non-uniform flow, (iii) rotational and irrotational flow, (iv) laminar and turbulent flow"
+      },
+      {
+        "qno": "Q.4(b)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 2,
+        "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine the shear strain rate and state whether the flow is rotational or irrotational"
+      },
+      {
+        "qno": "Q.2(c)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 2,
+        "text": "A tapered horizontal pipe with inlet diameter 25 cm carries oil of sp. gr. 0.9 at a velocity of 3 m/s. The outlet diameter is 20 cm. Determine the velocity of oil at the outlet section and also the fl"
+      },
+      {
+        "qno": "Q.3(a)",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 2,
+        "text": "With a suitable sketch explain the term stream line in a fluid flow"
+      },
+      {
+        "qno": "Q.4(a)",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 2,
+        "text": "Distinguish between laminar flow and turbulent flow"
+      },
+      {
+        "qno": "Q.4(b)",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 2,
+        "text": "The diameter of a pipe gradually reduces from 1 m to 0.7 m as shown in Figure. Pressure intensity at the centerline of the 1 m section is 7.848 kN/sq.m and rate of flow of water is 600 liters/second. "
+      },
+      {
+        "qno": "Q.2(a)",
+        "paper": "MO2023",
+        "type": "END",
+        "module": 2,
+        "text": "Explain the following terms: (i) linear translation, (ii) angular deformation, (iii) rotation, and (v) vorticity of a fluid element"
+      },
+      {
+        "qno": "Q.4(b)",
+        "paper": "MO2024",
+        "type": "MID",
+        "module": 2,
+        "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine (i) shear strain rate, (ii) rotation or vorticity"
+      },
+      {
+        "qno": "Q.3(a)",
+        "paper": "MO2025",
+        "type": "MID",
+        "module": 2,
+        "text": "Distinguish between: (i) steady and unsteady flow, (ii) one, two and three dimensional flow"
+      },
+      {
+        "qno": "Q.4(a)",
+        "paper": "MO2025",
+        "type": "MID",
+        "module": 2,
+        "text": "Discuss the various forces present in a fluid flow when the fluid is a real one"
+      },
+      {
+        "qno": "Q.2(b)",
+        "paper": "MO2025",
+        "type": "END",
+        "module": 2,
+        "text": "The velocity components in a two-dimensional flow are u = y³/3 + 2x − x²y and v = xy² − 2y − x³/3. Determine whether the flow is rotational or irrotational"
+      },
+      {
+        "qno": "Q.5(a)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 3,
+        "text": "What do you understand by the term losses of energy of the flowing fluids in pipes"
+      },
+      {
+        "qno": "Q.4(a)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 4,
+        "text": "Classify various types of hydro-turbines"
+      }
+    ]
+  },
+  "som": {
+    "code": "ME24205",
+    "modules": [
+      {
+        "module": 1,
+        "name": "Stresses & Strains",
+        "questionCount": 19,
+        "paperCount": 8,
+        "topics": [
+          {
+            "key": "som.m1.t1",
+            "module": 1,
+            "appearances": 16,
+            "papers": 7,
+            "marks": 75,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q.1",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.2",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.3",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.2",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.3",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 1
+              },
+              {
+                "qno": "Q.2",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 1
+              }
+            ]
+          },
+          {
+            "key": "som.m1.t2",
+            "module": 1,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 20,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q.1",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 10,
+                "module": 1
+              },
+              {
+                "qno": "Q.3",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              },
+              {
+                "qno": "Q.3",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 5,
+                "module": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "Bending & Shear",
+        "questionCount": 18,
+        "paperCount": 8,
+        "topics": [
+          {
+            "key": "som.m2.t3",
+            "module": 2,
+            "appearances": 11,
+            "papers": 6,
+            "marks": 49,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.4",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.4",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(c)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 4,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "som.m2.t1",
+            "module": 2,
+            "appearances": 7,
+            "papers": 5,
+            "marks": 31,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.3",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.4",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.4",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 4,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "som.m2.t2",
+            "module": 2,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 20,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.2",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 10,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Deflection & Columns",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "som.m3.t1",
+            "module": 3,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 26,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.3",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 10,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 6,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "som.m3.t3",
+            "module": 3,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 14,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.4",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 10,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 4,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "som.m3.t2",
+            "module": 3,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Curved Beams & Shear Center",
+        "questionCount": 5,
+        "paperCount": 3,
+        "topics": [
+          {
+            "key": "som.m4.t1",
+            "module": 4,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 15,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "som.m4.t3",
+            "module": 4,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 5,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "som.m4.t2",
+            "module": 4,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Thin & Thick Cylinders",
+        "questionCount": 7,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "som.m5.t1",
+            "module": 5,
+            "appearances": 5,
+            "papers": 4,
+            "marks": 29,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.5",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 10,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 4,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "som.m5.t2",
+            "module": 5,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 16,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2023",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 6,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "som.m5.t3",
+            "module": 5,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      }
+    ],
+    "unmatchedQuestions": [
+      {
+        "qno": "Q.2",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 1,
+        "text": "Figure 1 shows a rigid bar ABC hinged at A and suspended at points B and C by two bars BD and CE made of aluminium and steel respectively. The bar carries a load of 20 kN midway between B and C. Cross"
+      },
+      {
+        "qno": "Q.4(a)",
+        "paper": "MO2024",
+        "type": "END",
+        "module": 4,
+        "text": "Derive an expression for the shear center of the C-channel shown in figure (thickness t_f, t_w; depth h; flange width b)"
+      }
+    ]
+  },
+  "thermo": {
+    "code": "ME24201",
+    "modules": [
+      {
+        "module": 1,
+        "name": "Basic Concepts",
+        "questionCount": 17,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "thermo.m1.t3",
+            "module": 1,
+            "appearances": 30,
+            "papers": 7,
+            "marks": 110,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.1(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "thermo.m1.t1",
+            "module": 1,
+            "appearances": 7,
+            "papers": 4,
+            "marks": 17,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "thermo.m1.t2",
+            "module": 1,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 10,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.1(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "First Law of Thermodynamics",
+        "questionCount": 34,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "thermo.m2.t1",
+            "module": 2,
+            "appearances": 8,
+            "papers": 5,
+            "marks": 19,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2022",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.2(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "thermo.m2.t2",
+            "module": 2,
+            "appearances": 5,
+            "papers": 3,
+            "marks": 17,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q.1(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 1
+              },
+              {
+                "qno": "Q.5",
+                "paper": "MO2023",
+                "type": "MID",
+                "marks": 5,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "thermo.m2.t3",
+            "module": 2,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 2,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 2,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Second Law",
+        "questionCount": 7,
+        "paperCount": 3,
+        "topics": [
+          {
+            "key": "thermo.m3.t2",
+            "module": 3,
+            "appearances": 7,
+            "papers": 4,
+            "marks": 31,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.2(b)",
+                "paper": "MO2024",
+                "type": "MID",
+                "marks": 3,
+                "module": 2
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "thermo.m3.t1",
+            "module": 3,
+            "appearances": 5,
+            "papers": 3,
+            "marks": 22,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              3,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.3(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Entropy & Availability",
+        "questionCount": 9,
+        "paperCount": 3,
+        "topics": [
+          {
+            "key": "thermo.m4.t1",
+            "module": 4,
+            "appearances": 7,
+            "papers": 3,
+            "marks": 30,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              3,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.3(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 3
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 2,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(b)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 3,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(c)",
+                "paper": "MO2022",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2024",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.4(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "thermo.m4.t2",
+            "module": 4,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Gas Power Cycles",
+        "questionCount": 4,
+        "paperCount": 2,
+        "topics": [
+          {
+            "key": "thermo.m5.t1",
+            "module": 5,
+            "appearances": 2,
+            "papers": 1,
+            "marks": 10,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q.5(a)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              },
+              {
+                "qno": "Q.5(b)",
+                "paper": "MO2025",
+                "type": "END",
+                "marks": 5,
+                "module": 4
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unmatchedQuestions": [
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 1,
+        "text": "Outline the importance of quasi-static process from thermodynamics point of view"
+      },
+      {
+        "qno": "Q.1(b)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 1,
+        "text": "A tank has two rooms separated by a membrane. Room A contains 2 kg of air with specific volume 0.5 m³/kg, while room B has 0.75 m³ of air with density 0.8 kg/m³. The membrane breaks and the two masses"
+      },
+      {
+        "qno": "Q.2(a)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 1,
+        "text": "How will you distinguish between point function and path function? Explain with suitable example"
+      },
+      {
+        "qno": "Q.1(b)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 1,
+        "text": "A 1 m³ rigid tank has air at 100 kPa, 300 K connected by a valve to another 0.5 m³ tank with air at 250 kPa, 400 K. The valve is opened and the tanks come to a uniform state at 315 K. Determine the fi"
+      },
+      {
+        "qno": "Q.1(b)",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 1,
+        "text": "Explain: (i) intensive and extensive properties, (ii) free expansion process"
+      },
+      {
+        "qno": "Q.2",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 1,
+        "text": "A 1 m³ rigid tank has air at 15 bar and ambient temperature 27 °C connected by a valve to a piston cylinder. The piston of area 0.1 m² requires 2.5 bar below it to float. The valve is opened and the p"
+      },
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2024",
+        "type": "MID",
+        "module": 1,
+        "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish between the macroscopic and microscopic approach"
+      },
+      {
+        "qno": "Q.2(a)",
+        "paper": "MO2024",
+        "type": "MID",
+        "module": 1,
+        "text": "What is meant by thermodynamic equilibrium? How does it differ from thermal equilibrium?"
+      },
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2024",
+        "type": "END",
+        "module": 1,
+        "text": "What is a process? Explain the meaning of quasi-static process and also state its characteristic features"
+      },
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2025",
+        "type": "MID",
+        "module": 1,
+        "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish both approaches with examples of properties involved"
+      },
+      {
+        "qno": "Q.2(a)",
+        "paper": "MO2025",
+        "type": "MID",
+        "module": 1,
+        "text": "What is a process? Explain the meaning of quasi-static process and state its characteristic features"
+      },
+      {
+        "qno": "Q.1(a)",
+        "paper": "MO2025",
+        "type": "END",
+        "module": 1,
+        "text": "Comment whether the following can be called properties or not: (i) ∫p dV, (ii) ∫V dp, (iii) ∫p dV + ∫V dp, (iv) v·(dv/∂T)ₚ + v·(dv/∂v)ₚ for PV=RT, (v) (1/T)·dH − (v/T)·dV for PV=RT"
+      },
+      {
+        "qno": "Q.2(b)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 2,
+        "text": "Dry steam at 10 bar is cooled at constant volume to 3 bar. Determine the dryness fraction after cooling"
+      },
+      {
+        "qno": "Q.4(b)",
+        "paper": "MO2022",
+        "type": "MID",
+        "module": 2,
+        "text": "Two insulated tanks A and B are connected by a valve. Tank A: 0.6 m³ of air at 200 kPa, 200 °C. Tank B: 0.3 m³ of air at 500 kPa, 130 °C. The valve is opened fully and the tanks come to a uniform stat"
+      },
+      {
+        "qno": "Q.2(c)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 2,
+        "text": "Steam enters a nozzle with negligible velocity at 3 MPa, 320 °C and leaves at 1.6 MPa with velocity 550 m/s. Rate of flow of steam is 0.5 kg/s. Determine the condition of steam at the nozzle exit and "
+      },
+      {
+        "qno": "Q.3(a)",
+        "paper": "MO2023",
+        "type": "MID",
+        "module": 2,
+        "text": "Determine the temperature of water at a state of P = 0.5 MPa and h = 2890 kJ/kg"
+      },
+      {
+        "qno": "Q.2(b)",
+        "paper": "MO2024",
+        "type": "END",
+        "module": 2,
+        "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at velocity 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam"
+      },
+      {
+        "qno": "Q.5(b)",
+        "paper": "MO2025",
+        "type": "MID",
+        "module": 2,
+        "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam"
+      },
+      {
+        "qno": "Q.1(b)",
+        "paper": "MO2025",
+        "type": "END",
+        "module": 2,
+        "text": "A piston cylinder device contains 0.8 kg of steam at 300 °C and 1 MPa. Steam is cooled at constant pressure until one-half of the mass condenses. (a) Show the process on a T-V diagram, (b) find the fi"
+      },
+      {
+        "qno": "Q.2(a)",
+        "paper": "MO2025",
+        "type": "END",
+        "module": 2,
+        "text": "Make an energy analysis of the: (i) Nozzle, (ii) Throttling device, (iii) Turbine and Compressor"
+      },
+      {
+        "qno": "Q.2(b)",
+        "paper": "MO2025",
+        "type": "END",
+        "module": 2,
+        "text": "In a steam power plant, saturated liquid water at 10 kPa enters a feed pump at 1 kg/s. The pump delivers water to the boiler at 3 MPa. Assuming the pump is adiabatic, estimate the power input to the p"
+      },
+      {
+        "qno": "Q.5(a)",
+        "paper": "MO2022",
+        "type": "END",
+        "module": 5,
+        "text": "Derive an expression for the ideal efficiency of an air standard diesel cycle"
+      },
+      {
+        "qno": "Q.5(a)",
+        "paper": "MO2024",
+        "type": "END",
+        "module": 5,
+        "text": "Derive the expression for thermal efficiency of the Otto cycle"
+      }
+    ]
+  },
+  "materials": {
+    "code": "ME24202",
+    "modules": [
+      {
+        "module": 1,
+        "name": "Crystal Structure & Defects",
+        "questionCount": 22,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "materials.m1.t1",
+            "module": 1,
+            "appearances": 12,
+            "papers": 6,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q3",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "materials.m1.t3",
+            "module": 1,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "materials.m1.t2",
+            "module": 1,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "Diffusion & Phase Diagrams",
+        "questionCount": 18,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "materials.m2.t3",
+            "module": 2,
+            "appearances": 6,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q3",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "materials.m2.t2",
+            "module": 2,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "materials.m2.t1",
+            "module": 2,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q3",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Iron-Carbon & Heat Treatment",
+        "questionCount": 12,
+        "paperCount": 6,
+        "topics": [
+          {
+            "key": "materials.m3.t2",
+            "module": 3,
+            "appearances": 5,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              3,
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID SP23",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "materials.m3.t1",
+            "module": 3,
+            "appearances": 4,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "materials.m3.t3",
+            "module": 3,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Non-Ferrous, Polymers & Ceramics",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "materials.m4.t5",
+            "module": 4,
+            "appearances": 7,
+            "papers": 5,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "materials.m4.t4",
+            "module": 4,
+            "appearances": 6,
+            "papers": 5,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q2",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q3",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q4",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "materials.m4.t1",
+            "module": 4,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "materials.m4.t2",
+            "module": 4,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "materials.m4.t3",
+            "module": 4,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Mechanical, Corrosion & Properties",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "materials.m5.t1",
+            "module": 5,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q5",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "materials.m5.t2",
+            "module": 5,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "END SP23",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "materials.m5.t3",
+            "module": 5,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unmatchedQuestions": [
+      {
+        "qno": "Q2",
+        "paper": "MID MO25",
+        "type": "MID",
+        "module": 1,
+        "text": "Define a Frenkel defect in an ionic crystal with the help of a neat diagram. Such a defect cannot be present in metals – Justify with logical reasoning. State the main st… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "MID SP23",
+        "type": "MID",
+        "module": 1,
+        "text": "Illustrate the interrelationship between processing, structure, properties, and performance of materials with the help of a specific example 1 4 ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "END MO23",
+        "type": "END",
+        "module": 1,
+        "text": "An example of a metal having BCC, FCC and HCP structure could be ______, ______, _______, respectively. [2+2 +1] “A 100% perfect crystal is unlikely and less stable” – Ex… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 1,
+        "text": "Name the different types of defects in crystalline solids with respect to the dimension of the defect and state which is the most relevant for explaining deformation of c… ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 1,
+        "text": "Temperature is a state function, but mechanical strain is not – justify this statement with proper logic. ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 1,
+        "text": "Write one-word answers for the following: 2 The required mill load increases in every successive pass during cold rolling of a metal sheet mainly because of __________ __… ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 1,
+        "text": "Choose the correct option: 3 The suitable technique for determining local composition of a phase in a given microstructure of a solid is: A. transmission electron microsc… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END MO25",
+        "type": "END",
+        "module": 2,
+        "text": "Name and state all the invariant transformations in the Fe-Fe3C system, including pure components. ‘A lower melting temperature of an engineering solid is preferable for … ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END MO25",
+        "type": "END",
+        "module": 2,
+        "text": "For a Fe–0.30 wt% C alloy at a temperature just below the eutectoid, calculate the following: A. The fractions of total ferrite and cementite phases B. The fractions of t… ↗"
+      },
+      {
+        "qno": "Q4",
+        "paper": "MID MO25",
+        "type": "MID",
+        "module": 2,
+        "text": "Define diffusion and the driving force for diffusion in metallic solids. Differentiate between specific heat and heat capacity. Define an invariant point. Determine the n… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END SP23",
+        "type": "END",
+        "module": 2,
+        "text": "A copper-nickel alloy of composition 70 wt% Ni-30 wt% Cu is slowly heated from a temperature of 1300°C. 1. At what temperature does the first liquid phase form? 2. What i… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END SP23",
+        "type": "END",
+        "module": 2,
+        "text": "List some applications of (i) titanium alloys and (ii) copper alloys. List the limitations of Fe-C equilibrium phase diagram. Differentiate between time-temperature-trans… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "MID SP23",
+        "type": "MID",
+        "module": 2,
+        "text": "Differentiate between substitutional and interstitial solid solution with examples? 2 1 ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "MID SP23",
+        "type": "MID",
+        "module": 2,
+        "text": "Explain Hume Rothery rules for substitutional solid solutions. 2 1 ↗"
+      },
+      {
+        "qno": "Q4",
+        "paper": "MID SP23",
+        "type": "MID",
+        "module": 2,
+        "text": "If five distinct phases are observed in a laboratory specimen of a binary alloy made at one atmospheric pressure. Argue if such an observation possible is not. 2 5 ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END MO23",
+        "type": "END",
+        "module": 2,
+        "text": "“Martensite does not appear in the Fe-Fe3C equilibrium phase diagram” – Justify the statement with suitable reasons. [2+3] Study the given adjacent phase diagram and iden… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END MO23",
+        "type": "END",
+        "module": 2,
+        "text": "State the main difference between ideal and regular solution. Calculate the volume change (in %) as FCC -Fe changes to BCC -Fe. [Given atomic radii of -Fe and -Fe are… ↗"
+      },
+      {
+        "qno": "Q4",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 2,
+        "text": "Draw a schematic binary (A-B) phase diagram with labelling showing: partial solubility of B in A but no solubility of A in B and a eutectic transformation at an intermedi… ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 2,
+        "text": "Write one-line short answers to the following: 3 Why does a grain boundary appear dark under an optical microscope? Why are Frenkel and Schottky defects irrelevant in met… ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "END MO25",
+        "type": "END",
+        "module": 3,
+        "text": "Draw a schematic temperature-time diagram to show the three stages of quenching a hot component in a water bath. Name the four ‘keywords’ for the four most common heat tr… ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "END SP23",
+        "type": "END",
+        "module": 3,
+        "text": "What are the different forming methods of glass products? Describe any one of them with suitable diagram. 3 2 ↗"
+      },
+      {
+        "qno": "Q4",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 3,
+        "text": "Compute the mass fractions of ferrite and cementite in pearlite. Draw the microstructure of pearlite with proper labelling. [2+1] ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 3,
+        "text": "Calculate (i) the size of the critical radius and (ii) the number of atoms in the critical nucleus when solid copper forms by homogeneous nucleation. [Given for Cu latent… ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 3,
+        "text": "For a Fe–0.40 wt% C alloy at a temperature just below the eutectoid, determine the following: i. the proeutectoid phase that forms, ii. the composition (names) and amount… ↗"
+      },
+      {
+        "qno": "Q3",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 3,
+        "text": "Draw the partial, full or schematic phase diagram of a binary system showing: (i) isomorphous (ii) eutectic and (iii) peritectic changes. Label the phase/phases above, be… ↗"
+      },
+      {
+        "qno": "Q4",
+        "paper": "END MO23",
+        "type": "END",
+        "module": 4,
+        "text": "The principal strengthening mechanism of vulcanization of rubber is ________________________________________. State 2-3 important applications of magnesium alloys. Glass … ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 5,
+        "text": "Answer very briefly: What does resistivity depend on? How does it vary with temperature? 4 Differentiate between: (A) Soft and hard magnetism (B) X-ray diffraction and X-… ↗"
+      }
+    ]
+  },
+  "manufacturing": {
+    "code": "ME24204",
+    "modules": [
+      {
+        "module": 1,
+        "name": "Casting",
+        "questionCount": 21,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "manufacturing.m1.t1",
+            "module": 1,
+            "appearances": 6,
+            "papers": 5,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m1.t3",
+            "module": 1,
+            "appearances": 6,
+            "papers": 5,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q2",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q2",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q2",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m1.t2",
+            "module": 1,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              1
+            ],
+            "questions": [
+              {
+                "qno": "Q1",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q1",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q2",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 2,
+        "name": "Machining & Tool Geometry",
+        "questionCount": 20,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "manufacturing.m2.t1",
+            "module": 2,
+            "appearances": 13,
+            "papers": 7,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q2",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m2.t2",
+            "module": 2,
+            "appearances": 10,
+            "papers": 7,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q2",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q4",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q3",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m2.t3",
+            "module": 2,
+            "appearances": 3,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": false,
+            "askedIn": [
+              2
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q2",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 3,
+        "name": "Machining Operations & Grinding",
+        "questionCount": 14,
+        "paperCount": 7,
+        "topics": [
+          {
+            "key": "manufacturing.m3.t1",
+            "module": 3,
+            "appearances": 5,
+            "papers": 3,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              2,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 2
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID MO25",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q5",
+                "paper": "MID MO23",
+                "type": "MID",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m3.t3",
+            "module": 3,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q3",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m3.t4",
+            "module": 3,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q3",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m3.t2",
+            "module": 3,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 0,
+            "softEvidence": true,
+            "crossModule": true,
+            "askedIn": [
+              1,
+              3
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "MID MO24",
+                "type": "MID",
+                "marks": null,
+                "module": 1
+              },
+              {
+                "qno": "Q3",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 4,
+        "name": "Metal Forming",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "manufacturing.m4.t4",
+            "module": 4,
+            "appearances": 5,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m4.t2",
+            "module": 4,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m4.t1",
+            "module": 4,
+            "appearances": 2,
+            "papers": 2,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              },
+              {
+                "qno": "Q4",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m4.t3",
+            "module": 4,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              4
+            ],
+            "questions": [
+              {
+                "qno": "Q4",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "module": 5,
+        "name": "Joining & Welding",
+        "questionCount": 9,
+        "paperCount": 4,
+        "topics": [
+          {
+            "key": "manufacturing.m5.t3",
+            "module": 5,
+            "appearances": 4,
+            "papers": 4,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "END MO25",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO23",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              },
+              {
+                "qno": "Q5",
+                "paper": "END MO22",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m5.t2",
+            "module": 5,
+            "appearances": 1,
+            "papers": 1,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [
+              5
+            ],
+            "questions": [
+              {
+                "qno": "Q5",
+                "paper": "END MO24",
+                "type": "END",
+                "marks": null,
+                "module": 5
+              }
+            ]
+          },
+          {
+            "key": "manufacturing.m5.t1",
+            "module": 5,
+            "appearances": 0,
+            "papers": 0,
+            "marks": 0,
+            "softEvidence": false,
+            "crossModule": false,
+            "askedIn": [],
+            "questions": []
+          }
+        ]
+      }
+    ],
+    "unmatchedQuestions": [
+      {
+        "qno": "Q1",
+        "paper": "MID MO25",
+        "type": "MID",
+        "module": 1,
+        "text": "Casting is the oldest manufacturing process, still significant to produce various products - Justify it. 3 3 ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "MID MO24",
+        "type": "MID",
+        "module": 1,
+        "text": "Why is casting still a significant manufacturing process in-spite of several limitations? 3 4 ↗"
+      },
+      {
+        "qno": "Q2",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 1,
+        "text": "4 3 Calculate the mould filling time for both the mould types. Consider the area of cross section of the gate is 5 cm2. ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 1,
+        "text": "How can you control the flow of molten metal in filling the mould cavity? ,L2 ↗"
+      },
+      {
+        "qno": "Q1",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 1,
+        "text": "Which casting process is suitable to manufacture similar type small objects in numbers like orthopedic implants? Mention its steps. ,L5 ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "MID MO23",
+        "type": "MID",
+        "module": 3,
+        "text": "What are the differences between three jaw chuck and four jaw chuck? 1 2 ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "END MO25",
+        "type": "END",
+        "module": 5,
+        "text": "Differentiate between metal inert gas (MIG) and tungsten inert gas (TIG) welding. What are the different modes of metal transfer in MIG welding 2+3 1 4 ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "END MO23",
+        "type": "END",
+        "module": 5,
+        "text": "Differentiate between MIG and TIG welding process. What do you mean by transferred arc and non-transferred arc? [3+2] 1 3 ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 5,
+        "text": "What are the various welding positions? ,L1 ↗"
+      },
+      {
+        "qno": "Q5",
+        "paper": "END MO22",
+        "type": "END",
+        "module": 5,
+        "text": "Differentiate between TIG and MIG welding. ,L4 ↗"
+      }
+    ]
+  },
+  "numerical": {
+    "code": "MA24201",
+    "modules": [],
+    "unmatchedQuestions": []
+  }
+}

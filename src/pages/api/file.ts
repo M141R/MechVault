@@ -13,19 +13,43 @@ const MIME: Record<string, string> = {
 };
 
 export const GET: APIRoute = async ({ request, url }) => {
-  const session = await getSessionSafe(request.headers);
-  if (!session) {
+  const { isSingleUser, singleUserSession } = await import("../../lib/auth-single");
+  let user: AuthUser | null = null;
+  if (isSingleUser()) {
+    const s = await singleUserSession(request);
+    user = (s?.user ?? null) as unknown as AuthUser | null;
+  } else {
+    const session = await getSessionSafe(request.headers);
+    if (!session) {
+      return new Response("unauthorized", { status: 401 });
+    }
+    user = session.user as AuthUser;
+  }
+  if (!user) {
     return new Response("unauthorized", { status: 401 });
   }
-  const user = session.user as AuthUser;
-  if (user.status !== "approved") {
-    return new Response("pending approval", { status: 403 });
+  // Access control is the login itself (see middleware.ts). Legacy rows may
+  // still carry status=pending; they must not 403 on files while pages load.
+  // Banned accounts are blocked everywhere.
+  if ((user as unknown as { banned?: boolean }).banned === true) {
+    return new Response("account disabled", { status: 403 });
   }
 
   const raw = url.searchParams.get("path") || "";
-  const decoded = decodeURIComponent(raw);
+  let decoded: string;
+  try {
+    // Decode twice to catch %252e-style double-encoding, then reject.
+    decoded = decodeURIComponent(decodeURIComponent(raw));
+  } catch {
+    try {
+      decoded = decodeURIComponent(raw);
+    } catch {
+      return new Response("invalid path", { status: 400 });
+    }
+  }
   const path = decoded.replace(/\\/g, "/").replace(/^\/+/, "");
-  if (!path || path.includes("..")) {
+  const segments = path.split("/");
+  if (!path || segments.includes("..") || segments.includes(".") || path.includes("..")) {
     return new Response("invalid path", { status: 400 });
   }
   const prefix = ALLOWED_PREFIXES.find((p) => path.startsWith(p + "/"));
@@ -33,7 +57,8 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response("invalid path", { status: 400 });
   }
 
-  const ext = path.slice(path.lastIndexOf(".")).toLowerCase();
+  const dot = path.lastIndexOf(".");
+  const ext = dot >= 0 ? path.slice(dot).toLowerCase() : "";
   const contentType = MIME[ext] || "application/octet-stream";
 
   const result = await getFileStream(path);

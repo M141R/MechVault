@@ -4,7 +4,15 @@ import { join } from "node:path";
 import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
 import { readFile } from "node:fs/promises";
 
-const DIRS = ["books", "syllabus", "images"];
+// Source dirs on disk -> key prefix in the bucket. Images live under
+// public/images but are served as images/... (see storage.ts fallback), so the
+// public/ prefix is stripped when computing the R2 key.
+const SOURCES = [
+  { dir: "books", prefix: "books" },
+  { dir: "syllabus", prefix: "syllabus" },
+  { dir: "images", prefix: "images" },
+  { dir: "public/images", prefix: "images" },
+];
 
 const account = process.env.R2_ACCOUNT_ID;
 const key = process.env.R2_ACCESS_KEY_ID;
@@ -45,21 +53,31 @@ async function fileExists(key) {
 async function main() {
   let total = 0, uploaded = 0, skipped = 0;
   const onlyMissing = process.argv.includes("--missing");
+  const seen = new Set();
 
-  for (const dir of DIRS) {
+  for (const { dir, prefix } of SOURCES) {
     if (!existsSyncSafe(dir)) {
       console.log(`skip ${dir} (not present)`);
       continue;
     }
-    const files = walk(dir, dir);
-    console.log(`${dir}: ${files.length} files`);
+    const files = walk(dir, prefix);
+    console.log(`${dir} -> ${prefix}: ${files.length} files`);
     for (const rel of files) {
+      // Dedupe: books/images may exist in both legacy and public/ locations.
+      if (seen.has(rel)) {
+        skipped++;
+        continue;
+      }
+      seen.add(rel);
       total++;
       if (onlyMissing && (await fileExists(rel))) {
         skipped++;
         continue;
       }
-      const body = await readFile(join(process.cwd(), ...rel.split("/")));
+      // Key is prefix-relative; local path is dir + remainder.
+      const localRel = rel.slice(prefix.length).replace(/^\/+/, "");
+      const localPath = join(process.cwd(), dir, ...localRel.split("/").filter(Boolean));
+      const body = await readFile(localPath);
       await s3.send(
         new PutObjectCommand({
           Bucket: bucket,

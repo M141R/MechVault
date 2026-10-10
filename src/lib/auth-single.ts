@@ -62,24 +62,30 @@ function expectedPassword(): string {
   return pw;
 }
 
-/** Length-independent comparison, so timing does not leak the password. */
+/** Constant-time comparison over the full max length; never early-returns. */
 function timingSafeEqual(a: string, b: string): boolean {
-  if (a.length !== b.length) {
-    // Still do the work, so a length mismatch is not obviously faster.
-    let sink = 0;
-    for (let i = 0; i < b.length; i++) sink ^= a.charCodeAt(i) || 0;
-    return sink === -1;
-  }
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) {
-    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  const len = Math.max(a.length, b.length);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < len; i++) {
+    const ca = i < a.length ? a.charCodeAt(i) : 0;
+    const cb = i < b.length ? b.charCodeAt(i) : 0;
+    diff |= ca ^ cb;
   }
   return diff === 0;
 }
 
 export function checkCredentials(username: string, password: string): boolean {
+  let expected: string;
+  try {
+    expected = expectedPassword();
+  } catch {
+    // Missing VAULT_PASSWORD is a server misconfiguration, not a user error.
+    // Return false so the route answers 401 rather than 500.
+    console.error("[auth-single] VAULT_PASSWORD is not set");
+    return false;
+  }
   const userOk = timingSafeEqual(username, vaultUsername());
-  const passOk = timingSafeEqual(password, expectedPassword());
+  const passOk = timingSafeEqual(password, expected);
   return userOk && passOk;
 }
 
@@ -175,17 +181,23 @@ export function readCookie(request: Request, name: string): string | undefined {
 }
 
 export function sessionCookie(token: string): string {
-  return [
+  const parts = [
     `${COOKIE}=${encodeURIComponent(token)}`,
     "Path=/",
     "HttpOnly",
     "SameSite=Lax",
     `Max-Age=${SESSION_TTL_SECONDS}`,
-  ].join("; ");
+  ];
+  // __Host- semantics require Secure + Path=/ + no Domain. Add Secure outside
+  // dev so the cookie is never sent over plaintext.
+  if (process.env.NODE_ENV === "production") parts.push("Secure");
+  return parts.join("; ");
 }
 
 export function clearCookie(): string {
-  return `${COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+  const parts = [`${COOKIE}=`, "Path=/", "HttpOnly", "SameSite=Lax", "Max-Age=0"];
+  if (process.env.NODE_ENV === "production") parts.push("Secure");
+  return parts.join("; ");
 }
 
 export const SESSION_COOKIE = COOKIE;
@@ -199,6 +211,9 @@ export async function singleUserSession(request: Request): Promise<{
 } | null> {
   const username = await verifySessionToken(readCookie(request, COOKIE));
   if (!username) return null;
+  // The token is signed, but the claim must still name the configured owner.
+  // Otherwise a token minted before a username change stays admin forever.
+  if (!timingSafeEqual(username, vaultUsername())) return null;
   return {
     user: {
       id: "single-user",

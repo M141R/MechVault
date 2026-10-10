@@ -1,6 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getSessionSafe, type AuthUser } from "../lib/auth";
+import { isSingleUser } from "../lib/auth-single";
+import type { AuthUser } from "../lib/auth";
+
+if (isSingleUser()) {
+  return Astro.redirect("/login");
+}
+
+const { getSessionSafe } = await import("../lib/auth");
 
 let loggedIn: AuthUser | null = null;
 try {
@@ -22,21 +29,21 @@ if (loggedIn) {
       <form id="register-form" class="auth-form">
         <label>
           <span>Username</span>
-          <input type="text" name="username" autocomplete="username" minlength="3" maxlength="30" required autofocus>
+          <input type="text" name="username" id="register-username" autocomplete="username" minlength="3" maxlength="30" required aria-describedby="register-error">
         </label>
         <label>
           <span>Display name (optional)</span>
-          <input type="text" name="name" autocomplete="name">
+          <input type="text" name="name" autocomplete="name" aria-describedby="register-error">
         </label>
         <label>
           <span>Password</span>
-          <input type="password" name="password" autocomplete="new-password" minlength="8" required>
+          <input type="password" name="password" id="register-password" autocomplete="new-password" minlength="8" required aria-describedby="register-error">
         </label>
         <label>
           <span>Confirm password</span>
-          <input type="password" name="confirm" autocomplete="new-password" minlength="8" required>
+          <input type="password" name="confirm" id="register-confirm" autocomplete="new-password" minlength="8" required aria-describedby="register-error">
         </label>
-        <div class="auth-error" hidden></div>
+        <div class="auth-error" id="register-error" role="alert" hidden></div>
         <button type="submit" class="btn btn-accent auth-submit">Create account →</button>
       </form>
       <p class="auth-alt">Already have an account? <a href="/login">Sign in</a></p>
@@ -48,10 +55,21 @@ if (loggedIn) {
     const form = document.getElementById("register-form") as HTMLFormElement;
     const err = form.querySelector(".auth-error") as HTMLDivElement;
     const btn = form.querySelector(".auth-submit") as HTMLButtonElement;
+    const usernameInput = form.querySelector('#register-username') as HTMLInputElement;
+    const confirmInput = form.querySelector('#register-confirm') as HTMLInputElement;
+
+    form.querySelectorAll("input").forEach((inp) => {
+      inp.addEventListener("input", () => {
+        inp.removeAttribute("aria-invalid");
+      });
+    });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       err.hidden = true;
+      err.textContent = "";
+      usernameInput?.removeAttribute("aria-invalid");
+      confirmInput?.removeAttribute("aria-invalid");
       const fd = new FormData(form);
       const username = String(fd.get("username") || "").trim();
       const name = String(fd.get("name") || "").trim() || username;
@@ -60,6 +78,7 @@ if (loggedIn) {
       if (password !== confirm) {
         err.hidden = false;
         err.textContent = "Passwords do not match.";
+        confirmInput?.setAttribute("aria-invalid", "true");
         return;
       }
       btn.disabled = true;
@@ -73,6 +92,7 @@ if (loggedIn) {
       if (error) {
         err.hidden = false;
         err.textContent = error.message || "Could not create account. Try a different username.";
+        usernameInput?.setAttribute("aria-invalid", "true");
         return;
       }
       window.location.href = "/";

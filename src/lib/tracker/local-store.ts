@@ -19,6 +19,10 @@ import {
   canTransitionTopic,
   canTransitionProblem,
   hintBudgetAllows,
+  isTopicState,
+  isProblemState,
+  TOPIC_STATES,
+  PROBLEM_STATES,
   type TopicStateName,
   type ProblemStateName,
 } from "./engine";
@@ -55,13 +59,15 @@ function read<T>(storageKey: string): Record<string, T> {
   }
 }
 
-function write<T>(storageKey: string, data: Record<string, T>): void {
-  if (typeof localStorage === "undefined") return;
+function write<T>(storageKey: string, data: Record<string, T>): boolean {
+  if (typeof localStorage === "undefined") return false;
   try {
     localStorage.setItem(storageKey, JSON.stringify(data));
+    return true;
   } catch {
-    // Quota exceeded: surface nothing silently in the data layer; the caller
-    // reports success only if this did not throw.
+    // Quota exceeded (or private-mode denial): report failure so the caller
+    // can surface it instead of claiming the save succeeded.
+    return false;
   }
 }
 
@@ -71,6 +77,29 @@ export function readLocalStates(): {
 } {
   const topics = read<LocalTopic>(TOPICS_KEY);
   const problems = read<LocalProblem>(PROBLEMS_KEY);
+  const topicKeys = allTopicKeys();
+  const problemKeys = allProblemKeys();
+  // Drop stale keys (renamed/removed config entries) and corrupt states on
+  // read so a tampered or outdated localStorage can never lock the UI. Stale
+  // entries are pruned from storage lazily.
+  let prunedTopics = false;
+  for (const k of Object.keys(topics)) {
+    const t = topics[k];
+    if (!topicKeys.has(k) || !isTopicState(String(t?.state ?? ""))) {
+      delete topics[k];
+      prunedTopics = true;
+    }
+  }
+  let prunedProblems = false;
+  for (const k of Object.keys(problems)) {
+    const p = problems[k];
+    if (!problemKeys.has(k) || !isProblemState(String(p?.state ?? ""))) {
+      delete problems[k];
+      prunedProblems = true;
+    }
+  }
+  if (prunedTopics) write(TOPICS_KEY, topics);
+  if (prunedProblems) write(PROBLEMS_KEY, problems);
   return { topics: Object.values(topics), problems: Object.values(problems) };
 }
 
@@ -87,11 +116,20 @@ export function updateLocalTopic(update: {
   if (!allTopicKeys().has(update.key)) {
     return { ok: false, error: `Unknown topic key: ${update.key}` };
   }
+  if (!(TOPIC_STATES as readonly string[]).includes(update.state)) {
+    return { ok: false, error: `Unknown topic state: ${update.state}` };
+  }
   const all = read<LocalTopic>(TOPICS_KEY);
   const prev = all[update.key];
   const from = (prev?.state ?? "unseen") as TopicStateName;
-  const gate = canTransitionTopic(from, update.state as TopicStateName);
-  if (!gate.ok) return { ok: false, error: gate.reason };
+  if (!isTopicState(from)) {
+    if (update.state !== "unseen") {
+      return { ok: false, error: `Unknown state ${from}; reset it to unseen first.` };
+    }
+  } else {
+    const gate = canTransitionTopic(from, update.state as TopicStateName);
+    if (!gate.ok) return { ok: false, error: gate.reason };
+  }
 
   const testing = update.state === "self-tested" || update.state === "exam-ready";
   all[update.key] = {
@@ -100,7 +138,9 @@ export function updateLocalTopic(update: {
     errorReason: update.errorReason ?? prev?.errorReason ?? null,
     lastTestedAt: testing ? new Date().toISOString() : (prev?.lastTestedAt ?? null),
   };
-  write(TOPICS_KEY, all);
+  if (!write(TOPICS_KEY, all)) {
+    return { ok: false, error: "Browser storage is full or unavailable; the change was not saved." };
+  }
   return { ok: true };
 }
 
@@ -113,13 +153,22 @@ export function updateLocalProblem(update: {
   if (!allProblemKeys().has(update.key)) {
     return { ok: false, error: `Unknown problem key: ${update.key}` };
   }
+  if (!(PROBLEM_STATES as readonly string[]).includes(update.state)) {
+    return { ok: false, error: `Unknown problem state: ${update.state}` };
+  }
   const all = read<LocalProblem>(PROBLEMS_KEY);
   const prev = all[update.key];
   const from = (prev?.state ?? "unseen") as ProblemStateName;
   const hintLevel = update.hintLevel ?? prev?.hintLevel ?? 0;
 
-  const gate = canTransitionProblem(from, update.state as ProblemStateName);
-  if (!gate.ok) return { ok: false, error: gate.reason };
+  if (!isProblemState(from)) {
+    if (update.state !== "unseen") {
+      return { ok: false, error: `Unknown state ${from}; reset it to unseen first.` };
+    }
+  } else {
+    const gate = canTransitionProblem(from, update.state as ProblemStateName);
+    if (!gate.ok) return { ok: false, error: gate.reason };
+  }
   const budget = hintBudgetAllows(update.state as ProblemStateName, hintLevel);
   if (!budget.ok) return { ok: false, error: budget.reason };
 
@@ -134,7 +183,9 @@ export function updateLocalProblem(update: {
       update.state === "solved-cold" ? now : (prev?.coldSolvedAt ?? null),
     examSpeedAt: update.state === "exam-speed" ? now : (prev?.examSpeedAt ?? null),
   };
-  write(PROBLEMS_KEY, all);
+  if (!write(PROBLEMS_KEY, all)) {
+    return { ok: false, error: "Browser storage is full or unavailable; the change was not saved." };
+  }
   return { ok: true };
 }
 

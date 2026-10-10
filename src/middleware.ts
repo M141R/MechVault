@@ -7,6 +7,7 @@ const PUBLIC_PATHS = [
   "/register",
   "/pending",
   "/api/auth",
+  "/api/single-login",
   "/_astro",
   "/assets",
   "/search-index.json",
@@ -56,6 +57,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
   context.locals.user = user;
   context.locals.session = null;
+
+  // Banned accounts lose access everywhere, including files and APIs.
+  const banned =
+    (user as unknown as { banned?: boolean } | null)?.banned === true;
+  if (banned) {
+    if (pathname.startsWith("/api/")) return json(403, { error: "account disabled" });
+    return context.redirect("/login?banned=1");
+  }
+
+  // In single-user mode there are no accounts to create and no pending queue.
+  // Keep /register and /pending from rendering dead forms.
+  if (isSingleUser() && (pathname === "/register" || pathname === "/pending")) {
+    return context.redirect("/login");
+  }
 
   // /api/file does its own approved-check but must at least be logged in.
   if (pathname === "/api/file") {

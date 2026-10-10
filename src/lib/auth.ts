@@ -32,7 +32,8 @@ export const auth: ReturnType<typeof betterAuth> = new Proxy(
     get(_t, prop, receiver) {
       const real = buildAuth() as unknown as Record<string | symbol, unknown>;
       const value = real[prop];
-      return typeof value === "function" ? value : value;
+      if (typeof value === "function") return (value as Function).bind(real);
+      return value;
     },
     has(_t, prop) {
       return prop in (buildAuth() as unknown as object);

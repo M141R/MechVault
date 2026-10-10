@@ -11,22 +11,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Explain the importance of viscosity in fluid motion 📄 p1",
+                "text": "Explain the importance of viscosity in fluid motion",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A square plate of size 1 m x 1 m and weighting 350 N slides down an incline plane with a uniform velocity of 1.5 m/s as shown in Figure below. The incline plane is laid on a slope of 5 vertical to 12 horizontal and has an oil film of 1 mm thickness. Determine the dynamic viscosity of oil in SI Unit 📄 p1",
+                "text": "A square plate of size 1 m x 1 m and weighting 350 N slides down an incline plane with a uniform velocity of 1.5 m/s as shown in Figure below. The incline plane is laid on a slope of 5 vertical to 12 horizontal and has an oil film of 1 mm thickness. Determine the dynamic viscosity of oil in SI Unit",
                 "marks": 3
               },
               {
                 "qno": "Q.2(a)",
-                "text": "What is a manometer? How are they classified? 📄 p1",
+                "text": "What is a manometer? How are they classified?",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "A U-Tube manometer is used to measure the pressure of water in a pipeline, which is in excess of atmospheric pressure. The right limb contains mercury and is open to atmosphere, the contact between water and mercury being in the left limb. If the difference in level of mercury in the limbs is 10 cm and the free surface of mercury is in level with the center of the pipeline as shown in Figure, determine the pressure of water in the main line 📄 p1",
+                "text": "A U-Tube manometer is used to measure the pressure of water in a pipeline, which is in excess of atmospheric pressure. The right limb contains mercury and is open to atmosphere, the contact between water and mercury being in the left limb. If the difference in level of mercury in the limbs is 10 cm and the free surface of mercury is in level with the center of the pipeline as shown in Figure, determine the pressure of water in the main line",
                 "marks": 3
               }
             ],
@@ -38,17 +38,17 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Define the following terms: (i) Density, (ii) weight density, (iii) specific gravity, (iv) specific volume 📄 p1",
+                "text": "Define the following terms: (i) Density, (ii) weight density, (iii) specific gravity, (iv) specific volume",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A plate 0.025 mm distant from a fixed plate moves at 60 cm/s and requires a force of 2 N/sq.m to maintain this speed. Determine the dynamic viscosity of the fluid between the plates 📄 p1",
+                "text": "A plate 0.025 mm distant from a fixed plate moves at 60 cm/s and requires a force of 2 N/sq.m to maintain this speed. Determine the dynamic viscosity of the fluid between the plates",
                 "marks": 3
               },
               {
                 "qno": "Q.1(c)",
-                "text": "An inverted differential manometer as shown in Fig. 1 connects two pipes A and B containing water; the manometric fluid is oil of sp. gr. 0.8. For the manometer readings shown, determine the difference of pressure head between A and B 📄 p1",
+                "text": "An inverted differential manometer as shown in Fig. 1 connects two pipes A and B containing water; the manometric fluid is oil of sp. gr. 0.8. For the manometer readings shown, determine the difference of pressure head between A and B",
                 "marks": 5
               }
             ],
@@ -60,22 +60,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Define the term continuum for fluids. What is its importance in fluid domain 📄 p1",
+                "text": "Define the term continuum for fluids. What is its importance in fluid domain",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "Determine the dynamic viscosity of an oil used for lubrication between a square plate 0.8 m x 0.8 m and an inclined plane at 30 degrees as shown in Figure. Weight of the plate is 300 N and it slides down with uniform velocity 0.3 m/s. Thickness of oil film is 1.5 mm 📄 p1",
+                "text": "Determine the dynamic viscosity of an oil used for lubrication between a square plate 0.8 m x 0.8 m and an inclined plane at 30 degrees as shown in Figure. Weight of the plate is 300 N and it slides down with uniform velocity 0.3 m/s. Thickness of oil film is 1.5 mm",
                 "marks": 3
               },
               {
                 "qno": "Q.2(a)",
-                "text": "What is the difference between U-tube differential manometer and inverted U-tube differential manometer? Where are they used? 📄 p1",
+                "text": "What is the difference between U-tube differential manometer and inverted U-tube differential manometer? Where are they used?",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "An inverted U-tube differential manometer is connected to two pipes A and B conveying water as shown in Figure. Manometric fluid is oil of specific gravity 0.8. For the manometer readings, determine the gauge pressure difference between A and B 📄 p1",
+                "text": "An inverted U-tube differential manometer is connected to two pipes A and B conveying water as shown in Figure. Manometric fluid is oil of specific gravity 0.8. For the manometer readings, determine the gauge pressure difference between A and B",
                 "marks": 3
               }
             ],
@@ -87,12 +87,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "State and prove Pascal's law of static pressure 📄 p1",
+                "text": "State and prove Pascal's law of static pressure",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A vertical gap 2.2 cm wide of infinite extent contains a fluid of viscosity 2.0 N-s/m² and specific gravity 0.9. A metallic plate 1.2 m x 1.2 m x 0.2 cm is lifted at constant velocity 0.15 m/s through the middle of the gap. Determine the force required. Weight of the plate is 40 N 📄 p1",
+                "text": "A vertical gap 2.2 cm wide of infinite extent contains a fluid of viscosity 2.0 N-s/m² and specific gravity 0.9. A metallic plate 1.2 m x 1.2 m x 0.2 cm is lifted at constant velocity 0.15 m/s through the middle of the gap. Determine the force required. Weight of the plate is 40 N",
                 "marks": 5
               }
             ],
@@ -104,22 +104,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "What does the term continuum signify in fluid dynamics? Justify your answer with suitable explanation 📄 p1",
+                "text": "What does the term continuum signify in fluid dynamics? Justify your answer with suitable explanation",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "Determine the specific weight, density and specific gravity of one litre of liquid which weighs 7 N 📄 p1",
+                "text": "Determine the specific weight, density and specific gravity of one litre of liquid which weighs 7 N",
                 "marks": 3
               },
               {
                 "qno": "Q.2(a)",
-                "text": "Define Newton's Law of dynamic viscosity. How does the dynamic viscosity change with temperature for liquids 📄 p1",
+                "text": "Define Newton's Law of dynamic viscosity. How does the dynamic viscosity change with temperature for liquids",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "Evaluate the capillary rise in a glass tube of 2.5 mm diameter when immersed vertically in (a) water and (b) Mercury. Surface tension σ = 0.0725 N/m for water and σ = 0.52 N/m for Mercury in contact with air; specific gravity of Mercury 13.6, angle of contact 130 degrees 📄 p1",
+                "text": "Evaluate the capillary rise in a glass tube of 2.5 mm diameter when immersed vertically in (a) water and (b) Mercury. Surface tension σ = 0.0725 N/m for water and σ = 0.52 N/m for Mercury in contact with air; specific gravity of Mercury 13.6, angle of contact 130 degrees",
                 "marks": 3
               }
             ],
@@ -131,12 +131,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Velocity profile of a fluid over a plate is parabolic with vertex 20 cm from the plate where velocity is 120 cm/sec (Fig.). Determine velocity gradients and shear stresses at distances 0, 10 and 20 cm from the plate. Dynamic viscosity 0.85 N-s/m² 📄 p1",
+                "text": "Velocity profile of a fluid over a plate is parabolic with vertex 20 cm from the plate where velocity is 120 cm/sec (Fig.). Determine velocity gradients and shear stresses at distances 0, 10 and 20 cm from the plate. Dynamic viscosity 0.85 N-s/m²",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "Determine the differential reading (h) of an inverted tube manometer containing oil of specific gravity 0.7 connected across pipes A and B conveying liquids of specific gravities 1.2 and 1.0 (Fig.). Pipes are at the same level; pressures at A and B are equal 📄 p1",
+                "text": "Determine the differential reading (h) of an inverted tube manometer containing oil of specific gravity 0.7 connected across pipes A and B conveying liquids of specific gravities 1.2 and 1.0 (Fig.). Pipes are at the same level; pressures at A and B are equal",
                 "marks": 5
               }
             ],
@@ -148,22 +148,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Discuss the concept of continuum in fluid flow practices 📄 p1",
+                "text": "Discuss the concept of continuum in fluid flow practices",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A plate 0.025 mm distant from a fixed plate moves at 0.6 m/s requiring a shear force per unit area of 2 N/m². Determine the dynamic viscosity of the flowing fluid between the plates 📄 p1",
+                "text": "A plate 0.025 mm distant from a fixed plate moves at 0.6 m/s requiring a shear force per unit area of 2 N/m². Determine the dynamic viscosity of the flowing fluid between the plates",
                 "marks": 3
               },
               {
                 "qno": "Q.2(a)",
-                "text": "With suitable sketch discuss: (i) Piezometer, (ii) Differential U Tube manometer 📄 p1",
+                "text": "With suitable sketch discuss: (i) Piezometer, (ii) Differential U Tube manometer",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "A rectangular plane surface 2 m wide and 3 m deep lies in a vertical plane in water. Determine total pressure and position of center of pressure when its upper edge is horizontal (Figure). Given h* = Iᴄ/(Ah̄) + h̄, where Iᴄ is moment of inertia about the axis through C.G. parallel to base 📄 p1",
+                "text": "A rectangular plane surface 2 m wide and 3 m deep lies in a vertical plane in water. Determine total pressure and position of center of pressure when its upper edge is horizontal (Figure). Given h* = Iᴄ/(Ah̄) + h̄, where Iᴄ is moment of inertia about the axis through C.G. parallel to base",
                 "marks": 3
               }
             ],
@@ -175,12 +175,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Define center of pressure and determine the total pressure on a circular plate of diameter 1.5 m placed vertically in water with its center 3.0 m below the free surface. Also determine the position of center of pressure 📄 p1",
+                "text": "Define center of pressure and determine the total pressure on a circular plate of diameter 1.5 m placed vertically in water with its center 3.0 m below the free surface. Also determine the position of center of pressure",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A single column manometer is connected to a pipe containing liquid of specific gravity 0.9. Determine the pressure in the pipe if the reservoir area is 100 times the tube area for the manometer reading shown (Figure). Manometric fluid is mercury with specific gravity 13.6 📄 p1",
+                "text": "A single column manometer is connected to a pipe containing liquid of specific gravity 0.9. Determine the pressure in the pipe if the reservoir area is 100 times the tube area for the manometer reading shown (Figure). Manometric fluid is mercury with specific gravity 13.6",
                 "marks": 5
               }
             ],
@@ -198,22 +198,22 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Derive the continuity equation in differential form for a 2D flow in Cartesian coordinate system 📄 p2",
+                "text": "Derive the continuity equation in differential form for a 2D flow in Cartesian coordinate system",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "u = x³ + y² + z² ; v = xy² − yz² + xy. Determine the third component of velocity such that they satisfy the continuity equation 📄 p2",
+                "text": "u = x³ + y² + z² ; v = xy² − yz² + xy. Determine the third component of velocity such that they satisfy the continuity equation",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Distinguish between (i) steady and un-steady flow, (ii) uniform and non-uniform flow, (iii) rotational and irrotational flow, (iv) laminar and turbulent flow 📄 p2",
+                "text": "Distinguish between (i) steady and un-steady flow, (ii) uniform and non-uniform flow, (iii) rotational and irrotational flow, (iv) laminar and turbulent flow",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine the shear strain rate and state whether the flow is rotational or irrotational 📄 p2",
+                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine the shear strain rate and state whether the flow is rotational or irrotational",
                 "marks": 3
               }
             ],
@@ -225,17 +225,17 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Distinguish between stream line, streak line and path line in a fluid flow 📄 p1",
+                "text": "Distinguish between stream line, streak line and path line in a fluid flow",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "Prove Bernoulli's theorem for fluid flow. Also state the assumptions being made 📄 p1",
+                "text": "Prove Bernoulli's theorem for fluid flow. Also state the assumptions being made",
                 "marks": 3
               },
               {
                 "qno": "Q.2(c)",
-                "text": "A tapered horizontal pipe with inlet diameter 25 cm carries oil of sp. gr. 0.9 at a velocity of 3 m/s. The outlet diameter is 20 cm. Determine the velocity of oil at the outlet section and also the flow rate of oil through this tapered pipe 📄 p1",
+                "text": "A tapered horizontal pipe with inlet diameter 25 cm carries oil of sp. gr. 0.9 at a velocity of 3 m/s. The outlet diameter is 20 cm. Determine the velocity of oil at the outlet section and also the flow rate of oil through this tapered pipe",
                 "marks": 5
               }
             ],
@@ -247,22 +247,22 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "With a suitable sketch explain the term stream line in a fluid flow 📄 p1",
+                "text": "With a suitable sketch explain the term stream line in a fluid flow",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A fluid flow is given by V = (x²y)i + (y²z)j − (2xyz + yz²)k. Analyze this flow for its continuity and rotationality at point (2, 1, 3) 📄 p1",
+                "text": "A fluid flow is given by V = (x²y)i + (y²z)j − (2xyz + yz²)k. Analyze this flow for its continuity and rotationality at point (2, 1, 3)",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Distinguish between laminar flow and turbulent flow 📄 p2",
+                "text": "Distinguish between laminar flow and turbulent flow",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "The diameter of a pipe gradually reduces from 1 m to 0.7 m as shown in Figure. Pressure intensity at the centerline of the 1 m section is 7.848 kN/sq.m and rate of flow of water is 600 liters/second. Determine (i) pressure intensity at the centerline of the 0.7 m section, (ii) force exerted by the flowing fluid on the tapered portion (reducer) of the pipe 📄 p2",
+                "text": "The diameter of a pipe gradually reduces from 1 m to 0.7 m as shown in Figure. Pressure intensity at the centerline of the 1 m section is 7.848 kN/sq.m and rate of flow of water is 600 liters/second. Determine (i) pressure intensity at the centerline of the 0.7 m section, (ii) force exerted by the flowing fluid on the tapered portion (reducer) of the pipe",
                 "marks": 3
               }
             ],
@@ -274,12 +274,12 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Explain the following terms: (i) linear translation, (ii) angular deformation, (iii) rotation, and (v) vorticity of a fluid element 📄 p1",
+                "text": "Explain the following terms: (i) linear translation, (ii) angular deformation, (iii) rotation, and (v) vorticity of a fluid element",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "A lawn sprinkler as shown in figure has 0.8 cm diameter nozzles at the ends of a rotating arm and discharges water at 10 m/s. Determine the torque required to hold the arm stationary. Also determine the constant speed of rotation if free to rotate 📄 p1",
+                "text": "A lawn sprinkler as shown in figure has 0.8 cm diameter nozzles at the ends of a rotating arm and discharges water at 10 m/s. Determine the torque required to hold the arm stationary. Also determine the constant speed of rotation if free to rotate",
                 "marks": 5
               }
             ],
@@ -291,22 +291,22 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Explain with suitable sketch the Eulerian and Lagrangian description of fluid flow. How can they be related with each other 📄 p1",
+                "text": "Explain with suitable sketch the Eulerian and Lagrangian description of fluid flow. How can they be related with each other",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Wind blows North to South from 11.00 AM to 11.30 AM and East to West from 11.30 AM to 12.00 Noon. Construct the STREAK LINE and visualize the flow using a time interval of 10 minutes 📄 p1",
+                "text": "Wind blows North to South from 11.00 AM to 11.30 AM and East to West from 11.30 AM to 12.00 Noon. Construct the STREAK LINE and visualize the flow using a time interval of 10 minutes",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Derive Euler's Equation of motion for fluid flow. Mention the assumptions made 📄 p1",
+                "text": "Derive Euler's Equation of motion for fluid flow. Mention the assumptions made",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine (i) shear strain rate, (ii) rotation or vorticity 📄 p1",
+                "text": "A fluid flow is given by V = 8x³i − 10x²yj. Determine (i) shear strain rate, (ii) rotation or vorticity",
                 "marks": 3
               }
             ],
@@ -318,12 +318,12 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Derive the expression for the continuity equation in the differential form ∂u/∂x + ∂v/∂y = 0 📄 p1",
+                "text": "Derive the expression for the continuity equation in the differential form ∂u/∂x + ∂v/∂y = 0",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "A 30 cm x 15 cm Venturimeter is inserted in a vertical pipe carrying water, flow upwards; throat diameter 15 cm, pipe diameter 30 cm. Differential mercury manometer connected to inlet and throat reads 20 cm of mercury. Determine the discharge. Coefficient of discharge 0.98 📄 p2",
+                "text": "A 30 cm x 15 cm Venturimeter is inserted in a vertical pipe carrying water, flow upwards; throat diameter 15 cm, pipe diameter 30 cm. Differential mercury manometer connected to inlet and throat reads 20 cm of mercury. Determine the discharge. Coefficient of discharge 0.98",
                 "marks": 5
               }
             ],
@@ -335,22 +335,22 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Distinguish between: (i) steady and unsteady flow, (ii) one, two and three dimensional flow 📄 p1",
+                "text": "Distinguish between: (i) steady and unsteady flow, (ii) one, two and three dimensional flow",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Pipe diameters at sections 1 and 2 are D₁ = 10 cm and D₂ = 15 cm respectively. Determine the discharge if the velocity of water at section 1 is 5 m/s (Figure). Also determine the velocity at section 2 📄 p1",
+                "text": "Pipe diameters at sections 1 and 2 are D₁ = 10 cm and D₂ = 15 cm respectively. Determine the discharge if the velocity of water at section 1 is 5 m/s (Figure). Also determine the velocity at section 2",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Discuss the various forces present in a fluid flow when the fluid is a real one 📄 p2",
+                "text": "Discuss the various forces present in a fluid flow when the fluid is a real one",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "Using Navier-Stokes equation for inviscid, incompressible, irrotational and steady flow, develop (derive) Bernoulli's equation for total energy along a streamline 📄 p2",
+                "text": "Using Navier-Stokes equation for inviscid, incompressible, irrotational and steady flow, develop (derive) Bernoulli's equation for total energy along a streamline",
                 "marks": 3
               }
             ],
@@ -362,12 +362,12 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Derive Euler's equation of motion along a stream line. State the basic assumptions made to derive it 📄 p1",
+                "text": "Derive Euler's equation of motion along a stream line. State the basic assumptions made to derive it",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "The velocity components in a two-dimensional flow are u = y³/3 + 2x − x²y and v = xy² − 2y − x³/3. Determine whether the flow is rotational or irrotational 📄 p1",
+                "text": "The velocity components in a two-dimensional flow are u = y³/3 + 2x − x²y and v = xy² − 2y − x³/3. Determine whether the flow is rotational or irrotational",
                 "marks": 5
               }
             ],
@@ -385,12 +385,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "What do you understand by the term losses of energy of the flowing fluids in pipes 📄 p2",
+                "text": "What do you understand by the term losses of energy of the flowing fluids in pipes",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A crude oil of kinematic viscosity 0.4 × 10⁻⁴ m²/s flows through a pipe of diameter 300 mm at a rate of 0.3 m³/s. Using Darcy-Weisbach equation, determine the head lost due to friction for a length of 50 m of the pipe. Given friction factor f = 0.079/(R e )^¼, where R e is Reynolds Number 📄 p2",
+                "text": "A crude oil of kinematic viscosity 0.4 × 10⁻⁴ m²/s flows through a pipe of diameter 300 mm at a rate of 0.3 m³/s. Using Darcy-Weisbach equation, determine the head lost due to friction for a length of 50 m of the pipe. Given friction factor f = 0.079/(R e )^¼, where R e is Reynolds Number",
                 "marks": 3
               }
             ],
@@ -402,17 +402,17 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Distinguish between major and minor losses in pipes 📄 p1",
+                "text": "Distinguish between major and minor losses in pipes",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "What is a boundary layer? How does a boundary layer get separated from the boundary, and what are the standard ways to control the separation 📄 p1",
+                "text": "What is a boundary layer? How does a boundary layer get separated from the boundary, and what are the standard ways to control the separation",
                 "marks": 3
               },
               {
                 "qno": "Q.3(c)",
-                "text": "A horizontal pipe line 40 m long is connected to a tank at one end and discharges freely into the atmosphere at the other end (d₁ = 0.15 m, d₂ = 0.3 m, lengths per Fig. 2). The water level in the tank is 8 m above the pipe centerline. Take friction factor f = 0.01. Considering all losses of head, determine the rate of flow. Also draw the hydraulic gradient line and total energy line for this circuit 📄 p1",
+                "text": "A horizontal pipe line 40 m long is connected to a tank at one end and discharges freely into the atmosphere at the other end (d₁ = 0.15 m, d₂ = 0.3 m, lengths per Fig. 2). The water level in the tank is 8 m above the pipe centerline. Take friction factor f = 0.01. Considering all losses of head, determine the rate of flow. Also draw the hydraulic gradient line and total energy line for this circuit",
                 "marks": 5
               }
             ],
@@ -424,12 +424,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Distinguish between major and minor losses in pipes 📄 p2",
+                "text": "Distinguish between major and minor losses in pipes",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "Crude oil of kinematic viscosity 0.4 × 10⁻⁴ sq.m./sec flows through a 300 mm diameter pipe at 0.3 m³/sec. Determine (i) head loss due to friction for a 50 m length, (ii) Reynolds number of the flow. Take coefficient of friction as 0.006 📄 p2",
+                "text": "Crude oil of kinematic viscosity 0.4 × 10⁻⁴ sq.m./sec flows through a 300 mm diameter pipe at 0.3 m³/sec. Determine (i) head loss due to friction for a 50 m length, (ii) Reynolds number of the flow. Take coefficient of friction as 0.006",
                 "marks": 3
               }
             ],
@@ -441,12 +441,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "What is an orifice meter? Prove that the discharge through an orifice meter is given by Q = C d · (a₀·a₁/√(a₁² − a₀²)) · √(2gh), where a₁ = area of the pipe and a₀ = area of the orifice 📄 p1",
+                "text": "What is an orifice meter? Prove that the discharge through an orifice meter is given by Q = C d · (a₀·a₁/√(a₁² − a₀²)) · √(2gh), where a₁ = area of the pipe and a₀ = area of the orifice",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Determine the rate of flow of water through a pipe of diameter 20 cm and length 50 m, one end connected to a tank and other end open to atmosphere. Pipe is horizontal, water level in the tank is 4 m above the pipe centerline. Consider all minor losses and take f = 0.009 in Darcy-Weisbach equation. Also draw the Total Energy Line and Hydraulic Gradient Line 📄 p1",
+                "text": "Determine the rate of flow of water through a pipe of diameter 20 cm and length 50 m, one end connected to a tank and other end open to atmosphere. Pipe is horizontal, water level in the tank is 4 m above the pipe centerline. Consider all minor losses and take f = 0.009 in Darcy-Weisbach equation. Also draw the Total Energy Line and Hydraulic Gradient Line",
                 "marks": 5
               }
             ],
@@ -458,12 +458,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Distinguish between major and minor losses of energy in fluid flow through pipes 📄 p1",
+                "text": "Distinguish between major and minor losses of energy in fluid flow through pipes",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "An oil of specific gravity 0.7 flows through a 300 mm diameter pipe at 500 Liter/second. Evaluate head loss due to friction and power required to maintain the flow for a length of 1000 m. Kinematic viscosity 0.29 × 10⁻⁴ m²/s, friction factor f = 0.079/(R e )^0.25 📄 p1",
+                "text": "An oil of specific gravity 0.7 flows through a 300 mm diameter pipe at 500 Liter/second. Evaluate head loss due to friction and power required to maintain the flow for a length of 1000 m. Kinematic viscosity 0.29 × 10⁻⁴ m²/s, friction factor f = 0.079/(R e )^0.25",
                 "marks": 3
               }
             ],
@@ -475,12 +475,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Using basic principles of fluid flow, derive the discharge expression for an Orifice-meter in the form Q = C d · ((a₀a₁)/√(a₁² − a₀²)) · √(2gH), where a₁ = pipe area and a₀ = orifice area 📄 p2",
+                "text": "Using basic principles of fluid flow, derive the discharge expression for an Orifice-meter in the form Q = C d · ((a₀a₁)/√(a₁² − a₀²)) · √(2gH), where a₁ = pipe area and a₀ = orifice area",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "With suitable sketch explain the concept of boundary layer separation over a convex surface. How can the separation be controlled? 📄 p2",
+                "text": "With suitable sketch explain the concept of boundary layer separation over a convex surface. How can the separation be controlled?",
                 "marks": 5
               }
             ],
@@ -492,12 +492,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Using Bernoulli's equation, develop a relation for theoretical discharge through a horizontal Venturi meter 📄 p2",
+                "text": "Using Bernoulli's equation, develop a relation for theoretical discharge through a horizontal Venturi meter",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A horizontal Venturimeter with inlet and throat diameters 30 cm and 15 cm measures water flow. The differential U-tube manometer (mercury) connected to inlet and throat shows 20 cm mercury. Coefficient of discharge 0.98. Determine the rate of flow 📄 p2",
+                "text": "A horizontal Venturimeter with inlet and throat diameters 30 cm and 15 cm measures water flow. The differential U-tube manometer (mercury) connected to inlet and throat shows 20 cm mercury. Coefficient of discharge 0.98. Determine the rate of flow",
                 "marks": 3
               }
             ],
@@ -509,12 +509,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "What is Boundary Layer? Explain with a neat sketch the phenomenon of boundary layer separation. How can separation of boundary layer be controlled 📄 p1",
+                "text": "What is Boundary Layer? Explain with a neat sketch the phenomenon of boundary layer separation. How can separation of boundary layer be controlled",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "An orifice meter with orifice diameter 10 cm is inserted in a 20 cm diameter pipe. Pressure gauges upstream and downstream read 19.62 N/cm² and 9.81 N/cm² respectively. Coefficient of discharge of the orifice plate is 0.6. Determine the discharge through the pipe 📄 p1",
+                "text": "An orifice meter with orifice diameter 10 cm is inserted in a 20 cm diameter pipe. Pressure gauges upstream and downstream read 19.62 N/cm² and 9.81 N/cm² respectively. Coefficient of discharge of the orifice plate is 0.6. Determine the discharge through the pipe",
                 "marks": 5
               }
             ],
@@ -532,17 +532,17 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "Classify various types of hydro-turbines 📄 p2",
+                "text": "Classify various types of hydro-turbines",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "With a neat sketch explain the working of an inward flow reaction turbine 📄 p2",
+                "text": "With a neat sketch explain the working of an inward flow reaction turbine",
                 "marks": 3
               },
               {
                 "qno": "Q.4(c)",
-                "text": "Determine the power given by the jet of water to the runner of a Pelton wheel having tangential velocity 20 m/s. Net head on the turbine is 50 m and discharge through the jet is 0.03 m³/s. Blade angle at outlet with tangential direction φ = 15°. Take coefficient of velocity as 0.975 📄 p2",
+                "text": "Determine the power given by the jet of water to the runner of a Pelton wheel having tangential velocity 20 m/s. Net head on the turbine is 50 m and discharge through the jet is 0.03 m³/s. Blade angle at outlet with tangential direction φ = 15°. Take coefficient of velocity as 0.975",
                 "marks": 5
               }
             ],
@@ -554,12 +554,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "A Francis turbine of overall efficiency 75% produces 148.25 kW under a head of 7.62 m. Peripheral velocity = 0.26(2gH)^0.5 and radial velocity of flow at inlet = 0.96(2gH)^0.5. Wheel runs at 150 rpm; hydraulic losses are 22% of available energy. Assuming radial discharge, determine (i) guide blade angle, (ii) wheel vane angle 📄 p2",
+                "text": "A Francis turbine of overall efficiency 75% produces 148.25 kW under a head of 7.62 m. Peripheral velocity = 0.26(2gH)^0.5 and radial velocity of flow at inlet = 0.96(2gH)^0.5. Wheel runs at 150 rpm; hydraulic losses are 22% of available energy. Assuming radial discharge, determine (i) guide blade angle, (ii) wheel vane angle",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "What is governing of a hydraulic turbine? Briefly explain the governing of an impulse turbine 📄 p2",
+                "text": "What is governing of a hydraulic turbine? Briefly explain the governing of an impulse turbine",
                 "marks": 5
               }
             ],
@@ -571,12 +571,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "What is governing? With a neat sketch explain the governing of a Pelton turbine 📄 p2",
+                "text": "What is governing? With a neat sketch explain the governing of a Pelton turbine",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A 137 mm diameter jet of water issuing from a nozzle impinges on a series of Pelton wheel buckets; relative velocity is deflected through 165°. Head at nozzle 400 m, coefficient of velocity 0.97, speed ratio 0.46, reduction in relative velocity through the bucket 15%. Evaluate (i) force exerted by the jet on buckets in the tangential direction, (ii) power developed 📄 p2",
+                "text": "A 137 mm diameter jet of water issuing from a nozzle impinges on a series of Pelton wheel buckets; relative velocity is deflected through 165°. Head at nozzle 400 m, coefficient of velocity 0.97, speed ratio 0.46, reduction in relative velocity through the bucket 15%. Evaluate (i) force exerted by the jet on buckets in the tangential direction, (ii) power developed",
                 "marks": 5
               }
             ],
@@ -588,12 +588,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "What is governing of a turbine? With a neat sketch explain the mechanism of governing of an impulse turbine 📄 p1",
+                "text": "What is governing of a turbine? With a neat sketch explain the mechanism of governing of an impulse turbine",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "Data for an inward flow reaction turbine: net head 60 m, speed 700 rpm, shaft power 294.3 kW, overall efficiency 84%, hydraulic efficiency 93%, flow ratio 0.2, breadth ratio 0.1, outer diameter = 2 × inner diameter of runner. Vane thickness occupies 5% of circumferential area; velocity of flow constant at inlet and outlet; discharge radial at outlet. Draw velocity triangles and determine (i) guide blade angle, (ii) runner vane angles at inlet and outlet, (iii) runner diameter at inlet and outlet 📄 p1",
+                "text": "Data for an inward flow reaction turbine: net head 60 m, speed 700 rpm, shaft power 294.3 kW, overall efficiency 84%, hydraulic efficiency 93%, flow ratio 0.2, breadth ratio 0.1, outer diameter = 2 × inner diameter of runner. Vane thickness occupies 5% of circumferential area; velocity of flow constant at inlet and outlet; discharge radial at outlet. Draw velocity triangles and determine (i) guide blade angle, (ii) runner vane angles at inlet and outlet, (iii) runner diameter at inlet and outlet",
                 "marks": 5
               }
             ],
@@ -611,17 +611,17 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Define the following terms for a centrifugal pump: (i) suction head, (ii) delivery head, (iii) static head, (iv) manometric head 📄 p2",
+                "text": "Define the following terms for a centrifugal pump: (i) suction head, (ii) delivery head, (iii) static head, (iv) manometric head",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "With a neat sketch describe the principle of working of a reciprocating pump 📄 p2",
+                "text": "With a neat sketch describe the principle of working of a reciprocating pump",
                 "marks": 3
               },
               {
                 "qno": "Q.5(c)",
-                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Velocity of flow through the impeller is constant at 2.5 m/s. Vanes are set backwards at 40° at outlet. Outer diameter 500 mm, width 50 mm. Determine (i) vane angle at inlet, (ii) work done by the impeller on water per second, (iii) manometric efficiency 📄 p2",
+                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Velocity of flow through the impeller is constant at 2.5 m/s. Vanes are set backwards at 40° at outlet. Outer diameter 500 mm, width 50 mm. Determine (i) vane angle at inlet, (ii) work done by the impeller on water per second, (iii) manometric efficiency",
                 "marks": 5
               }
             ],
@@ -633,12 +633,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Flow velocity through the impeller is constant at 2.5 m/s. Vanes set backward at 40° at outlet. Outer diameter 500 mm, width at outlet 50 mm. Determine work done by the impeller on water per second 📄 p2",
+                "text": "A centrifugal pump has outer diameter equal to two times the inner diameter and runs at 1000 rpm against a total head of 40 m. Flow velocity through the impeller is constant at 2.5 m/s. Vanes set backward at 40° at outlet. Outer diameter 500 mm, width at outlet 50 mm. Determine work done by the impeller on water per second",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "Briefly explain the working of a reciprocating pump 📄 p2",
+                "text": "Briefly explain the working of a reciprocating pump",
                 "marks": 5
               }
             ],
@@ -650,12 +650,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "With neat sketch explain the working of a single acting reciprocating pump fitted with air vessels. What happens if the air vessels are removed from the pump unit? 📄 p2",
+                "text": "With neat sketch explain the working of a single acting reciprocating pump fitted with air vessels. What happens if the air vessels are removed from the pump unit?",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A centrifugal pump discharges 0.15 m³/s against a head of 12.5 m at 600 rpm. Impeller outer/inner diameters 500 mm / 250 mm; vanes bent backwards at 35° to the tangent at exit; flow area remains 0.07 sq.m from inlet to outlet. Evaluate (i) manometric efficiency, (ii) vane angle at inlet 📄 p2",
+                "text": "A centrifugal pump discharges 0.15 m³/s against a head of 12.5 m at 600 rpm. Impeller outer/inner diameters 500 mm / 250 mm; vanes bent backwards at 35° to the tangent at exit; flow area remains 0.07 sq.m from inlet to outlet. Evaluate (i) manometric efficiency, (ii) vane angle at inlet",
                 "marks": 5
               }
             ],
@@ -667,12 +667,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Explain with a neat sketch the working of a double acting reciprocating pump fitted with air vessels. Also draw its ideal indicator diagram 📄 p1",
+                "text": "Explain with a neat sketch the working of a double acting reciprocating pump fitted with air vessels. Also draw its ideal indicator diagram",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "What is cavitation? How is it different from priming? Clearly mention the effects of cavitation and precautions against cavitation of centrifugal pumps and turbines 📄 p1",
+                "text": "What is cavitation? How is it different from priming? Clearly mention the effects of cavitation and precautions against cavitation of centrifugal pumps and turbines",
                 "marks": 5
               }
             ],
@@ -695,12 +695,12 @@
             "questions": [
               {
                 "qno": "Q.1",
-                "text": "At a certain point in a material σₓ = S, σᵧ = S/2 and τₓᵧ = S/4. If the maximum shear stress is not to exceed 120 MN/m², determine S. Also determine the corresponding values of the principal stresses 📄 p1",
+                "text": "At a certain point in a material σₓ = S, σᵧ = S/2 and τₓᵧ = S/4. If the maximum shear stress is not to exceed 120 MN/m², determine S. Also determine the corresponding values of the principal stresses",
                 "marks": 5
               },
               {
                 "qno": "Q.2",
-                "text": "Figure 1 shows a rigid bar ABC hinged at A and suspended at points B and C by two bars BD and CE made of aluminium and steel respectively. The bar carries a load of 20 kN midway between B and C. Cross-sectional areas: aluminium bar BD = 3 mm², steel bar CE = 2 mm². Determine the load taken up by each bar and the respective stresses developed. Take E Al = 70 kN/mm², E S = 200 kN/mm² 📄 p1",
+                "text": "Figure 1 shows a rigid bar ABC hinged at A and suspended at points B and C by two bars BD and CE made of aluminium and steel respectively. The bar carries a load of 20 kN midway between B and C. Cross-sectional areas: aluminium bar BD = 3 mm², steel bar CE = 2 mm². Determine the load taken up by each bar and the respective stresses developed. Take E Al = 70 kN/mm², E S = 200 kN/mm²",
                 "marks": 5
               }
             ],
@@ -712,7 +712,7 @@
             "questions": [
               {
                 "qno": "Q.1",
-                "text": "The strain components at a given point are εₓ = −533×10⁻⁶, εᵧ = 67×10⁻⁶ and γₓᵧ = −626×10⁻⁶. If E = 200 GPa and ν = 0.30, find the stress components whose normal is at 45° from the x axis 📄 p1",
+                "text": "The strain components at a given point are εₓ = −533×10⁻⁶, εᵧ = 67×10⁻⁶ and γₓᵧ = −626×10⁻⁶. If E = 200 GPa and ν = 0.30, find the stress components whose normal is at 45° from the x axis",
                 "marks": 10
               }
             ],
@@ -724,17 +724,17 @@
             "questions": [
               {
                 "qno": "Q.1",
-                "text": "A steel bar with a butt-welded joint (57° to the axis, width 100 mm) carries an axial tensile load of 400 kN. If the normal and shear stresses on the plane of the butt weld must be limited to 70 MPa and 45 MPa respectively, determine the minimum thickness t required for the bar 📄 p1",
+                "text": "A steel bar with a butt-welded joint (57° to the axis, width 100 mm) carries an axial tensile load of 400 kN. If the normal and shear stresses on the plane of the butt weld must be limited to 70 MPa and 45 MPa respectively, determine the minimum thickness t required for the bar",
                 "marks": 5
               },
               {
                 "qno": "Q.2",
-                "text": "Derive the expressions for principal stresses and maximum shearing stress in plane stress condition described by σₓ, σᵧ and τₓᵧ 📄 p1",
+                "text": "Derive the expressions for principal stresses and maximum shearing stress in plane stress condition described by σₓ, σᵧ and τₓᵧ",
                 "marks": 5
               },
               {
                 "qno": "Q.3",
-                "text": "For the stress element shown in figure (100 MPa normal, 80 MPa normal, 60 MPa shear), find the normal and shear stresses on plane AB at 48° 📄 p1",
+                "text": "For the stress element shown in figure (100 MPa normal, 80 MPa normal, 60 MPa shear), find the normal and shear stresses on plane AB at 48°",
                 "marks": 5
               }
             ],
@@ -746,12 +746,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Derive expressions for the normal and shear stresses on an inclined plane for the plane stress condition given by σₓ, σᵧ and τₓᵧ 📄 p1",
+                "text": "Derive expressions for the normal and shear stresses on an inclined plane for the plane stress condition given by σₓ, σᵧ and τₓᵧ",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "The stress condition on the outer surface of a body is σₓ = 50 MPa, σᵧ = −10 MPa and τₓᵧ = 40 MPa. Determine the orientation of the principal planes and the values of the principal stresses 📄 p1",
+                "text": "The stress condition on the outer surface of a body is σₓ = 50 MPa, σᵧ = −10 MPa and τₓᵧ = 40 MPa. Determine the orientation of the principal planes and the values of the principal stresses",
                 "marks": 5
               }
             ],
@@ -763,17 +763,17 @@
             "questions": [
               {
                 "qno": "Q.1",
-                "text": "At a point on the surface of a machine part, the state of stress on two elements inclined at angle θ are shown in figure. Prove that σₓ + σᵧ = σₓ′ + σᵧ′ 📄 p1",
+                "text": "At a point on the surface of a machine part, the state of stress on two elements inclined at angle θ are shown in figure. Prove that σₓ + σᵧ = σₓ′ + σᵧ′",
                 "marks": 5
               },
               {
                 "qno": "Q.2",
-                "text": "For the stress element shown in figure, find the normal and shear stresses on plane AB (48°; 100 MPa normal, 80 MPa normal, 60 MPa shear) 📄 p1",
+                "text": "For the stress element shown in figure, find the normal and shear stresses on plane AB (48°; 100 MPa normal, 80 MPa normal, 60 MPa shear)",
                 "marks": 5
               },
               {
                 "qno": "Q.3",
-                "text": "At a point on the surface of an alloy steel machine part (E = 210 GPa, ν = 0.30) under biaxial stress, measured strains were εₓ = +1394×10⁻⁶, εᵧ = −660×10⁻⁶, γₓᵧ = +2054×10⁻⁶. Determine the principal strains and the maximum shear stress at the point 📄 p1",
+                "text": "At a point on the surface of an alloy steel machine part (E = 210 GPa, ν = 0.30) under biaxial stress, measured strains were εₓ = +1394×10⁻⁶, εᵧ = −660×10⁻⁶, γₓᵧ = +2054×10⁻⁶. Determine the principal strains and the maximum shear stress at the point",
                 "marks": 5
               }
             ],
@@ -785,12 +785,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "The stresses shown in figure act at a point in a stressed body (125 MPa normal, 95 MPa normal, 20° inclined plane a-b). Determine the normal and shear stresses on the inclined plane a-b 📄 p1",
+                "text": "The stresses shown in figure act at a point in a stressed body (125 MPa normal, 95 MPa normal, 20° inclined plane a-b). Determine the normal and shear stresses on the inclined plane a-b",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "The stresses on two perpendicular planes at a point on the outside surface of a solid circular bar (200 MPa normal, 25 MPa shear) are shown. Determine the orientation of the principal planes and the values of the principal stresses 📄 p1",
+                "text": "The stresses on two perpendicular planes at a point on the outside surface of a solid circular bar (200 MPa normal, 25 MPa shear) are shown. Determine the orientation of the principal planes and the values of the principal stresses",
                 "marks": 5
               }
             ],
@@ -802,22 +802,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Illustrate a non-zero state of stress where |τmax| = |τmin| = |σ₁| = |σ₂| 📄 p1",
+                "text": "Illustrate a non-zero state of stress where |τmax| = |τmin| = |σ₁| = |σ₂|",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "Two wooden joists 50 mm × 100 mm are glued along AB. P = 200 kN and the glue joint is at 60° to the load axis. Find the normal and shearing stress in the glue 📄 p1",
+                "text": "Two wooden joists 50 mm × 100 mm are glued along AB. P = 200 kN and the glue joint is at 60° to the load axis. Find the normal and shearing stress in the glue",
                 "marks": 3
               },
               {
                 "qno": "Q.2",
-                "text": "For the stress element shown in figure, find the principal stresses and their orientation with respect to the x-axis. Also find the stress components on planes at 45° and 135° 📄 p1",
+                "text": "For the stress element shown in figure, find the principal stresses and their orientation with respect to the x-axis. Also find the stress components on planes at 45° and 135°",
                 "marks": 5
               },
               {
                 "qno": "Q.3",
-                "text": "The strain components are εₓ = −800×10⁻⁶, εᵧ = 200×10⁻⁶, γₓᵧ = −800×10⁻⁶. Using E = 200 GPa and ν = 0.3, find the stress components acting on the face whose normal is at +20° from the x-axis 📄 p1",
+                "text": "The strain components are εₓ = −800×10⁻⁶, εᵧ = 200×10⁻⁶, γₓᵧ = −800×10⁻⁶. Using E = 200 GPa and ν = 0.3, find the stress components acting on the face whose normal is at +20° from the x-axis",
                 "marks": 5
               }
             ],
@@ -829,12 +829,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "For the element shown in Fig. Q.1(a) (σₓ, σᵧ, 30 MPa shear), determine the values of σₓ and σᵧ if the principal stresses are known to be 20 MPa and −80 MPa 📄 p1",
+                "text": "For the element shown in Fig. Q.1(a) (σₓ, σᵧ, 30 MPa shear), determine the values of σₓ and σᵧ if the principal stresses are known to be 20 MPa and −80 MPa",
                 "marks": 5
               },
               {
                 "qno": "Q.1(b)",
-                "text": "εₓ = −400×10⁻⁶, εᵧ = 200×10⁻⁶ and γₓᵧ = 800×10⁻⁶. If E = 200 GPa and ν = 0.3, determine the principal stresses and maximum shearing stress 📄 p1",
+                "text": "εₓ = −400×10⁻⁶, εᵧ = 200×10⁻⁶ and γₓᵧ = 800×10⁻⁶. If E = 200 GPa and ν = 0.3, determine the principal stresses and maximum shearing stress",
                 "marks": 5
               }
             ],
@@ -852,17 +852,17 @@
             "questions": [
               {
                 "qno": "Q.3",
-                "text": "Draw the shear force and bending moment diagrams for the simply supported beam shown loaded in Figure 2 (5 kN point load, 2 kN/m UDL over part span, 10 kN point load). Clearly mark the position of the maximum bending moment and determine its value 📄 p1",
+                "text": "Draw the shear force and bending moment diagrams for the simply supported beam shown loaded in Figure 2 (5 kN point load, 2 kN/m UDL over part span, 10 kN point load). Clearly mark the position of the maximum bending moment and determine its value",
                 "marks": 5
               },
               {
                 "qno": "Q.4",
-                "text": "Derive the complete expression for the bending stresses in a beam 📄 p1",
+                "text": "Derive the complete expression for the bending stresses in a beam",
                 "marks": 5
               },
               {
                 "qno": "Q.5",
-                "text": "Determine the distribution of shear stress of a rectangular beam having width B and height H, taking F as the shear force 📄 p1",
+                "text": "Determine the distribution of shear stress of a rectangular beam having width B and height H, taking F as the shear force",
                 "marks": 5
               }
             ],
@@ -874,7 +874,7 @@
             "questions": [
               {
                 "qno": "Q.2",
-                "text": "An I-section girder, 200 mm wide × 300 mm deep with flange and web thickness 20 mm, is used as a simply supported beam of span 7 m. It carries a distributed load of 5 kN/m and a concentrated load of 20 kN at mid-span. Determine (i) the second moment of area of the cross-section, (ii) the maximum stress set up 📄 p1",
+                "text": "An I-section girder, 200 mm wide × 300 mm deep with flange and web thickness 20 mm, is used as a simply supported beam of span 7 m. It carries a distributed load of 5 kN/m and a concentrated load of 20 kN at mid-span. Determine (i) the second moment of area of the cross-section, (ii) the maximum stress set up",
                 "marks": 10
               }
             ],
@@ -886,12 +886,12 @@
             "questions": [
               {
                 "qno": "Q.4",
-                "text": "Explain shear forces and bending moments in beams with neat diagrams. Also explain the sign convention 📄 p1",
+                "text": "Explain shear forces and bending moments in beams with neat diagrams. Also explain the sign convention",
                 "marks": 5
               },
               {
                 "qno": "Q.5",
-                "text": "Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN point load at 1 m, 50 kN point load, 60 kN/m UDL over the last 2 m; spans 1 m, 2 m, 2 m) 📄 p1",
+                "text": "Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN point load at 1 m, 50 kN point load, 60 kN/m UDL over the last 2 m; spans 1 m, 2 m, 2 m)",
                 "marks": 5
               }
             ],
@@ -903,12 +903,12 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Derive an expression for the shear stress in a beam of rectangular cross section 📄 p1",
+                "text": "Derive an expression for the shear stress in a beam of rectangular cross section",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "A machine part is acted upon by a 3 kN.m bending moment. Cross-section shown in Figure (90 mm flange, stepped web). Knowing E = 165 GPa, determine the maximum tensile and compressive stresses in the machine part 📄 p1",
+                "text": "A machine part is acted upon by a 3 kN.m bending moment. Cross-section shown in Figure (90 mm flange, stepped web). Knowing E = 165 GPa, determine the maximum tensile and compressive stresses in the machine part",
                 "marks": 5
               }
             ],
@@ -920,12 +920,12 @@
             "questions": [
               {
                 "qno": "Q.4",
-                "text": "Derive the expression for bending stress in a beam 📄 p1",
+                "text": "Derive the expression for bending stress in a beam",
                 "marks": 5
               },
               {
                 "qno": "Q.5",
-                "text": "Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN at 1 m, 50 kN at 3 m, 60 kN/m over last 2 m) 📄 p1",
+                "text": "Find the support reactions and draw the shear force and bending moment diagrams for the beam shown (20 kN at 1 m, 50 kN at 3 m, 60 kN/m over last 2 m)",
                 "marks": 5
               }
             ],
@@ -937,12 +937,12 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "The beam of figure (T-section: flange 100 mm × 50 mm, web 37.5 mm × 200 mm) is made of a material with tensile and compressive yield strength 200 MPa. Determine the maximum resisting moment the beam can support if yielding must be avoided 📄 p1",
+                "text": "The beam of figure (T-section: flange 100 mm × 50 mm, web 37.5 mm × 200 mm) is made of a material with tensile and compressive yield strength 200 MPa. Determine the maximum resisting moment the beam can support if yielding must be avoided",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "Derive an expression for shear stress in a beam of rectangular cross section 📄 p1",
+                "text": "Derive an expression for shear stress in a beam of rectangular cross section",
                 "marks": 5
               }
             ],
@@ -954,17 +954,17 @@
             "questions": [
               {
                 "qno": "Q.4",
-                "text": "Write the shear-force and bending-moment equations for the beam shown (simply supported ABC; AB = 2 m with point load 80 kN at B, UDL 10 kN/m over the entire 10 m span). Draw the SFD and BM diagram marking salient points including maximum BM 📄 p1",
+                "text": "Write the shear-force and bending-moment equations for the beam shown (simply supported ABC; AB = 2 m with point load 80 kN at B, UDL 10 kN/m over the entire 10 m span). Draw the SFD and BM diagram marking salient points including maximum BM",
                 "marks": 5
               },
               {
                 "qno": "Q.5(a)",
-                "text": "Derive the flexure formula for a beam subjected to pure bending 📄 p1",
+                "text": "Derive the flexure formula for a beam subjected to pure bending",
                 "marks": 3
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A high-strength steel band saw 20 mm wide × 0.8 mm thick runs over pulleys of 600 mm diameter. Find the maximum flexural stress. E = 200 GPa 📄 p1",
+                "text": "A high-strength steel band saw 20 mm wide × 0.8 mm thick runs over pulleys of 600 mm diameter. Find the maximum flexural stress. E = 200 GPa",
                 "marks": 2
               }
             ],
@@ -976,17 +976,17 @@
             "questions": [
               {
                 "qno": "Q.2(a)",
-                "text": "Derive the relationship between load, shear force and bending moment for beam problems 📄 p1",
+                "text": "Derive the relationship between load, shear force and bending moment for beam problems",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "Write the shear force and bending moment equations for the cantilever beam shown (UDL w₀ over half the length from free end A; fixed at C). Draw the diagrams specifying values at load-changing points. Take w₀ = 50 kN/m, L = 2 m 📄 p1",
+                "text": "Write the shear force and bending moment equations for the cantilever beam shown (UDL w₀ over half the length from free end A; fixed at C). Draw the diagrams specifying values at load-changing points. Take w₀ = 50 kN/m, L = 2 m",
                 "marks": 4
               },
               {
                 "qno": "Q.2(c)",
-                "text": "In a laboratory test of a beam loaded by end couples, fibres at layer AB increase 60×10⁻³ mm over a 200 mm gauge length whereas those at CD decrease 100×10⁻³ mm (layer distances 30 mm, 120 mm, 75 mm per figure). Using E = 70 GPa, determine the flexural stress at the top and bottom fibres 📄 p1",
+                "text": "In a laboratory test of a beam loaded by end couples, fibres at layer AB increase 60×10⁻³ mm over a 200 mm gauge length whereas those at CD decrease 100×10⁻³ mm (layer distances 30 mm, 120 mm, 75 mm per figure). Using E = 70 GPa, determine the flexural stress at the top and bottom fibres",
                 "marks": 4
               }
             ],
@@ -1004,12 +1004,12 @@
             "questions": [
               {
                 "qno": "Q.3",
-                "text": "A concentrated load of 300 N is applied to the simply supported beam shown in Fig. 2 (R₁ = 100 N, R₂ = 200 N). Determine the equations of the elastic curve between each change of load point and the maximum deflection in the beam 📄 p1",
+                "text": "A concentrated load of 300 N is applied to the simply supported beam shown in Fig. 2 (R₁ = 100 N, R₂ = 200 N). Determine the equations of the elastic curve between each change of load point and the maximum deflection in the beam",
                 "marks": 10
               },
               {
                 "qno": "Q.4",
-                "text": "(a) Derive the complete torsion equation for a circular shaft. (b) The solid shaft is fixed to the support at C and subjected to the torsional loadings shown (Fig. 3). Determine the shear stress at points A and B and sketch the shear stress on volume elements located at these points 📄 p1",
+                "text": "(a) Derive the complete torsion equation for a circular shaft. (b) The solid shaft is fixed to the support at C and subjected to the torsional loadings shown (Fig. 3). Determine the shear stress at points A and B and sketch the shear stress on volume elements located at these points",
                 "marks": 10
               }
             ],
@@ -1021,12 +1021,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "What do you understand by buckling of a column? Derive an expression for Euler buckling load (P cr ) 📄 p1",
+                "text": "What do you understand by buckling of a column? Derive an expression for Euler buckling load (P cr )",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A cantilever beam of length L is acted upon by a point load at distance L/2 from the fixed end. Find the deflection at the free end. Take EI as constant 📄 p1",
+                "text": "A cantilever beam of length L is acted upon by a point load at distance L/2 from the fixed end. Find the deflection at the free end. Take EI as constant",
                 "marks": 5
               }
             ],
@@ -1038,12 +1038,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "The beam is loaded and supported as shown (simply supported, point loads P at L and 2L). Use Macaulay’s functions to determine the deflection: (a) at distance x = L from the left support, (b) at the middle of the span 📄 p2",
+                "text": "The beam is loaded and supported as shown (simply supported, point loads P at L and 2L). Use Macaulay’s functions to determine the deflection: (a) at distance x = L from the left support, (b) at the middle of the span",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A 5 m long column with the cross section shown (four identical timber pieces, hollow box 100 mm × 100 mm) is constructed with E = 14 GPa, timbers nailed to act as a unit. Determine the Euler buckling load considering hinged-hinged support 📄 p2",
+                "text": "A 5 m long column with the cross section shown (four identical timber pieces, hollow box 100 mm × 100 mm) is constructed with E = 14 GPa, timbers nailed to act as a unit. Determine the Euler buckling load considering hinged-hinged support",
                 "marks": 5
               }
             ],
@@ -1055,17 +1055,17 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "The simply supported beam shown carries a uniform load of intensity w₀ symmetrically distributed over part of its length (a + 2b + a). Determine the maximum deflection δ 📄 p2",
+                "text": "The simply supported beam shown carries a uniform load of intensity w₀ symmetrically distributed over part of its length (a + 2b + a). Determine the maximum deflection δ",
                 "marks": 6
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A 50 mm diameter steel shaft rotates at 240 rpm. If the shearing stress is limited to 80 MPa, determine the maximum power that can be transmitted 📄 p2",
+                "text": "A 50 mm diameter steel shaft rotates at 240 rpm. If the shearing stress is limited to 80 MPa, determine the maximum power that can be transmitted",
                 "marks": 4
               },
               {
                 "qno": "Q.4(b)",
-                "text": "Write a short note on limitations of Euler's long column formula 📄 p2",
+                "text": "Write a short note on limitations of Euler's long column formula",
                 "marks": 5
               }
             ],
@@ -1083,12 +1083,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "Derive an expression for stress distribution due to bending moment in a curved beam 📄 p1",
+                "text": "Derive an expression for stress distribution due to bending moment in a curved beam",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A channel section is used as a cantilever beam supporting load P at the free end (flanges 125 mm, webs 230 mm + 230 mm, metal 12 mm thick). Assuming all of the section effective in resisting flexural stresses and only the web resists vertical shearing stresses, locate the shear center (e) with respect to the center of the web 📄 p1",
+                "text": "A channel section is used as a cantilever beam supporting load P at the free end (flanges 125 mm, webs 230 mm + 230 mm, metal 12 mm thick). Assuming all of the section effective in resisting flexural stresses and only the web resists vertical shearing stresses, locate the shear center (e) with respect to the center of the web",
                 "marks": 5
               }
             ],
@@ -1100,12 +1100,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "Derive an expression for the shear center of the C-channel shown in figure (thickness t_f, t_w; depth h; flange width b) 📄 p2",
+                "text": "Derive an expression for the shear center of the C-channel shown in figure (thickness t_f, t_w; depth h; flange width b)",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A curved bar with rectangular cross section (width 35 mm, height 70 mm, inside radius 50 mm) is subjected to a bending moment M = 4500 N.m acting in the direction shown. Determine the bending stresses in the curved bar at points A and B 📄 p2",
+                "text": "A curved bar with rectangular cross section (width 35 mm, height 70 mm, inside radius 50 mm) is subjected to a bending moment M = 4500 N.m acting in the direction shown. Determine the bending stresses in the curved bar at points A and B",
                 "marks": 5
               }
             ],
@@ -1117,7 +1117,7 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "A circular bar bent into the shape of a half ring is supported vertically as shown (radius R, horizontal load P at C). Determine the horizontal movement of point C 📄 p2",
+                "text": "A circular bar bent into the shape of a half ring is supported vertically as shown (radius R, horizontal load P at C). Determine the horizontal movement of point C",
                 "marks": 5
               }
             ],
@@ -1135,7 +1135,7 @@
             "questions": [
               {
                 "qno": "Q.5",
-                "text": "Calculate the minimum wall thickness for a thin-walled cylindrical pressure vessel to carry a gas at a pressure of 10 MPa. Diameter of the vessel is 0.6 m and the stress is limited to 85 MPa 📄 p1",
+                "text": "Calculate the minimum wall thickness for a thin-walled cylindrical pressure vessel to carry a gas at a pressure of 10 MPa. Diameter of the vessel is 0.6 m and the stress is limited to 85 MPa",
                 "marks": 10
               }
             ],
@@ -1147,12 +1147,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Derive expressions for hoop stress and longitudinal stress in thin cylinders 📄 p1",
+                "text": "Derive expressions for hoop stress and longitudinal stress in thin cylinders",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A thick cylinder of 100 mm internal radius and 150 mm external radius is subjected to an internal pressure of 60 MPa and an external pressure of 30 MPa. Determine the hoop and radial stresses at the radius of 120 mm 📄 p1",
+                "text": "A thick cylinder of 100 mm internal radius and 150 mm external radius is subjected to an internal pressure of 60 MPa and an external pressure of 30 MPa. Determine the hoop and radial stresses at the radius of 120 mm",
                 "marks": 5
               }
             ],
@@ -1164,12 +1164,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Derive the expressions for hoop stress and longitudinal stress in a thin cylinder with neat diagrams 📄 p2",
+                "text": "Derive the expressions for hoop stress and longitudinal stress in a thin cylinder with neat diagrams",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A thick-walled cylindrical pressure vessel of inner diameter 200 mm and outer diameter 300 mm is made of hardened steel with yield strength 430 MPa. Determine the maximum internal pressure that may be applied if yield strength must not be exceeded 📄 p2",
+                "text": "A thick-walled cylindrical pressure vessel of inner diameter 200 mm and outer diameter 300 mm is made of hardened steel with yield strength 430 MPa. Determine the maximum internal pressure that may be applied if yield strength must not be exceeded",
                 "marks": 5
               }
             ],
@@ -1181,12 +1181,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Derive expressions for tangential and radial stresses for a thick-walled cylinder subjected to inside and outside pressures Pᵢ and Pₒ respectively 📄 p2",
+                "text": "Derive expressions for tangential and radial stresses for a thick-walled cylinder subjected to inside and outside pressures Pᵢ and Pₒ respectively",
                 "marks": 6
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A tank shown in Fig. Q.5(b) (400 mm × 600 mm) is fabricated from 1 mm thick steel sheet. Calculate the longitudinal and circumferential stresses caused by an internal pressure of 500 kPa 📄 p2",
+                "text": "A tank shown in Fig. Q.5(b) (400 mm × 600 mm) is fabricated from 1 mm thick steel sheet. Calculate the longitudinal and circumferential stresses caused by an internal pressure of 500 kPa",
                 "marks": 4
               }
             ],
@@ -1209,22 +1209,22 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Outline the importance of quasi-static process from thermodynamics point of view 📄 p1",
+                "text": "Outline the importance of quasi-static process from thermodynamics point of view",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A tank has two rooms separated by a membrane. Room A contains 2 kg of air with specific volume 0.5 m³/kg, while room B has 0.75 m³ of air with density 0.8 kg/m³. The membrane breaks and the two masses come to a uniform state. Find the final specific volume of air 📄 p1",
+                "text": "A tank has two rooms separated by a membrane. Room A contains 2 kg of air with specific volume 0.5 m³/kg, while room B has 0.75 m³ of air with density 0.8 kg/m³. The membrane breaks and the two masses come to a uniform state. Find the final specific volume of air",
                 "marks": 3
               },
               {
                 "qno": "Q.2(a)",
-                "text": "How will you distinguish between point function and path function? Explain with suitable example 📄 p1",
+                "text": "How will you distinguish between point function and path function? Explain with suitable example",
                 "marks": 2
               },
               {
                 "qno": "Q.3(a)",
-                "text": "Under what condition is the work done equal to ∫p·dV ? 📄 p1",
+                "text": "Under what condition is the work done equal to ∫p·dV ?",
                 "marks": 2
               }
             ],
@@ -1236,12 +1236,12 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Indicate which of the following properties are intensive and which are extensive: (i) Density (ii) Potential Energy (iii) Enthalpy (iv) Pressure 📄 p1",
+                "text": "Indicate which of the following properties are intensive and which are extensive: (i) Density (ii) Potential Energy (iii) Enthalpy (iv) Pressure",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "A 1 m³ rigid tank has air at 100 kPa, 300 K connected by a valve to another 0.5 m³ tank with air at 250 kPa, 400 K. The valve is opened and the tanks come to a uniform state at 315 K. Determine the final pressure 📄 p1",
+                "text": "A 1 m³ rigid tank has air at 100 kPa, 300 K connected by a valve to another 0.5 m³ tank with air at 250 kPa, 400 K. The valve is opened and the tanks come to a uniform state at 315 K. Determine the final pressure",
                 "marks": 3
               }
             ],
@@ -1253,17 +1253,17 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Explain work from thermodynamics point of view 📄 p1",
+                "text": "Explain work from thermodynamics point of view",
                 "marks": 2
               },
               {
                 "qno": "Q.1(b)",
-                "text": "Explain: (i) intensive and extensive properties, (ii) free expansion process 📄 p1",
+                "text": "Explain: (i) intensive and extensive properties, (ii) free expansion process",
                 "marks": 3
               },
               {
                 "qno": "Q.2",
-                "text": "A 1 m³ rigid tank has air at 15 bar and ambient temperature 27 °C connected by a valve to a piston cylinder. The piston of area 0.1 m² requires 2.5 bar below it to float. The valve is opened and the piston moves slowly 2 m up, then the valve is closed. Temperature remains 27 °C throughout. Evaluate the final pressure in the tank 📄 p1",
+                "text": "A 1 m³ rigid tank has air at 15 bar and ambient temperature 27 °C connected by a valve to a piston cylinder. The piston of area 0.1 m² requires 2.5 bar below it to float. The valve is opened and the piston moves slowly 2 m up, then the valve is closed. Temperature remains 27 °C throughout. Evaluate the final pressure in the tank",
                 "marks": 5
               }
             ],
@@ -1275,17 +1275,17 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish between the macroscopic and microscopic approach 📄 p1",
+                "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish between the macroscopic and microscopic approach",
                 "marks": 2
               },
               {
                 "qno": "Q.2(a)",
-                "text": "What is meant by thermodynamic equilibrium? How does it differ from thermal equilibrium? 📄 p1",
+                "text": "What is meant by thermodynamic equilibrium? How does it differ from thermal equilibrium?",
                 "marks": 2
               },
               {
                 "qno": "Q.3(a)",
-                "text": "What is meant by a pure substance? Can we treat air as a pure substance? 📄 p1",
+                "text": "What is meant by a pure substance? Can we treat air as a pure substance?",
                 "marks": 2
               }
             ],
@@ -1297,7 +1297,7 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "What is a process? Explain the meaning of quasi-static process and also state its characteristic features 📄 p1",
+                "text": "What is a process? Explain the meaning of quasi-static process and also state its characteristic features",
                 "marks": 5
               }
             ],
@@ -1309,17 +1309,17 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish both approaches with examples of properties involved 📄 p1",
+                "text": "Thermodynamics can be studied by adopting either a macroscopic or a microscopic approach. Distinguish both approaches with examples of properties involved",
                 "marks": 2
               },
               {
                 "qno": "Q.2(a)",
-                "text": "What is a process? Explain the meaning of quasi-static process and state its characteristic features 📄 p1",
+                "text": "What is a process? Explain the meaning of quasi-static process and state its characteristic features",
                 "marks": 2
               },
               {
                 "qno": "Q.3(a)",
-                "text": "What are point and path functions? Illustrate that both work and heat are path functions and not point functions 📄 p1",
+                "text": "What are point and path functions? Illustrate that both work and heat are path functions and not point functions",
                 "marks": 2
               }
             ],
@@ -1331,7 +1331,7 @@
             "questions": [
               {
                 "qno": "Q.1(a)",
-                "text": "Comment whether the following can be called properties or not: (i) ∫p dV, (ii) ∫V dp, (iii) ∫p dV + ∫V dp, (iv) v·(dv/∂T)ₚ + v·(dv/∂v)ₚ for PV=RT, (v) (1/T)·dH − (v/T)·dV for PV=RT 📄 p1",
+                "text": "Comment whether the following can be called properties or not: (i) ∫p dV, (ii) ∫V dp, (iii) ∫p dV + ∫V dp, (iv) v·(dv/∂T)ₚ + v·(dv/∂v)ₚ for PV=RT, (v) (1/T)·dH − (v/T)·dV for PV=RT",
                 "marks": 5
               }
             ],
@@ -1349,27 +1349,27 @@
             "questions": [
               {
                 "qno": "Q.2(b)",
-                "text": "Dry steam at 10 bar is cooled at constant volume to 3 bar. Determine the dryness fraction after cooling 📄 p1",
+                "text": "Dry steam at 10 bar is cooled at constant volume to 3 bar. Determine the dryness fraction after cooling",
                 "marks": 3
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A gas is compressed from V₁ = 0.09 m³ to V₂ = 0.03 m³. The relation between pressure and volume during the process is p = 14V + 2.44, where p is in bar and V in m³. Find the work done in kJ 📄 p1",
+                "text": "A gas is compressed from V₁ = 0.09 m³ to V₂ = 0.03 m³. The relation between pressure and volume during the process is p = 14V + 2.44, where p is in bar and V in m³. Find the work done in kJ",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Show that internal energy is a property of the system 📄 p1",
+                "text": "Show that internal energy is a property of the system",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "Two insulated tanks A and B are connected by a valve. Tank A: 0.6 m³ of air at 200 kPa, 200 °C. Tank B: 0.3 m³ of air at 500 kPa, 130 °C. The valve is opened fully and the tanks come to a uniform state. Determine the final pressure 📄 p1",
+                "text": "Two insulated tanks A and B are connected by a valve. Tank A: 0.6 m³ of air at 200 kPa, 200 °C. Tank B: 0.3 m³ of air at 500 kPa, 130 °C. The valve is opened fully and the tanks come to a uniform state. Determine the final pressure",
                 "marks": 3
               },
               {
                 "qno": "Q.5",
-                "text": "Steam at 4 MPa, 400 °C enters a turbine with velocity 15 m/s. Heat loss through the casing is 60 kW. Steam leaves at 0.1 bar, 0.91 dry with velocity 65 m/s. Elevation difference between inlet and outlet pipes is 2 m. Determine the power developed for a steam flow rate of 50000 kg/hr 📄 p1",
+                "text": "Steam at 4 MPa, 400 °C enters a turbine with velocity 15 m/s. Heat loss through the casing is 60 kW. Steam leaves at 0.1 bar, 0.91 dry with velocity 65 m/s. Elevation difference between inlet and outlet pipes is 2 m. Determine the power developed for a steam flow rate of 50000 kg/hr",
                 "marks": 5
               }
             ],
@@ -1381,22 +1381,22 @@
             "questions": [
               {
                 "qno": "Q.1(c)",
-                "text": "A constant pressure piston/cylinder assembly contains 0.2 kg of steam at 400 kPa, 220 °C. It is cooled so that the volume reduces to half the original. Estimate the work done in the process 📄 p1",
+                "text": "A constant pressure piston/cylinder assembly contains 0.2 kg of steam at 400 kPa, 220 °C. It is cooled so that the volume reduces to half the original. Estimate the work done in the process",
                 "marks": 5
               },
               {
                 "qno": "Q.2(a)",
-                "text": "State the first law of thermodynamics applied to (i) a process and (ii) a cycle 📄 p1",
+                "text": "State the first law of thermodynamics applied to (i) a process and (ii) a cycle",
                 "marks": 2
               },
               {
                 "qno": "Q.2(b)",
-                "text": "One kg of air at 7 bar, 90 °C undergoes a polytropic process represented by pV^1.1 = constant till the pressure falls to 1.4 bar. Determine (i) final temperature, (ii) final volume, (iii) heat transferred 📄 p1",
+                "text": "One kg of air at 7 bar, 90 °C undergoes a polytropic process represented by pV^1.1 = constant till the pressure falls to 1.4 bar. Determine (i) final temperature, (ii) final volume, (iii) heat transferred",
                 "marks": 3
               },
               {
                 "qno": "Q.2(c)",
-                "text": "Steam enters a nozzle with negligible velocity at 3 MPa, 320 °C and leaves at 1.6 MPa with velocity 550 m/s. Rate of flow of steam is 0.5 kg/s. Determine the condition of steam at the nozzle exit and the nozzle exit area 📄 p1",
+                "text": "Steam enters a nozzle with negligible velocity at 3 MPa, 320 °C and leaves at 1.6 MPa with velocity 550 m/s. Rate of flow of steam is 0.5 kg/s. Determine the condition of steam at the nozzle exit and the nozzle exit area",
                 "marks": 5
               }
             ],
@@ -1408,27 +1408,27 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Determine the temperature of water at a state of P = 0.5 MPa and h = 2890 kJ/kg 📄 p1",
+                "text": "Determine the temperature of water at a state of P = 0.5 MPa and h = 2890 kJ/kg",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Determine the amount of heat to be supplied to 2 kg of water at 25 °C to convert it to steam at 5 bar and 0.9 dry 📄 p1",
+                "text": "Determine the amount of heat to be supplied to 2 kg of water at 25 °C to convert it to steam at 5 bar and 0.9 dry",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Explain the First Law of Thermodynamics for the cycle and the non-cyclic process 📄 p1",
+                "text": "Explain the First Law of Thermodynamics for the cycle and the non-cyclic process",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "For a polytropic process pV^n = constant, prove that ∫₁² δQ = ((γ − n)/(γ − 1)) × polytropic work done 📄 p1",
+                "text": "For a polytropic process pV^n = constant, prove that ∫₁² δQ = ((γ − n)/(γ − 1)) × polytropic work done",
                 "marks": 3
               },
               {
                 "qno": "Q.5",
-                "text": "Fluid parameters at the inlet of a steam nozzle: enthalpy 2850 kJ/kg, velocity 50 m/s, area 0.1 m², specific volume 0.18 m³/kg. At discharge: enthalpy 2650 kJ/kg, specific volume 0.49 m³/kg. Evaluate (i) velocity of steam, (ii) mass flow rate, (iii) exit area of the nozzle. Nozzle horizontal; heat loss negligible 📄 p1",
+                "text": "Fluid parameters at the inlet of a steam nozzle: enthalpy 2850 kJ/kg, velocity 50 m/s, area 0.1 m², specific volume 0.18 m³/kg. At discharge: enthalpy 2650 kJ/kg, specific volume 0.49 m³/kg. Evaluate (i) velocity of steam, (ii) mass flow rate, (iii) exit area of the nozzle. Nozzle horizontal; heat loss negligible",
                 "marks": 5
               }
             ],
@@ -1440,37 +1440,37 @@
             "questions": [
               {
                 "qno": "Q.1(b)",
-                "text": "A system of volume V contains mass m of gas at pressure P and temperature T obeying (p + a/V²)(v − b) = mRT, where a, b, R are constants. Obtain an expression for the displacement work during constant temperature expansion from V₁ to V₂. Calculate the work for 10 kg of this gas expanding from 1 m³ to 10 m³ at 293 K, with a = 15.7×10⁴ Nm⁴, b = 1.07×10⁻² m³ and R = 0.278 kJ/kg-K 📄 p1",
+                "text": "A system of volume V contains mass m of gas at pressure P and temperature T obeying (p + a/V²)(v − b) = mRT, where a, b, R are constants. Obtain an expression for the displacement work during constant temperature expansion from V₁ to V₂. Calculate the work for 10 kg of this gas expanding from 1 m³ to 10 m³ at 293 K, with a = 15.7×10⁴ Nm⁴, b = 1.07×10⁻² m³ and R = 0.278 kJ/kg-K",
                 "marks": 3
               },
               {
                 "qno": "Q.2(b)",
-                "text": "The pressure-volume correlation for a non-flow reversible (quasi-static) process is P = (8 − 4V) bar, where V is in m³. If 150 kJ of work is supplied to the system, determine the final pressure and volume. Take initial volume = 0.6 m³ 📄 p1",
+                "text": "The pressure-volume correlation for a non-flow reversible (quasi-static) process is P = (8 − 4V) bar, where V is in m³. If 150 kJ of work is supplied to the system, determine the final pressure and volume. Take initial volume = 0.6 m³",
                 "marks": 3
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Explain the first law of thermodynamics when it is applied to a closed system undergoing change of state 📄 p1",
+                "text": "Explain the first law of thermodynamics when it is applied to a closed system undergoing change of state",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Define internal energy of a system and show that internal energy is a property of the system 📄 p1",
+                "text": "Define internal energy of a system and show that internal energy is a property of the system",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; corresponding volumes 0.20 m³ / 1.2 m³. Specific internal energy is given by u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate the net heat transfer and the maximum internal energy attained during expansion 📄 p1",
+                "text": "A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; corresponding volumes 0.20 m³ / 1.2 m³. Specific internal energy is given by u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate the net heat transfer and the maximum internal energy attained during expansion",
                 "marks": 3
               },
               {
                 "qno": "Q.5(a)",
-                "text": "Derive the expression for steady flow energy equation 📄 p1",
+                "text": "Derive the expression for steady flow energy equation",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "A gas undergoes a thermodynamic cycle: (i) 1-2 constant pressure = 1.4 bar, V₁ = 0.028 m³, W₁₂ = 10.5 kJ; (ii) 2-3 compression with PV = constant, U₃ = U₂; (iii) 3-1 constant volume, U₁ − U₃ = −26.4 kJ; neglect KE and PE changes. (a) Sketch the cycle on P-V diagram, (b) calculate net work for the cycle in kJ, (c) calculate heat transfer for process 1-2, (d) show that ∑Q = ∑W over the cycle 📄 p2",
+                "text": "A gas undergoes a thermodynamic cycle: (i) 1-2 constant pressure = 1.4 bar, V₁ = 0.028 m³, W₁₂ = 10.5 kJ; (ii) 2-3 compression with PV = constant, U₃ = U₂; (iii) 3-1 constant volume, U₁ − U₃ = −26.4 kJ; neglect KE and PE changes. (a) Sketch the cycle on P-V diagram, (b) calculate net work for the cycle in kJ, (c) calculate heat transfer for process 1-2, (d) show that ∑Q = ∑W over the cycle",
                 "marks": 3
               }
             ],
@@ -1482,17 +1482,17 @@
             "questions": [
               {
                 "qno": "Q.1(b)",
-                "text": "An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K 📄 p1",
+                "text": "An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K",
                 "marks": 5
               },
               {
                 "qno": "Q.2(a)",
-                "text": "Derive an expression for heat transfer in a polytropic process 📄 p1",
+                "text": "Derive an expression for heat transfer in a polytropic process",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at velocity 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam 📄 p1",
+                "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at velocity 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam",
                 "marks": 5
               }
             ],
@@ -1504,37 +1504,37 @@
             "questions": [
               {
                 "qno": "Q.1(b)",
-                "text": "A balloon filled with air (200 kPa / 300 K) becomes a sphere of diameter 1 m. It is gradually heated till its pressure rises to 500 kPa. Determine the work done, assuming pressure inside is proportional to diameter 📄 p1",
+                "text": "A balloon filled with air (200 kPa / 300 K) becomes a sphere of diameter 1 m. It is gradually heated till its pressure rises to 500 kPa. Determine the work done, assuming pressure inside is proportional to diameter",
                 "marks": 3
               },
               {
                 "qno": "Q.2(b)",
-                "text": "An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K 📄 p1",
+                "text": "An ideal gas is heated at constant volume until its temperature is 3 times the original, then expanded isothermally till it reaches its original pressure, then cooled at constant pressure till restored to original state. Determine the net work done per kg if initial temperature is 350 K",
                 "marks": 3
               },
               {
                 "qno": "Q.3(b)",
-                "text": "Show that the enthalpy of a fluid before throttling equals that after throttling (h₁ = h₂) 📄 p1",
+                "text": "Show that the enthalpy of a fluid before throttling equals that after throttling (h₁ = h₂)",
                 "marks": 3
               },
               {
                 "qno": "Q.4(a)",
-                "text": "Define internal energy and specific heats of a system 📄 p1",
+                "text": "Define internal energy and specific heats of a system",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; volumes 0.20 m³ / 1.2 m³. Specific internal energy u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate net heat transfer and maximum internal energy attained during expansion 📄 p1",
+                "text": "A gas of mass 1.5 kg undergoes quasi-static expansion following p = a + bV. Initial/final pressures 1000 kPa / 200 kPa; volumes 0.20 m³ / 1.2 m³. Specific internal energy u = 1.5pv − 85 kJ/kg (p in kPa, v in m³/kg). Calculate net heat transfer and maximum internal energy attained during expansion",
                 "marks": 3
               },
               {
                 "qno": "Q.5(a)",
-                "text": "Derive an expression for work done in a polytropic process 📄 p1",
+                "text": "Derive an expression for work done in a polytropic process",
                 "marks": 2
               },
               {
                 "qno": "Q.5(b)",
-                "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam 📄 p1",
+                "text": "Dry saturated steam at 5 bar enters an adiabatic nozzle at 2 m/s and leaves as dry saturated steam at 2 bar. Calculate the exit velocity of the steam",
                 "marks": 3
               }
             ],
@@ -1546,17 +1546,17 @@
             "questions": [
               {
                 "qno": "Q.1(b)",
-                "text": "A piston cylinder device contains 0.8 kg of steam at 300 °C and 1 MPa. Steam is cooled at constant pressure until one-half of the mass condenses. (a) Show the process on a T-V diagram, (b) find the final temperature, (c) determine the volume change 📄 p1",
+                "text": "A piston cylinder device contains 0.8 kg of steam at 300 °C and 1 MPa. Steam is cooled at constant pressure until one-half of the mass condenses. (a) Show the process on a T-V diagram, (b) find the final temperature, (c) determine the volume change",
                 "marks": 5
               },
               {
                 "qno": "Q.2(a)",
-                "text": "Make an energy analysis of the: (i) Nozzle, (ii) Throttling device, (iii) Turbine and Compressor 📄 p1",
+                "text": "Make an energy analysis of the: (i) Nozzle, (ii) Throttling device, (iii) Turbine and Compressor",
                 "marks": 5
               },
               {
                 "qno": "Q.2(b)",
-                "text": "In a steam power plant, saturated liquid water at 10 kPa enters a feed pump at 1 kg/s. The pump delivers water to the boiler at 3 MPa. Assuming the pump is adiabatic, estimate the power input to the pump 📄 p1",
+                "text": "In a steam power plant, saturated liquid water at 10 kPa enters a feed pump at 1 kg/s. The pump delivers water to the boiler at 3 MPa. Assuming the pump is adiabatic, estimate the power input to the pump",
                 "marks": 5
               }
             ],
@@ -1574,17 +1574,17 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "State the difference between refrigerator and heat pump 📄 p1",
+                "text": "State the difference between refrigerator and heat pump",
                 "marks": 2
               },
               {
                 "qno": "Q.3(b)",
-                "text": "State and explain Carnot theorem 📄 p1",
+                "text": "State and explain Carnot theorem",
                 "marks": 3
               },
               {
                 "qno": "Q.3(c)",
-                "text": "An ice plant working on a reversed Carnot cycle produces 20 tonnes of ice per day from water at 0 °C, maintained at 0 °C; heat is rejected to atmosphere at 27 °C. The heat pump runs on a Carnot engine absorbing heat from a source at 227 °C and rejecting heat to atmosphere at 27 °C. Compute the heat supplied to the engine (enthalpy of fusion of ice = 334.5 kJ/kg) 📄 p1",
+                "text": "An ice plant working on a reversed Carnot cycle produces 20 tonnes of ice per day from water at 0 °C, maintained at 0 °C; heat is rejected to atmosphere at 27 °C. The heat pump runs on a Carnot engine absorbing heat from a source at 227 °C and rejecting heat to atmosphere at 27 °C. Compute the heat supplied to the engine (enthalpy of fusion of ice = 334.5 kJ/kg)",
                 "marks": 5
               }
             ],
@@ -1596,12 +1596,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Define and compare C.O.P. of a heat pump with that of a refrigerator 📄 p1",
+                "text": "Define and compare C.O.P. of a heat pump with that of a refrigerator",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "If 20 kJ are added to a Carnot cycle at 100 °C and 14.6 kJ are rejected at 0 °C, determine the location of absolute zero on the Celsius scale. Assume Φ(t) = at + b 📄 p1",
+                "text": "If 20 kJ are added to a Carnot cycle at 100 °C and 14.6 kJ are rejected at 0 °C, determine the location of absolute zero on the Celsius scale. Assume Φ(t) = at + b",
                 "marks": 5
               }
             ],
@@ -1613,12 +1613,12 @@
             "questions": [
               {
                 "qno": "Q.3(a)",
-                "text": "Establish the equivalence of Kelvin-Planck and Clausius statements 📄 p1",
+                "text": "Establish the equivalence of Kelvin-Planck and Clausius statements",
                 "marks": 5
               },
               {
                 "qno": "Q.3(b)",
-                "text": "A reversible power cycle drives a reversible heat pump. The power cycle takes in Q₁ at T₁ and rejects Q₂ at T₂; the heat pump abstracts Q₂ from the sink at T₂ and discharges Q₃ at T₃. Develop an expression for the ratio Q₃/Q₁ in terms of the four temperatures 📄 p1",
+                "text": "A reversible power cycle drives a reversible heat pump. The power cycle takes in Q₁ at T₁ and rejects Q₂ at T₂; the heat pump abstracts Q₂ from the sink at T₂ and discharges Q₃ at T₃. Develop an expression for the ratio Q₃/Q₁ in terms of the four temperatures",
                 "marks": 5
               }
             ],
@@ -1636,17 +1636,17 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "Show that entropy is a property of a system 📄 p1",
+                "text": "Show that entropy is a property of a system",
                 "marks": 2
               },
               {
                 "qno": "Q.4(b)",
-                "text": "Explain entropy principle 📄 p1",
+                "text": "Explain entropy principle",
                 "marks": 3
               },
               {
                 "qno": "Q.4(c)",
-                "text": "Estimate the change in entropy of the universe for: (i) a copper block of 600 gm mass, Cp = 150 J/K at 100 °C placed in a lake at 8 °C, (ii) two such blocks at 100 °C and 0 °C joined together 📄 p1",
+                "text": "Estimate the change in entropy of the universe for: (i) a copper block of 600 gm mass, Cp = 150 J/K at 100 °C placed in a lake at 8 °C, (ii) two such blocks at 100 °C and 0 °C joined together",
                 "marks": 5
               }
             ],
@@ -1658,12 +1658,12 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "State and prove the Clausius inequality 📄 p1",
+                "text": "State and prove the Clausius inequality",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "A heat engine is supplied 278 kJ/s of heat at fixed temperature 283 °C with heat rejection at 5 °C. Reported results: (i) 208 kJ/s rejected, (ii) 139 kJ/s rejected, (iii) 70 kJ/s rejected. Classify each as reversible, irreversible or impossible 📄 p1",
+                "text": "A heat engine is supplied 278 kJ/s of heat at fixed temperature 283 °C with heat rejection at 5 °C. Reported results: (i) 208 kJ/s rejected, (ii) 139 kJ/s rejected, (iii) 70 kJ/s rejected. Classify each as reversible, irreversible or impossible",
                 "marks": 5
               }
             ],
@@ -1675,22 +1675,22 @@
             "questions": [
               {
                 "qno": "Q.4(a)",
-                "text": "State and prove the Clausius inequality 📄 p1",
+                "text": "State and prove the Clausius inequality",
                 "marks": 5
               },
               {
                 "qno": "Q.4(b)",
-                "text": "0.2 kg of air at 300 °C is heated reversibly at constant pressure to 2066 K. Find the available and unavailable energies of the heat added. Take T₀ = 30 °C and Cp = 1.0047 kJ/kgK 📄 p1",
+                "text": "0.2 kg of air at 300 °C is heated reversibly at constant pressure to 2066 K. Find the available and unavailable energies of the heat added. Take T₀ = 30 °C and Cp = 1.0047 kJ/kgK",
                 "marks": 5
               },
               {
                 "qno": "Q.5(a)",
-                "text": "Explain how the Clausius-Clapeyron equation helps in determining the slope of the phase boundary between liquid and vapor phases of a substance 📄 p1",
+                "text": "Explain how the Clausius-Clapeyron equation helps in determining the slope of the phase boundary between liquid and vapor phases of a substance",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "Describe the Joule-Thomson coefficient and explain how it indicates whether a gas will cool or heat upon expansion 📄 p1",
+                "text": "Describe the Joule-Thomson coefficient and explain how it indicates whether a gas will cool or heat upon expansion",
                 "marks": 5
               }
             ],
@@ -1708,12 +1708,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Derive an expression for the ideal efficiency of an air standard diesel cycle 📄 p1",
+                "text": "Derive an expression for the ideal efficiency of an air standard diesel cycle",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "An engine working on the Otto cycle has volume 0.5 m³, pressure 1 bar and temperature 27 °C at the beginning of compression. At the end of compression the pressure is 10 bar. Heat added during constant volume process is 200 kJ. Determine (a) percentage clearance volume, (b) air standard efficiency, (c) mean effective pressure 📄 p1",
+                "text": "An engine working on the Otto cycle has volume 0.5 m³, pressure 1 bar and temperature 27 °C at the beginning of compression. At the end of compression the pressure is 10 bar. Heat added during constant volume process is 200 kJ. Determine (a) percentage clearance volume, (b) air standard efficiency, (c) mean effective pressure",
                 "marks": 5
               }
             ],
@@ -1725,12 +1725,12 @@
             "questions": [
               {
                 "qno": "Q.5(a)",
-                "text": "Derive the expression for thermal efficiency of the Otto cycle 📄 p1",
+                "text": "Derive the expression for thermal efficiency of the Otto cycle",
                 "marks": 5
               },
               {
                 "qno": "Q.5(b)",
-                "text": "In an air standard Otto cycle, compression ratio is 7 and compression begins at 35 °C, 0.1 MPa. Maximum temperature of the cycle is 1100 °C. Find (i) temperature and pressure at the cardinal points, (ii) heat supplied per kg of air, (iii) work done per kg of air, (iv) cycle efficiency, (v) m.e.p. 📄 p1",
+                "text": "In an air standard Otto cycle, compression ratio is 7 and compression begins at 35 °C, 0.1 MPa. Maximum temperature of the cycle is 1100 °C. Find (i) temperature and pressure at the cardinal points, (ii) heat supplied per kg of air, (iii) work done per kg of air, (iv) cycle efficiency, (v) m.e.p.",
                 "marks": 5
               }
             ],

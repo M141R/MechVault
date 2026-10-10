@@ -33,13 +33,13 @@ if (loggedInName) {
       <form id="login-form" class="auth-form">
         <label>
           <span>Username</span>
-          <input type="text" name="username" autocomplete="username" required autofocus>
+          <input type="text" name="username" id="login-username" autocomplete="username" required aria-describedby="login-error">
         </label>
         <label>
           <span>Password</span>
-          <input type="password" name="password" autocomplete="current-password" required>
+          <input type="password" name="password" id="login-password" autocomplete="current-password" required aria-describedby="login-error">
         </label>
-        <div class="auth-error" hidden></div>
+        <div class="auth-error" id="login-error" role="alert" hidden></div>
         <button type="submit" class="btn btn-accent auth-submit">Sign in →</button>
       </form>
       {isSingleUser() ? (
@@ -66,11 +66,23 @@ if (loggedInName) {
     const form = document.getElementById("login-form") as HTMLFormElement;
     const err = form.querySelector(".auth-error") as HTMLDivElement;
     const btn = form.querySelector(".auth-submit") as HTMLButtonElement;
+    const usernameInput = form.querySelector('#login-username') as HTMLInputElement;
+    const passwordInput = form.querySelector('#login-password') as HTMLInputElement;
     let errorMessage: string | null = null;
+
+    [usernameInput, passwordInput].forEach((inp) => {
+      inp?.addEventListener("input", () => {
+        inp.removeAttribute("aria-invalid");
+      });
+    });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       err.hidden = true;
+      err.textContent = "";
+      usernameInput?.removeAttribute("aria-invalid");
+      passwordInput?.removeAttribute("aria-invalid");
+      errorMessage = null;
       btn.disabled = true;
       const fd = new FormData(form);
       const username = String(fd.get("username") || "").trim();
@@ -95,6 +107,8 @@ if (loggedInName) {
       if (errorMessage) {
         err.hidden = false;
         err.textContent = errorMessage;
+        usernameInput?.setAttribute("aria-invalid", "true");
+        passwordInput?.setAttribute("aria-invalid", "true");
         return;
       }
       const dest = next.startsWith("/") && !next.startsWith("//") ? next : "/";

@@ -12,10 +12,11 @@ and by paper. This turns those rows into data the app can use.
 
 WHAT IT DELIBERATELY DOES NOT DO
 It never invents, paraphrases, shortens or "tidies" a question. Every `text`
-field is the verbatim cell content with tags stripped and whitespace collapsed.
+field is the verbatim cell content with tags stripped and whitespace collapsed
+(zoom-link "📄 pN" markers are removed as UI chrome, not question wording).
 A question that reads slightly wrong is worse than one that is missing, because
 the whole point of the page is that it is the real paper. Subjects with no
-`#modpyq` section (fm, numerical) get an empty bank -- reported explicitly at
+`#modpyq` section (currently only numerical) get an empty bank -- reported explicitly at
 the end so their absence reads as a known gap rather than a silent zero.
 
 Idempotent: run it twice and the output is byte-identical.
@@ -43,28 +44,36 @@ SLUGS = ["fm", "som", "thermo", "materials", "manufacturing", "numerical"]
 
 def clean(html: str) -> str:
     """Strip tags, unescape entities, collapse whitespace. Never alters wording."""
+    # Drop zoom-link markers before stripping tags: the qzoom anchors render
+    # as "📄 p1" text, which would otherwise leak into the question wording and
+    # then display twice (once in the text, once as the scan link).
+    html = re.sub(r'<a[^>]*class="[^"]*qzoom[^"]*"[^>]*>.*?</a>', " ", html, flags=re.S)
+    html = re.sub(r'<a[^>]*data-zoom=[^>]*>.*?</a>', " ", html, flags=re.S)
     text = re.sub(r"<[^>]+>", " ", html)
     # html.unescape covers &rsquo; &middot; &rarr; &nbsp; etc. The vault's
     # generated PYQ tables use several beyond the basic five.
     text = html_mod.unescape(text)
+    text = re.sub(r"📄\s*p\d+", " ", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
 def subject_codes() -> dict[str, str]:
-    """Pull `code:` out of the subject registry, keyed by slug."""
-    src = SUBJECTS_TS.read_text()
+    """Pull `code:` out of the subject registry, keyed by slug.
+
+    Order-independent: each `slug: "x"` opens a block that runs until the next
+    `slug:` (or EOF); the first `code: "Y"` inside that block belongs to it.
+    Reordering fields within a subject entry cannot misattribute a code.
+    """
+    src = SUBJECTS_TS.read_text(encoding="utf-8")
     codes: dict[str, str] = {}
-    # Each subject entry sets `slug:` and `code:`; walk the file tracking the
-    # most recent slug seen and attach the next code to it.
-    current = None
-    for line in src.splitlines():
-        m = re.search(r'slug:\s*"([a-z]+)"', line)
-        if m:
-            current = m.group(1)
-            continue
-        m = re.search(r'code:\s*"([A-Z]+\d+)"', line)
-        if m and current and current not in codes:
-            codes[current] = m.group(1)
+    slug_hits = list(re.finditer(r'slug:\s*"([a-z]+)"', src))
+    for i, hit in enumerate(slug_hits):
+        slug = hit.group(1)
+        end = slug_hits[i + 1].start() if i + 1 < len(slug_hits) else len(src)
+        block = src[hit.end():end]
+        m = re.search(r'code:\s*"([A-Z]+\d+)"', block)
+        if m and slug not in codes:
+            codes[slug] = m.group(1)
     return codes
 
 
@@ -212,7 +221,7 @@ def extract(slug: str, code: str) -> dict:
     path = CONTENT / f"{slug}.html"
     if not path.exists():
         return {"code": code, "modules": [], "note": f"{slug}.html missing"}
-    html = path.read_text(errors="ignore")
+    html = path.read_text(encoding="utf-8", errors="ignore")
 
     sec = re.search(r'<section[^>]*id="modpyq"[^>]*>(.*?)</section>', html, re.S)
     if not sec:
@@ -280,7 +289,7 @@ def main() -> int:
     payload = json.dumps(bank, indent=2, ensure_ascii=False, sort_keys=False) + "\n"
 
     if args.check:
-        current = OUT.read_text() if OUT.exists() else ""
+        current = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
         if current != payload:
             print(f"DRIFT: {OUT} is stale, re-run without --check", file=sys.stderr)
             return 1
@@ -288,7 +297,7 @@ def main() -> int:
         return 0
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(payload)
+    OUT.write_text(payload, encoding="utf-8")
 
     grand = 0
     for slug, data in bank.items():

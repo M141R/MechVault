@@ -16,8 +16,8 @@ state change for material with no notes behind it). Both are reported.
 
 - Notes modules found: **5** — M1 Fluid Statics, M2 Kinematics & Dynamics, M3 Closed Conduit Flow, M4 Hydraulic Turbines, M5 Pumps
 - Topic links in note TOCs: **25**
-- Tracker topics: **26**
-- Indexed PYQ questions: **0**
+- Tracker topics: **56**
+- Indexed PYQ questions: **85**
 - `#syllabus` scoping section in notes: **yes**
 
 | Syllabus unit | Notes | Tracker | Matched tokens | Verdict |

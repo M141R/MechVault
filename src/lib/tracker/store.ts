@@ -20,6 +20,8 @@ import {
   canTransitionTopic,
   canTransitionProblem,
   hintBudgetAllows,
+  isTopicState,
+  isProblemState,
   TOPIC_STATES,
   PROBLEM_STATES,
   type TopicStateName,
@@ -159,6 +161,38 @@ export interface UpdateResult {
 }
 
 /**
+ * Delete rows whose keys are no longer in the config (renamed/removed topics
+ * or problems). Unknown-key writes are rejected, but stale rows would
+ * otherwise accumulate forever — run this from an admin action so the tables
+ * cannot hold invisible garbage.
+ */
+export async function pruneOrphanStates(): Promise<{ topics: number; problems: number }> {
+  await ensureSchema();
+  const db = requireDb();
+  const topicKeys = [...allTopicKeys()];
+  const problemKeys = [...allProblemKeys()];
+  let tCount = 0;
+  let pCount = 0;
+  if (topicKeys.length) {
+    const res = (await withRetry(() =>
+      db.execute(
+        sql`DELETE FROM "topic_state" WHERE "key" NOT IN (${sql.join(topicKeys.map((k) => sql`${k}`), sql`, `)})`,
+      ),
+    )) as unknown as { rowCount?: number };
+    tCount = res?.rowCount ?? 0;
+  }
+  if (problemKeys.length) {
+    const res = (await withRetry(() =>
+      db.execute(
+        sql`DELETE FROM "problem_state" WHERE "key" NOT IN (${sql.join(problemKeys.map((k) => sql`${k}`), sql`, `)})`,
+      ),
+    )) as unknown as { rowCount?: number };
+    pCount = res?.rowCount ?? 0;
+  }
+  return { topics: tCount, problems: pCount };
+}
+
+/**
  * Apply a topic transition, enforcing the state machine.
  *
  * Keys not present in the config are rejected: an unknown key would silently
@@ -188,8 +222,17 @@ export async function updateTopic(
       .limit(1),
   );
   const from = (existing[0]?.state ?? "unseen") as TopicStateName;
-  const gate = canTransitionTopic(from, to);
-  if (!gate.ok) return { ok: false, error: gate.reason };
+  // Corrupt-state repair: a row with an unknown state (bad write, manual edit)
+  // can only be reset to unseen — every other transition is refused with a
+  // message that says so, instead of a dead "Cannot move X → Y".
+  if (!isTopicState(from)) {
+    if (to !== "unseen") {
+      return { ok: false, error: `Unknown state ${from}; reset it to unseen first.` };
+    }
+  } else {
+    const gate = canTransitionTopic(from, to);
+    if (!gate.ok) return { ok: false, error: gate.reason };
+  }
 
   // Crossing into a tested state counts as a cold retrieval.
   const testing = to === "self-tested" || to === "exam-ready";
@@ -246,8 +289,14 @@ export async function updateProblem(
   const from = (prev?.state ?? "unseen") as ProblemStateName;
   const hintLevel = update.hintLevel ?? prev?.hintLevel ?? 0;
 
-  const gate = canTransitionProblem(from, to);
-  if (!gate.ok) return { ok: false, error: gate.reason };
+  if (!isProblemState(from)) {
+    if (to !== "unseen") {
+      return { ok: false, error: `Unknown state ${from}; reset it to unseen first.` };
+    }
+  } else {
+    const gate = canTransitionProblem(from, to);
+    if (!gate.ok) return { ok: false, error: gate.reason };
+  }
 
   const budget = hintBudgetAllows(to, hintLevel);
   if (!budget.ok) return { ok: false, error: budget.reason };

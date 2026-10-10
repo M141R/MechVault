@@ -33,10 +33,14 @@
 
   /* ---------------- Lightbox ---------------- */
   var lb = null;
+  var lbTrigger = null;
   function ensureLightbox() {
     if (lb) return lb;
     lb = document.createElement("div");
     lb.className = "lightbox";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Paper page viewer");
     lb.innerHTML = '<button class="lb-close" aria-label="Close">&#10005;</button><img alt="Paper page" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><div class="lb-caption"></div>';
     document.body.appendChild(lb);
     lb.addEventListener("click", function (e) {
@@ -47,21 +51,30 @@
   }
   function openLightbox(src, caption) {
     var l = ensureLightbox();
-    l.querySelector("img").src = src;
+    var text = caption || "Paper page";
+    var img = l.querySelector("img");
+    img.src = src;
+    img.alt = text;
     l.querySelector(".lb-caption").textContent = caption || "";
     l.classList.add("open");
     document.body.style.overflow = "hidden";
+    var closeBtn = l.querySelector(".lb-close");
+    if (closeBtn) closeBtn.focus();
   }
   function closeLightbox() {
     if (!lb) return;
+    if (!lb.classList.contains("open")) return;
     lb.classList.remove("open");
     document.body.style.overflow = "";
+    if (lbTrigger && document.contains(lbTrigger)) lbTrigger.focus();
+    lbTrigger = null;
   }
   window.openLightbox = openLightbox;
   document.addEventListener("click", function (e) {
     var t = e.target.closest("[data-zoom]");
     if (!t) return;
     e.preventDefault();
+    lbTrigger = t;
     openLightbox(t.getAttribute("data-zoom"), t.getAttribute("data-caption") || "");
   });
 
@@ -70,7 +83,10 @@
     var head = e.target.closest(".acc-head");
     if (!head) return;
     var item = head.closest(".acc-item");
-    if (item) item.classList.toggle("open");
+    if (item) {
+      item.classList.toggle("open");
+      head.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
+    }
   });
 
   /* ---------------- Auto-accordion: wrap every .answer-block
@@ -79,9 +95,11 @@
   document.querySelectorAll(".answer-block").forEach(function (ab) {
     var item = document.createElement("div");
     item.className = "acc-item";
-    var head = document.createElement("div");
+    var head = document.createElement("button");
+    head.type = "button";
     head.className = "acc-head";
-    head.innerHTML = 'Show answer <span class="acc-icon">+</span>';
+    head.setAttribute("aria-expanded", "false");
+    head.innerHTML = 'Show answer <span class="acc-icon" aria-hidden="true">+</span>';
     ab.classList.add("acc-body");
     ab.parentNode.insertBefore(item, ab);
     item.appendChild(head);
@@ -104,12 +122,20 @@
   }
   var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
   if (tocLinks.length) {
-    var tocSecs = tocLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); }).filter(Boolean);
+    var tocSecs = tocLinks.map(function (a) {
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return null;
+      return document.getElementById(href.slice(1));
+    }).filter(Boolean);
     spy(tocLinks, tocSecs);
   }
   var tabLinks = Array.prototype.slice.call(document.querySelectorAll(".tab"));
   if (tabLinks.length) {
-    var tabSecs = tabLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); }).filter(Boolean);
+    var tabSecs = tabLinks.map(function (a) {
+      var href = a.getAttribute("href") || (a.getAttribute("data-href") ? "#" + a.getAttribute("data-href") : null);
+      if (!href || href.charAt(0) !== "#") return null;
+      return document.getElementById(href.slice(1));
+    }).filter(Boolean);
     spy(tabLinks, tabSecs);
   }
 
@@ -176,11 +202,11 @@
   var INDEX = null;
   var INDEX_LOADED = false;
 
-  // Preload search index once
+  // Preload search index once (absolute path: relative fetch 404s on /fm/module/1)
   function loadIndex() {
     if (INDEX_LOADED) return Promise.resolve();
     INDEX_LOADED = true;
-    return fetch("search-index.json").then(function (r) { return r.json(); }).then(function (d) { INDEX = d; }).catch(function () { INDEX = []; });
+    return fetch("/search-index.json").then(function (r) { return r.json(); }).then(function (d) { INDEX = d; }).catch(function () { INDEX = []; });
   }
   loadIndex();
 
@@ -192,7 +218,7 @@
     searchDrawer.innerHTML =
       '<div class="search-drawer-inner">' +
       '  <button class="search-drawer-close" aria-label="Close search">&#10005;</button>' +
-      '  <input class="search-input" type="search" placeholder="Search notes, formulas…" aria-label="Search the site" autocomplete="off">' +
+      '  <input class="search-input" type="search" placeholder="Search notes…" aria-label="Search notes, formulas, topics and previous year questions" autocomplete="off">' +
       '  <div class="search-results" role="status" aria-live="polite"></div>' +
       '</div>';
     document.body.appendChild(searchDrawer);
@@ -235,6 +261,11 @@
     var c = 0; toks.forEach(function (t) { if (hay.indexOf(t) !== -1) c++; });
     return c > 0 ? 10 + c * 5 : 0;
   }
+  function escHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
   function runSearch(q, box) {
     if (!INDEX || !q.trim()) { box.classList.remove("open"); return; }
     var hits = INDEX.map(function (it) { return { it: it, s: score(it, q) }; })
@@ -242,16 +273,16 @@
       .sort(function (a, b) { return b.s - a.s; })
       .slice(0, 8);
     if (!hits.length) {
-      box.innerHTML = '<div class="sr-empty">No matches for "' + q + '"</div>';
+      box.innerHTML = '<div class="sr-empty">No matches for "' + escHtml(q) + '"</div>';
       box.classList.add("open"); return;
     }
     box.innerHTML = hits.map(function (x) {
       var it = x.it;
       var snip = it.b.length > 120 ? it.b.slice(0, 120) + "…" : it.b;
-      return '<a href="' + it.u + (it.a ? "#" + it.a : "") + '">' +
-        '<div class="sr-crumb">' + it.s + '</div>' +
-        '<div class="sr-title">' + it.t + '</div>' +
-        '<div class="sr-snippet">' + snip + '</div></a>';
+      return '<a href="' + escHtml(it.u) + (it.a ? "#" + escHtml(it.a) : "") + '">' +
+        '<div class="sr-crumb">' + escHtml(it.s) + '</div>' +
+        '<div class="sr-title">' + escHtml(it.t) + '</div>' +
+        '<div class="sr-snippet">' + escHtml(snip) + '</div></a>';
     }).join("");
     box.classList.add("open");
   }
@@ -325,18 +356,18 @@
              blurb: "Macroscopic vs microscopic, work & heat, first law, properties of steam, second law, nozzles — with the full PYQ bank.",
              tags: [{ t: "Notes expanding", c: "tag-med" }, { t: "PYQ bank" }] },
            { code: "materials", name: "Materials Engineering", file: "/materials",
-             sheet: "SHEET MAT-01", meta: ["ME24202", "syllabus kit"], progress: 100,
-             paperCount: 0,
+             sheet: "SHEET MAT-01", meta: ["ME24202", "8 papers", "2022-2025"], progress: 100,
+             paperCount: 8,
              blurb: "Crystallography, Miller indices, phase diagrams, Fe–C system, TTT curves, heat treatment, alloys and material testing — exam definitions included.",
-             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] },
+             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQ bank" }] },
            { code: "manufacturing", name: "Manufacturing Processes", file: "/manufacturing",
-             sheet: "SHEET MFG-01", meta: ["ME24204", "syllabus kit"], progress: 100,
-             paperCount: 0,
+             sheet: "SHEET MFG-01", meta: ["ME24204", "7 papers", "2022-2025"], progress: 100,
+             paperCount: 7,
              blurb: "Casting, metal cutting, lathe–milling–drilling, rolling–forging–extrusion, welding processes — module notes with formula plates.",
-             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] },
+             tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQ bank" }] },
            { code: "numerical", name: "Numerical Methods", file: "/numerical",
-             sheet: "SHEET NUM-01", meta: ["BIT Mesra", "syllabus kit"], progress: 100,
-             paperCount: 0,
+             sheet: "SHEET NUM-01", meta: ["MA24201", "7 papers", "syllabus kit"], progress: 100,
+             paperCount: 7,
              blurb: "Root-finding, linear systems, interpolation, Newton–Cotes integration and Runge–Kutta ODEs — worked algorithms with proper math rendering.",
              tags: [{ t: "Notes ready", c: "tag-high" }, { t: "PYQs coming soon" }] }
         ]

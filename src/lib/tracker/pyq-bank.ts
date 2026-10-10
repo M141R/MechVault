@@ -16,8 +16,8 @@
  *   keyword matching rather than BIT's verified Qn -> Module n convention.
  *   The UI must show that distinction; an inferred tag is not a fact.
  * - A subject with no `#modpyq` section gets `modules: []` plus a `note`
- *   explaining why. fm and numerical are exactly that case, and their empty
- *   banks are a real gap in the vault, not a bug in this file.
+ *   explaining why. Numerical is exactly that case, and its empty bank is a
+ *   real gap in the vault, not a bug in this file.
  */
 
 export interface PyqQuestion {
@@ -62,9 +62,17 @@ import bankJson from "./pyq-bank.json";
 
 export const PYQ_BANK = bankJson as unknown as Record<string, PyqSubject>;
 
-/** Stable id for a single question, unique within a subject. */
-export function questionId(module: number, paper: string, qno: string): string {
-  return `${module}.${paper.replace(/\s+/g, "-").toLowerCase()}.${qno
+/** Stable id for a single question, unique within a subject. Includes the
+ *  paper type (MID/END) so `MID MO2022 Q.1(a)` and `END MO2022 Q.1(a)` in the
+ *  same module never collide. */
+export function questionId(
+  module: number,
+  paper: string,
+  qno: string,
+  type?: string,
+): string {
+  const t = (type ?? "").trim().toLowerCase();
+  return `${module}.${t ? t + "." : ""}${paper.replace(/\s+/g, "-").toLowerCase()}.${qno
     .replace(/[^\w.()]/g, "")
     .toLowerCase()}`;
 }
@@ -93,7 +101,7 @@ export function questionsFor(slug: string): IndexedQuestion[] {
         for (const q of p.questions) {
           out.push({
             ...q,
-            id: questionId(m.module, p.paper, q.qno),
+            id: questionId(m.module, p.paper, q.qno, p.type),
             module: m.module,
             moduleName: m.name,
             paper: p.paper,
@@ -142,11 +150,22 @@ export function coverageFor(slug: string): PyqCoverage {
     };
   }
   const papers = subject.modules.flatMap((m) => m.papers);
+  // Dedupe papers across modules: one paper appearing in 5 modules is one
+  // paper, not five. Key on type+paper label.
+  const seen = new Set<string>();
+  let distinct = 0;
+  for (const p of papers) {
+    const key = `${(p.type ?? "").toUpperCase()}|${p.paper}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      distinct += 1;
+    }
+  }
   return {
     code: subject.code,
     moduleCount: subject.modules.length,
     questionCount: qs.length,
-    paperCount: papers.length,
+    paperCount: distinct,
     marksTotal: qs.reduce((n, q) => n + (q.marks ?? 0), 0),
     empty: qs.length === 0,
     note: subject.note,

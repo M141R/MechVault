@@ -69,11 +69,27 @@ export interface TransitionResult {
   reason?: string;
 }
 
+/** True when `s` is a known topic state (guards corrupt rows/storage). */
+export function isTopicState(s: string): s is TopicStateName {
+  return (TOPIC_STATES as readonly string[]).includes(s);
+}
+
+/** True when `s` is a known problem state. */
+export function isProblemState(s: string): s is ProblemStateName {
+  return (PROBLEM_STATES as readonly string[]).includes(s);
+}
+
 export function canTransitionTopic(
   from: TopicStateName,
   to: TopicStateName,
 ): TransitionResult {
   if (from === to) return { ok: true };
+  if (!(TOPIC_STATES as readonly string[]).includes(from)) {
+    return { ok: false, reason: `Unknown state ${from}; reset it to unseen first.` };
+  }
+  if (!(TOPIC_STATES as readonly string[]).includes(to)) {
+    return { ok: false, reason: `Unknown state ${to}.` };
+  }
   if (!TOPIC_TRANSITIONS[from]?.includes(to)) {
     if (from === "read" && to === "self-tested") {
       return {
@@ -92,14 +108,27 @@ export function canTransitionProblem(
   to: ProblemStateName,
 ): TransitionResult {
   if (from === to) return { ok: true };
+  if (!(PROBLEM_STATES as readonly string[]).includes(from)) {
+    return { ok: false, reason: `Unknown state ${from}; reset it to unseen first.` };
+  }
+  if (!(PROBLEM_STATES as readonly string[]).includes(to)) {
+    return { ok: false, reason: `Unknown state ${to}.` };
+  }
   if (!PROBLEM_TRANSITIONS[from]?.includes(to)) {
-    if (from === "unseen" && to === "solved-cold") {
-      return {
-        ok: false,
-        reason:
-          "Gated: a cold solve requires a recorded failed attempt first, so the log shows what you learned.",
-      };
-    }
+      if (from === "unseen" && to === "solved-cold") {
+        return {
+          ok: false,
+          reason:
+            "Solved cold needs a failed attempt first. Open the state menu on this row and choose \"Attempted · failed\", write what went wrong in the log box, then solve it clean and set Solved cold again.",
+        };
+      }
+      if (from === "unseen" && to === "exam-speed") {
+        return {
+          ok: false,
+          reason:
+            "Exam speed needs a cold solve first. Open the state menu on this row and choose \"Attempted · failed\", log what went wrong, then work through Solved cold and Exam speed.",
+        };
+      }
     return { ok: false, reason: `Cannot move ${from} → ${to}.` };
   }
   return { ok: true };
